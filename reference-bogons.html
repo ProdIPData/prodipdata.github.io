@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bogons Catalog | GeoIP Locations</title>
+  <meta name="description" content="Special-purpose network ranges published from the current monthly reference feed." />
+  <link rel="canonical" href="https://prodipdata.github.io/reference-bogons.html" />
+  <link rel="icon" type="image/png" href="assets/img/prodipdata-mark.png" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body data-page="reference-bogons" data-release-month="2026-03">
+
+  <header class="site-header">
+    <div class="container">
+      <div class="navbar glass">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">◎</div>
+          <div>
+            GeoIP Locations
+            <small>Powered by ProdIPData</small>
+          </div>
+        </a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="platform.html" data-nav="platform">Platform</a>
+          <a href="coverage.html" data-nav="coverage">Coverage</a>
+          <a href="methodology.html" data-nav="methodology">Methodology</a>
+          <a href="downloads.html" data-nav="downloads">Downloads</a>
+          <a href="contact.html" data-nav="contact">Contact</a>
+        </nav>
+        <div class="header-cta">
+          <a class="btn btn-secondary" href="downloads.html">Monthly Release</a>
+        </div>
+        <button class="menu-button" type="button" data-menu-toggle aria-expanded="false" aria-label="Open menu">Menu</button>
+      </div>
+      <nav class="mobile-nav glass" data-mobile-nav>
+        <a href="platform.html" data-nav="platform">Platform</a>
+        <a href="coverage.html" data-nav="coverage">Coverage</a>
+        <a href="methodology.html" data-nav="methodology">Methodology</a>
+        <a href="downloads.html" data-nav="downloads">Downloads</a>
+        <a href="contact.html" data-nav="contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-panel glass">
+          <div class="eyebrow page-kicker">Reference Catalog</div>
+          <h1>Browse the monthly bogons catalog directly in the website.</h1>
+          <p class="page-intro">This page exposes the current monthly bogons publication as a browser table with search and paging controls so the technical reference data itself is visible, not just the row count.</p>
+          <div class="actions">
+            <a class="btn btn-secondary" href="downloads.html">Back to Downloads</a>
+            <a class="btn btn-secondary" href="assets/data/bogons-2026-03.json" data-reference-raw-link>Open Raw JSON</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="metric-grid" data-reference-metrics-target></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-2 reference-layout">
+        <div class="split-panel glass">
+          <h3>Browse and filter</h3>
+          <p class="card-text">Use the search field to filter the full published catalog client-side. The larger tables are paged to keep the static site responsive while still exposing the underlying reference rows directly in the browser.</p>
+          <div class="reference-controls">
+            <div class="field-group">
+              <label for="reference-search">Search</label>
+              <input id="reference-search" class="input" type="search" placeholder="Search this catalog..." data-reference-search />
+            </div>
+            <div class="field-group field-inline">
+              <label for="reference-page-size">Rows per page</label>
+              <select id="reference-page-size" class="select" data-reference-page-size>
+                <option value="25">25</option>
+                <option value="50" selected>50</option>
+                <option value="100">100</option>
+              </select>
+            </div>
+          </div>
+          <div class="reference-status" data-reference-status>Preparing catalog...</div>
+          <div class="reference-actions">
+            <button class="btn btn-secondary" type="button" data-reference-prev>Previous</button>
+            <button class="btn btn-secondary" type="button" data-reference-next>Next</button>
+          </div>
+        </div>
+        <div class="split-panel glass">
+          <h3>Catalog notes</h3>
+          <div class="download-list" data-reference-notes-target></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="table-wrap glass reference-table-wrap">
+          <table>
+            <thead data-reference-head-target></thead>
+            <tbody data-reference-body-target>
+              <tr><td>Catalog rows will render here from the monthly JSON export.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <div>© <span data-current-year></span> GeoIP Locations · ProdIPData</div>
+      <div>Engineered and published by the ProdIPData team.</div>
+    </div>
+  </footer>
+  <script src="assets/js/site.js"></script>
+
+</body>
+</html>

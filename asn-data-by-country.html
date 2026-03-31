@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASN Data by Country | GeoIP Locations</title>
+  <meta name="description" content="Compare ASN data by country with ProdIPData coverage views, country concentration, lead ASN share, and downloadable monthly files." />
+  <link rel="canonical" href="https://prodipdata.github.io/asn-data-by-country.html" />
+  <link rel="icon" type="image/png" href="assets/img/prodipdata-mark.png" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://prodipdata.github.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ASN Data by Country",
+      "item": "https://prodipdata.github.io/asn-data-by-country.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body data-page="guide" data-nav-page="coverage">
+
+  <header class="site-header">
+    <div class="container">
+      <div class="navbar glass">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">◎</div>
+          <div>
+            GeoIP Locations
+            <small>Powered by ProdIPData</small>
+          </div>
+        </a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="platform.html" data-nav="platform">Platform</a>
+          <a href="coverage.html" data-nav="coverage">Coverage</a>
+          <a href="methodology.html" data-nav="methodology">Methodology</a>
+          <a href="downloads.html" data-nav="downloads">Downloads</a>
+          <a href="contact.html" data-nav="contact">Contact</a>
+        </nav>
+        <div class="header-cta">
+          <a class="btn btn-secondary" href="downloads.html">Monthly Release</a>
+        </div>
+        <button class="menu-button" type="button" data-menu-toggle aria-expanded="false" aria-label="Open menu">Menu</button>
+      </div>
+      <nav class="mobile-nav glass" data-mobile-nav>
+        <a href="platform.html" data-nav="platform">Platform</a>
+        <a href="coverage.html" data-nav="coverage">Coverage</a>
+        <a href="methodology.html" data-nav="methodology">Methodology</a>
+        <a href="downloads.html" data-nav="downloads">Downloads</a>
+        <a href="contact.html" data-nav="contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-panel glass">
+          <div class="eyebrow page-kicker">ASN data by country</div>
+          <h1>ASN data by country for footprint, ownership, and concentration analysis.</h1>
+          <p class="page-intro">Country-level ASN analysis helps teams move beyond simple location labels. ProdIPData highlights how many ASNs appear in each country, which network leads the visible footprint, and how concentrated or diversified the published structure may be.</p>
+          <p class="page-intro seo-links">Use the <a href="coverage.html">coverage page</a> for the interactive map, the <a href="downloads.html">downloads hub</a> for release files, or the <a href="geoip-database.html">GeoIP database overview</a> for a higher-level product view.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-3">
+        <article class="section-card glass">
+          <h3>Country footprint review</h3>
+          <p class="card-text">Compare countries by published /24 footprint, IPv4 estimate, ASN count, and registry alignment to understand relative scale in the current release.</p>
+        </article>
+        <article class="section-card glass">
+          <h3>Lead ASN share</h3>
+          <p class="card-text">Lead ASN share shows how much of the visible footprint is controlled by the dominant network in a country. It is a practical indicator of concentration and market structure.</p>
+        </article>
+        <article class="section-card glass">
+          <h3>Registry context</h3>
+          <p class="card-text">Country views can be grouped by regional registry to show how footprint and operator presence are distributed across ARIN, RIPE, APNIC, AFRINIC, and LACNIC.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container story-grid">
+        <div class="split-panel glass content">
+          <h2>What users typically look for</h2>
+          <ul>
+            <li>Countries with the largest visible network footprint in the current release.</li>
+            <li>Countries where one network dominates the published footprint versus countries where the structure is more distributed.</li>
+            <li>Regional comparisons that show how country portfolios differ across the five regional internet registries.</li>
+            <li>Country-level composition that can be exported or combined with other internal workflows.</li>
+          </ul>
+        </div>
+        <div class="split-panel glass content">
+          <h2>Best next steps</h2>
+          <ul>
+            <li>Open the <a href="coverage.html">interactive country map</a> to search, click, and compare countries visually.</li>
+            <li>Use the <a href="downloads-csv-2026-03.html">CSV release index</a> when you want row-oriented country packages.</li>
+            <li>Use the <a href="downloads-parquet-2026-03.html">Parquet release index</a> when the work is analytics-heavy.</li>
+            <li>Read the <a href="ip-geolocation-data.html">IP geolocation data guide</a> if the question is still about what the published signals mean.</li>
+          </ul>
+          <div class="actions">
+            <a class="btn btn-primary" href="coverage.html">Open coverage map</a>
+            <a class="btn btn-secondary" href="downloads.html">Review downloads</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-3">
+        <article class="section-card glass"><h3><a href="geoip-csv-download.html">Country files in CSV</a></h3><p class="card-text">Choose CSV when country exports need to fit spreadsheets, SQL scripts, or simple operational ingestion.</p></article>
+        <article class="section-card glass"><h3><a href="geoip-parquet-download.html">Country files in Parquet</a></h3><p class="card-text">Choose Parquet when country files will be analyzed in batch pipelines or data-processing frameworks.</p></article>
+        <article class="section-card glass"><h3><a href="methodology.html">Monthly methodology</a></h3><p class="card-text">Understand how the country views and release snapshots are assembled before you operationalize them.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <div>© <span data-current-year></span> GeoIP Locations · ProdIPData</div>
+      <div>Engineered and published by the ProdIPData team.</div>
+    </div>
+  </footer>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

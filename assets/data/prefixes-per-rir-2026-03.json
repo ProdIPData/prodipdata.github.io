@@ -1,0 +1,37 @@
+[
+    {
+        "rir":  "afrinic",
+        "countryCount":  56,
+        "asnCount":  2362,
+        "prefixCount":  448540,
+        "ipv4Count":  114826240
+    },
+    {
+        "rir":  "apnic",
+        "countryCount":  53,
+        "asnCount":  16676,
+        "prefixCount":  3680414,
+        "ipv4Count":  942185984
+    },
+    {
+        "rir":  "arin",
+        "countryCount":  26,
+        "asnCount":  20498,
+        "prefixCount":  6243439,
+        "ipv4Count":  1598320384
+    },
+    {
+        "rir":  "lacnic",
+        "countryCount":  30,
+        "asnCount":  11687,
+        "prefixCount":  774776,
+        "ipv4Count":  198342656
+    },
+    {
+        "rir":  "ripe",
+        "countryCount":  77,
+        "asnCount":  30461,
+        "prefixCount":  3314778,
+        "ipv4Count":  848583168
+    }
+]

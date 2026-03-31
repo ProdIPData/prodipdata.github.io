@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /submit-data-correction.html
+
+Sitemap: https://prodipdata.github.io/sitemap.xml

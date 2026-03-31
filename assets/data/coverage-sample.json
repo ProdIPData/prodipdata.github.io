@@ -1,0 +1,58 @@
+{
+  "summary": {
+    "release": "2026-03",
+    "isoBuckets": "255+",
+    "formats": "CSV / Parquet",
+    "model": "Static"
+  },
+  "items": [
+    {
+      "country": "United States",
+      "iso": "US",
+      "prefixes": "4,921,330",
+      "ipv4": "1.26B",
+      "status": "Published",
+      "statusClass": "success"
+    },
+    {
+      "country": "Canada",
+      "iso": "CA",
+      "prefixes": "512,780",
+      "ipv4": "131.27M",
+      "status": "Published",
+      "statusClass": "success"
+    },
+    {
+      "country": "France",
+      "iso": "FR",
+      "prefixes": "421,940",
+      "ipv4": "108.02M",
+      "status": "Published",
+      "statusClass": "success"
+    },
+    {
+      "country": "Australia",
+      "iso": "AU",
+      "prefixes": "338,700",
+      "ipv4": "86.71M",
+      "status": "3-Part Export",
+      "statusClass": "info"
+    },
+    {
+      "country": "Israel",
+      "iso": "IL",
+      "prefixes": "98,400",
+      "ipv4": "25.19M",
+      "status": "Published",
+      "statusClass": "success"
+    },
+    {
+      "country": "Bogons",
+      "iso": "BOG",
+      "prefixes": "Special",
+      "ipv4": "Special",
+      "status": "Reduced Schema",
+      "statusClass": "warning"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "current_release": "2026-03",
+  "items": [
+    {
+      "title": "Country export catalog",
+      "description": "Static release page for country-level publication assets and release scope.",
+      "status": "Ready",
+      "statusClass": "success"
+    },
+    {
+      "title": "CSV packages",
+      "description": "Password-protected ISO-oriented packages with manifests and checksum files.",
+      "status": "Ready",
+      "statusClass": "success"
+    },
+    {
+      "title": "Parquet packages",
+      "description": "Analytics-friendly monthly packages for DBeaver, DuckDB, and downstream workflows.",
+      "status": "Ready",
+      "statusClass": "success"
+    },
+    {
+      "title": "BOG special release",
+      "description": "Reduced-schema publication stream for bogons and special-purpose allocation slices.",
+      "status": "Special",
+      "statusClass": "warning"
+    },
+    {
+      "title": "Methodology notes",
+      "description": "Public-facing source, processing, and known-limitation documentation for transparency.",
+      "status": "Included",
+      "statusClass": "info"
+    },
+    {
+      "title": "Release history",
+      "description": "Reserved area for future month-by-month release archive navigation.",
+      "status": "Planned",
+      "statusClass": "info"
+    }
+  ]
+}

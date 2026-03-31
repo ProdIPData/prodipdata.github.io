@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submit a Data Correction | GeoIP Locations</title>
+  <meta name="description" content="Report a data issue and prepare a structured GeoIP Locations correction request for the ProdIPData publication team." />
+  <meta name="robots" content="noindex,follow" />
+  <link rel="icon" type="image/png" href="assets/img/prodipdata-mark.png" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body data-page="submit-data-correction" data-nav-page="contact">
+
+  <header class="site-header">
+    <div class="container">
+      <div class="navbar glass">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">◎</div>
+          <div>
+            GeoIP Locations
+            <small>Powered by ProdIPData</small>
+          </div>
+        </a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="platform.html" data-nav="platform">Platform</a>
+          <a href="coverage.html" data-nav="coverage">Coverage</a>
+          <a href="methodology.html" data-nav="methodology">Methodology</a>
+          <a href="downloads.html" data-nav="downloads">Downloads</a>
+          <a href="contact.html" data-nav="contact">Contact</a>
+        </nav>
+        <div class="header-cta">
+          <a class="btn btn-secondary" href="contact.html">Contact</a>
+        </div>
+        <button class="menu-button" type="button" data-menu-toggle aria-expanded="false" aria-label="Open menu">Menu</button>
+      </div>
+      <nav class="mobile-nav glass" data-mobile-nav>
+        <a href="platform.html" data-nav="platform">Platform</a>
+        <a href="coverage.html" data-nav="coverage">Coverage</a>
+        <a href="methodology.html" data-nav="methodology">Methodology</a>
+        <a href="downloads.html" data-nav="downloads">Downloads</a>
+        <a href="contact.html" data-nav="contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-panel glass">
+          <div class="eyebrow page-kicker">Data correction</div>
+          <h1>Submit a data correction request.</h1>
+          <p class="page-intro">
+            If you notice an error in our published data, we encourage you to send us a correction request. This page helps you prepare a clear, structured message for the ProdIPData publication team. When you click send, your email application opens a prefilled draft addressed to geoiplocations@gmail.com so you can review it and send it.
+          </p>
+          <div class="actions">
+            <a class="btn btn-secondary" href="contact.html">Back to Contact</a>
+            <a class="btn btn-secondary" href="downloads.html">Open Downloads</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container correction-grid">
+        <div class="contact-card glass content">
+          <h2>Correction request template</h2>
+          <form data-correction-form>
+            <div class="reference-controls correction-form-grid">
+              <div class="field-group">
+                <label for="correction-name">Your name</label>
+                <input id="correction-name" class="input" type="text" name="name" placeholder="Optional" />
+              </div>
+              <div class="field-group">
+                <label for="correction-email">Your email</label>
+                <input id="correction-email" class="input" type="email" name="email" placeholder="Recommended for follow-up" />
+              </div>
+              <div class="field-group">
+                <label for="correction-source">Affected page or dataset</label>
+                <input id="correction-source" class="input" type="text" name="source" placeholder="Example: CIDR catalog, Ports catalog, release 2026-03" />
+              </div>
+              <div class="field-group">
+                <label for="correction-category">Correction category</label>
+                <select id="correction-category" class="select" name="category">
+                  <option value="Data value">Data value</option>
+                  <option value="Metadata">Metadata</option>
+                  <option value="Broken link">Broken link</option>
+                  <option value="Technical catalog">Technical catalog</option>
+                  <option value="Monthly release package">Monthly release package</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="field-group correction-full-span">
+                <label for="correction-summary">Short summary</label>
+                <input id="correction-summary" class="input" type="text" name="summary" placeholder="Required" required />
+              </div>
+              <div class="field-group correction-full-span">
+                <label for="correction-details">Correction needed</label>
+                <textarea id="correction-details" class="textarea" name="details" rows="8" placeholder="Describe the issue and the exact correction needed." required></textarea>
+              </div>
+              <div class="field-group correction-full-span">
+                <label for="correction-evidence">Supporting evidence or source</label>
+                <textarea id="correction-evidence" class="textarea" name="evidence" rows="5" placeholder="Optional links, references, screenshots, or publication notes."></textarea>
+              </div>
+              <div class="field-group correction-full-span">
+                <label for="correction-notes">Additional notes</label>
+                <textarea id="correction-notes" class="textarea" name="notes" rows="4" placeholder="Optional operational context or preferred response details."></textarea>
+              </div>
+            </div>
+            <div class="actions correction-actions">
+              <button class="btn btn-primary" type="submit">Send correction request</button>
+              <button class="btn btn-secondary" type="button" data-copy-correction>Email text only</button>
+            </div>
+            <div class="correction-status" data-correction-status>
+              This page prepares a prefilled email draft. It does not transmit mail silently from the website, which keeps the static publication site lightweight and secure.
+            </div>
+          </form>
+        </div>
+
+        <div class="contact-card glass content">
+          <h3>How this works</h3>
+          <p>
+            The form assembles a structured email draft to <strong>geoiplocations@gmail.com</strong>. After you click <strong>Send correction request</strong>, your browser opens the default email application configured on your device.
+          </p>
+          <p>
+            If no email application is configured, use <strong>Email text only</strong> to copy the correction content and send it manually from your mailbox.
+          </p>
+          <div class="download-list correction-guidance-list">
+            <div class="download-item">
+              <div>
+                <strong>Best practice</strong>
+                <small>Include the exact dataset, page, release month, and the expected corrected value.</small>
+              </div>
+              <span class="badge info">Recommended</span>
+            </div>
+            <div class="download-item">
+              <div>
+                <strong>Evidence quality</strong>
+                <small>Authoritative sources, official registries, and reproducible examples accelerate triage.</small>
+              </div>
+              <span class="badge success">High value</span>
+            </div>
+            <div class="download-item">
+              <div>
+                <strong>Operational note</strong>
+                <small>The destination mailbox is geoiplocations@gmail.com.</small>
+              </div>
+              <span class="badge info">Mail target</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <div>© <span data-current-year></span> GeoIP Locations · ProdIPData</div>
+      <div>Engineered and published by the ProdIPData team.</div>
+    </div>
+  </footer>
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/correction.js"></script>
+
+</body>
+</html>

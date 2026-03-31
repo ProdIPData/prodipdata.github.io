@@ -1,0 +1,47 @@
+[
+    {
+        "rir":  "afrinic",
+        "asnId":  8452,
+        "asnName":  "TE-AS",
+        "countryIso":  "EG",
+        "asnType":  "isp",
+        "prefixCount":  29636,
+        "ipv4Count":  7586816
+    },
+    {
+        "rir":  "apnic",
+        "asnId":  4134,
+        "asnName":  "Chinanet-Backbone",
+        "countryIso":  "CN",
+        "asnType":  "isp",
+        "prefixCount":  404074,
+        "ipv4Count":  103442944
+    },
+    {
+        "rir":  "arin",
+        "asnId":  749,
+        "asnName":  "United States Department of Defense (Dod)",
+        "countryIso":  "US",
+        "asnType":  "government",
+        "prefixCount":  870104,
+        "ipv4Count":  222746624
+    },
+    {
+        "rir":  "lacnic",
+        "asnId":  8151,
+        "asnName":  "Uninet",
+        "countryIso":  "MX",
+        "asnType":  "isp",
+        "prefixCount":  53667,
+        "ipv4Count":  13738752
+    },
+    {
+        "rir":  "ripe",
+        "asnId":  3320,
+        "asnName":  "Deutsche Telekom",
+        "countryIso":  "DE",
+        "asnType":  "isp",
+        "prefixCount":  133423,
+        "ipv4Count":  34156288
+    }
+]
