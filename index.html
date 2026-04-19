@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Free GeoIP Database Downloads, ASN and Coverage Maps | ProdIPData</title>
-  <meta name="description" content="Free GeoIP database downloads with monthly CSV and Parquet releases, ASN coverage data, and IPv4 geolocation insights from ProdIPData." />
+  <meta name="description" content="Download free GeoIP data from ProdIPData, including monthly CSV and Parquet releases, ASN intelligence, and country coverage summaries." />
   <link rel="canonical" href="https://geoiplocations.com/" />
   <link rel="icon" type="image/png" href="assets/img/prodipdata-mark.png" />
   <link rel="stylesheet" href="assets/css/styles.css" />
@@ -41,6 +41,17 @@
               }
 }
   </script>
+  <script type="application/ld+json" data-wave3-schema="organization">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://geoiplocations.com/#organization",
+  "name": "ProdIPData",
+  "alternateName": "GeoIP Locations",
+  "url": "https://geoiplocations.com/",
+  "logo": "https://geoiplocations.com/assets/img/prodipdata-mark.png"
+}
+</script>
 </head>
 <body data-page="home">
 
@@ -48,7 +59,7 @@
     <div class="container">
       <div class="navbar glass">
         <a class="brand" href="index.html">
-          <div class="brand-mark">â—Ž</div>
+          <div class="brand-mark">&#9678;</div>
           <div>
             GeoIP Locations
             <small>Powered by ProdIPData</small>
@@ -116,7 +127,7 @@
           </p>
           <div class="download-list" data-release-target></div>
           <div class="data-note">
-            All public website content and downloadable files are provided totally free. Unless otherwise stated, published datasets and metadata are available under <a href="licensing.html">CC BY 4.0</a>. Use Coverage to explore countries and registries, or Downloads to access CSV and Parquet files for local analysis.
+            All public website content and downloadable files are provided totally free. Unless otherwise stated, published datasets and metadata are available under <a href="licensing.html">CC BY 4.0</a>. Use <a href="releases/index.html">the release archive</a> to navigate by month, use Coverage to explore countries and registries, or use Downloads to access CSV and Parquet files for local analysis.
           </div>
         </aside>
       </div>
@@ -208,6 +219,31 @@
       </div>
     </section>
 
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div><h2>Release archive and current month</h2></div>
+      <p>
+        ProdIPData is moving toward a release-oriented discovery path so users can move from global summaries to a month-specific release page and then into the CSV or Parquet package indexes that support local reuse.
+      </p>
+    </div>
+    <div class="grid-3">
+      <article class="section-card glass">
+        <h3><a href="releases/index.html">GeoIP monthly release archive</a></h3>
+        <p class="card-text">Browse the release archive when the goal is to understand what is available by month and which publication assets belong to each release.</p>
+      </article>
+      <article class="section-card glass">
+        <h3><a href="releases/2026-03/index.html">Release 2026-03 overview</a></h3>
+        <p class="card-text">Open the current release page for scope, package paths, methodology links, checksums guidance, and release-level notes.</p>
+      </article>
+      <article class="section-card glass">
+        <h3><a href="downloads.html">GeoIP download indexes</a></h3>
+        <p class="card-text">Go directly to the CSV and Parquet package indexes when the next step is download, local hosting, or workflow integration.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
     <section class="section">
       <div class="container">
         <div class="section-head">
@@ -255,7 +291,20 @@
         </div>
       </div>
     </section>
-  </main>
+  
+<!-- WAVE4:core-discovery-links START -->
+<section class="section" data-wave4-block="discovery-links">
+  <div class="container">
+    <div class="split-panel glass content">
+      <h2>Explore deeper release and entity pages</h2>
+      <p>
+        The current release architecture now connects the monthly archive to selective country, registry, and ASN pages. Use the <a href="releases/index.html">monthly release archive</a> for time-based navigation, move into <a href="country/index.html">country profiles</a> for country-specific footprint context, review <a href="rir/index.html">RIR pages</a> for registry-level structure, and open <a href="asn/index.html">ASN profiles</a> for high-visibility network entities. For package access, continue through <a href="downloads.html">GeoIP CSV and Parquet downloads</a>, and for source quality and caveats, review <a href="methodology.html">GeoIP methodology and validation</a>.
+      </p>
+    </div>
+  </div>
+</section>
+<!-- WAVE4:core-discovery-links END -->
+</main>
 
 
   <footer class="site-footer">
@@ -265,7 +314,7 @@
       <div>Engineered and published by the ProdIPData team.</div>
     </div>
   </footer>
-  <script src="assets/js/site.js"></script>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>
 

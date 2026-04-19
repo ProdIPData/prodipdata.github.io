@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GeoIP Platform Overview, Coverage, ASN and Registry Intelligence | ProdIPData</title>
-  <meta name="description" content="Explore the ProdIPData platform for GeoIP coverage, ASN intelligence, registry context, and monthly IPv4 dataset publication." />
+  <meta name="description" content="Explore the ProdIPData platform for GeoIP coverage, ASN intelligence, registry context, and monthly publication workflows." />
   <link rel="canonical" href="https://geoiplocations.com/platform.html" />
   <link rel="icon" type="image/png" href="assets/img/prodipdata-mark.png" />
   <link rel="stylesheet" href="assets/css/styles.css" />
@@ -29,6 +29,28 @@
                         ]
 }
   </script>
+  <meta property="og:url" content="https://geoiplocations.com/platform.html" />
+  <script type="application/ld+json" data-wave3-schema="breadcrumb-platform-html">
+{
+    "@context":  "https://schema.org",
+    "@type":  "BreadcrumbList",
+    "@id":  "https://geoiplocations.com/platform.html#breadcrumb",
+    "itemListElement":  [
+                            {
+                                "@type":  "ListItem",
+                                "position":  1,
+                                "name":  "Home",
+                                "item":  "https://geoiplocations.com/"
+                            },
+                            {
+                                "@type":  "ListItem",
+                                "position":  2,
+                                "name":  "Platform",
+                                "item":  "https://geoiplocations.com/platform.html"
+                            }
+                        ]
+}
+</script>
 </head>
 <body data-page="platform">
 
@@ -36,7 +58,7 @@
     <div class="container">
       <div class="navbar glass">
         <a class="brand" href="index.html">
-          <div class="brand-mark">â—Ž</div>
+          <div class="brand-mark">&#9678;</div>
           <div>
             GeoIP Locations
             <small>Powered by ProdIPData</small>
@@ -75,7 +97,7 @@
             GeoIP Locations is the public data experience of ProdIPData. It helps teams explore country coverage, ASN structure,
             registry footprint, and downloadable files that can be used in analytics, routing, applications, and operational workflows.
           </p>
-          <p class="page-intro seo-links">Explore the <a href="coverage.html">interactive country coverage map</a>, open the <a href="downloads.html">monthly GeoIP download indexes</a>, or review the <a href="methodology.html">ProdIPData methodology</a> to understand how each release is assembled.</p>
+          <p class="page-intro seo-links">Explore the <a href="coverage.html">interactive country coverage map</a>, open the <a href="downloads.html">monthly GeoIP download indexes</a>, browse the <a href="releases/index.html">release archive</a>, open the <a href="releases/2026-03/index.html">current release overview</a>, or review the <a href="methodology.html">ProdIPData methodology</a> to understand how each release is assembled.</p>
         </div>
       </div>
     </section>
@@ -111,6 +133,7 @@
           <article class="section-card glass"><h3><a href="asn-data-by-country.html">ASN data by country</a></h3><p class="card-text">Country-level operator structure, concentration, and lead-network context.</p></article>
           <article class="section-card glass"><h3><a href="geoip-csv-download.html">GeoIP CSV downloads</a></h3><p class="card-text">CSV-first guide for SQL, spreadsheets, and operational workflows.</p></article>
           <article class="section-card glass"><h3><a href="geoip-parquet-download.html">GeoIP Parquet downloads</a></h3><p class="card-text">Parquet-first guide for analytics and larger-scale processing paths.</p></article>
+        <article class="section-card glass"><h3><a href="releases/index.html">GeoIP monthly release archive</a></h3><p class="card-text">Release-centric entry point for month-by-month navigation, current release context, and package-level paths.</p></article>
         </div>
       </div>
     </section>
@@ -158,17 +181,30 @@
       </div>
     </section>
 
-  </main>
+  
+<!-- WAVE4:core-discovery-links START -->
+<section class="section" data-wave4-block="discovery-links">
+  <div class="container">
+    <div class="split-panel glass content">
+      <h2>Explore deeper release and entity pages</h2>
+      <p>
+        The current release architecture now connects the monthly archive to selective country, registry, and ASN pages. Use the <a href="releases/index.html">monthly release archive</a> for time-based navigation, move into <a href="country/index.html">country profiles</a> for country-specific footprint context, review <a href="rir/index.html">RIR pages</a> for registry-level structure, and open <a href="asn/index.html">ASN profiles</a> for high-visibility network entities. For package access, continue through <a href="downloads.html">GeoIP CSV and Parquet downloads</a>, and for source quality and caveats, review <a href="methodology.html">GeoIP methodology and validation</a>.
+      </p>
+    </div>
+  </div>
+</section>
+<!-- WAVE4:core-discovery-links END -->
+</main>
 
 
   <footer class="site-footer">
     <div class="container site-footer-inner">
-      <div>Â© <span data-current-year></span> GeoIP Locations Â· ProdIPData</div>
+      <div>&copy; <span data-current-year></span> GeoIP Locations &middot; ProdIPData</div>
       <div><a href="licensing.html">Datasets and metadata: CC BY 4.0</a></div>
       <div>Engineered and published by the ProdIPData team.</div>
     </div>
   </footer>
-  <script src="assets/js/site.js"></script>
+  <script src="assets/js/site.js" defer></script>
 
 </body>
 </html>
