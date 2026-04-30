@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://geoiplocations.com/</loc>
@@ -22,10 +22,10 @@
     <loc>https://geoiplocations.com/licensing.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/downloads-csv-2026-03.html</loc>
+    <loc>https://geoiplocations.com/downloads-csv-2026-04.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/downloads-parquet-2026-03.html</loc>
+    <loc>https://geoiplocations.com/downloads-parquet-2026-04.html</loc>
   </url>
   <url>
     <loc>https://geoiplocations.com/reference-bogons.html</loc>
@@ -58,7 +58,7 @@
     <loc>https://geoiplocations.com/releases/</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/releases/2026-03/</loc>
+    <loc>https://geoiplocations.com/releases/2026-04/</loc>
   </url>
   <url>
     <loc>https://geoiplocations.com/asn/</loc>
@@ -69,5 +69,143 @@
   <url>
     <loc>https://geoiplocations.com/rir/</loc>
   </url>
-</urlset>
 
+  <url><loc>https://geoiplocations.com/downloads-mmdb-2026-04.html</loc></url>
+  <url><loc>https://geoiplocations.com/releases/2026-04/index.html</loc></url>
+  <url>
+    <loc>https://geoiplocations.com/news.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/docs.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/docs/data-types.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/docs/parquet.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/docs/mmdb.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/docs/schema.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/docs/using-csv.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/docs/using-parquet.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/docs/using-mmdb.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/docs/format-comparison.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/docs/download-workflow.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/docs/data-sources.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/docs/methodology-deep-dive.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/docs/source-conflict-resolution.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/docs/asn-classification.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/docs/geolocation-precision.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <url>
+    <loc>https://geoiplocations.com/docs/accuracy-limitations.html</loc>
+    <lastmod>2026-04-27</lastmod>
+  </url>
+
+  <url>
+    <loc>https://geoiplocations.com/docs/how-to-use-this-data.html</loc>
+    <lastmod>2026-04-27</lastmod>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/releases/index.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/releases/2026-03/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/releases/2026-03/index.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/downloads-csv-2026-03.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://geoiplocations.com/downloads-parquet-2026-03.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+</urlset>
