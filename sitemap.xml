@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://geoiplocations.com/</loc>
@@ -56,6 +56,9 @@
   </url>
   <url>
     <loc>https://geoiplocations.com/releases/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
   </url>
   <url>
     <loc>https://geoiplocations.com/releases/2026-04/</loc>
@@ -69,9 +72,9 @@
   <url>
     <loc>https://geoiplocations.com/rir/</loc>
   </url>
-
-  <url><loc>https://geoiplocations.com/downloads-mmdb-2026-04.html</loc></url>
-  <url><loc>https://geoiplocations.com/releases/2026-04/index.html</loc></url>
+  <url>
+    <loc>https://geoiplocations.com/downloads-mmdb-2026-04.html</loc>
+  </url>
   <url>
     <loc>https://geoiplocations.com/news.html</loc>
     <lastmod>2026-04-26</lastmod>
@@ -168,30 +171,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
-
   <url>
     <loc>https://geoiplocations.com/docs/accuracy-limitations.html</loc>
     <lastmod>2026-04-27</lastmod>
   </url>
-
   <url>
     <loc>https://geoiplocations.com/docs/how-to-use-this-data.html</loc>
     <lastmod>2026-04-27</lastmod>
   </url>
   <url>
-    <loc>https://geoiplocations.com/releases/index.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
     <loc>https://geoiplocations.com/releases/2026-03/</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://geoiplocations.com/releases/2026-03/index.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
