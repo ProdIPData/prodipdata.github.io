@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -36,7 +36,7 @@
 }
   </script>
 </head>
-<body data-page="standard" data-nav-page="coverage" data-release-month="2026-04">
+<body data-page="country" data-nav-page="coverage" data-release-month="2026-04" data-asset-root="../">
   <header class="site-header">
     <div class="container">
       <div class="navbar glass">
@@ -96,9 +96,30 @@
     </section>
 
     <section class="section">
-      <div class="container">
-        <div class="split-panel glass">
+      <div class="container metric-grid" data-country-metrics-target></div>
+    </section>
 
+    <section class="section">
+      <div class="container story-grid">
+        <div class="split-panel glass content">
+          <h2>Largest country footprints</h2>
+          <p class="card-text">Countries and territories with the largest published /24 footprint in the current release.</p>
+          <div data-country-largest-target></div>
+        </div>
+        <div class="split-panel glass content">
+          <h2>Countries with the broadest ASN presence</h2>
+          <p class="card-text">Country profiles with the largest visible autonomous-system counts in this release.</p>
+          <div data-country-asn-target></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="split-panel glass content">
+          <h2>High-concentration country profiles</h2>
+          <p class="card-text">Countries where a single leading ASN holds a large share of the published country footprint.</p>
+          <div data-country-concentration-target></div>
         </div>
       </div>
     </section>
