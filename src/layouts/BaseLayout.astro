@@ -13,7 +13,8 @@ const {
   image = 'https://geoiplocations.com/assets/img/prodipdata-logo.png',
 } = Astro.props;
 
-const base = import.meta.env.BASE_URL;                 // '/prodipdata.github.io/' on QA, '/' on prod
+const rawBase = import.meta.env.BASE_URL;              // '/prodipdata.github.io' on QA, '/' on prod
+const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';  // guarantee a trailing slash for clean joins
 const canonical = 'https://geoiplocations.com' + canonicalPath;
 const socialTitle = ogTitle ?? title.replace(/\s*\|\s*(ProdIPData|GeoIP Locations).*$/, '');
 
