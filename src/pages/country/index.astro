@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  numericValue, getItems, formatInteger, formatCompact, formatShare,
+  formatRirName, formatCountryTopAsnLabel, loadData, currentReleaseMonth,
+} from '../../lib/format.js';
+
+const month = currentReleaseMonth;
+const overview = loadData('overview-global') || {};
+const countryProfiles = loadData('country-profiles') || [];
+const concentration = loadData('country-concentration') || [];
+
+const countries = getItems(countryProfiles).filter(
+  (i) => numericValue(i.prefixCount) > 0 || numericValue(i.asnCount) > 0
+);
+const concentrationMap = new Map(
+  getItems(concentration).map((i) => [String(i.iso2 || '').toUpperCase(), i])
+);
+
+const totalPrefixes = countries.reduce((s, i) => s + numericValue(i.prefixCount), 0);
+const totalAsns = countries.reduce((s, i) => s + numericValue(i.asnCount), 0);
+const rirCount = new Set(countries.map((i) => String(i.rir || '').toLowerCase()).filter(Boolean)).size;
+
+const largestCountries = countries.slice()
+  .sort((a, b) => numericValue(b.prefixCount) - numericValue(a.prefixCount)).slice(0, 8);
+const asnDenseCountries = countries.slice()
+  .sort((a, b) => numericValue(b.asnCount) - numericValue(a.asnCount)).slice(0, 8);
+const concentratedCountries = countries
+  .map((i) => {
+    const c = concentrationMap.get(String(i.iso2 || '').toUpperCase()) || {};
+    return { ...i, top1AsnShare: numericValue(c.top1AsnShare), top5AsnShare: numericValue(c.top5AsnShare) };
+  })
+  .filter((i) => numericValue(i.asnCount) >= 5 && numericValue(i.top1AsnShare) > 0)
+  .sort((a, b) => numericValue(b.top1AsnShare) - numericValue(a.top1AsnShare))
+  .slice(0, 8);
+
+const metrics = [
+  { label: 'Published countries', value: formatInteger(overview.totalCountriesRepresented || countries.length), text: 'Country and territory profiles represented in the current monthly release.' },
+  { label: 'Observed ASNs', value: formatInteger(overview.totalAsns || totalAsns), text: 'Autonomous systems represented across the visible country profiles.' },
+  { label: 'Published /24 footprint', value: formatCompact(overview.totalPrefixes || totalPrefixes), text: 'Published prefix footprint behind the country-level release view.' },
+  { label: 'Registry coverage', value: formatInteger(overview.totalRirsRepresented || rirCount), text: 'Regional Internet Registry groups represented in the country dataset.' },
+];
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  '@id': 'https://geoiplocations.com/country/#breadcrumb',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://geoiplocations.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Coverage', item: 'https://geoiplocations.com/coverage.html' },
+    { '@type': 'ListItem', position: 3, name: 'Country', item: 'https://geoiplocations.com/country/' },
+  ],
+};
+---
+<BaseLayout
+  title="GeoIP Country Profiles by Release | ProdIPData"
+  description="Browse selective country-level GeoIP landing pages from ProdIPData with footprint, ASN context, and release-aware navigation."
+  ogTitle="GeoIP Country Profiles by Release"
+  canonicalPath="/country/"
+  page="country"
+  navPage="coverage"
+  assetRoot="../"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-panel glass">
+          <div class="eyebrow page-kicker">Country pages</div>
+          <h1>Selective country GeoIP landing pages</h1>
+          <p class="page-intro">These country pages expand the current release into indexable, substantive country-level assets without generating thin content.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="split-panel glass content">
+          <h2>Top country landing pages for release {month}</h2>
+          <p>
+            These country pages are the first selective long-tail layer for the current release. They focus on larger published footprints and attach release-aware context rather than generating a massive thin-page set.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container metric-grid" data-country-metrics-target>
+        {metrics.map((m) => (
+          <div class="metric-card glass">
+            <div class="muted">{m.label}</div>
+            <div class="metric-value">{m.value}</div>
+            <div class="card-text">{m.text}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container story-grid">
+        <div class="split-panel glass content">
+          <h2>Largest country footprints</h2>
+          <p class="card-text">Countries and territories with the largest published /24 footprint in the current release.</p>
+          <div data-country-largest-target>
+            {largestCountries.map((c) => (
+              <div class="list-row">
+                <div>
+                  <strong>{c.countryName || c.iso2 || 'Unknown country'}</strong>
+                  <small>{c.iso2 || 'N/A'} · {formatRirName(c.rir || 'unknown')} · top ASN {formatCountryTopAsnLabel(c)}</small>
+                </div>
+                <div class="list-metric">
+                  <strong>{formatInteger(c.prefixCount)}</strong>
+                  <small>/24 prefixes</small>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="split-panel glass content">
+          <h2>Countries with the broadest ASN presence</h2>
+          <p class="card-text">Country profiles with the largest visible autonomous-system counts in this release.</p>
+          <div data-country-asn-target>
+            {asnDenseCountries.map((c) => (
+              <div class="list-row">
+                <div>
+                  <strong>{c.countryName || c.iso2 || 'Unknown country'}</strong>
+                  <small>{c.iso2 || 'N/A'} · {formatRirName(c.rir || 'unknown')} · {formatCompact(c.ipv4Count)} IPv4 est.</small>
+                </div>
+                <div class="list-metric">
+                  <strong>{formatInteger(c.asnCount)}</strong>
+                  <small>ASNs</small>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="split-panel glass content">
+          <h2>High-concentration country profiles</h2>
+          <p class="card-text">Countries where a single leading ASN holds a large share of the published country footprint.</p>
+          <div data-country-concentration-target>
+            {concentratedCountries.map((c) => (
+              <div class="list-row">
+                <div>
+                  <strong>{c.countryName || c.iso2 || 'Unknown country'}</strong>
+                  <small>{c.iso2 || 'N/A'} · {formatCountryTopAsnLabel(c)} · top 5 share {formatShare(c.top5AsnShare)}</small>
+                </div>
+                <div class="list-metric">
+                  <strong>{formatShare(c.top1AsnShare)}</strong>
+                  <small>top ASN share</small>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
