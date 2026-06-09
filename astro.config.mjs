@@ -1,13 +1,14 @@
 import { defineConfig } from 'astro/config';
 
-// The canonical production site. Used for canonical URLs and the generated sitemap.
-// QA/staging serves the same build at a different host; canonical still points here,
-// and the hostname-keyed noindex (in site.js) keeps non-production hosts out of search.
+// site  = canonical production origin (used for canonical URLs + sitemap), always prod.
+// base  = path the site is served under. Production root = '/'. QA serves under the
+//         GitHub project sub-path, so the QA workflow sets SITE_BASE=/prodipdata.github.io.
+// format='file' keeps existing ".html" URLs (e.g. /platform.html) so links don't break.
 export default defineConfig({
   site: 'https://geoiplocations.com',
-  // output: 'static' is the default — every page is pre-rendered to HTML at build time.
+  base: process.env.SITE_BASE || '/',
+  trailingSlash: 'ignore',
   build: {
-    // Emit /page/index.html style URLs so existing paths keep working.
-    format: 'directory'
+    format: 'file'
   }
 });

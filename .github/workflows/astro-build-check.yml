@@ -35,6 +35,9 @@ jobs:
 
       - name: Build Astro site
         run: npm run build
+        env:
+          # QA is served under the GitHub project sub-path. Production omits this (root).
+          SITE_BASE: /prodipdata.github.io
 
       - name: Overlay legacy pages not yet migrated to Astro
         # --ignore-existing means Astro-built pages are NEVER overwritten by legacy
