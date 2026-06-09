@@ -1,0 +1,6 @@
+# Node / Astro build artifacts (never committed — the GitHub Action installs & builds)
+node_modules/
+dist/
+.astro/
+npm-debug.log*
+.DS_Store

@@ -1,0 +1,41 @@
+name: Astro build check
+
+# PHASE 0: build only. This does NOT deploy and does NOT change what QA serves.
+# It simply proves the Astro project compiles on GitHub's servers and saves the
+# output as a downloadable artifact. Deployment is added in Phase 1.
+
+on:
+  push:
+    branches: [Redesign]
+    paths:
+      - 'package.json'
+      - 'astro.config.mjs'
+      - 'src/**'
+      - 'public/**'
+      - '.github/workflows/astro-build-check.yml'
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build site
+        run: npm run build
+
+      - name: Upload build output (artifact only — not deployed)
+        uses: actions/upload-artifact@v4
+        with:
+          name: astro-dist
+          path: dist
+          if-no-files-found: error
