@@ -1,19 +1,22 @@
-name: Astro build check
+name: Build and deploy (QA)
 
-# PHASE 0: build only. This does NOT deploy and does NOT change what QA serves.
-# It simply proves the Astro project compiles on GitHub's servers and saves the
-# output as a downloadable artifact. Deployment is added in Phase 1.
+# PHASE 1: build Astro, then overlay the existing (not-yet-migrated) static pages
+# on top, so every current page keeps serving while we convert pages one at a time.
+# Deploys to the QA fork's GitHub Pages. Production is a separate repo + workflow.
 
 on:
   push:
     branches: [Redesign]
-    paths:
-      - 'package.json'
-      - 'astro.config.mjs'
-      - 'src/**'
-      - 'public/**'
-      - '.github/workflows/astro-build-check.yml'
   workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-qa
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -30,12 +33,48 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build site
+      - name: Build Astro site
         run: npm run build
 
-      - name: Upload build output (artifact only — not deployed)
-        uses: actions/upload-artifact@v4
+      - name: Overlay legacy pages not yet migrated to Astro
+        # --ignore-existing means Astro-built pages are NEVER overwritten by legacy
+        # copies; legacy files only fill paths Astro hasn't produced yet.
+        run: |
+          rsync -a --ignore-existing \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude 'node_modules' \
+            --exclude 'src' \
+            --exclude 'dist' \
+            --exclude 'public' \
+            --exclude 'package.json' \
+            --exclude 'package-lock.json' \
+            --exclude 'astro.config.mjs' \
+            --exclude '.gitignore' \
+            --exclude 'CNAME' \
+            --exclude '_seo_wave1_backup_20260416_135936' \
+            ./ ./dist/
+
+      - name: Set QA custom domain
+        # Written per-environment here (not committed), so promoting to production
+        # can never overwrite the production CNAME.
+        run: echo 'qa.geoiplocations.com' > ./dist/CNAME
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: astro-dist
-          path: dist
-          if-no-files-found: error
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
