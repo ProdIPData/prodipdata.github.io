@@ -1,273 +1,611 @@
 {
-    "snapshotMonth":  "2026-04",
-    "biggestASNs":  [
-                        {
-                            "rank":  3,
-                            "asnId":  749,
-                            "asnName":  "AS749",
-                            "asnType":  "government",
-                            "countryIso":  "US",
-                            "countryName":  "United States",
-                            "rir":  "arin",
-                            "prefixCount":  870099,
-                            "ipv4Count":  222745344
-                        },
-                        {
-                            "rank":  4,
-                            "asnId":  16509,
-                            "asnName":  "AS16509",
-                            "asnType":  "hosting",
-                            "countryIso":  "US",
-                            "countryName":  "United States",
-                            "rir":  "arin",
-                            "prefixCount":  597977,
-                            "ipv4Count":  153082112
-                        },
-                        {
-                            "rank":  5,
-                            "asnId":  4134,
-                            "asnName":  "AS4134",
-                            "asnType":  "isp",
-                            "countryIso":  "CN",
-                            "countryName":  "China",
-                            "rir":  "apnic",
-                            "prefixCount":  399814,
-                            "ipv4Count":  102352384
-                        },
-                        {
-                            "rank":  6,
-                            "asnId":  7018,
-                            "asnName":  "AS7018",
-                            "asnType":  "isp",
-                            "countryIso":  "US",
-                            "countryName":  "United States",
-                            "rir":  "arin",
-                            "prefixCount":  350755,
-                            "ipv4Count":  89793280
-                        },
-                        {
-                            "rank":  7,
-                            "asnId":  7922,
-                            "asnName":  "AS7922",
-                            "asnType":  "isp",
-                            "countryIso":  "US",
-                            "countryName":  "United States",
-                            "rir":  "arin",
-                            "prefixCount":  264108,
-                            "ipv4Count":  67611648
-                        }
-                    ],
-    "smallestASNs":  [
-                         {
-                             "rank":  1,
-                             "asnId":  69,
-                             "asnName":  "AS69",
-                             "asnType":  "education",
-                             "countryIso":  "US",
-                             "countryName":  "United States",
-                             "rir":  "arin",
-                             "prefixCount":  1,
-                             "ipv4Count":  256
-                         },
-                         {
-                             "rank":  4,
-                             "asnId":  126,
-                             "asnName":  "AS126",
-                             "asnType":  "government",
-                             "countryIso":  "US",
-                             "countryName":  "United States",
-                             "rir":  "arin",
-                             "prefixCount":  1,
-                             "ipv4Count":  256
-                         },
-                         {
-                             "rank":  5,
-                             "asnId":  153,
-                             "asnName":  "AS153",
-                             "asnType":  "government",
-                             "countryIso":  "US",
-                             "countryName":  "United States",
-                             "rir":  "arin",
-                             "prefixCount":  1,
-                             "ipv4Count":  256
-                         },
-                         {
-                             "rank":  6,
-                             "asnId":  262,
-                             "asnName":  "AS262",
-                             "asnType":  "isp",
-                             "countryIso":  "US",
-                             "countryName":  "United States",
-                             "rir":  "arin",
-                             "prefixCount":  1,
-                             "ipv4Count":  256
-                         },
-                         {
-                             "rank":  7,
-                             "asnId":  266,
-                             "asnName":  "AS266",
-                             "asnType":  "isp",
-                             "countryIso":  "US",
-                             "countryName":  "United States",
-                             "rir":  "arin",
-                             "prefixCount":  1,
-                             "ipv4Count":  256
-                         }
-                     ],
-    "topByType":  [
-                      {
-                          "rank":  1,
-                          "asnType":  "isp",
-                          "asnCount":  31869,
-                          "prefixCount":  7426715,
-                          "ipv4Count":  1901239040
-                      },
-                      {
-                          "rank":  4,
-                          "asnType":  "hosting",
-                          "asnCount":  13212,
-                          "prefixCount":  1846873,
-                          "ipv4Count":  472799488
-                      },
-                      {
-                          "rank":  5,
-                          "asnType":  "government",
-                          "asnCount":  1995,
-                          "prefixCount":  1286948,
-                          "ipv4Count":  329458688
-                      },
-                      {
-                          "rank":  6,
-                          "asnType":  "business",
-                          "asnCount":  24806,
-                          "prefixCount":  869918,
-                          "ipv4Count":  222699008
-                      },
-                      {
-                          "rank":  7,
-                          "asnType":  "education",
-                          "asnCount":  3671,
-                          "prefixCount":  745385,
-                          "ipv4Count":  190818560
-                      }
-                  ],
-    "topByCountry":  [
-                         {
-                             "rank":  1,
-                             "countryIso":  "US",
-                             "countryName":  "United States",
-                             "asnCount":  17927,
-                             "prefixCount":  5272550,
-                             "ipv4Count":  1349772800
-                         },
-                         {
-                             "rank":  3,
-                             "countryIso":  "CN",
-                             "countryName":  "China",
-                             "asnCount":  591,
-                             "prefixCount":  1126274,
-                             "ipv4Count":  288326144
-                         },
-                         {
-                             "rank":  4,
-                             "countryIso":  "JP",
-                             "countryName":  "Japan",
-                             "asnCount":  727,
-                             "prefixCount":  629196,
-                             "ipv4Count":  161074176
-                         },
-                         {
-                             "rank":  5,
-                             "countryIso":  "DE",
-                             "countryName":  "Germany",
-                             "asnCount":  2253,
-                             "prefixCount":  439334,
-                             "ipv4Count":  112469504
-                         },
-                         {
-                             "rank":  6,
-                             "countryIso":  "KR",
-                             "countryName":  "South Korea",
-                             "asnCount":  798,
-                             "prefixCount":  419580,
-                             "ipv4Count":  107412480
-                         },
-                         {
-                             "rank":  7,
-                             "countryIso":  "BR",
-                             "countryName":  "Brazil",
-                             "asnCount":  7949,
-                             "prefixCount":  301877,
-                             "ipv4Count":  77280512
-                         },
-                         {
-                             "rank":  8,
-                             "countryIso":  "FR",
-                             "countryName":  "France",
-                             "asnCount":  1404,
-                             "prefixCount":  283150,
-                             "ipv4Count":  72486400
-                         },
-                         {
-                             "rank":  9,
-                             "countryIso":  "GB",
-                             "countryName":  "United Kingdom",
-                             "asnCount":  2059,
-                             "prefixCount":  276306,
-                             "ipv4Count":  70734336
-                         },
-                         {
-                             "rank":  10,
-                             "countryIso":  "CA",
-                             "countryName":  "Canada",
-                             "asnCount":  1576,
-                             "prefixCount":  207306,
-                             "ipv4Count":  53070336
-                         },
-                         {
-                             "rank":  11,
-                             "countryIso":  "IT",
-                             "countryName":  "Italy",
-                             "asnCount":  1072,
-                             "prefixCount":  205870,
-                             "ipv4Count":  52702720
-                         }
-                     ],
-    "topByRIR":  [
-                     {
-                         "rank":  1,
-                         "rir":  "arin",
-                         "asnCount":  19750,
-                         "prefixCount":  5488984,
-                         "ipv4Count":  1405179904
-                     },
-                     {
-                         "rank":  3,
-                         "rir":  "apnic",
-                         "asnCount":  15409,
-                         "prefixCount":  2964697,
-                         "ipv4Count":  758962432
-                     },
-                     {
-                         "rank":  4,
-                         "rir":  "ripe",
-                         "asnCount":  28784,
-                         "prefixCount":  2684039,
-                         "ipv4Count":  687113984
-                     },
-                     {
-                         "rank":  5,
-                         "rir":  "lacnic",
-                         "asnCount":  11483,
-                         "prefixCount":  670671,
-                         "ipv4Count":  171691776
-                     },
-                     {
-                         "rank":  6,
-                         "rir":  "afrinic",
-                         "asnCount":  2143,
-                         "prefixCount":  379151,
-                         "ipv4Count":  97062656
-                     }
-                 ]
+  "snapshotMonth": "2026-04",
+  "generatedUtc": "2026-06-10T16:39:21Z",
+  "source": "ProdIP Parquet pipeline (GOLD + ASN dimension)",
+  "biggestASNs": [
+    {
+      "asnId": 749,
+      "asnName": "AS749",
+      "asnType": "isp",
+      "countryIso": "US",
+      "countryName": "United States",
+      "rir": "arin",
+      "prefixCount": 870240,
+      "ipv4Count": 222781440,
+      "rank": 1
+    },
+    {
+      "asnId": 16509,
+      "asnName": "AS16509",
+      "asnType": "business",
+      "countryIso": "US",
+      "countryName": "United States",
+      "rir": "arin",
+      "prefixCount": 582852,
+      "ipv4Count": 149210112,
+      "rank": 2
+    },
+    {
+      "asnId": 4134,
+      "asnName": "AS4134",
+      "asnType": "isp",
+      "countryIso": "CN",
+      "countryName": "China",
+      "rir": "apnic",
+      "prefixCount": 386666,
+      "ipv4Count": 98986496,
+      "rank": 3
+    },
+    {
+      "asnId": 7018,
+      "asnName": "AS7018",
+      "asnType": "isp",
+      "countryIso": "US",
+      "countryName": "United States",
+      "rir": "arin",
+      "prefixCount": 353785,
+      "ipv4Count": 90568960,
+      "rank": 4
+    },
+    {
+      "asnId": 8075,
+      "asnName": "AS8075",
+      "asnType": "hosting",
+      "countryIso": "US",
+      "countryName": "United States",
+      "rir": "arin",
+      "prefixCount": 322272,
+      "ipv4Count": 82501632,
+      "rank": 5
+    },
+    {
+      "asnId": 4837,
+      "asnName": "AS4837",
+      "asnType": "isp",
+      "countryIso": "CN",
+      "countryName": "China",
+      "rir": "apnic",
+      "prefixCount": 224452,
+      "ipv4Count": 57459712,
+      "rank": 6
+    },
+    {
+      "asnId": 4766,
+      "asnName": "AS4766",
+      "asnType": "isp",
+      "countryIso": "KR",
+      "countryName": "South Korea",
+      "rir": "apnic",
+      "prefixCount": 181137,
+      "ipv4Count": 46371072,
+      "rank": 7
+    },
+    {
+      "asnId": 17676,
+      "asnName": "AS17676",
+      "asnType": "isp",
+      "countryIso": "JP",
+      "countryName": "Japan",
+      "rir": "apnic",
+      "prefixCount": 170637,
+      "ipv4Count": 43683072,
+      "rank": 8
+    },
+    {
+      "asnId": 701,
+      "asnName": "AS701",
+      "asnType": "isp",
+      "countryIso": "US",
+      "countryName": "United States",
+      "rir": "arin",
+      "prefixCount": 158890,
+      "ipv4Count": 40675840,
+      "rank": 9
+    },
+    {
+      "asnId": 14618,
+      "asnName": "AS14618",
+      "asnType": "hosting",
+      "countryIso": "US",
+      "countryName": "United States",
+      "rir": "arin",
+      "prefixCount": 154193,
+      "ipv4Count": 39473408,
+      "rank": 10
+    },
+    {
+      "asnId": 3320,
+      "asnName": "AS3320",
+      "asnType": "isp",
+      "countryIso": "DE",
+      "countryName": "Germany",
+      "rir": "ripe",
+      "prefixCount": 134865,
+      "ipv4Count": 34525440,
+      "rank": 11
+    },
+    {
+      "asnId": 0,
+      "asnName": "AS0",
+      "asnType": "business",
+      "countryIso": "US",
+      "countryName": "United States",
+      "rir": "arin",
+      "prefixCount": 118225,
+      "ipv4Count": 30265600,
+      "rank": 12
+    },
+    {
+      "asnId": 721,
+      "asnName": "AS721",
+      "asnType": "business",
+      "countryIso": "US",
+      "countryName": "United States",
+      "rir": "arin",
+      "prefixCount": 113920,
+      "ipv4Count": 29163520,
+      "rank": 13
+    },
+    {
+      "asnId": 6167,
+      "asnName": "AS6167",
+      "asnType": "business",
+      "countryIso": "US",
+      "countryName": "United States",
+      "rir": "arin",
+      "prefixCount": 112254,
+      "ipv4Count": 28737024,
+      "rank": 14
+    },
+    {
+      "asnId": 4713,
+      "asnName": "AS4713",
+      "asnType": "isp",
+      "countryIso": "JP",
+      "countryName": "Japan",
+      "rir": "apnic",
+      "prefixCount": 111826,
+      "ipv4Count": 28627456,
+      "rank": 15
+    },
+    {
+      "asnId": 3356,
+      "asnName": "AS3356",
+      "asnType": "isp",
+      "countryIso": "US",
+      "countryName": "United States",
+      "rir": "arin",
+      "prefixCount": 109381,
+      "ipv4Count": 28001536,
+      "rank": 16
+    },
+    {
+      "asnId": 174,
+      "asnName": "AS174",
+      "asnType": "isp",
+      "countryIso": "US",
+      "countryName": "United States",
+      "rir": "arin",
+      "prefixCount": 96926,
+      "ipv4Count": 24813056,
+      "rank": 17
+    },
+    {
+      "asnId": 3215,
+      "asnName": "AS3215",
+      "asnType": "isp",
+      "countryIso": "FR",
+      "countryName": "France",
+      "rir": "ripe",
+      "prefixCount": 81258,
+      "ipv4Count": 20802048,
+      "rank": 18
+    },
+    {
+      "asnId": 3269,
+      "asnName": "AS3269",
+      "asnType": "isp",
+      "countryIso": "IT",
+      "countryName": "Italy",
+      "rir": "ripe",
+      "prefixCount": 80792,
+      "ipv4Count": 20682752,
+      "rank": 19
+    },
+    {
+      "asnId": 396982,
+      "asnName": "AS396982",
+      "asnType": "hosting",
+      "countryIso": "US",
+      "countryName": "United States",
+      "rir": "arin",
+      "prefixCount": 78904,
+      "ipv4Count": 20199424,
+      "rank": 20
+    },
+    {
+      "asnId": 2516,
+      "asnName": "AS2516",
+      "asnType": "isp",
+      "countryIso": "JP",
+      "countryName": "Japan",
+      "rir": "apnic",
+      "prefixCount": 70612,
+      "ipv4Count": 18076672,
+      "rank": 21
+    },
+    {
+      "asnId": 714,
+      "asnName": "AS714",
+      "asnType": "hosting",
+      "countryIso": "US",
+      "countryName": "United States",
+      "rir": "arin",
+      "prefixCount": 70187,
+      "ipv4Count": 17967872,
+      "rank": 22
+    },
+    {
+      "asnId": 37963,
+      "asnName": "AS37963",
+      "asnType": "hosting",
+      "countryIso": "CN",
+      "countryName": "China",
+      "rir": "apnic",
+      "prefixCount": 68948,
+      "ipv4Count": 17650688,
+      "rank": 23
+    },
+    {
+      "asnId": 9808,
+      "asnName": "AS9808",
+      "asnType": "isp",
+      "countryIso": "CN",
+      "countryName": "China",
+      "rir": "apnic",
+      "prefixCount": 68926,
+      "ipv4Count": 17645056,
+      "rank": 24
+    },
+    {
+      "asnId": 31399,
+      "asnName": "AS31399",
+      "asnType": "isp",
+      "countryIso": "DE",
+      "countryName": "Germany",
+      "rir": "ripe",
+      "prefixCount": 65696,
+      "ipv4Count": 16818176,
+      "rank": 25
+    }
+  ],
+  "smallestASNs": [
+    {
+      "asnId": 150606,
+      "asnName": "AS150606",
+      "asnType": "business",
+      "countryIso": "IN",
+      "countryName": "India",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 1
+    },
+    {
+      "asnId": 137557,
+      "asnName": "AS137557",
+      "asnType": "isp",
+      "countryIso": "TH",
+      "countryName": "Thailand",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 2
+    },
+    {
+      "asnId": 18172,
+      "asnName": "AS18172",
+      "asnType": "business",
+      "countryIso": "MN",
+      "countryName": "Mongolia",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 3
+    },
+    {
+      "asnId": 141234,
+      "asnName": "AS141234",
+      "asnType": "business",
+      "countryIso": "PK",
+      "countryName": "Pakistan",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 4
+    },
+    {
+      "asnId": 135843,
+      "asnName": "AS135843",
+      "asnType": "isp",
+      "countryIso": "IN",
+      "countryName": "India",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 5
+    },
+    {
+      "asnId": 136649,
+      "asnName": "AS136649",
+      "asnType": "isp",
+      "countryIso": "IN",
+      "countryName": "India",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 6
+    },
+    {
+      "asnId": 137149,
+      "asnName": "AS137149",
+      "asnType": "business",
+      "countryIso": "IN",
+      "countryName": "India",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 7
+    },
+    {
+      "asnId": 141917,
+      "asnName": "AS141917",
+      "asnType": "isp",
+      "countryIso": "ID",
+      "countryName": "Indonesia",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 8
+    },
+    {
+      "asnId": 141313,
+      "asnName": "AS141313",
+      "asnType": "isp",
+      "countryIso": "IN",
+      "countryName": "India",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 9
+    },
+    {
+      "asnId": 138944,
+      "asnName": "AS138944",
+      "asnType": "business",
+      "countryIso": "BD",
+      "countryName": "Bangladesh",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 10
+    },
+    {
+      "asnId": 132480,
+      "asnName": "AS132480",
+      "asnType": "isp",
+      "countryIso": "PK",
+      "countryName": "Pakistan",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 11
+    },
+    {
+      "asnId": 136844,
+      "asnName": "AS136844",
+      "asnType": "isp",
+      "countryIso": "ID",
+      "countryName": "Indonesia",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 12
+    },
+    {
+      "asnId": 137301,
+      "asnName": "AS137301",
+      "asnType": "business",
+      "countryIso": "ID",
+      "countryName": "Indonesia",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 13
+    },
+    {
+      "asnId": 136015,
+      "asnName": "AS136015",
+      "asnType": "business",
+      "countryIso": "NZ",
+      "countryName": "New Zealand",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 14
+    },
+    {
+      "asnId": 149713,
+      "asnName": "AS149713",
+      "asnType": "isp",
+      "countryIso": "ID",
+      "countryName": "Indonesia",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 15
+    },
+    {
+      "asnId": 141975,
+      "asnName": "AS141975",
+      "asnType": "isp",
+      "countryIso": "ID",
+      "countryName": "Indonesia",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 16
+    },
+    {
+      "asnId": 147070,
+      "asnName": "AS147070",
+      "asnType": "business",
+      "countryIso": "BD",
+      "countryName": "Bangladesh",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 17
+    },
+    {
+      "asnId": 139347,
+      "asnName": "AS139347",
+      "asnType": "isp",
+      "countryIso": "BD",
+      "countryName": "Bangladesh",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 18
+    },
+    {
+      "asnId": 131948,
+      "asnName": "AS131948",
+      "asnType": "isp",
+      "countryIso": "JP",
+      "countryName": "Japan",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 19
+    },
+    {
+      "asnId": 138970,
+      "asnName": "AS138970",
+      "asnType": "isp",
+      "countryIso": "PH",
+      "countryName": "Philippines",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 20
+    },
+    {
+      "asnId": 139826,
+      "asnName": "AS139826",
+      "asnType": "isp",
+      "countryIso": "BD",
+      "countryName": "Bangladesh",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 21
+    },
+    {
+      "asnId": 9928,
+      "asnName": "AS9928",
+      "asnType": "business",
+      "countryIso": "JP",
+      "countryName": "Japan",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 22
+    },
+    {
+      "asnId": 141725,
+      "asnName": "AS141725",
+      "asnType": "business",
+      "countryIso": "PK",
+      "countryName": "Pakistan",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 23
+    },
+    {
+      "asnId": 137299,
+      "asnName": "AS137299",
+      "asnType": "education",
+      "countryIso": "ID",
+      "countryName": "Indonesia",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 24
+    },
+    {
+      "asnId": 150931,
+      "asnName": "AS150931",
+      "asnType": "isp",
+      "countryIso": "ID",
+      "countryName": "Indonesia",
+      "rir": "apnic",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "rank": 25
+    }
+  ],
+  "topByType": [
+    {
+      "asnType": "isp",
+      "asnId": 749,
+      "asnName": "AS749",
+      "countryIso": "US",
+      "rir": "arin",
+      "prefixCount": 870240,
+      "ipv4Count": 222781440,
+      "rank": 1
+    },
+    {
+      "asnType": "business",
+      "asnId": 16509,
+      "asnName": "AS16509",
+      "countryIso": "US",
+      "rir": "arin",
+      "prefixCount": 582852,
+      "ipv4Count": 149210112,
+      "rank": 2
+    },
+    {
+      "asnType": "hosting",
+      "asnId": 8075,
+      "asnName": "AS8075",
+      "countryIso": "US",
+      "rir": "arin",
+      "prefixCount": 322272,
+      "ipv4Count": 82501632,
+      "rank": 3
+    },
+    {
+      "asnType": "education",
+      "asnId": 4538,
+      "asnName": "AS4538",
+      "countryIso": "CN",
+      "rir": "apnic",
+      "prefixCount": 65393,
+      "ipv4Count": 16740608,
+      "rank": 4
+    },
+    {
+      "asnType": "government",
+      "asnId": 36352,
+      "asnName": "AS36352",
+      "countryIso": "US",
+      "rir": "arin",
+      "prefixCount": 3786,
+      "ipv4Count": 969216,
+      "rank": 5
+    }
+  ]
 }
