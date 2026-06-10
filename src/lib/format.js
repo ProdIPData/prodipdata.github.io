@@ -37,6 +37,20 @@ export const sortByRank = (items) =>
     (a, b) => numericValue(a.rank) - numericValue(b.rank) || numericValue(b.prefixCount) - numericValue(a.prefixCount)
   );
 
+export const sortRirProfiles = (items) => {
+  const order = new Map([['afrinic', 1], ['apnic', 2], ['arin', 3], ['lacnic', 4], ['ripe', 5]]);
+  return getItems(items).slice().sort(
+    (a, b) => (order.get(String(a.rir || '').toLowerCase()) || 999) - (order.get(String(b.rir || '').toLowerCase()) || 999)
+  );
+};
+
+export const formatAsnTypeLabel = (value) => {
+  const key = String(value || '').toLowerCase();
+  const labels = { isp: 'ISP', hosting: 'Hosting', business: 'Business', education: 'Education', government: 'Government', unknown: 'Unknown' };
+  if (key === 'inactive') return 'Type n/a';
+  return labels[key] || String(value || '').replace(/[_-]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+};
+
 export const formatCountryTopAsnLabel = (item) => {
   const id = numericValue(item.topAsnId);
   if (id > 0) return item.topAsnName || `AS${Math.trunc(id)}`;
