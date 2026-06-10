@@ -57,15 +57,7 @@ export const formatCountryTopAsnLabel = (item) => {
   return item.topAsnName || 'No dominant ASN';
 };
 
-// Resolve the current release month and load a month-keyed JSON file from /assets/data.
-// Globs are eager so this runs at build time.
-const dataFiles = import.meta.glob('/assets/data/*.json', { import: 'default', eager: true });
-
-export const currentReleaseMonth = (() => {
-  const releases = dataFiles['/assets/data/releases.json'] || {};
-  const m = releases.current_release;
-  return typeof m === 'string' && m.length >= 7 ? m : '2026-04';
-})();
-
-export const loadData = (prefix, month = currentReleaseMonth) =>
-  dataFiles[`/assets/data/${prefix}-${month}.json`] ?? null;
+// Current published release month. Each pre-rendered page imports the matching
+// month-stamped JSON directly (reliable static imports). Update this + the import
+// lines when a new monthly release is published.
+export const currentReleaseMonth = '2026-04';
