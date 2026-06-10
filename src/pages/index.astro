@@ -1,14 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import overview from '../../assets/data/overview-global-2026-04.json';
-import topAsns from '../../assets/data/top-asns-global-2026-04.json';
-import newAsns from '../../assets/data/new-added-asns-2026.json';
-import releases from '../../assets/data/releases.json';
 import {
-  getItems, formatInteger, formatCompact, formatAsnTypeLabel, sortByRank, currentReleaseMonth,
+  getItems, formatInteger, formatCompact, formatAsnTypeLabel, sortByRank,
+  currentReleaseMonth, loadData, loadYearData, releasesData,
 } from '../lib/format.js';
 
 const month = currentReleaseMonth;
+const overview = loadData('overview-global') || {};
+const topAsns = loadData('top-asns-global') || {};
+const newAsns = loadYearData('new-added-asns') || [];
+const releases = releasesData;
 const statCountries = formatInteger(overview.totalCountriesRepresented);
 const statAsns = formatInteger(overview.totalAsns);
 

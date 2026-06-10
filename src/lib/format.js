@@ -1,6 +1,34 @@
 // Shared build-time formatters — mirror the helpers in assets/js/site.js so that
 // pre-rendered (build-time) output matches what site.js produces in the browser.
 
+import fs from 'node:fs';
+import path from 'node:path';
+
+// Build-time data loading. The current release month is read from releases.json,
+// so publishing a new month needs NO code change: just drop the new *-YYYY-MM.json
+// files into assets/data/ and bump "current_release" in releases.json.
+const DATA_DIR = path.join(process.cwd(), 'assets', 'data');
+const readJson = (file) => JSON.parse(fs.readFileSync(path.join(DATA_DIR, file), 'utf8'));
+
+export const releasesData = (() => {
+  try { return readJson('releases.json'); } catch (e) { return {}; }
+})();
+
+export const currentReleaseMonth =
+  typeof releasesData.current_release === 'string' && releasesData.current_release.length >= 7
+    ? releasesData.current_release
+    : '2026-04';
+export const currentReleaseYear = currentReleaseMonth.slice(0, 4);
+
+// Load a month-stamped data file for the current release (e.g. loadData('overview-global')).
+export const loadData = (prefix) => {
+  try { return readJson(`${prefix}-${currentReleaseMonth}.json`); } catch (e) { return null; }
+};
+// Load a year-stamped data file (e.g. loadYearData('new-added-asns')).
+export const loadYearData = (prefix) => {
+  try { return readJson(`${prefix}-${currentReleaseYear}.json`); } catch (e) { return null; }
+};
+
 export const numericValue = (v) => {
   const n = Number(v);
   return Number.isFinite(n) ? n : 0;
@@ -77,7 +105,3 @@ export const formatCountryTopAsnLabel = (item) => {
   return item.topAsnName || 'No dominant ASN';
 };
 
-// Current published release month. Each pre-rendered page imports the matching
-// month-stamped JSON directly (reliable static imports). Update this + the import
-// lines when a new monthly release is published.
-export const currentReleaseMonth = '2026-04';

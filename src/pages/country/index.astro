@@ -1,14 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import overview from '../../../assets/data/overview-global-2026-04.json';
-import countryProfiles from '../../../assets/data/country-profiles-2026-04.json';
-import concentration from '../../../assets/data/country-concentration-2026-04.json';
 import {
   numericValue, getItems, formatInteger, formatCompact, formatShare,
-  formatRirName, formatCountryTopAsnLabel, currentReleaseMonth,
+  formatRirName, formatCountryTopAsnLabel, currentReleaseMonth, loadData,
 } from '../../lib/format.js';
 
 const month = currentReleaseMonth;
+const overview = loadData('overview-global') || {};
+const countryProfiles = loadData('country-profiles') || [];
+const concentration = loadData('country-concentration') || [];
 
 const countries = getItems(countryProfiles).filter(
   (i) => numericValue(i.prefixCount) > 0 || numericValue(i.asnCount) > 0

@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import overview from '../../../assets/data/overview-global-2026-04.json';
-import topAsns from '../../../assets/data/top-asns-global-2026-04.json';
 import {
   formatInteger, formatCompact, formatRirName, formatAsnTypeLabel,
-  sortByRank, currentReleaseMonth,
+  sortByRank, currentReleaseMonth, loadData,
 } from '../../lib/format.js';
 
 const month = currentReleaseMonth;
+const overview = loadData('overview-global') || {};
+const topAsns = loadData('top-asns-global') || {};
 
 const biggest = sortByRank(topAsns.biggestASNs).slice(0, 5);
 const smallest = sortByRank(topAsns.smallestASNs).slice(0, 5);

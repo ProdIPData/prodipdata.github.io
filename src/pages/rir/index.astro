@@ -1,13 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import rirProfiles from '../../../assets/data/rir-profiles-2026-04.json';
 import {
   numericValue, formatInteger, formatCompact, formatRirName,
-  sortRirProfiles, currentReleaseMonth,
+  sortRirProfiles, currentReleaseMonth, loadData,
 } from '../../lib/format.js';
 
 const month = currentReleaseMonth;
-const items = sortRirProfiles(rirProfiles);
+const items = sortRirProfiles(loadData('rir-profiles') || []);
 
 const totalCountries = items.reduce((s, i) => s + numericValue(i.countryCount), 0);
 const totalAsns = items.reduce((s, i) => s + numericValue(i.asnCount), 0);

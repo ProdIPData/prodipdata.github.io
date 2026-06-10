@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import coverageRaw from '../../coverage.html?raw';
-import countryProfiles from '../../assets/data/country-profiles-2026-04.json';
-import concentration from '../../assets/data/country-concentration-2026-04.json';
 import {
   numericValue, getItems, formatInteger, formatCompact, formatShare,
-  formatRirName, summarizeByRir, escapeHtml,
+  formatRirName, summarizeByRir, escapeHtml, loadData,
 } from '../lib/format.js';
+
+const countryProfiles = loadData('country-profiles') || [];
+const concentration = loadData('country-concentration') || [];
 
 // Merge country profiles with concentration (mirrors site.js renderCoveragePage).
 const concMap = new Map(getItems(concentration).map((i) => [String(i.iso2 || '').toUpperCase(), i]));
