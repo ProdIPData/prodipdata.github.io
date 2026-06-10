@@ -37,6 +37,26 @@ export const sortByRank = (items) =>
     (a, b) => numericValue(a.rank) - numericValue(b.rank) || numericValue(b.prefixCount) - numericValue(a.prefixCount)
   );
 
+export const escapeHtml = (v) =>
+  String(v == null ? '' : v)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+export const summarizeByRir = (items) => {
+  const totals = new Map();
+  let grand = 0;
+  items.forEach((i) => {
+    const r = (i.rir || 'unknown').toLowerCase();
+    const p = numericValue(i.prefixCount);
+    grand += p;
+    totals.set(r, (totals.get(r) || 0) + p);
+  });
+  return Array.from(totals.entries())
+    .map(([rir, prefixCount]) => ({ rir, prefixCount, sharePercent: grand > 0 ? (prefixCount / grand) * 100 : 0 }))
+    .sort((a, b) => b.prefixCount - a.prefixCount)
+    .slice(0, 5);
+};
+
 export const sortRirProfiles = (items) => {
   const order = new Map([['afrinic', 1], ['apnic', 2], ['arin', 3], ['lacnic', 4], ['ripe', 5]]);
   return getItems(items).slice().sort(
