@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  '@id': 'https://geoiplocations.com/geoip-parquet-download.html#dataset',
+  name: 'ProdIPData GeoIP Parquet Downloads',
+  description: 'Landing page for ProdIPData GeoIP Parquet downloads and monthly release package access.',
+  url: 'https://geoiplocations.com/geoip-parquet-download.html',
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  creator: { '@type': 'Organization', name: 'ProdIPData', url: 'https://geoiplocations.com/' },
+  publisher: { '@type': 'Organization', name: 'ProdIPData', url: 'https://geoiplocations.com/' },
+  keywords: ['GeoIP', 'Parquet', 'download', 'ProdIPData', 'monthly release', 'IPv4', 'ASN'],
+};
+---
+<BaseLayout
+  title="Free GeoIP Parquet Downloads by Monthly Release | ProdIPData"
+  description="Download ProdIPData GeoIP Parquet files by monthly release for analytics pipelines, columnar processing, and browser-based package access."
+  ogTitle="Free GeoIP Parquet Downloads by Monthly Release"
+  canonicalPath="/geoip-parquet-download.html"
+  page="guide"
+  navPage="downloads"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(dataset)} />
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-panel glass">
+          <div class="eyebrow page-kicker">GeoIP Parquet downloads</div>
+          <h1>GeoIP Parquet downloads for analytics pipelines and larger-scale processing.</h1>
+          <p class="page-intro">Parquet is the stronger option when GeoIP data needs to be processed in analytics workflows, batch jobs, or columnar engines. ProdIPData publishes Parquet release indexes so users can browse the current monthly packages and work from a structured snapshot built for reuse.</p>
+          <p class="page-intro seo-links">Open the <a href="downloads-parquet-2026-04.html">current Parquet release index</a>, compare it with the <a href="geoip-csv-download.html">CSV guide</a>, or return to the <a href="downloads.html">downloads hub</a> for the full release view.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-3">
+        <article class="section-card glass">
+          <h3>Columnar efficiency</h3>
+          <p class="card-text">Parquet is designed for analytical processing, making it a better fit for workloads that benefit from column-oriented storage and selective reads.</p>
+        </article>
+        <article class="section-card glass">
+          <h3>Batch and pipeline friendly</h3>
+          <p class="card-text">Use Parquet when the goal is to move GeoIP data into Python, notebooks, data lake workflows, or other repeatable analytical pipelines.</p>
+        </article>
+        <article class="section-card glass">
+          <h3>Release-oriented comparisons</h3>
+          <p class="card-text">Monthly release labels make it easier to compare snapshots over time and keep analytical outputs tied to a known version of the published data.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container story-grid">
+        <div class="split-panel glass content">
+          <h2>When Parquet is usually the right choice</h2>
+          <ul>
+            <li>Analytics-heavy workflows that need a more efficient file format than plain CSV.</li>
+            <li>Processing paths where country and topic packages are consumed in code rather than manually reviewed line by line.</li>
+            <li>Teams that already work in Python, notebook, or data-processing ecosystems that understand Parquet well.</li>
+          </ul>
+        </div>
+        <div class="split-panel glass content">
+          <h2>Where to go next</h2>
+          <ul>
+            <li>Open the <a href="downloads-parquet-2026-04.html">current Parquet release index</a> to browse published package links and topic coverage.</li>
+            <li>Use the <a href="coverage.html">coverage page</a> when you want to narrow the country focus before downloading files.</li>
+            <li>Use the <a href="geoip-csv-download.html">CSV guide</a> if operational readability matters more than analytical efficiency.</li>
+          </ul>
+          <div class="actions">
+            <a class="btn btn-primary" href="downloads-parquet-2026-04.html">Open Parquet index</a>
+            <a class="btn btn-secondary" href="downloads.html">Back to downloads</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-3">
+        <article class="section-card glass"><h3><a href="geoip-database.html">GeoIP database overview</a></h3><p class="card-text">See where Parquet sits in the broader GeoIP product and release model.</p></article>
+        <article class="section-card glass"><h3><a href="ip-geolocation-data.html">IP geolocation data</a></h3><p class="card-text">Read the interpretation guide if the main question is what the data means rather than how to process it.</p></article>
+        <article class="section-card glass"><h3><a href="methodology.html">Release methodology</a></h3><p class="card-text">Understand the monthly publication cadence that supports Parquet release comparison.</p></article>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

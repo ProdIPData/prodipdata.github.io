@@ -1,0 +1,88 @@
+name: Build and deploy
+
+# One workflow for both environments, selected by which repo it runs in:
+#   - QA fork (geoiplocations/...)  -> serves under the project sub-path, CNAME qa.geoiplocations.com
+#   - Production (ProdIPData/...)   -> serves at the root domain,         CNAME geoiplocations.com
+# It builds Astro, overlays any not-yet-migrated legacy files, writes the right
+# CNAME, and deploys to that repo's GitHub Pages.
+
+on:
+  push:
+    branches: [Redesign, main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Astro site
+        run: npm run build
+        env:
+          # Production serves at the root; the QA fork serves under the project sub-path.
+          SITE_BASE: ${{ github.repository == 'ProdIPData/prodipdata.github.io' && '/' || '/prodipdata.github.io' }}
+
+      - name: Overlay legacy pages not yet migrated to Astro
+        # --ignore-existing means Astro-built pages are NEVER overwritten by legacy
+        # copies; legacy files only fill paths Astro hasn't produced yet.
+        run: |
+          rsync -a --ignore-existing \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude 'node_modules' \
+            --exclude 'src' \
+            --exclude 'dist' \
+            --exclude 'public' \
+            --exclude 'package.json' \
+            --exclude 'package-lock.json' \
+            --exclude 'astro.config.mjs' \
+            --exclude '.gitignore' \
+            --exclude 'CNAME' \
+            --exclude '_seo_wave1_backup_20260416_135936' \
+            ./ ./dist/
+
+      - name: Set custom domain (per environment, never committed)
+        run: |
+          if [ "${{ github.repository }}" = "ProdIPData/prodipdata.github.io" ]; then
+            echo 'geoiplocations.com' > ./dist/CNAME
+          else
+            echo 'qa.geoiplocations.com' > ./dist/CNAME
+          fi
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

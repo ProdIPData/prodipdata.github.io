@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import coverageRaw from '../../coverage.html?raw';
+import {
+  numericValue, getItems, formatInteger, formatCompact, formatShare,
+  formatRirName, summarizeByRir, escapeHtml, loadData,
+} from '../lib/format.js';
+
+const countryProfiles = loadData('country-profiles') || [];
+const concentration = loadData('country-concentration') || [];
+
+// Merge country profiles with concentration (mirrors site.js renderCoveragePage).
+const concMap = new Map(getItems(concentration).map((i) => [String(i.iso2 || '').toUpperCase(), i]));
+const merged = getItems(countryProfiles).map((p) => {
+  const c = concMap.get(String(p.iso2 || '').toUpperCase()) || {};
+  return { ...p, top1AsnShare: numericValue(c.top1AsnShare) };
+});
+const active = merged.filter((i) => numericValue(i.prefixCount) > 0);
+const eligible = active.filter((i) => numericValue(i.asnCount) >= 5);
+const totalPrefixes = active.reduce((s, i) => s + numericValue(i.prefixCount), 0);
+const totalIpv4 = active.reduce((s, i) => s + numericValue(i.ipv4Count), 0);
+const averageTop1 = active.length ? active.reduce((s, i) => s + numericValue(i.top1AsnShare), 0) / active.length : 0;
+const mostConcentrated = eligible.slice().sort((a, b) => numericValue(b.top1AsnShare) - numericValue(a.top1AsnShare) || numericValue(b.prefixCount) - numericValue(a.prefixCount))[0] || null;
+
+const topCoverage = active.slice().sort((a, b) => numericValue(b.prefixCount) - numericValue(a.prefixCount)).slice(0, 25);
+const leaders = eligible.slice().sort((a, b) => numericValue(b.top1AsnShare) - numericValue(a.top1AsnShare) || numericValue(b.prefixCount) - numericValue(a.prefixCount)).slice(0, 5);
+const laggards = eligible.slice().sort((a, b) => numericValue(a.top1AsnShare) - numericValue(b.top1AsnShare) || numericValue(b.prefixCount) - numericValue(a.prefixCount)).slice(0, 5);
+const rirSummary = summarizeByRir(active);
+
+const metricsHtml = `
+  <div class="metric-card glass"><div class="muted">Countries in this release</div><div class="metric-value">${formatInteger(active.length)}</div><div class="card-text">Countries included in the current monthly release with non-zero published prefix coverage.</div></div>
+  <div class="metric-card glass"><div class="muted">Published /24 prefixes</div><div class="metric-value">${formatCompact(totalPrefixes)}</div><div class="card-text">Total published /24 prefixes across all covered countries in the current release.</div></div>
+  <div class="metric-card glass"><div class="muted">Estimated IPv4 footprint</div><div class="metric-value">${formatCompact(totalIpv4)}</div><div class="card-text">Approximate number of IPv4 addresses represented by the published country totals.</div></div>
+  <div class="metric-card glass"><div class="muted">Average leading ASN share</div><div class="metric-value">${formatShare(averageTop1)}</div><div class="card-text">Average share held by the largest ASN within each covered country.</div></div>`;
+
+const tableHtml = topCoverage.map((item) => {
+  const iso = escapeHtml(item.iso2 || '');
+  return `<tr class="coverage-table-row" tabindex="0" role="button" data-coverage-iso="${iso}" aria-label="Focus ${escapeHtml(item.countryName || item.iso2 || 'country')} on the map"><td><strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong><div class="table-subtext">${escapeHtml(item.topAsnName || 'Leading ASN unavailable')}</div></td><td>${escapeHtml(item.iso2 || 'N/A')}</td><td>${escapeHtml(formatRirName(item.rir || 'unknown'))}</td><td>${formatInteger(item.prefixCount)}</td><td>${formatCompact(item.ipv4Count)}</td><td>${formatShare(item.top1AsnShare)}</td></tr>`;
+}).join('');
+
+const rowList = (rows, fallbackAsn) => rows.map((item) => `
+  <div class="list-row"><div><strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong><small>${escapeHtml(item.iso2 || 'N/A')} · ${escapeHtml(item.topAsnName || fallbackAsn)} · ${formatInteger(item.asnCount)} ASNs</small></div><div class="list-metric"><strong>${formatShare(item.top1AsnShare)}</strong><small>leading ASN share</small></div></div>`).join('');
+
+const leadersHtml = rowList(leaders, 'No dominant ASN');
+const laggardsHtml = rowList(laggards, 'No single dominant ASN');
+const rirHtml = rirSummary.map((item) => `
+  <div class="kpi-row"><span>${escapeHtml(formatRirName(item.rir))}</span><div class="kpi-bar"><span style="width:${item.sharePercent.toFixed(1)}%"></span></div><strong>${item.sharePercent.toFixed(1)}%</strong></div>`).join('');
+const noteText = mostConcentrated
+  ? `${escapeHtml(mostConcentrated.countryName)} currently has the highest leading-ASN share among countries with at least 5 ASNs in this release at ${formatShare(mostConcentrated.top1AsnShare)}.`
+  : 'Coverage notes will appear here when country data is available.';
+
+// Pull the legacy <main> (keeps the full interactive map UI intact) and inject the
+// pre-rendered data into the previously-empty containers.
+let mainInner = (coverageRaw.match(/<main>([\s\S]*?)<\/main>/i) || [])[1] || '';
+mainInner = mainInner
+  .replace('data-metrics-target></div>', `data-metrics-target>${metricsHtml}</div>`)
+  .replace('<tr><td colspan="6">Coverage data will appear here from the current monthly JSON files.</td></tr>', tableHtml)
+  .replace('data-coverage-leaders-target></div>', `data-coverage-leaders-target>${leadersHtml}</div>`)
+  .replace('data-coverage-laggards-target></div>', `data-coverage-laggards-target>${laggardsHtml}</div>`)
+  .replace('data-coverage-rir-target></div>', `data-coverage-rir-target>${rirHtml}</div>`)
+  .replace(/<div class="data-note" data-coverage-note-target>[\s\S]*?<\/div>/, `<div class="data-note" data-coverage-note-target>${noteText}</div>`);
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://geoiplocations.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Coverage', item: 'https://geoiplocations.com/coverage.html' },
+  ],
+};
+---
+<BaseLayout
+  title="GeoIP Country Coverage Map by RIR and ASN | ProdIPData"
+  description="Review GeoIP country coverage by RIR and ASN, including concentration patterns, /24 footprint context, and current monthly release insights."
+  ogTitle="GeoIP Country Coverage Map by RIR and ASN"
+  canonicalPath="/coverage.html"
+  page="coverage"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+  <main set:html={mainInner}></main>
+</BaseLayout>

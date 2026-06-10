@@ -1,0 +1,104 @@
+---
+// Shared site shell — the one place nav, footer, head meta, OG/Twitter tags,
+// canonical, Organization schema, analytics + noindex (via site.js) live.
+// Replaces the hand-copied header/footer across 40+ files.
+const {
+  title,
+  description,
+  canonicalPath,            // e.g. "/" or "/platform.html"
+  page = '',                // data-page
+  navPage = '',             // data-nav-page
+  assetRoot = '',           // data-asset-root (legacy site.js fetch root)
+  ogTitle,
+  image = 'https://geoiplocations.com/assets/img/prodipdata-logo.png',
+} = Astro.props;
+
+const rawBase = import.meta.env.BASE_URL;              // '/prodipdata.github.io' on QA, '/' on prod
+const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';  // guarantee a trailing slash for clean joins
+const canonical = 'https://geoiplocations.com' + canonicalPath;
+const socialTitle = ogTitle ?? title.replace(/\s*\|\s*(ProdIPData|GeoIP Locations).*$/, '');
+
+const org = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': 'https://geoiplocations.com/#organization',
+  name: 'ProdIPData',
+  alternateName: 'GeoIP Locations',
+  url: 'https://geoiplocations.com/',
+  logo: 'https://geoiplocations.com/assets/img/prodipdata-mark.png',
+};
+
+const navItems = [
+  ['platform', 'Platform'],
+  ['coverage', 'Coverage'],
+  ['methodology', 'Methodology'],
+  ['downloads', 'Downloads'],
+  ['docs', 'Documentation'],
+  ['news', 'News'],
+  ['contact', 'Contact'],
+];
+const link = (slug) => `${base}${slug}.html`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="GeoIP Locations" />
+    <meta property="og:title" content={socialTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={socialTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <link rel="icon" type="image/png" href={`${base}assets/img/prodipdata-mark.png`} />
+    <link rel="stylesheet" href={`${base}assets/css/styles.css`} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(org)} />
+    <slot name="head" />
+  </head>
+  <body data-page={page} data-nav-page={navPage} data-asset-root={assetRoot}>
+    <header class="site-header">
+      <div class="container">
+        <div class="navbar glass">
+          <a class="brand" href={`${base}index.html`}>
+            <div class="brand-mark">&#9678;</div>
+            <div>
+              GeoIP Locations
+              <small>Powered by ProdIPData</small>
+            </div>
+          </a>
+          <nav class="nav-links" aria-label="Primary navigation">
+            {navItems.map(([slug, label]) => <a href={link(slug)} data-nav={slug}>{label}</a>)}
+          </nav>
+          <div class="header-cta">
+            <a class="btn btn-secondary" href={`${base}downloads.html`}>Monthly Release</a>
+          </div>
+          <button class="menu-button" type="button" data-menu-toggle aria-expanded="false" aria-label="Open menu">Menu</button>
+        </div>
+        <nav class="mobile-nav glass" data-mobile-nav>
+          {navItems.map(([slug, label]) => <a href={link(slug)} data-nav={slug}>{label}</a>)}
+        </nav>
+      </div>
+    </header>
+
+    <slot />
+
+    <footer class="site-footer">
+      <div class="container site-footer-inner">
+        <div>&copy; <span data-current-year></span> GeoIP Locations &middot; ProdIPData</div>
+        <div><a href={`${base}licensing.html`}>Datasets and metadata: CC BY 4.0</a></div>
+        <div>Engineered and published by the ProdIPData team.</div>
+      </div>
+    </footer>
+
+    <script is:inline src={`${base}assets/js/site.js`} defer></script>
+  </body>
+</html>

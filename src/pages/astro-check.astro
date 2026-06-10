@@ -1,0 +1,19 @@
+---
+// Hidden pipeline check page (Phase 1a). Confirms the Astro build is what's being
+// served via the GitHub Action. Has no effect on any real page. Removed later.
+const builtAt = new Date().toISOString();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Astro deploy check — ProdIPData</title>
+  </head>
+  <body>
+    <h1>Astro deploy pipeline OK ✓</h1>
+    <p>This page is served by the Astro build via GitHub Actions.</p>
+    <p>All other pages are the current site, overlaid unchanged. Built at {builtAt}.</p>
+  </body>
+</html>

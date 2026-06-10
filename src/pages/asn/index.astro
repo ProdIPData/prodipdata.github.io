@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  formatInteger, formatCompact, formatRirName, formatAsnTypeLabel,
+  sortByRank, currentReleaseMonth, loadData,
+} from '../../lib/format.js';
+
+const month = currentReleaseMonth;
+const overview = loadData('overview-global') || {};
+const topAsns = loadData('top-asns-global') || {};
+
+const biggest = sortByRank(topAsns.biggestASNs).slice(0, 5);
+const smallest = sortByRank(topAsns.smallestASNs).slice(0, 5);
+const topByRir = sortByRank(topAsns.topByRIR).slice(0, 5);
+
+const metrics = [
+  { label: 'Observed ASNs', value: formatInteger(overview.totalAsns), text: 'Distinct autonomous systems represented in the current published release.' },
+  { label: 'Largest ASN profiles', value: formatInteger(biggest.length), text: 'Largest ASNs surfaced on this selective landing page.' },
+  { label: 'Smallest ASN profiles', value: formatInteger(smallest.length), text: 'Smallest ASNs surfaced for contrast within the current release.' },
+  { label: 'Registry groupings', value: formatInteger(topByRir.length), text: 'Registry-level ASN footprint buckets represented in the current ASN summary.' },
+];
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  '@id': 'https://geoiplocations.com/asn/#breadcrumb',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://geoiplocations.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Coverage', item: 'https://geoiplocations.com/coverage.html' },
+    { '@type': 'ListItem', position: 3, name: 'ASN', item: 'https://geoiplocations.com/asn/' },
+  ],
+};
+---
+<BaseLayout
+  title="ASN Profiles by Release | ProdIPData"
+  description="Browse selective ASN landing pages from ProdIPData with footprint, country relevance, and release-aware navigation."
+  ogTitle="ASN Profiles by Release"
+  canonicalPath="/asn/"
+  page="asn"
+  navPage="coverage"
+  assetRoot="../"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-panel glass">
+          <div class="eyebrow page-kicker">ASN pages</div>
+          <h1>Selective ASN landing pages</h1>
+          <p class="page-intro">These pages highlight major ASNs within the current monthly release so visitors can review visible network operators more easily.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="split-panel glass content">
+          <h2>Selective ASN landing pages for release {month}</h2>
+          <p>
+            These ASN pages are intentionally selective. They highlight major current-release networks so visitors can review visible operators without scanning a much larger directory.
+          </p>
+          <p class="card-text">
+            The page below surfaces the current release footprint through representative ASN extremes and registry-level distribution rather than attempting a mechanically generated page for every autonomous system.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container metric-grid" data-asn-metrics-target>
+        {metrics.map((m) => (
+          <div class="metric-card glass">
+            <div class="muted">{m.label}</div>
+            <div class="metric-value">{m.value}</div>
+            <div class="card-text">{m.text}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container story-grid">
+        <div class="split-panel glass content">
+          <h2>Largest ASNs in the current release</h2>
+          <div data-asn-biggest-target>
+            {biggest.map((item) => (
+              <div class="list-row">
+                <div>
+                  <strong>{item.asnName || `AS${item.asnId}`}</strong>
+                  <small>AS{formatInteger(item.asnId)} · {item.countryName || item.countryIso || 'Unknown'} · {formatAsnTypeLabel(item.asnType || 'unknown')}</small>
+                </div>
+                <div class="list-metric">
+                  <strong>{formatInteger(item.prefixCount)}</strong>
+                  <small>/24 prefixes</small>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="split-panel glass content">
+          <h2>Smallest ASNs in the current release</h2>
+          <div data-asn-smallest-target>
+            {smallest.map((item) => (
+              <div class="list-row">
+                <div>
+                  <strong>{item.asnName || `AS${item.asnId}`}</strong>
+                  <small>AS{formatInteger(item.asnId)} · {item.countryName || item.countryIso || 'Unknown'} · {formatAsnTypeLabel(item.asnType || 'unknown')}</small>
+                </div>
+                <div class="list-metric">
+                  <strong>{formatInteger(item.prefixCount)}</strong>
+                  <small>/24 prefixes</small>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="split-panel glass content">
+          <h2>Release coverage by registry</h2>
+          <div data-asn-rir-target>
+            {topByRir.map((item) => (
+              <div class="list-row">
+                <div>
+                  <strong>{formatRirName(item.rir || 'unknown')}</strong>
+                  <small>{formatInteger(item.asnCount)} ASNs represented in this summary bucket.</small>
+                </div>
+                <div class="list-metric">
+                  <strong>{formatInteger(item.prefixCount)}</strong>
+                  <small>{formatCompact(item.ipv4Count)} IPv4 est.</small>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

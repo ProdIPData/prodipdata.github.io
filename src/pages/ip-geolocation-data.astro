@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  '@id': 'https://geoiplocations.com/ip-geolocation-data.html#dataset',
+  name: 'ProdIPData IP Geolocation Data',
+  description: 'Landing page for ProdIPData IP geolocation data by country, ASN, registry context, and release downloads.',
+  url: 'https://geoiplocations.com/ip-geolocation-data.html',
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  creator: { '@type': 'Organization', name: 'ProdIPData', url: 'https://geoiplocations.com/' },
+  publisher: { '@type': 'Organization', name: 'ProdIPData', url: 'https://geoiplocations.com/' },
+  keywords: ['IP geolocation data', 'GeoIP', 'ProdIPData', 'country', 'ASN', 'monthly release'],
+};
+---
+<BaseLayout
+  title="IP Geolocation Data by Country, ASN and Release | ProdIPData"
+  description="Understand ProdIPData IP geolocation data with country, ASN, registry, and downloadable monthly release context."
+  ogTitle="IP Geolocation Data by Country, ASN and Release"
+  canonicalPath="/ip-geolocation-data.html"
+  page="guide"
+  navPage="platform"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(dataset)} />
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-panel glass">
+          <div class="eyebrow page-kicker">IP geolocation data</div>
+          <h1>IP geolocation data with country, ASN, and registry context.</h1>
+          <p class="page-intro">GeoIP data links an IP address to an approximate geographic and network profile. ProdIPData focuses on the practical signals around that profile, including country footprint, leading ASNs, regional registry coverage, and downloadable release snapshots that can be used in operational workflows.</p>
+          <p class="page-intro seo-links">To see the data in action, open the <a href="coverage.html">interactive coverage page</a>, explore the <a href="geoip-database.html">GeoIP database overview</a>, or move directly to the <a href="downloads.html">monthly downloads hub</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-3">
+        <article class="section-card glass">
+          <h3>Approximate location</h3>
+          <p class="card-text">GeoIP works best as contextual location intelligence. Country-level interpretation is usually more dependable than assumptions about exact street-level or coordinate-level placement.</p>
+        </article>
+        <article class="section-card glass">
+          <h3>Network ownership context</h3>
+          <p class="card-text">ProdIPData complements location-oriented views with ASN counts, leading network signals, and registry distribution so users can understand who operates the visible footprint.</p>
+        </article>
+        <article class="section-card glass">
+          <h3>Release-based publication</h3>
+          <p class="card-text">The website and downloads are organized around monthly releases, which makes it easier to compare snapshots, document assumptions, and keep teams aligned on a consistent version.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container story-grid">
+        <div class="split-panel glass content">
+          <h2>What the published data helps you answer</h2>
+          <ul>
+            <li>Which countries appear in the current release and how large is their published footprint?</li>
+            <li>Which ASNs dominate a country and how concentrated is the visible network structure?</li>
+            <li>How is the footprint distributed across ARIN, RIPE, APNIC, AFRINIC, and LACNIC?</li>
+            <li>Which file format should be used for local ingestion or larger analytical workflows?</li>
+          </ul>
+        </div>
+        <div class="split-panel glass content">
+          <h2>How to read GeoIP responsibly</h2>
+          <p>GeoIP is valuable, but it should be interpreted proportionately.</p>
+          <ul>
+            <li>Use country- and network-level signals as decision support, not as proof of exact physical presence.</li>
+            <li>Combine GeoIP context with operational knowledge, business rules, and your own application data when precision matters.</li>
+            <li>Prefer documented release snapshots when comparing time periods or discussing findings with other teams.</li>
+          </ul>
+          <div class="actions">
+            <a class="btn btn-primary" href="coverage.html">Explore country coverage</a>
+            <a class="btn btn-secondary" href="methodology.html">Read methodology</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-3">
+        <article class="section-card glass">
+          <h3><a href="asn-data-by-country.html">ASN data by country</a></h3>
+          <p class="card-text">Go deeper into operator distribution, leading networks, and concentration views at country level.</p>
+        </article>
+        <article class="section-card glass">
+          <h3><a href="geoip-csv-download.html">CSV downloads</a></h3>
+          <p class="card-text">Use CSV files for straightforward import into spreadsheets, scripts, and SQL-oriented workflows.</p>
+        </article>
+        <article class="section-card glass">
+          <h3><a href="geoip-parquet-download.html">Parquet downloads</a></h3>
+          <p class="card-text">Use Parquet files for analytics stacks and heavier batch-oriented processing.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

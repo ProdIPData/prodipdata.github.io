@@ -64,6 +64,34 @@ function initializeClarity() {
   })(window, document, 'clarity', 'script', projectId);
 }
 
+const PRODIP_PRODUCTION_HOSTS = Object.freeze(['geoiplocations.com', 'www.geoiplocations.com']);
+
+applyStagingNoindex();
+
+// Keep every non-production host (QA/staging, *.github.io preview URLs, local) out of
+// search engines, so a staging mirror never competes with the live site as duplicate
+// content. Keyed on hostname: on production (geoiplocations.com) this does nothing.
+function applyStagingNoindex() {
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return;
+  }
+
+  const hostname = String(window.location.hostname || '').toLowerCase();
+  if (!hostname || PRODIP_PRODUCTION_HOSTS.indexOf(hostname) !== -1) {
+    return;
+  }
+
+  if (document.querySelector('meta[name="robots"][data-staging-noindex]')) {
+    return;
+  }
+
+  const meta = document.createElement('meta');
+  meta.setAttribute('name', 'robots');
+  meta.setAttribute('content', 'noindex, nofollow');
+  meta.setAttribute('data-staging-noindex', '');
+  (document.head || document.documentElement).appendChild(meta);
+}
+
 function getAssetRoot() {
   return document.body.dataset.assetRoot || '';
 }

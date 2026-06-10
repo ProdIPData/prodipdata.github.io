@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://geoiplocations.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://geoiplocations.com/contact.html' },
+  ],
+};
+---
+<BaseLayout
+  title="Contact | GeoIP Locations"
+  description="Contact ProdIPData for dataset questions, correction requests, integration discussions, and general feedback."
+  ogTitle="Contact GeoIP Locations"
+  canonicalPath="/contact.html"
+  page="contact"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-panel glass">
+          <div class="eyebrow page-kicker">Contact</div>
+          <h1>Contact the ProdIPData team.</h1>
+          <p class="page-intro">
+            All public website content and downloadable files are provided totally free. Unless otherwise stated, published datasets and metadata are available under CC BY 4.0. For dataset questions, correction requests, integration discussions, partnership opportunities, or general feedback, please contact the ProdIPData team using the details below.
+          </p>
+          <p class="page-intro seo-links">Before getting in touch, you may also review the <a href="platform.html">platform overview</a>, inspect the <a href="coverage.html">coverage summary</a>, or browse the <a href="downloads.html">downloadable GeoIP files</a> and reference catalogs.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="submit-data-correction.html?source=contact">Submit a data correction</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+        <div class="contact-card glass">
+          <h3>Contact and publication details</h3>
+          <div class="contact-lines">
+            <div class="contact-line">
+              <strong>Company</strong>
+              <span class="muted">ProdIPData</span>
+            </div>
+            <div class="contact-line">
+              <strong>Website brand</strong>
+              <span class="muted"><a href="https://geoiplocations.com/">https://geoiplocations.com/</a></span>
+            </div>
+            <div class="contact-line">
+              <strong>Publication enquiries</strong>
+              <span class="muted"><a href="mailto:geoiplocations@gmail.com">geoiplocations@gmail.com</a></span>
+            </div>
+            <div class="contact-line">
+              <strong>Dataset license</strong>
+              <span class="muted"><a href="licensing.html">CC BY 4.0 unless otherwise stated</a></span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-card glass content">
+          <h2>General enquiries</h2>
+          <p>
+            Email us for dataset questions, correction requests, partnerships, or discussion around how ProdIPData files may fit into your systems and workflows. All public website content and downloadable files are provided totally free. Unless otherwise stated, published datasets and metadata are available under CC BY 4.0.
+          </p>
+          <p>
+            We welcome feedback from end users and encourage correction requests whenever published data appears inaccurate or incomplete.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="submit-data-correction.html?source=contact">Submit a data correction</a>
+            <a class="btn btn-secondary" href="mailto:geoiplocations@gmail.com">Email directly</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

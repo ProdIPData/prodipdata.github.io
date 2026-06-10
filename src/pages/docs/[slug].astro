@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Convert every legacy /docs/*.html into a page on the shared layout, in one route.
+// We read the existing doc files at build time, pull out their <main> content + title +
+// description, and render them through BaseLayout (so they get the unified header/footer,
+// canonical, OG tags, and noindex). Content stays authoritative in the existing docs files.
+export function getStaticPaths() {
+  const raws = import.meta.glob('/docs/*.html', { query: '?raw', import: 'default', eager: true });
+  return Object.entries(raws)
+    .filter(([path]) => !path.endsWith('/schema.html')) // schema.html is handled by schema.astro
+    .map(([path, html]) => {
+      const slug = path.split('/').pop().replace(/\.html$/, '');
+      return { params: { slug }, props: { html } };
+    });
+}
+
+const { slug } = Astro.params;
+const { html } = Astro.props;
+
+const pick = (re, fallback = '') => {
+  const m = html.match(re);
+  return m ? m[1].trim() : fallback;
+};
+
+const title = pick(/<title>([\s\S]*?)<\/title>/i, 'Documentation | GeoIP Locations');
+const description = pick(/name=["']description["']\s+content=["']([\s\S]*?)["']/i);
+const ogTitle = title.replace(/\s*\|\s*(GeoIP Locations|ProdIPData).*$/i, '');
+const mainInner = pick(/<main[^>]*>([\s\S]*?)<\/main>/i);
+---
+<BaseLayout
+  title={title}
+  description={description}
+  ogTitle={ogTitle}
+  canonicalPath={`/docs/${slug}.html`}
+  page="docs"
+>
+  <main set:html={mainInner}></main>
+</BaseLayout>
