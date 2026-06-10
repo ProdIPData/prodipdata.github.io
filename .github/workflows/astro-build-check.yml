@@ -38,8 +38,11 @@ jobs:
       - name: Build Astro site
         run: npm run build
         env:
-          # Production serves at the root; the QA fork serves under the project sub-path.
-          SITE_BASE: ${{ github.repository == 'ProdIPData/prodipdata.github.io' && '/' || '/prodipdata.github.io' }}
+          # Both QA (qa.geoiplocations.com) and PROD (geoiplocations.com) now serve at the
+          # ROOT of their own custom domains, so the base path is '/' in both environments.
+          # (The old '/prodipdata.github.io' sub-path was only needed when QA had no custom
+          #  domain and served at geoiplocations.github.io/prodipdata.github.io/.)
+          SITE_BASE: '/'
 
       - name: Overlay legacy pages not yet migrated to Astro
         # --ignore-existing means Astro-built pages are NEVER overwritten by legacy
