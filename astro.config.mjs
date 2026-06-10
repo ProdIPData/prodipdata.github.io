@@ -9,6 +9,8 @@ export default defineConfig({
   base: process.env.SITE_BASE || '/',
   trailingSlash: 'ignore',
   build: {
-    format: 'file'
+    // 'preserve' keeps the source structure: platform.astro -> platform.html (flat .html URLs)
+    // AND country/index.astro -> country/index.html (directory index URLs like /country/).
+    format: 'preserve'
   }
 });
