@@ -1,7 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import overview from '../../assets/data/overview-global-2026-04.json';
+import topAsns from '../../assets/data/top-asns-global-2026-04.json';
+import newAsns from '../../assets/data/new-added-asns-2026.json';
+import releases from '../../assets/data/releases.json';
+import {
+  getItems, formatInteger, formatCompact, formatAsnTypeLabel, sortByRank, currentReleaseMonth,
+} from '../lib/format.js';
 
-// Page-specific WebSite schema (Organization schema is in BaseLayout).
+const month = currentReleaseMonth;
+const statCountries = formatInteger(overview.totalCountriesRepresented);
+const statAsns = formatInteger(overview.totalAsns);
+
+const releaseItems = Array.isArray(releases.items) ? releases.items : [];
+const metrics = [
+  { label: 'Represented countries', value: formatInteger(overview.totalCountriesRepresented), text: 'Countries represented in the current published release.' },
+  { label: 'Observed ASNs', value: formatInteger(overview.totalAsns), text: 'Distinct autonomous systems represented in the current global footprint.' },
+  { label: 'Active ASNs', value: formatInteger(overview.activeAsns), text: 'Operationally active autonomous systems represented in the current release.' },
+  { label: 'Published IPv4 footprint', value: formatCompact(overview.totalIpv4), text: 'Estimated IPv4 footprint represented in the current release.' },
+];
+const biggest = sortByRank(topAsns.biggestASNs).slice(0, 5);
+const topCountries = sortByRank(topAsns.topByCountry).slice(0, 5);
+const newest = getItems(newAsns).slice(0, 5);
+
 const website = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -38,15 +59,15 @@ const website = {
           <div class="data-note">All public website content, monthly release files, and technical reference catalogs on GeoIP Locations are provided totally free. Unless otherwise stated, published datasets and metadata are available under <a href="licensing.html">CC BY 4.0</a>.</div>
           <div class="stats-grid">
             <div class="stat-card">
-              <strong data-home-stat="countries">243</strong>
+              <strong data-home-stat="countries">{statCountries}</strong>
               <span class="muted">Countries represented in the current ProdIPData release.</span>
             </div>
             <div class="stat-card">
-              <strong data-home-stat="asns">128,753</strong>
+              <strong data-home-stat="asns">{statAsns}</strong>
               <span class="muted">Distinct ASNs represented in the current global footprint.</span>
             </div>
             <div class="stat-card">
-              <strong data-home-stat="release" data-current-release>2026-04</strong>
+              <strong data-home-stat="release" data-current-release>{month}</strong>
               <span class="muted">Current published release month used across the website.</span>
             </div>
           </div>
@@ -57,7 +78,17 @@ const website = {
             ProdIPData publishes monthly datasets and downloadable files through a lightweight static website so teams can review the
             latest release quickly and integrate it into internal systems, applications, and workflows.
           </p>
-          <div class="download-list" data-release-target></div>
+          <div class="download-list" data-release-target>
+            {releaseItems.map((item) => (
+              <div class="download-item">
+                <div>
+                  <strong>{item.title}</strong>
+                  <small>{item.description}</small>
+                </div>
+                <span class={`badge ${item.statusClass || 'info'}`}>{item.status || 'Info'}</span>
+              </div>
+            ))}
+          </div>
           <div class="data-note">
             All public website content and downloadable files are provided totally free. Unless otherwise stated, published datasets and metadata are available under <a href="licensing.html">CC BY 4.0</a>. Use <a href="releases/index.html">the release archive</a> to navigate by month, use Coverage to explore countries and registries, or use Downloads to access CSV, Parquet, and MMDB files for local analysis.
           </div>
@@ -185,7 +216,15 @@ const website = {
             active networks, and estimated IPv4 scale.
           </p>
         </div>
-        <div class="metric-grid" data-metrics-target></div>
+        <div class="metric-grid" data-metrics-target>
+          {metrics.map((m) => (
+            <div class="metric-card glass">
+              <div class="muted">{m.label}</div>
+              <div class="metric-value">{m.value}</div>
+              <div class="card-text">{m.text}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -197,14 +236,40 @@ const website = {
             Leading networks in the current release by published /24 footprint, useful for quickly identifying the largest visible
             operators in the dataset.
           </p>
-          <div class="download-list" data-home-biggest-target></div>
+          <div class="download-list" data-home-biggest-target>
+            {biggest.map((item) => (
+              <div class="list-row">
+                <div>
+                  <strong>{item.asnName || `AS${item.asnId}`}</strong>
+                  <small>AS{formatInteger(item.asnId)} · {item.countryName || item.countryIso || 'Unknown'} · {formatAsnTypeLabel(item.asnType || 'unknown')}</small>
+                </div>
+                <div class="list-metric">
+                  <strong>{formatInteger(item.prefixCount)}</strong>
+                  <small>/24 prefixes</small>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
         <div class="split-panel glass">
           <h3>Largest country footprints</h3>
           <p class="card-text">
             Countries with the largest published footprint in the current release, combining scale, coverage, and overall IPv4 presence.
           </p>
-          <div class="download-list" data-home-country-target></div>
+          <div class="download-list" data-home-country-target>
+            {topCountries.map((item) => (
+              <div class="list-row">
+                <div>
+                  <strong>{item.countryName || item.countryIso || 'Unknown'}</strong>
+                  <small>{item.countryIso || 'N/A'} · {formatInteger(item.asnCount)} ASNs</small>
+                </div>
+                <div class="list-metric">
+                  <strong>{formatCompact(item.ipv4Count)}</strong>
+                  <small>IPv4 est.</small>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -219,7 +284,20 @@ const website = {
           </p>
         </div>
         <div class="split-panel glass">
-          <div class="download-list" data-home-new-asns-target></div>
+          <div class="download-list" data-home-new-asns-target>
+            {newest.map((item) => (
+              <div class="list-row">
+                <div>
+                  <strong>{item.autonomousSystem || `AS${item.id}`}</strong>
+                  <small>{item.name || 'Unnamed ASN'} · {item.country || 'Unknown'} · {item.rir || 'unknown'}</small>
+                </div>
+                <div class="list-metric">
+                  <strong>{item.created || 'N/A'}</strong>
+                  <small>{formatAsnTypeLabel(item.type || 'unknown')}</small>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
