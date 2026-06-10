@@ -1,12 +1,14 @@
-name: Build and deploy (QA)
+name: Build and deploy
 
-# PHASE 1: build Astro, then overlay the existing (not-yet-migrated) static pages
-# on top, so every current page keeps serving while we convert pages one at a time.
-# Deploys to the QA fork's GitHub Pages. Production is a separate repo + workflow.
+# One workflow for both environments, selected by which repo it runs in:
+#   - QA fork (geoiplocations/...)  -> serves under the project sub-path, CNAME qa.geoiplocations.com
+#   - Production (ProdIPData/...)   -> serves at the root domain,         CNAME geoiplocations.com
+# It builds Astro, overlays any not-yet-migrated legacy files, writes the right
+# CNAME, and deploys to that repo's GitHub Pages.
 
 on:
   push:
-    branches: [Redesign]
+    branches: [Redesign, main]
   workflow_dispatch: {}
 
 permissions:
@@ -15,7 +17,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages-qa
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -36,8 +38,8 @@ jobs:
       - name: Build Astro site
         run: npm run build
         env:
-          # QA is served under the GitHub project sub-path. Production omits this (root).
-          SITE_BASE: /prodipdata.github.io
+          # Production serves at the root; the QA fork serves under the project sub-path.
+          SITE_BASE: ${{ github.repository == 'ProdIPData/prodipdata.github.io' && '/' || '/prodipdata.github.io' }}
 
       - name: Overlay legacy pages not yet migrated to Astro
         # --ignore-existing means Astro-built pages are NEVER overwritten by legacy
@@ -58,10 +60,13 @@ jobs:
             --exclude '_seo_wave1_backup_20260416_135936' \
             ./ ./dist/
 
-      - name: Set QA custom domain
-        # Written per-environment here (not committed), so promoting to production
-        # can never overwrite the production CNAME.
-        run: echo 'qa.geoiplocations.com' > ./dist/CNAME
+      - name: Set custom domain (per environment, never committed)
+        run: |
+          if [ "${{ github.repository }}" = "ProdIPData/prodipdata.github.io" ]; then
+            echo 'geoiplocations.com' > ./dist/CNAME
+          else
+            echo 'qa.geoiplocations.com' > ./dist/CNAME
+          fi
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
