@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import raw from '../../reference-root-zone.html?raw';
+import { wrapLegacy } from '../lib/wrap.js';
+const { title, description, ogTitle, headSchemas, slotHtml } = wrapLegacy(raw);
+---
+<BaseLayout title={title} description={description} ogTitle={ogTitle} canonicalPath="/reference-root-zone.html" page="reference-root-zone" navPage="downloads">
+  <Fragment slot="head" set:html={headSchemas} />
+  <Fragment set:html={slotHtml} />
+</BaseLayout>
