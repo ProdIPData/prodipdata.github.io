@@ -1,6 +1,6 @@
 {
   "snapshotMonth": "2026-06",
-  "generatedUtc": "2026-06-10T19:03:15Z",
+  "generatedUtc": "2026-06-11T06:35:19Z",
   "source": "ProdIP Parquet pipeline (GOLD + ASN dimension)",
   "biggestASNs": [
     {
@@ -605,6 +605,43 @@
       "rir": "arin",
       "prefixCount": 3786,
       "ipv4Count": 969216,
+      "rank": 5
+    }
+  ],
+  "topByRIR": [
+    {
+      "rir": "arin",
+      "asnCount": 23807,
+      "prefixCount": 6453211,
+      "ipv4Count": 1652022016,
+      "rank": 1
+    },
+    {
+      "rir": "apnic",
+      "asnCount": 16667,
+      "prefixCount": 3484250,
+      "ipv4Count": 891968000,
+      "rank": 2
+    },
+    {
+      "rir": "ripe",
+      "asnCount": 31732,
+      "prefixCount": 3336945,
+      "ipv4Count": 854257920,
+      "rank": 3
+    },
+    {
+      "rir": "lacnic",
+      "asnCount": 10982,
+      "prefixCount": 713905,
+      "ipv4Count": 182759680,
+      "rank": 4
+    },
+    {
+      "rir": "afrinic",
+      "asnCount": 2759,
+      "prefixCount": 473634,
+      "ipv4Count": 121250304,
       "rank": 5
     }
   ]
