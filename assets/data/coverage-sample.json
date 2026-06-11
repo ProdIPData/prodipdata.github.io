@@ -1,6 +1,6 @@
 {
   "summary": {
-    "release": "2026-04",
+    "release": "2026-06",
     "isoBuckets": "255+",
     "formats": "CSV / Parquet / MMDB",
     "model": "Static"
