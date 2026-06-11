@@ -1,6 +1,6 @@
 {
   "releaseMonth": "2026-06",
-  "generatedUtc": "2026-06-10T18:54:33Z",
+  "generatedUtc": "2026-06-11T05:50:20Z",
   "source": "ProdIP Parquet pipeline release publisher",
   "passwordPolicy": "Per-package password is not displayed. Request access by email: geoiplocations@gmail.com",
   "packages": [
@@ -69,17 +69,6 @@
       "snapshotMonth": "2026-06",
       "downloadUrl": "https://github.com/ProdIPData/ProdIP_Files/blob/main/Export/release_2026-06/CSV/iso%3DAL.zip",
       "repositoryPath": "Export/release_2026-06/CSV/iso=AL.zip"
-    },
-    {
-      "releaseMonth": "2026-06",
-      "format": "CSV",
-      "scope": "ALL",
-      "topic": "ALL",
-      "ipv4Count": 0,
-      "ipv4CountDisplay": "0",
-      "snapshotMonth": "2026-06",
-      "downloadUrl": "https://github.com/ProdIPData/ProdIP_Files/blob/main/Export/release_2026-06/CSV/iso%3DALL.zip",
-      "repositoryPath": "Export/release_2026-06/CSV/iso=ALL.zip"
     },
     {
       "releaseMonth": "2026-06",
@@ -333,17 +322,6 @@
       "snapshotMonth": "2026-06",
       "downloadUrl": "https://github.com/ProdIPData/ProdIP_Files/blob/main/Export/release_2026-06/CSV/iso%3DBO.zip",
       "repositoryPath": "Export/release_2026-06/CSV/iso=BO.zip"
-    },
-    {
-      "releaseMonth": "2026-06",
-      "format": "CSV",
-      "scope": "BOG",
-      "topic": "BOG",
-      "ipv4Count": 0,
-      "ipv4CountDisplay": "0",
-      "snapshotMonth": "2026-06",
-      "downloadUrl": "https://github.com/ProdIPData/ProdIP_Files/blob/main/Export/release_2026-06/CSV/iso%3DBOG.zip",
-      "repositoryPath": "Export/release_2026-06/CSV/iso=BOG.zip"
     },
     {
       "releaseMonth": "2026-06",
@@ -711,17 +689,6 @@
     {
       "releaseMonth": "2026-06",
       "format": "CSV",
-      "scope": "EDU",
-      "topic": "EDU",
-      "ipv4Count": 0,
-      "ipv4CountDisplay": "0",
-      "snapshotMonth": "2026-06",
-      "downloadUrl": "https://github.com/ProdIPData/ProdIP_Files/blob/main/Export/release_2026-06/CSV/iso%3DEDU.zip",
-      "repositoryPath": "Export/release_2026-06/CSV/iso=EDU.zip"
-    },
-    {
-      "releaseMonth": "2026-06",
-      "format": "CSV",
       "scope": "EE",
       "topic": "Estonia",
       "ipv4Count": 1649664,
@@ -960,17 +927,6 @@
       "snapshotMonth": "2026-06",
       "downloadUrl": "https://github.com/ProdIPData/ProdIP_Files/blob/main/Export/release_2026-06/CSV/iso%3DGN.zip",
       "repositoryPath": "Export/release_2026-06/CSV/iso=GN.zip"
-    },
-    {
-      "releaseMonth": "2026-06",
-      "format": "CSV",
-      "scope": "GOV",
-      "topic": "GOV",
-      "ipv4Count": 0,
-      "ipv4CountDisplay": "0",
-      "snapshotMonth": "2026-06",
-      "downloadUrl": "https://github.com/ProdIPData/ProdIP_Files/blob/main/Export/release_2026-06/CSV/iso%3DGOV.zip",
-      "repositoryPath": "Export/release_2026-06/CSV/iso=GOV.zip"
     },
     {
       "releaseMonth": "2026-06",
@@ -2834,17 +2790,6 @@
     {
       "releaseMonth": "2026-06",
       "format": "PARQUET",
-      "scope": "ALL",
-      "topic": "ALL",
-      "ipv4Count": 0,
-      "ipv4CountDisplay": "0",
-      "snapshotMonth": "2026-06",
-      "downloadUrl": "https://github.com/ProdIPData/ProdIP_Files/blob/main/Export/release_2026-06/PARQUET/iso%3DALL.zip",
-      "repositoryPath": "Export/release_2026-06/PARQUET/iso=ALL.zip"
-    },
-    {
-      "releaseMonth": "2026-06",
-      "format": "PARQUET",
       "scope": "AM",
       "topic": "Armenia",
       "ipv4Count": 583680,
@@ -3094,17 +3039,6 @@
       "snapshotMonth": "2026-06",
       "downloadUrl": "https://github.com/ProdIPData/ProdIP_Files/blob/main/Export/release_2026-06/PARQUET/iso%3DBO.zip",
       "repositoryPath": "Export/release_2026-06/PARQUET/iso=BO.zip"
-    },
-    {
-      "releaseMonth": "2026-06",
-      "format": "PARQUET",
-      "scope": "BOG",
-      "topic": "BOG",
-      "ipv4Count": 0,
-      "ipv4CountDisplay": "0",
-      "snapshotMonth": "2026-06",
-      "downloadUrl": "https://github.com/ProdIPData/ProdIP_Files/blob/main/Export/release_2026-06/PARQUET/iso%3DBOG.zip",
-      "repositoryPath": "Export/release_2026-06/PARQUET/iso=BOG.zip"
     },
     {
       "releaseMonth": "2026-06",
@@ -3472,17 +3406,6 @@
     {
       "releaseMonth": "2026-06",
       "format": "PARQUET",
-      "scope": "EDU",
-      "topic": "EDU",
-      "ipv4Count": 0,
-      "ipv4CountDisplay": "0",
-      "snapshotMonth": "2026-06",
-      "downloadUrl": "https://github.com/ProdIPData/ProdIP_Files/blob/main/Export/release_2026-06/PARQUET/iso%3DEDU.zip",
-      "repositoryPath": "Export/release_2026-06/PARQUET/iso=EDU.zip"
-    },
-    {
-      "releaseMonth": "2026-06",
-      "format": "PARQUET",
       "scope": "EE",
       "topic": "Estonia",
       "ipv4Count": 1649664,
@@ -3721,17 +3644,6 @@
       "snapshotMonth": "2026-06",
       "downloadUrl": "https://github.com/ProdIPData/ProdIP_Files/blob/main/Export/release_2026-06/PARQUET/iso%3DGN.zip",
       "repositoryPath": "Export/release_2026-06/PARQUET/iso=GN.zip"
-    },
-    {
-      "releaseMonth": "2026-06",
-      "format": "PARQUET",
-      "scope": "GOV",
-      "topic": "GOV",
-      "ipv4Count": 0,
-      "ipv4CountDisplay": "0",
-      "snapshotMonth": "2026-06",
-      "downloadUrl": "https://github.com/ProdIPData/ProdIP_Files/blob/main/Export/release_2026-06/PARQUET/iso%3DGOV.zip",
-      "repositoryPath": "Export/release_2026-06/PARQUET/iso=GOV.zip"
     },
     {
       "releaseMonth": "2026-06",

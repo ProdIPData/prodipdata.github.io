@@ -1,6 +1,6 @@
 {
   "currentRelease": "2026-06",
-  "generatedOn": "2026-06-10",
+  "generatedOn": "2026-06-11",
   "storageRepository": "https://github.com/ProdIPData/ProdIP_Files",
   "repositoryBranch": "main",
   "governanceNote": "Monthly release artifacts are stored permanently under ProdIP_Files/Export/release_YYYY-MM/. The website repository is the catalog/navigation layer.",
@@ -14,7 +14,7 @@
         {
           "format": "CSV",
           "status": "available",
-          "packageRows": 251,
+          "packageRows": 247,
           "indexPage": "/downloads-csv-2026-06.html",
           "storagePath": "Export/release_2026-06/CSV/",
           "passwordLocation": "Request by email: geoiplocations@gmail.com"
@@ -22,7 +22,7 @@
         {
           "format": "Parquet",
           "status": "available",
-          "packageRows": 251,
+          "packageRows": 247,
           "indexPage": "/downloads-parquet-2026-06.html",
           "storagePath": "Export/release_2026-06/PARQUET/",
           "passwordLocation": "Request by email: geoiplocations@gmail.com"
