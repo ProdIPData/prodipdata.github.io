@@ -24,6 +24,7 @@ const breadcrumb = {
   ogTitle="IP Prefix Lookup"
   canonicalPath="/prefix-lookup.html"
   page="prefix-lookup"
+  navPage="prefix-lookup"
 >
   <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
 
@@ -64,31 +65,31 @@ const breadcrumb = {
   <style is:inline>
     .lookup { padding: 2.5rem 0 4rem; max-width: 920px; }
     .lookup-hero h1 { margin: 0 0 .5rem; }
-    .lookup-sub { color: var(--color-text-secondary, #5b6b7f); line-height: 1.6; margin-bottom: 1.5rem; }
-    .lookup-form { display: flex; gap: .6rem; padding: .8rem; border-radius: 14px; align-items: center; flex-wrap: wrap; }
+    .lookup-sub { color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+    .lookup-form { display: flex; gap: .6rem; padding: .9rem; border-radius: 18px; align-items: center; flex-wrap: wrap; }
     .lookup-input {
       flex: 1 1 320px; min-width: 220px; font: inherit; font-size: 1.05rem;
-      padding: .7rem .9rem; border-radius: 10px; border: 1px solid rgba(120,140,170,.35);
-      background: rgba(255,255,255,.7); color: inherit;
+      padding: .78rem 1rem; border-radius: 12px; border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,.045); color: var(--text);
     }
-    .lookup-input:focus { outline: 2px solid #2f6fed; outline-offset: 1px; }
-    .lookup-form .btn { font-size: 1.05rem; padding: .7rem 1.3rem; }
-    .lookup-status { margin-top: .7rem; min-height: 1.3rem; font-size: .95rem; color: var(--color-text-secondary, #5b6b7f); }
-    .lookup-status.err { color: #b4232a; }
+    .lookup-input::placeholder { color: var(--muted); opacity: .7; }
+    .lookup-input:focus { outline: none; border-color: var(--accent-2); box-shadow: 0 0 0 3px rgba(45,212,191,.18); }
+    .lookup-form .btn { font-size: 1.05rem; padding: .78rem 1.4rem; }
+    .lookup-status { margin-top: .8rem; min-height: 1.3rem; font-size: .95rem; color: var(--muted); }
+    .lookup-status.err { color: var(--danger); }
     .lookup-result { margin-top: 1.8rem; display: grid; gap: 1rem; }
-    .lk-card { border: 1px solid rgba(120,140,170,.22); border-radius: 14px; padding: 1rem 1.2rem; background: rgba(255,255,255,.55); }
-    .lk-card h2 { font-size: .78rem; letter-spacing: .09em; text-transform: uppercase; color: #2f6fed; margin: 0 0 .7rem; }
-    .lk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem 1.6rem; }
+    .lk-card { border: 1px solid var(--line); border-radius: 18px; padding: 1.1rem 1.3rem; background: var(--panel); box-shadow: var(--shadow); }
+    .lk-card h2 { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-2); margin: 0 0 .85rem; }
+    .lk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem 1.8rem; }
     @media (max-width: 620px) { .lk-grid { grid-template-columns: 1fr; } }
-    .lk-row { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px dashed rgba(120,140,170,.2); padding-bottom: .4rem; }
-    .lk-row .k { color: var(--color-text-secondary, #5b6b7f); }
-    .lk-row .v { font-weight: 500; text-align: right; word-break: break-word; }
-    .lk-head { font-size: 1.5rem; font-weight: 600; }
+    .lk-row { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--line); padding-bottom: .45rem; }
+    .lk-row .k { color: var(--muted); }
+    .lk-row .v { font-weight: 500; text-align: right; word-break: break-word; color: var(--text); }
+    .lk-head { font-size: 1.6rem; font-weight: 600; color: var(--text); }
     .lk-badge { display: inline-block; font-size: .8rem; font-weight: 600; padding: .15rem .6rem; border-radius: 999px; margin-left: .5rem; vertical-align: middle; }
-    .lk-badge.ok { background: rgba(45,180,120,.16); color: #157a4f; }
-    .lk-badge.warn { background: rgba(214,90,40,.16); color: #b4232a; }
+    .lk-badge.warn { background: rgba(251,113,133,.16); color: var(--danger); }
     .lookup-note { margin-top: 2rem; font-size: .9rem; }
-    .lk-spin { display:inline-block; width:14px; height:14px; border:2px solid rgba(47,111,237,.3); border-top-color:#2f6fed; border-radius:50%; animation: lkspin .7s linear infinite; vertical-align:-2px; margin-right:.5rem; }
+    .lk-spin { display:inline-block; width:14px; height:14px; border:2px solid rgba(79,140,255,.3); border-top-color: var(--accent); border-radius:50%; animation: lkspin .7s linear infinite; vertical-align:-2px; margin-right:.5rem; }
     @keyframes lkspin { to { transform: rotate(360deg); } }
   </style>
 
