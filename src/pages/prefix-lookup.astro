@@ -123,8 +123,8 @@ const breadcrumb = {
     }
 
     function val(v) {
-      if (v === null || v === undefined || v === '') return null;
-      if (v instanceof Uint8Array) return new TextDecoder().decode(v);
+      if (v instanceof Uint8Array) v = new TextDecoder().decode(v);
+      if (v === null || v === undefined || v === '' || v === '-') return null;
       return v;
     }
 
@@ -132,7 +132,7 @@ const breadcrumb = {
       if (shardCache.has(octet)) return shardCache.get(octet);
       const url = `${BASE}/${RELEASE}/${octet}.parquet`;
       const res = await fetch(url);
-      if (res.status === 404) { shardCache.set(octet, null); return null; } // octet not allocated
+      if (res.status === 404 || res.status === 403) { shardCache.set(octet, null); return null; } // octet not present (unrouted); jsDelivr 403s missing files
       if (!res.ok) throw new Error(`fetch ${res.status}`);
       const ab = await res.arrayBuffer();
       const file = { byteLength: ab.byteLength, slice: (a, b) => ab.slice(a, b ?? ab.byteLength) };
@@ -176,6 +176,9 @@ const breadcrumb = {
           let v = val(row[key]);
           if (v === null) return '';
           if (key === 'IsInEU' || key === 'IsTor') v = (String(v) === 'true' || v === true || v === 1) ? 'Yes' : 'No';
+          else if (key === 'RIR') v = String(v).toUpperCase();
+          else if (key === 'RIRAllocationDate' && /^\d{8}$/.test(String(v))) { const s = String(v); v = `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 8)}`; }
+          else if (key === 'ASNID') v = 'AS' + v;
           if (key === 'HasC2') {
             const on = (String(v) === 'true' || v === true || v === 1);
             return `<div class="lk-row"><span class="k">${label}</span><span class="v">${on ? '<span class="lk-badge warn">Yes</span>' : 'No'}</span></div>`;
