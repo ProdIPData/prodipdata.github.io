@@ -109,12 +109,23 @@ const breadcrumb = {
         parameters: { clearColor: [0.027, 0.05, 0.11, 1] }
       });
 
-      function quantileScale(values) {
-        var v = values.filter(function (x) { return x > 0; }).sort(function (a, b) { return a - b; });
+      function logScale(values) {
+        // Color follows log(count) — the counts are extreme­ly skewed (median ~9, max ~160k),
+        // so a quantile/linear scale either floods the map red or drowns it blue. Log gives a
+        // smooth low→high gradient: real hubs (California, Frankfurt) glow, sparse regions recede.
+        var v = values.filter(function (x) { return x > 0; });
         if (!v.length) return function () { return NODATA; };
-        var n = RAMP.length, th = [];
-        for (var i = 1; i < n; i++) th.push(v[Math.floor(i / n * (v.length - 1))]);
-        return function (x) { if (x == null || x <= 0) return NODATA; var k = 0; while (k < th.length && x >= th[k]) k++; var c = RAMP[k]; return [c[0], c[1], c[2], 220]; };
+        var lo = Math.log(Math.min.apply(null, v));
+        var hi = Math.log(Math.max.apply(null, v));
+        var span = (hi - lo) || 1;
+        var n = RAMP.length;
+        return function (x) {
+          if (x == null || x <= 0) return NODATA;
+          var t = (Math.log(x) - lo) / span;            // 0..1
+          var k = Math.max(0, Math.min(n - 1, Math.floor(t * n)));
+          var c = RAMP[k];
+          return [c[0], c[1], c[2], 220];
+        };
       }
 
       function draw(features) {
@@ -197,7 +208,7 @@ const breadcrumb = {
       ]).then(function (res) {
         var geo = res[0], cdata = res[1];
         if (cdata && cdata.counts) counts = cdata.counts;
-        colorFor = quantileScale(Object.keys(counts).map(function (k) { return counts[k]; }));
+        colorFor = logScale(Object.keys(counts).map(function (k) { return counts[k]; }));
         var withData = Object.keys(counts).length;
         metaEl.textContent = withData
           ? withData.toLocaleString() + ' regions · ' + (cdata.release || release)
