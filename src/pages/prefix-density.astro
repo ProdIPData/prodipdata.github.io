@@ -86,7 +86,7 @@ const breadcrumb = {
       var cfg = document.getElementById('dcfg').dataset;
       var base = cfg.base.endsWith('/') ? cfg.base : cfg.base + '/';
       var release = cfg.release;
-      var RAMP = [[12,44,92],[14,116,144],[6,182,212],[250,204,21],[249,115,22],[239,68,68]];
+      var RAMP = [[44,123,182],[12,170,190],[60,200,150],[250,204,21],[249,115,22],[225,45,55]];
       document.getElementById('leg').innerHTML = RAMP.map(function (c) { return '<i style="background:rgb(' + c + ')"></i>'; }).join('');
       var tip = document.getElementById('dtip');
       var points = [], world = null;
@@ -113,6 +113,7 @@ const breadcrumb = {
           colorAggregation: 'SUM', elevationAggregation: 'SUM',
           radius: radius, coverage: 0.92, opacity: 0.85,
           extruded: extruded, elevationScale: extruded ? 25 : 0,
+          colorScaleType: 'quantile',
           colorRange: RAMP, pickable: true,
           updateTriggers: { getColorWeight: radius },
           onHover: function (info) {
