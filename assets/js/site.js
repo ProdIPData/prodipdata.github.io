@@ -1899,15 +1899,13 @@ function getReferenceConfig(page, releaseMonth) {
       columns: [
         { key: 'domain', label: 'Domain' },
         { key: 'type', label: 'Type' },
-        { key: 'manager', label: 'Manager' },
-        { key: 'location', label: 'Location' },
         { key: 'abbreviation', label: 'Abbrev.' },
-        { key: 'applicationId', label: 'Application ID' }
+        { key: 'manager', label: 'Manager' }
       ],
       notes: [
-        { title: 'What this catalog is for', text: 'This catalog gives the website a browsable namespace reference layer for TLD-oriented workflows, editorial notes, and future search experiences.' },
-        { title: 'Publication model', text: 'The browser view is paged to keep the static site responsive while still surfacing the full monthly row set.' },
-        { title: 'How to read the rows', text: 'Each row shows the domain, top-level category, sponsoring manager, and supporting identifiers captured in the exported dataset.' }
+        { title: 'What this catalog is for', text: 'A browsable reference of every current top-level domain — its category and the organisation that runs it.' },
+        { title: 'Source', text: 'Sourced directly from the IANA Root Zone Database and refreshed each release, so it mirrors the live root zone with no historical or retired entries.' },
+        { title: 'How to read the rows', text: 'Each row shows the domain, its top-level category (generic, country-code, sponsored, infrastructure) and its delegated manager.' }
       ],
       metricCards: function (items, payload, release) {
         const genericCount = items.filter(item => String(item.type || '').toLowerCase() === 'generic').length;
