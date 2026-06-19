@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import releases from '../../assets/data/releases.json';
+
+const release = releases.current_release;
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://geoiplocations.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Coverage', item: 'https://geoiplocations.com/coverage.html' },
+    { '@type': 'ListItem', position: 3, name: 'Region map', item: 'https://geoiplocations.com/prefix-region.html' },
+  ],
+};
+---
+<BaseLayout
+  title="IPv4 by Region (Admin-1) — State / Province Choropleth | ProdIPData"
+  description="An interactive admin-1 (ISO 3166-2) choropleth of city-precise IPv4 /24 space for the current GeoIP Locations release — see which states and provinces concentrate address space, rendered in your browser."
+  ogTitle="IPv4 by Region (Admin-1)"
+  canonicalPath="/prefix-region.html"
+  page="prefix-region"
+  navPage="coverage"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+
+  <main class="container region">
+    <section class="region-hero">
+      <h1>IPv4 by region</h1>
+      <p class="region-sub">
+        An admin-1 (ISO&nbsp;3166-2) choropleth of <strong>city-precise</strong> <code>/24</code> space for the
+        <strong>{release}</strong> release — only blocks that geolocate to metro precision are counted, so
+        country-level fallbacks don't inflate a whole state. Click any region to zoom into its country;
+        hover for the count. Built from public-domain Natural Earth boundaries, rendered in your browser.
+      </p>
+    </section>
+
+    <div class="rmap-wrap">
+      <div id="rmap"></div>
+      <div id="rpanel">
+        <div class="rp-title">Region footprint</div>
+        <div class="rp-meta" id="rmeta">loading…</div>
+        <button type="button" id="rreset" class="rp-btn" hidden>↺ Back to world</button>
+        <div class="rp-legend-label">sparse &rarr; dense</div>
+        <div class="rp-legend" id="rleg"></div>
+        <div class="rp-legend-ends"><span>fewer</span><span>more</span></div>
+        <div class="rp-nodata"><i></i> no city-precise data</div>
+      </div>
+      <div id="rtip"></div>
+    </div>
+
+    <p class="region-note muted">
+      City-precise = AccuracyRadius ≤ 100&nbsp;km. Country-level fallbacks are excluded by design.
+      Looking at the whole-address-space picture instead? See the <a href={`./prefix-density.html`}>density map</a>,
+      or look up a single block on <a href={`./prefix-lookup.html`}>Prefix Lookup</a>.
+    </p>
+  </main>
+
+  <div id="rcfg" data-release={release} data-base={import.meta.env.BASE_URL} hidden></div>
+
+  <style is:inline>
+    .region { padding: 2.2rem 0 3.5rem; max-width: 1100px; }
+    .region-hero h1 { margin: 0 0 .4rem; }
+    .region-sub { color: var(--muted); line-height: 1.7; margin: 0 0 1.4rem; }
+    .rmap-wrap { position: relative; width: 100%; height: 620px; border-radius: 18px; overflow: hidden;
+      border: 1px solid var(--line); background: #070d1c; }
+    #rmap { position: absolute; inset: 0; }
+    #rpanel { position: absolute; top: 14px; left: 14px; z-index: 2; width: 210px;
+      background: rgba(11,21,48,.9); border: 1px solid rgba(255,255,255,.12); border-radius: 12px;
+      padding: 13px 15px; color: var(--text); font-size: 13px; backdrop-filter: blur(6px); }
+    #rpanel .rp-title { font-size: 14px; font-weight: 500; }
+    #rpanel .rp-meta { color: var(--muted); font-size: 12px; margin: 1px 0 10px; }
+    .rp-btn { width: 100%; font: inherit; font-size: 12px; color: var(--text); cursor: pointer;
+      background: rgba(255,255,255,.06); border: 1px solid var(--line-strong); border-radius: 9px;
+      padding: 7px 10px; margin-bottom: 10px; }
+    .rp-btn:hover { background: rgba(255,255,255,.1); }
+    .rp-legend-label { color: var(--muted); font-size: 11px; }
+    .rp-legend { display: flex; height: 10px; border-radius: 5px; overflow: hidden; margin-top: 4px; }
+    .rp-legend i { flex: 1; }
+    .rp-legend-ends { display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; margin-top: 3px; }
+    .rp-nodata { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 11px; margin-top: 9px; }
+    .rp-nodata i { width: 12px; height: 12px; border-radius: 3px; background: rgb(38,50,74); border: 1px solid rgba(255,255,255,.12); }
+    #rtip { position: absolute; z-index: 3; pointer-events: none; background: rgba(0,0,0,.84); color: #fff;
+      font-size: 12px; padding: 5px 9px; border-radius: 6px; display: none; max-width: 240px; line-height: 1.35; }
+    #rtip b { color: #eaf2ff; }
+    .region-note { margin-top: 1.4rem; font-size: .9rem; }
+  </style>
+
+  <script is:inline src="https://cdn.jsdelivr.net/npm/deck.gl@9/dist.min.js"></script>
+  <script is:inline>
+    (function () {
+      var cfg = document.getElementById('rcfg').dataset;
+      var base = cfg.base.endsWith('/') ? cfg.base : cfg.base + '/';
+      var release = cfg.release;
+      var RAMP = [[44,123,182],[12,170,190],[60,200,150],[250,204,21],[249,115,22],[225,45,55]];
+      var NODATA = [38,50,74,150];
+      document.getElementById('rleg').innerHTML = RAMP.map(function (c) { return '<i style="background:rgb(' + c + ')"></i>'; }).join('');
+      var tip = document.getElementById('rtip');
+      var metaEl = document.getElementById('rmeta');
+      var resetBtn = document.getElementById('rreset');
+
+      var WORLD_VIEW = { longitude: 8, latitude: 28, zoom: 1.1, pitch: 0, bearing: 0 };
+      var counts = {}, colorFor = function () { return NODATA; }, ccBox = {};
+
+      var deckgl = new deck.DeckGL({
+        container: 'rmap',
+        initialViewState: Object.assign({}, WORLD_VIEW),
+        controller: true,
+        parameters: { clearColor: [0.027, 0.05, 0.11, 1] }
+      });
+
+      function quantileScale(values) {
+        var v = values.filter(function (x) { return x > 0; }).sort(function (a, b) { return a - b; });
+        if (!v.length) return function () { return NODATA; };
+        var n = RAMP.length, th = [];
+        for (var i = 1; i < n; i++) th.push(v[Math.floor(i / n * (v.length - 1))]);
+        return function (x) { if (x == null || x <= 0) return NODATA; var k = 0; while (k < th.length && x >= th[k]) k++; var c = RAMP[k]; return [c[0], c[1], c[2], 220]; };
+      }
+
+      function draw(features) {
+        deckgl.setProps({ layers: [ new deck.GeoJsonLayer({
+          id: 'regions', data: features, stroked: true, filled: true,
+          getFillColor: function (f) { return colorFor(counts[f.properties.r]); },
+          getLineColor: [255, 255, 255, 28], lineWidthMinPixels: 0.4, pickable: true,
+          updateTriggers: { getFillColor: [release] },
+          onHover: function (info) {
+            if (info.object) {
+              var p = info.object.properties, n = counts[p.r];
+              tip.style.display = 'block';
+              tip.style.left = (info.x + 12) + 'px';
+              tip.style.top = (info.y + 12) + 'px';
+              tip.innerHTML = '<b>' + (p.n || p.r || 'Region') + '</b>' + (p.c ? ' · ' + p.c : '') +
+                '<br>' + (n != null ? n.toLocaleString() + ' city-precise /24s' : 'no city-precise data');
+            } else { tip.style.display = 'none'; }
+          },
+          onClick: function (info) { if (info.object && info.object.properties.c) zoomToCountry(info.object.properties.c); }
+        }) ] });
+      }
+
+      function viewForBounds(bb) {
+        // bb = [minLng, minLat, maxLng, maxLat]; handle antimeridian wrap (US/RU/FJ).
+        var w = bb[0], s = bb[1], e = bb[2], n = bb[3];
+        var lngSpan = e - w, cx = (w + e) / 2;
+        if (lngSpan > 180 && bb[4] != null) { // shifted bbox is tighter
+          w = bb[4]; e = bb[5]; lngSpan = e - w; cx = (w + e) / 2; if (cx > 180) cx -= 360;
+        }
+        var cy = (s + n) / 2, latSpan = Math.max(n - s, 0.05);
+        lngSpan = Math.max(lngSpan, 0.05);
+        var el = document.getElementById('rmap');
+        if (deck.WebMercatorViewport) {
+          try {
+            var vp = new deck.WebMercatorViewport({ width: el.clientWidth || 900, height: el.clientHeight || 600 });
+            var fit = vp.fitBounds([[cx - lngSpan / 2, s], [cx + lngSpan / 2, n]], { padding: 44 });
+            return { longitude: fit.longitude, latitude: fit.latitude, zoom: Math.min(fit.zoom, 7) };
+          } catch (err) { /* fall through */ }
+        }
+        var z = Math.min(Math.log2(360 / lngSpan), Math.log2(170 / latSpan)) - 0.4;
+        return { longitude: cx, latitude: cy, zoom: Math.max(1, Math.min(z, 7)) };
+      }
+
+      function flyTo(view) {
+        var vs = Object.assign({}, view, { transitionDuration: 700 });
+        if (deck.FlyToInterpolator) vs.transitionInterpolator = new deck.FlyToInterpolator();
+        deckgl.setProps({ initialViewState: vs });
+      }
+
+      function zoomToCountry(cc) {
+        var bb = ccBox[cc]; if (!bb) return;
+        flyTo(viewForBounds(bb));
+        resetBtn.hidden = false;
+      }
+
+      resetBtn.addEventListener('click', function () { flyTo(Object.assign({}, WORLD_VIEW)); resetBtn.hidden = true; });
+
+      function indexBounds(features) {
+        // per-country bbox (normal + antimeridian-shifted) for click-to-zoom
+        ccBox = {};
+        for (var i = 0; i < features.length; i++) {
+          var f = features[i], cc = f.properties.c; if (!cc) continue;
+          var g = f.geometry, polys = g.type === 'Polygon' ? [g.coordinates] : g.coordinates;
+          var b = ccBox[cc] || (ccBox[cc] = [1e9, 1e9, -1e9, -1e9, 1e9, -1e9]);
+          for (var a = 0; a < polys.length; a++) for (var r = 0; r < polys[a].length; r++) {
+            var ring = polys[a][r];
+            for (var k = 0; k < ring.length; k++) {
+              var x = ring[k][0], y = ring[k][1], xs = x < 0 ? x + 360 : x;
+              if (x < b[0]) b[0] = x; if (x > b[2]) b[2] = x;
+              if (y < b[1]) b[1] = y; if (y > b[3]) b[3] = y;
+              if (xs < b[4]) b[4] = xs; if (xs > b[5]) b[5] = xs;
+            }
+          }
+        }
+      }
+
+      Promise.all([
+        fetch(base + 'assets/data/regions-admin1.geo.json').then(function (r) { return r.json(); }),
+        fetch(base + 'assets/data/regions-' + release + '.json').then(function (r) { return r.json(); }).catch(function () { return null; })
+      ]).then(function (res) {
+        var geo = res[0], cdata = res[1];
+        if (cdata && cdata.counts) counts = cdata.counts;
+        colorFor = quantileScale(Object.keys(counts).map(function (k) { return counts[k]; }));
+        var withData = Object.keys(counts).length;
+        metaEl.textContent = withData
+          ? withData.toLocaleString() + ' regions · ' + (cdata.release || release)
+          : 'region data not published yet';
+        indexBounds(geo.features);
+        draw(geo.features);
+      }).catch(function () { metaEl.textContent = 'map data unavailable'; });
+    })();
+  </script>
+</BaseLayout>
