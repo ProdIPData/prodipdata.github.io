@@ -191,6 +191,7 @@ const breadcrumb = {
     ];
 
     const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const flag = (cc) => { const c = String(cc || '').trim().toLowerCase(); return /^[a-z]{2}$/.test(c) ? `<span class="fi fi-${c}" aria-hidden="true"></span> ` : ''; };
 
     // IPInfo-style location map: auto-zoom to the block's country (point-in-polygon, no code tables),
     // pulsing pin at the exact /24 coordinate. No tiles, no API — Natural Earth outline only.
@@ -224,8 +225,9 @@ const breadcrumb = {
         `<rect width="${W}" height="${H}" class="lkm-ocean"/><g>${land}</g>` +
         `<g class="lkm-pin" transform="translate(${px.toFixed(1)},${py.toFixed(1)})">` +
         `<circle class="lkm-pulse" r="7"/><circle class="lkm-ring" r="7"/><circle class="lkm-dot" r="3.4"/></g></svg>`;
-      const parts = [val(row.CityName), val(row.RegionName), val(row.CountryCode)].filter(Boolean);
-      cap.textContent = (parts.length ? parts.join(', ') + ' · ' : '') + `${lat.toFixed(4)}, ${lon.toFixed(4)}`;
+      const cc = val(row.CountryCode);
+      const parts = [val(row.CityName), val(row.RegionName), cc].filter(Boolean);
+      cap.innerHTML = flag(cc) + esc((parts.length ? parts.join(', ') + ' · ' : '') + `${lat.toFixed(4)}, ${lon.toFixed(4)}`);
     }
 
     function render(prefix, row) {
@@ -246,7 +248,7 @@ const breadcrumb = {
             const on = (String(v) === 'true' || v === true || v === 1);
             return `<div class="lk-row"><span class="k">${label}</span><span class="v">${on ? '<span class="lk-badge warn">Yes</span>' : 'No'}</span></div>`;
           }
-          return `<div class="lk-row"><span class="k">${label}</span><span class="v">${esc(v)}</span></div>`;
+          return `<div class="lk-row"><span class="k">${label}</span><span class="v">${key === 'CountryCode' ? flag(v) : ''}${esc(v)}</span></div>`;
         }).join('');
         return rows ? `<div class="lk-card"><h2>${title}</h2><div class="lk-grid">${rows}</div></div>` : '';
       }).join('');
