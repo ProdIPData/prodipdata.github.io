@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import coverageRaw from '../../coverage.html?raw';
 import {
   numericValue, getItems, formatInteger, formatCompact, formatShare,
-  formatRirName, summarizeByRir, escapeHtml, loadData,
+  formatRirName, summarizeByRir, escapeHtml, loadData, flag,
 } from '../lib/format.js';
 
 const countryProfiles = loadData('country-profiles') || [];
@@ -35,11 +35,11 @@ const metricsHtml = `
 
 const tableHtml = topCoverage.map((item) => {
   const iso = escapeHtml(item.iso2 || '');
-  return `<tr class="coverage-table-row" tabindex="0" role="button" data-coverage-iso="${iso}" aria-label="Focus ${escapeHtml(item.countryName || item.iso2 || 'country')} on the map"><td><strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong><div class="table-subtext">${escapeHtml(item.topAsnName || 'Leading ASN unavailable')}</div></td><td>${escapeHtml(item.iso2 || 'N/A')}</td><td>${escapeHtml(formatRirName(item.rir || 'unknown'))}</td><td>${formatInteger(item.prefixCount)}</td><td>${formatCompact(item.ipv4Count)}</td><td>${formatShare(item.top1AsnShare)}</td></tr>`;
+  return `<tr class="coverage-table-row" tabindex="0" role="button" data-coverage-iso="${iso}" aria-label="Focus ${escapeHtml(item.countryName || item.iso2 || 'country')} on the map"><td>${flag(item.iso2)}<strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong><div class="table-subtext">${escapeHtml(item.topAsnName || 'Leading ASN unavailable')}</div></td><td>${escapeHtml(item.iso2 || 'N/A')}</td><td>${escapeHtml(formatRirName(item.rir || 'unknown'))}</td><td>${formatInteger(item.prefixCount)}</td><td>${formatCompact(item.ipv4Count)}</td><td>${formatShare(item.top1AsnShare)}</td></tr>`;
 }).join('');
 
 const rowList = (rows, fallbackAsn) => rows.map((item) => `
-  <div class="list-row"><div><strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong><small>${escapeHtml(item.iso2 || 'N/A')} · ${escapeHtml(item.topAsnName || fallbackAsn)} · ${formatInteger(item.asnCount)} ASNs</small></div><div class="list-metric"><strong>${formatShare(item.top1AsnShare)}</strong><small>leading ASN share</small></div></div>`).join('');
+  <div class="list-row"><div>${flag(item.iso2)}<strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong><small>${escapeHtml(item.iso2 || 'N/A')} · ${escapeHtml(item.topAsnName || fallbackAsn)} · ${formatInteger(item.asnCount)} ASNs</small></div><div class="list-metric"><strong>${formatShare(item.top1AsnShare)}</strong><small>leading ASN share</small></div></div>`).join('');
 
 const leadersHtml = rowList(leaders, 'No dominant ASN');
 const laggardsHtml = rowList(laggards, 'No single dominant ASN');

@@ -37,6 +37,9 @@ a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
 .muted { color: var(--muted); }
+/* Inline country flags (flag-icons). Faint ring keeps any flag legible on dark panels. */
+.fi { vertical-align: -0.12em; border-radius: 2px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .16); margin-right: .45em; }
+td .fi, .list-row .fi { flex: 0 0 auto; }
 
 .glass {
   background: var(--panel);
