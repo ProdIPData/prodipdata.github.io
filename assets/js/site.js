@@ -247,7 +247,7 @@ async function renderHomePage(context) {
       <div class="list-row">
         <div>
           <strong>${escapeHtml(item.asnName || `AS${item.asnId}`)}</strong>
-          <small>AS${formatInteger(item.asnId)} · ${escapeHtml(item.countryName || item.countryIso || 'Unknown')} · ${escapeHtml(formatAsnTypeLabel(item.asnType || 'unknown'))}</small>
+          <small>AS${formatInteger(item.asnId)} · ${flag(item.countryIso)}${escapeHtml(item.countryName || item.countryIso || 'Unknown')} · ${escapeHtml(formatAsnTypeLabel(item.asnType || 'unknown'))}</small>
         </div>
         <div class="list-metric">
           <strong>${formatInteger(item.prefixCount)}</strong>
@@ -262,7 +262,7 @@ async function renderHomePage(context) {
     countryNode.innerHTML = topCountries.map(item => `
       <div class="list-row">
         <div>
-          <strong>${escapeHtml(item.countryName || item.countryIso || 'Unknown')}</strong>
+          <strong>${flag(item.countryIso)}${escapeHtml(item.countryName || item.countryIso || 'Unknown')}</strong>
           <small>${escapeHtml(item.countryIso || 'N/A')} · ${formatInteger(item.asnCount)} ASNs</small>
         </div>
         <div class="list-metric">
@@ -373,7 +373,7 @@ async function renderCoveragePage(context) {
       return `
       <tr class="coverage-table-row" tabindex="0" role="button" data-coverage-iso="${iso}" aria-label="Focus ${escapeHtml(item.countryName || item.iso2 || 'country')} on the map">
         <td>
-          <strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong>
+          <strong>${flag(item.iso2)}${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong>
           <div class="table-subtext">${escapeHtml(item.topAsnName || 'Leading ASN unavailable')}</div>
         </td>
         <td>${escapeHtml(item.iso2 || 'N/A')}</td>
@@ -423,7 +423,7 @@ async function renderCoveragePage(context) {
     leadersNode.innerHTML = concentrationLeaders.map(item => `
       <div class="list-row">
         <div>
-          <strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong>
+          <strong>${flag(item.iso2)}${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong>
           <small>${escapeHtml(item.iso2 || 'N/A')} · ${escapeHtml(item.topAsnName || 'No dominant ASN')} · ${formatInteger(item.asnCount)} ASNs</small>
         </div>
         <div class="list-metric">
@@ -443,7 +443,7 @@ async function renderCoveragePage(context) {
     laggardsNode.innerHTML = leastConcentrated.map(item => `
       <div class="list-row">
         <div>
-          <strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong>
+          <strong>${flag(item.iso2)}${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong>
           <small>${escapeHtml(item.iso2 || 'N/A')} · ${escapeHtml(item.topAsnName || 'No single dominant ASN')} · ${formatInteger(item.asnCount)} ASNs</small>
         </div>
         <div class="list-metric">
@@ -1460,7 +1460,7 @@ async function renderAsnLandingPage(context) {
         <div class="list-row">
           <div>
             <strong>${escapeHtml(item.asnName || `AS${item.asnId}`)}</strong>
-            <small>AS${formatInteger(item.asnId)} · ${escapeHtml(item.countryName || item.countryIso || 'Unknown')} · ${escapeHtml(formatAsnTypeLabel(item.asnType || 'unknown'))}</small>
+            <small>AS${formatInteger(item.asnId)} · ${flag(item.countryIso)}${escapeHtml(item.countryName || item.countryIso || 'Unknown')} · ${escapeHtml(formatAsnTypeLabel(item.asnType || 'unknown'))}</small>
           </div>
           <div class="list-metric">
             <strong>${formatInteger(item.prefixCount)}</strong>
@@ -1477,7 +1477,7 @@ async function renderAsnLandingPage(context) {
         <div class="list-row">
           <div>
             <strong>${escapeHtml(item.asnName || `AS${item.asnId}`)}</strong>
-            <small>AS${formatInteger(item.asnId)} · ${escapeHtml(item.countryName || item.countryIso || 'Unknown')} · ${escapeHtml(formatAsnTypeLabel(item.asnType || 'unknown'))}</small>
+            <small>AS${formatInteger(item.asnId)} · ${flag(item.countryIso)}${escapeHtml(item.countryName || item.countryIso || 'Unknown')} · ${escapeHtml(formatAsnTypeLabel(item.asnType || 'unknown'))}</small>
           </div>
           <div class="list-metric">
             <strong>${formatInteger(item.prefixCount)}</strong>
@@ -2051,6 +2051,13 @@ function getItems(value) {
     return value;
   }
   return [];
+}
+
+// Inline flag <span> from an ISO 3166-1 alpha-2 code (flag-icons CSS classes).
+// Returns '' for missing/invalid codes so non-country values degrade gracefully.
+function flag(iso2) {
+  const c = String(iso2 == null ? '' : iso2).trim().toLowerCase();
+  return /^[a-z]{2}$/.test(c) ? `<span class="fi fi-${c}" aria-hidden="true"></span> ` : '';
 }
 
 function getItemCount(value) {
