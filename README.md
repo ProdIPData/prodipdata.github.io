@@ -1,65 +1,54 @@
-# GeoIP Locations — static website package v2
+# GeoIP Locations — free monthly IPv4 GeoIP datasets
 
-This package is a GitHub Pages-ready static website for **GeoIP Locations**, the public website brand of **ProdIPData**.
+**Country, ASN, RIR, WHOIS and risk attributes for the routed IPv4 Internet, published monthly as CSV, Parquet and MMDB — one record per `/24` prefix.** Open data under **CC BY 4.0**, by **ProdIPData**.
 
-## Included pages
+🌐 **Website:** https://geoiplocations.com  
+📦 **Downloads:** https://geoiplocations.com/downloads.html  
+🔎 **Prefix Lookup:** https://geoiplocations.com/prefix-lookup.html
 
-- `index.html`
-- `platform.html`
-- `coverage.html`
-- `methodology.html`
-- `downloads.html`
-- `contact.html`
-- `licensing.html`
-- `404.html`
+This repository hosts the public **GeoIP Locations** website (GitHub Pages). It is the home of a free, monthly **IP geolocation** dataset covering the routed IPv4 address space at **`/24`** granularity.
 
-## Included assets
+## What's in each `/24` prefix
 
-- `assets/css/styles.css`
-- `assets/js/site.js`
-- `assets/data/releases.json`
-- `assets/data/coverage-sample.json`
-- `.nojekyll`
+- **Geolocation** — country, region (ISO 3166-2), city, latitude/longitude, time zone
+- **Network / ASN** — ASN, name, organisation, type (ISP, hosting, business, education, government)
+- **Ownership (WHOIS)** — company, net name, abuse contact
+- **Registry (RIR)** — ARIN / RIPE / APNIC / LACNIC / AFRINIC, allocation date, status
+- **Risk signals** — bogon, Tor, anonymisation, command-and-control indicators
 
-## How to test locally
+## Formats
 
-The pages will open directly in a browser, but some browsers block `fetch()` requests to local JSON files when the site is opened with the `file://` protocol.
+| Format | Best for |
+| --- | --- |
+| **CSV** | Quick loading anywhere; per-country packages |
+| **Parquet** | Columnar analytics in DuckDB, pandas, Spark |
+| **MMDB** | MaxMind-compatible binary for fast in-app IP lookups |
 
-Two easy options:
+Special editions each release: **ALL** (full geolocated set), **BOG** (bogons), **GOV** (government), **EDU** (education).
 
-### Option 1 — simplest preview
-Open `index.html` directly in the browser. The layout will load, but the JSON-driven sections may stay empty depending on browser rules.
+## Browse it in your browser (no tracking, nothing sent to a server)
 
-### Option 2 — recommended local preview
-Run a tiny local web server from this folder. For example with Python:
+- **Prefix Lookup** — resolve any IPv4 address or `/24` to its full attribute record: https://geoiplocations.com/prefix-lookup.html
+- **Coverage** — country-level and region (admin-1) maps of the published footprint: https://geoiplocations.com/coverage.html
+- **Density map** — where IPv4 address space concentrates worldwide
+- **Methodology** — how the data is built and validated: https://geoiplocations.com/methodology.html
+
+## Coverage (current release)
+
+- **14M+** routed `/24` prefixes · **240+** countries · **~3.7B** IPv4 addresses represented
+- Coordinates spatially validated against public-domain Natural Earth boundaries (~99.97% country match)
+- TLD reference catalog sourced live from the IANA Root Zone Database
+
+## License
+
+Published **datasets and metadata** are licensed under **Creative Commons Attribution 4.0 (CC BY 4.0)** — free to use, including commercially, with attribution to **ProdIPData (GeoIP Locations)**. See [`licensing.html`](https://geoiplocations.com/licensing.html) and `LICENSE-DATA.md`.
+
+## Local preview
 
 ```bash
-python -m http.server 8000
+python -m http.server 8000   # then open http://localhost:8000
 ```
 
-Then open:
+---
 
-```text
-http://localhost:8000
-```
-
-## How to publish on GitHub Pages
-
-1. Create or open your GitHub repository.
-2. Upload all files from this folder to the repository root.
-3. In repository settings, enable **Pages**.
-4. Publish from the main branch root.
-
-## Monthly update model
-
-The layout is separated from the data. For routine monthly refreshes, you can update:
-
-- `assets/data/releases.json`
-- `assets/data/coverage-sample.json`
-
-Later, those files can be generated automatically from your ProdIP export process.
-
-
-## Dataset licensing
-
-Unless otherwise stated, published datasets and metadata are licensed under **CC BY 4.0**. See `licensing.html` and `LICENSE-DATA.md`.
+**Keywords:** IPv4 GeoIP, IP geolocation, IP-to-country, IP-to-ASN, IP address database, `/24` prefixes, GeoIP CSV, GeoIP Parquet, GeoIP MMDB, MaxMind-compatible, RIR, WHOIS, ASN data, free GeoIP database, monthly IP dataset, open data.
