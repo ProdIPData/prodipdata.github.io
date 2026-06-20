@@ -772,7 +772,7 @@ function renderCoverageMap(context) {
     const countryAsnMix = countryAsnMixMap.get(String(profile.iso2 || '').toUpperCase()) || null;
     const registryTopAsn = topAsnByRirMap.get(rir) || null;
 
-    titleNode.textContent = profile.countryName || profile.iso2 || 'Unknown country';
+    titleNode.innerHTML = flag(profile.iso2) + escapeHtml(profile.countryName || profile.iso2 || 'Unknown country');
     descriptionNode.textContent = `${profile.countryName || profile.iso2} (${profile.iso2 || 'n/a'}${profile.tld ? ` · ${profile.tld}` : ''}) is currently published under ${formatRirName(rir)}. The panel below summarizes the country footprint and the broader registry totals for this release.`;
     rirNode.textContent = formatRirName(rir);
     capitalNode.textContent = profile.capital || 'n/a';
@@ -980,7 +980,7 @@ function renderCoverageMap(context) {
 
     tooltip.hidden = false;
     tooltip.innerHTML = `
-      <strong>${escapeHtml(profile.countryName || profile.iso2 || 'Unknown country')}</strong>
+      <strong>${flag(profile.iso2)}${escapeHtml(profile.countryName || profile.iso2 || 'Unknown country')}</strong>
       <span>${escapeHtml(profile.iso2 || 'N/A')} · ${escapeHtml(formatRirName(profile.rir || ''))}</span>
       <span>${formatCompact(profile.prefixCount)} /24s · ${formatInteger(profile.asnCount)} ASNs</span>
       <span>${formatShare(profile.top1AsnShare)} lead ASN share</span>
@@ -1357,7 +1357,7 @@ async function renderCountryLandingPage(context) {
       ? largestCountries.map(item => `
         <div class="list-row">
           <div>
-            <strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown country')}</strong>
+            <strong>${flag(item.iso2)}${escapeHtml(item.countryName || item.iso2 || 'Unknown country')}</strong>
             <small>${escapeHtml(item.iso2 || 'N/A')} · ${escapeHtml(formatRirName(item.rir || 'unknown'))} · top ASN ${escapeHtml(formatCountryTopAsnLabel(item))}</small>
           </div>
           <div class="list-metric">
@@ -1374,7 +1374,7 @@ async function renderCountryLandingPage(context) {
       ? asnDenseCountries.map(item => `
         <div class="list-row">
           <div>
-            <strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown country')}</strong>
+            <strong>${flag(item.iso2)}${escapeHtml(item.countryName || item.iso2 || 'Unknown country')}</strong>
             <small>${escapeHtml(item.iso2 || 'N/A')} · ${escapeHtml(formatRirName(item.rir || 'unknown'))} · ${formatCompact(item.ipv4Count)} IPv4 est.</small>
           </div>
           <div class="list-metric">
@@ -1391,7 +1391,7 @@ async function renderCountryLandingPage(context) {
       ? concentratedCountries.map(item => `
         <div class="list-row">
           <div>
-            <strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown country')}</strong>
+            <strong>${flag(item.iso2)}${escapeHtml(item.countryName || item.iso2 || 'Unknown country')}</strong>
             <small>${escapeHtml(item.iso2 || 'N/A')} · ${escapeHtml(formatCountryTopAsnLabel(item))} · top 5 share ${formatShare(item.top5AsnShare)}</small>
           </div>
           <div class="list-metric">
