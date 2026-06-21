@@ -4,7 +4,8 @@
 
 🌐 **Website:** https://geoiplocations.com  
 📦 **Downloads:** https://geoiplocations.com/downloads.html  
-🔎 **Prefix Lookup:** https://geoiplocations.com/prefix-lookup.html
+🔎 **Prefix Lookup:** https://geoiplocations.com/prefix-lookup.html  
+🤗 **Open dataset (Parquet):** https://huggingface.co/datasets/ProdIPData/geoip-locations
 
 This repository hosts the public **GeoIP Locations** website (GitHub Pages). It is the home of a free, monthly **IP geolocation** dataset covering the routed IPv4 address space at **`/24`** granularity.
 
