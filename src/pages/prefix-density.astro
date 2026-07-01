@@ -91,6 +91,23 @@ const breadcrumb = {
       var tip = document.getElementById('dtip');
       var points = [], world = null;
 
+      // Dominant-country tag for the hover tooltip. Points carry an ISO code at index 3
+      // (from Build-Density-Data.py); tally by /24 weight and resolve to a country name.
+      var REGION = (typeof Intl !== 'undefined' && Intl.DisplayNames) ? new Intl.DisplayNames(['en'], { type: 'region' }) : null;
+      function ccName(cc) { if (!cc) return null; try { return REGION ? (REGION.of(cc) || cc) : cc; } catch (e) { return cc; } }
+      function dominantCountry(pts) {
+        if (!pts || !pts.length) return null;
+        var tally = {}, best = null, bestN = 0;
+        for (var i = 0; i < pts.length; i++) {
+          var d = pts[i].source || pts[i];        // deck.gl may wrap source data as {source,index}
+          if (!d) continue;
+          var cc = d[3]; if (!cc) continue;
+          tally[cc] = (tally[cc] || 0) + (d[2] || 1);
+        }
+        for (var k in tally) { if (tally[k] > bestN) { bestN = tally[k]; best = k; } }
+        return best ? ccName(best) : null;
+      }
+
       var deckgl = new deck.DeckGL({
         container: 'dmap',
         initialViewState: { longitude: 5, latitude: 25, zoom: 1.15, pitch: 0, bearing: 0 },
@@ -122,7 +139,10 @@ const breadcrumb = {
               tip.style.display = 'block';
               tip.style.left = (info.x + 12) + 'px';
               tip.style.top = (info.y + 12) + 'px';
-              tip.textContent = n.toLocaleString() + ' /24s in this hex';
+              var msg = n.toLocaleString() + ' /24s in this hex';
+              var top = dominantCountry(info.object.points);
+              if (top) msg += ' · mostly ' + top;
+              tip.textContent = msg;
             } else { tip.style.display = 'none'; }
           }
         }));

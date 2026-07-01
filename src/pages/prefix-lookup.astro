@@ -96,6 +96,7 @@ const breadcrumb = {
     .lkm-ocean { fill:#070d1c; }
     .lkm-land { fill: rgba(255,255,255,.07); stroke: rgba(255,255,255,.14); stroke-width:.5; }
     .lkm-cur { fill: rgba(45,212,191,.16); stroke: rgba(45,212,191,.55); stroke-width:.9; }
+    .lkm-acc { fill: rgba(45,212,191,.08); stroke: rgba(45,212,191,.38); stroke-width:1; stroke-dasharray:5 4; }
     .lkm-dot { fill: var(--accent); }
     .lkm-ring { fill:none; stroke: var(--accent); stroke-width:1.5; }
     .lkm-pulse { fill: var(--accent); opacity:.5; transform-box: fill-box; transform-origin:center; animation: lkmpulse 1.8s ease-out infinite; }
@@ -171,7 +172,7 @@ const breadcrumb = {
       ['Location', [
         ['CountryCode', 'Country'], ['ContinentCode', 'Continent'], ['IsInEU', 'In EU'],
         ['RegionName', 'Region'], ['CityName', 'City'],
-        ['Latitude', 'Latitude'], ['Longitude', 'Longitude'], ['TimeZone', 'Time zone'],
+        ['Latitude', 'Latitude'], ['Longitude', 'Longitude'], ['AccuracyRadius', 'Accuracy'], ['TimeZone', 'Time zone'],
       ]],
       ['Network / ASN', [
         ['ASNID', 'ASN'], ['ASNName', 'ASN name'], ['ASNOrg', 'ASN org'],
@@ -192,6 +193,17 @@ const breadcrumb = {
 
     const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
     const flag = (cc) => { const c = String(cc || '').trim().toLowerCase(); return /^[a-z]{2}$/.test(c) ? `<span class="fi fi-${c}" aria-hidden="true"></span> ` : ''; };
+
+    // Interpret the block's AccuracyRadius (km). Drives the map circle + honest labelling:
+    //   <=100 km  city-precise · 100-500 km  approximate · >=500 km  country-level fallback.
+    const accInfo = (row) => {
+      const a = Number(val(row.AccuracyRadius));
+      if (!isFinite(a) || a <= 0) return null;
+      const km = Math.round(a);
+      if (a >= 500) return { km, level: 'country', word: 'country-level' };
+      if (a > 100)  return { km, level: 'region',  word: 'approximate' };
+      return { km, level: 'city', word: 'city-precise' };
+    };
 
     // IPInfo-style location map: auto-zoom to the block's country (point-in-polygon, no code tables),
     // pulsing pin at the exact /24 coordinate. No tiles, no API — Natural Earth outline only.
@@ -220,19 +232,37 @@ const breadcrumb = {
       const land = feats.map((f) => { const d = path(f); return d ? `<path d="${d}" class="lkm-land${f === country ? ' lkm-cur' : ''}"/>` : ''; }).join('');
       const p = proj([lon, lat]);
       const px = p ? p[0] : W / 2, py = p ? p[1] : H / 2;
+      // Accuracy circle: convert AccuracyRadius (km) to pixels via the live projection
+      // (~111 km per degree of latitude), clamped so a country-level radius stays drawable.
+      const acc = accInfo(row);
+      let accCircle = '';
+      if (acc) {
+        const p2 = proj([lon, lat + acc.km / 111]);
+        let rpx = p2 ? Math.hypot(p2[0] - px, p2[1] - py) : 0;
+        rpx = Math.max(6, Math.min(rpx, Math.max(W, H)));
+        accCircle = `<circle class="lkm-acc" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${rpx.toFixed(1)}"/>`;
+      }
       mount.innerHTML =
         `<svg viewBox="0 0 ${W} ${H}" class="lkm-svg" role="img" aria-label="Approximate location of the block">` +
-        `<rect width="${W}" height="${H}" class="lkm-ocean"/><g>${land}</g>` +
+        `<rect width="${W}" height="${H}" class="lkm-ocean"/><g>${land}</g>` + accCircle +
         `<g class="lkm-pin" transform="translate(${px.toFixed(1)},${py.toFixed(1)})">` +
         `<circle class="lkm-pulse" r="7"/><circle class="lkm-ring" r="7"/><circle class="lkm-dot" r="3.4"/></g></svg>`;
       const cc = val(row.CountryCode);
-      const parts = [val(row.CityName), val(row.RegionName), cc].filter(Boolean);
-      cap.innerHTML = flag(cc) + esc((parts.length ? parts.join(', ') + ' · ' : '') + `${lat.toFixed(4)}, ${lon.toFixed(4)}`);
+      if (acc && acc.level === 'country') {
+        // Low-confidence block: honestly label the country-centroid fallback, don't assert a city.
+        cap.innerHTML = flag(cc) + esc(`Approximate — country-level${cc ? ` (${cc})` : ''} · ${lat.toFixed(4)}, ${lon.toFixed(4)} · ±${acc.km} km`);
+      } else {
+        const parts = [val(row.CityName), val(row.RegionName), cc].filter(Boolean);
+        const suff = acc ? ` · ±${acc.km} km` : '';
+        cap.innerHTML = flag(cc) + esc((parts.length ? parts.join(', ') + ' · ' : '') + `${lat.toFixed(4)}, ${lon.toFixed(4)}` + suff);
+      }
     }
 
     function render(prefix, row) {
       const _lat = Number(val(row.Latitude)), _lon = Number(val(row.Longitude));
       const hasCoord = isFinite(_lat) && isFinite(_lon);
+      const acc = accInfo(row);
+      const countryLevel = !!acc && acc.level === 'country';
       const head = `<div class="lk-card"><div class="lk-head">${esc(prefix)}</div>
         <div class="muted" style="margin-top:.2rem">Snapshot ${esc(val(row.snapshot_month) || RELEASE)}</div></div>`;
       const mapCard = hasCoord ? `<div class="lk-card lkm-card"><h2>Approx. location</h2><div id="lkmMount" class="lkm-wrap"></div><div id="lkmCap" class="lkm-cap muted"></div></div>` : '';
@@ -244,9 +274,14 @@ const breadcrumb = {
           else if (key === 'RIR') v = String(v).toUpperCase();
           else if (key === 'RIRAllocationDate' && /^\d{8}$/.test(String(v))) { const s = String(v); v = `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 8)}`; }
           else if (key === 'ASNID') v = 'AS' + v;
+          else if (key === 'AccuracyRadius') { const km = Math.round(Number(v)); v = `${km} km${acc ? ` · ${acc.word}` : ''}`; }
           if (key === 'HasC2') {
             const on = (String(v) === 'true' || v === true || v === 1);
             return `<div class="lk-row"><span class="k">${label}</span><span class="v">${on ? '<span class="lk-badge warn">Yes</span>' : 'No'}</span></div>`;
+          }
+          // Country-level fallback: don't assert a best-guess city/region — flag it as approximate.
+          if ((key === 'CityName' || key === 'RegionName') && countryLevel) {
+            return `<div class="lk-row"><span class="k">${label}</span><span class="v" style="opacity:.6" title="Low confidence — this block geolocates only to country level">${esc(v)} (approx.)</span></div>`;
           }
           return `<div class="lk-row"><span class="k">${label}</span><span class="v">${key === 'CountryCode' ? flag(v) : ''}${esc(v)}</span></div>`;
         }).join('');
