@@ -247,7 +247,7 @@ async function renderHomePage(context) {
       <div class="list-row">
         <div>
           <strong>${escapeHtml(item.asnName || `AS${item.asnId}`)}</strong>
-          <small>AS${formatInteger(item.asnId)} · ${escapeHtml(item.countryName || item.countryIso || 'Unknown')} · ${escapeHtml(formatAsnTypeLabel(item.asnType || 'unknown'))}</small>
+          <small>AS${formatInteger(item.asnId)} · ${flag(item.countryIso)}${escapeHtml(item.countryName || item.countryIso || 'Unknown')} · ${escapeHtml(formatAsnTypeLabel(item.asnType || 'unknown'))}</small>
         </div>
         <div class="list-metric">
           <strong>${formatInteger(item.prefixCount)}</strong>
@@ -262,7 +262,7 @@ async function renderHomePage(context) {
     countryNode.innerHTML = topCountries.map(item => `
       <div class="list-row">
         <div>
-          <strong>${escapeHtml(item.countryName || item.countryIso || 'Unknown')}</strong>
+          <strong>${flag(item.countryIso)}${escapeHtml(item.countryName || item.countryIso || 'Unknown')}</strong>
           <small>${escapeHtml(item.countryIso || 'N/A')} · ${formatInteger(item.asnCount)} ASNs</small>
         </div>
         <div class="list-metric">
@@ -373,7 +373,7 @@ async function renderCoveragePage(context) {
       return `
       <tr class="coverage-table-row" tabindex="0" role="button" data-coverage-iso="${iso}" aria-label="Focus ${escapeHtml(item.countryName || item.iso2 || 'country')} on the map">
         <td>
-          <strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong>
+          <strong>${flag(item.iso2)}${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong>
           <div class="table-subtext">${escapeHtml(item.topAsnName || 'Leading ASN unavailable')}</div>
         </td>
         <td>${escapeHtml(item.iso2 || 'N/A')}</td>
@@ -423,7 +423,7 @@ async function renderCoveragePage(context) {
     leadersNode.innerHTML = concentrationLeaders.map(item => `
       <div class="list-row">
         <div>
-          <strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong>
+          <strong>${flag(item.iso2)}${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong>
           <small>${escapeHtml(item.iso2 || 'N/A')} · ${escapeHtml(item.topAsnName || 'No dominant ASN')} · ${formatInteger(item.asnCount)} ASNs</small>
         </div>
         <div class="list-metric">
@@ -443,7 +443,7 @@ async function renderCoveragePage(context) {
     laggardsNode.innerHTML = leastConcentrated.map(item => `
       <div class="list-row">
         <div>
-          <strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong>
+          <strong>${flag(item.iso2)}${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong>
           <small>${escapeHtml(item.iso2 || 'N/A')} · ${escapeHtml(item.topAsnName || 'No single dominant ASN')} · ${formatInteger(item.asnCount)} ASNs</small>
         </div>
         <div class="list-metric">
@@ -772,7 +772,7 @@ function renderCoverageMap(context) {
     const countryAsnMix = countryAsnMixMap.get(String(profile.iso2 || '').toUpperCase()) || null;
     const registryTopAsn = topAsnByRirMap.get(rir) || null;
 
-    titleNode.textContent = profile.countryName || profile.iso2 || 'Unknown country';
+    titleNode.innerHTML = flag(profile.iso2) + escapeHtml(profile.countryName || profile.iso2 || 'Unknown country');
     descriptionNode.textContent = `${profile.countryName || profile.iso2} (${profile.iso2 || 'n/a'}${profile.tld ? ` · ${profile.tld}` : ''}) is currently published under ${formatRirName(rir)}. The panel below summarizes the country footprint and the broader registry totals for this release.`;
     rirNode.textContent = formatRirName(rir);
     capitalNode.textContent = profile.capital || 'n/a';
@@ -980,7 +980,7 @@ function renderCoverageMap(context) {
 
     tooltip.hidden = false;
     tooltip.innerHTML = `
-      <strong>${escapeHtml(profile.countryName || profile.iso2 || 'Unknown country')}</strong>
+      <strong>${flag(profile.iso2)}${escapeHtml(profile.countryName || profile.iso2 || 'Unknown country')}</strong>
       <span>${escapeHtml(profile.iso2 || 'N/A')} · ${escapeHtml(formatRirName(profile.rir || ''))}</span>
       <span>${formatCompact(profile.prefixCount)} /24s · ${formatInteger(profile.asnCount)} ASNs</span>
       <span>${formatShare(profile.top1AsnShare)} lead ASN share</span>
@@ -1357,7 +1357,7 @@ async function renderCountryLandingPage(context) {
       ? largestCountries.map(item => `
         <div class="list-row">
           <div>
-            <strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown country')}</strong>
+            <strong>${flag(item.iso2)}${escapeHtml(item.countryName || item.iso2 || 'Unknown country')}</strong>
             <small>${escapeHtml(item.iso2 || 'N/A')} · ${escapeHtml(formatRirName(item.rir || 'unknown'))} · top ASN ${escapeHtml(formatCountryTopAsnLabel(item))}</small>
           </div>
           <div class="list-metric">
@@ -1374,7 +1374,7 @@ async function renderCountryLandingPage(context) {
       ? asnDenseCountries.map(item => `
         <div class="list-row">
           <div>
-            <strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown country')}</strong>
+            <strong>${flag(item.iso2)}${escapeHtml(item.countryName || item.iso2 || 'Unknown country')}</strong>
             <small>${escapeHtml(item.iso2 || 'N/A')} · ${escapeHtml(formatRirName(item.rir || 'unknown'))} · ${formatCompact(item.ipv4Count)} IPv4 est.</small>
           </div>
           <div class="list-metric">
@@ -1391,7 +1391,7 @@ async function renderCountryLandingPage(context) {
       ? concentratedCountries.map(item => `
         <div class="list-row">
           <div>
-            <strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown country')}</strong>
+            <strong>${flag(item.iso2)}${escapeHtml(item.countryName || item.iso2 || 'Unknown country')}</strong>
             <small>${escapeHtml(item.iso2 || 'N/A')} · ${escapeHtml(formatCountryTopAsnLabel(item))} · top 5 share ${formatShare(item.top5AsnShare)}</small>
           </div>
           <div class="list-metric">
@@ -1460,7 +1460,7 @@ async function renderAsnLandingPage(context) {
         <div class="list-row">
           <div>
             <strong>${escapeHtml(item.asnName || `AS${item.asnId}`)}</strong>
-            <small>AS${formatInteger(item.asnId)} · ${escapeHtml(item.countryName || item.countryIso || 'Unknown')} · ${escapeHtml(formatAsnTypeLabel(item.asnType || 'unknown'))}</small>
+            <small>AS${formatInteger(item.asnId)} · ${flag(item.countryIso)}${escapeHtml(item.countryName || item.countryIso || 'Unknown')} · ${escapeHtml(formatAsnTypeLabel(item.asnType || 'unknown'))}</small>
           </div>
           <div class="list-metric">
             <strong>${formatInteger(item.prefixCount)}</strong>
@@ -1477,7 +1477,7 @@ async function renderAsnLandingPage(context) {
         <div class="list-row">
           <div>
             <strong>${escapeHtml(item.asnName || `AS${item.asnId}`)}</strong>
-            <small>AS${formatInteger(item.asnId)} · ${escapeHtml(item.countryName || item.countryIso || 'Unknown')} · ${escapeHtml(formatAsnTypeLabel(item.asnType || 'unknown'))}</small>
+            <small>AS${formatInteger(item.asnId)} · ${flag(item.countryIso)}${escapeHtml(item.countryName || item.countryIso || 'Unknown')} · ${escapeHtml(formatAsnTypeLabel(item.asnType || 'unknown'))}</small>
           </div>
           <div class="list-metric">
             <strong>${formatInteger(item.prefixCount)}</strong>
@@ -1899,15 +1899,13 @@ function getReferenceConfig(page, releaseMonth) {
       columns: [
         { key: 'domain', label: 'Domain' },
         { key: 'type', label: 'Type' },
-        { key: 'manager', label: 'Manager' },
-        { key: 'location', label: 'Location' },
         { key: 'abbreviation', label: 'Abbrev.' },
-        { key: 'applicationId', label: 'Application ID' }
+        { key: 'manager', label: 'Manager' }
       ],
       notes: [
-        { title: 'What this catalog is for', text: 'This catalog gives the website a browsable namespace reference layer for TLD-oriented workflows, editorial notes, and future search experiences.' },
-        { title: 'Publication model', text: 'The browser view is paged to keep the static site responsive while still surfacing the full monthly row set.' },
-        { title: 'How to read the rows', text: 'Each row shows the domain, top-level category, sponsoring manager, and supporting identifiers captured in the exported dataset.' }
+        { title: 'What this catalog is for', text: 'A browsable reference of every current top-level domain — its category and the organisation that runs it.' },
+        { title: 'Source', text: 'Sourced directly from the IANA Root Zone Database and refreshed each release, so it mirrors the live root zone with no historical or retired entries.' },
+        { title: 'How to read the rows', text: 'Each row shows the domain, its top-level category (generic, country-code, sponsored, infrastructure) and its delegated manager.' }
       ],
       metricCards: function (items, payload, release) {
         const genericCount = items.filter(item => String(item.type || '').toLowerCase() === 'generic').length;
@@ -2053,6 +2051,13 @@ function getItems(value) {
     return value;
   }
   return [];
+}
+
+// Inline flag <span> from an ISO 3166-1 alpha-2 code (flag-icons CSS classes).
+// Returns '' for missing/invalid codes so non-country values degrade gracefully.
+function flag(iso2) {
+  const c = String(iso2 == null ? '' : iso2).trim().toLowerCase();
+  return /^[a-z]{2}$/.test(c) ? `<span class="fi fi-${c}" aria-hidden="true"></span> ` : '';
 }
 
 function getItemCount(value) {

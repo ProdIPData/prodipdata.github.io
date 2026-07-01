@@ -105,3 +105,10 @@ export const formatCountryTopAsnLabel = (item) => {
   return item.topAsnName || 'No dominant ASN';
 };
 
+// Inline flag <span> from an ISO 3166-1 alpha-2 code (flag-icons CSS classes).
+// Returns '' for missing/invalid codes so non-country rows degrade gracefully.
+export const flag = (iso2) => {
+  const c = String(iso2 == null ? '' : iso2).trim().toLowerCase();
+  return /^[a-z]{2}$/.test(c) ? `<span class="fi fi-${c}" aria-hidden="true"></span> ` : '';
+};
+

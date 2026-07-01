@@ -1,0 +1,1731 @@
+[
+  {
+    "iso2": "AD",
+    "countryName": "Andorra",
+    "top1AsnShare": 0.75080906,
+    "top5AsnShare": 0.89320388,
+    "top10AsnShare": 0.94822006
+  },
+  {
+    "iso2": "AE",
+    "countryName": "United Arab Emirates",
+    "top1AsnShare": 0.36963736,
+    "top5AsnShare": 0.81436168,
+    "top10AsnShare": 0.9084003
+  },
+  {
+    "iso2": "AF",
+    "countryName": "Afghanistan",
+    "top1AsnShare": 0.24351585,
+    "top5AsnShare": 0.58213256,
+    "top10AsnShare": 0.73631124
+  },
+  {
+    "iso2": "AG",
+    "countryName": "Antigua and Barbuda",
+    "top1AsnShare": 0.48863636,
+    "top5AsnShare": 0.81818182,
+    "top10AsnShare": 0.91477273
+  },
+  {
+    "iso2": "AI",
+    "countryName": "Anguilla",
+    "top1AsnShare": 0.40425532,
+    "top5AsnShare": 0.80851064,
+    "top10AsnShare": 0.93617021
+  },
+  {
+    "iso2": "AL",
+    "countryName": "Albania",
+    "top1AsnShare": 0.21068702,
+    "top5AsnShare": 0.49694656,
+    "top10AsnShare": 0.61832061
+  },
+  {
+    "iso2": "AM",
+    "countryName": "Armenia",
+    "top1AsnShare": 0.25103448,
+    "top5AsnShare": 0.70988506,
+    "top10AsnShare": 0.77793103
+  },
+  {
+    "iso2": "AO",
+    "countryName": "Angola",
+    "top1AsnShare": 0.40585443,
+    "top5AsnShare": 0.82278481,
+    "top10AsnShare": 0.95530063
+  },
+  {
+    "iso2": "AQ",
+    "countryName": "Antarctica",
+    "top1AsnShare": 0.33333333,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "AR",
+    "countryName": "Argentina",
+    "top1AsnShare": 0.43237016,
+    "top5AsnShare": 0.7422862,
+    "top10AsnShare": 0.78756257
+  },
+  {
+    "iso2": "AS",
+    "countryName": "American Samoa",
+    "top1AsnShare": 0.47945205,
+    "top5AsnShare": 0.89041096,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "AT",
+    "countryName": "Austria",
+    "top1AsnShare": 0.25552883,
+    "top5AsnShare": 0.53055744,
+    "top10AsnShare": 0.60500689
+  },
+  {
+    "iso2": "AU",
+    "countryName": "Australia",
+    "top1AsnShare": 0.27909728,
+    "top5AsnShare": 0.56453065,
+    "top10AsnShare": 0.67236684
+  },
+  {
+    "iso2": "AW",
+    "countryName": "Aruba",
+    "top1AsnShare": 0.89783282,
+    "top5AsnShare": 0.97832817,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "AX",
+    "countryName": "Aland Islands",
+    "top1AsnShare": 0.85294118,
+    "top5AsnShare": 0.98529412,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "AZ",
+    "countryName": "Azerbaijan",
+    "top1AsnShare": 0.12738854,
+    "top5AsnShare": 0.46047209,
+    "top10AsnShare": 0.60734357
+  },
+  {
+    "iso2": "BA",
+    "countryName": "Bosnia and Herzegovina",
+    "top1AsnShare": 0.20865533,
+    "top5AsnShare": 0.72117465,
+    "top10AsnShare": 0.8763524
+  },
+  {
+    "iso2": "BB",
+    "countryName": "Barbados",
+    "top1AsnShare": 0.66273585,
+    "top5AsnShare": 0.94339623,
+    "top10AsnShare": 0.97641509
+  },
+  {
+    "iso2": "BD",
+    "countryName": "Bangladesh",
+    "top1AsnShare": 0.03716638,
+    "top5AsnShare": 0.14080818,
+    "top10AsnShare": 0.20416563
+  },
+  {
+    "iso2": "BE",
+    "countryName": "Belgium",
+    "top1AsnShare": 0.32576806,
+    "top5AsnShare": 0.77219017,
+    "top10AsnShare": 0.84438672
+  },
+  {
+    "iso2": "BF",
+    "countryName": "Burkina Faso",
+    "top1AsnShare": 0.6794767,
+    "top5AsnShare": 0.89125102,
+    "top10AsnShare": 0.93540474
+  },
+  {
+    "iso2": "BG",
+    "countryName": "Bulgaria",
+    "top1AsnShare": 0.20241599,
+    "top5AsnShare": 0.42917586,
+    "top10AsnShare": 0.53433897
+  },
+  {
+    "iso2": "BH",
+    "countryName": "Bahrain",
+    "top1AsnShare": 0.40700809,
+    "top5AsnShare": 0.93839045,
+    "top10AsnShare": 0.96919523
+  },
+  {
+    "iso2": "BI",
+    "countryName": "Burundi",
+    "top1AsnShare": 0.53125,
+    "top5AsnShare": 0.8671875,
+    "top10AsnShare": 0.9765625
+  },
+  {
+    "iso2": "BJ",
+    "countryName": "Benin",
+    "top1AsnShare": 0.52561983,
+    "top5AsnShare": 0.83801653,
+    "top10AsnShare": 0.94049587
+  },
+  {
+    "iso2": "BL",
+    "countryName": "Saint Barthelemy",
+    "top1AsnShare": 0.18181818,
+    "top5AsnShare": 0.72727273,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "BM",
+    "countryName": "Bermuda",
+    "top1AsnShare": 0.57727273,
+    "top5AsnShare": 0.86590909,
+    "top10AsnShare": 0.92727273
+  },
+  {
+    "iso2": "BN",
+    "countryName": "Brunei",
+    "top1AsnShare": 0.41223833,
+    "top5AsnShare": 0.92914654,
+    "top10AsnShare": 0.95974235
+  },
+  {
+    "iso2": "BO",
+    "countryName": "Bolivia",
+    "top1AsnShare": 0.35341365,
+    "top5AsnShare": 0.84527584,
+    "top10AsnShare": 0.94610019
+  },
+  {
+    "iso2": "BQ",
+    "countryName": "Bonaire, Saint Eustatius and Saba ",
+    "top1AsnShare": 0.52380952,
+    "top5AsnShare": 0.98095238,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "BR",
+    "countryName": "Brazil",
+    "top1AsnShare": 0.12849164,
+    "top5AsnShare": 0.4852264,
+    "top10AsnShare": 0.63559978
+  },
+  {
+    "iso2": "BS",
+    "countryName": "Bahamas",
+    "top1AsnShare": 0.61788618,
+    "top5AsnShare": 0.92520325,
+    "top10AsnShare": 0.96097561
+  },
+  {
+    "iso2": "BT",
+    "countryName": "Bhutan",
+    "top1AsnShare": 0.23557692,
+    "top5AsnShare": 0.66826923,
+    "top10AsnShare": 0.82211538
+  },
+  {
+    "iso2": "BV",
+    "countryName": "Bouvet Island",
+    "top1AsnShare": 1.0,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "BW",
+    "countryName": "Botswana",
+    "top1AsnShare": 0.3773862,
+    "top5AsnShare": 0.67694567,
+    "top10AsnShare": 0.8061674
+  },
+  {
+    "iso2": "BY",
+    "countryName": "Belarus",
+    "top1AsnShare": 0.5903819,
+    "top5AsnShare": 0.91117397,
+    "top10AsnShare": 0.93422914
+  },
+  {
+    "iso2": "BZ",
+    "countryName": "Belize",
+    "top1AsnShare": 0.554371,
+    "top5AsnShare": 0.70362473,
+    "top10AsnShare": 0.81236674
+  },
+  {
+    "iso2": "CA",
+    "countryName": "Canada",
+    "top1AsnShare": 0.12491294,
+    "top5AsnShare": 0.43311471,
+    "top10AsnShare": 0.53383041
+  },
+  {
+    "iso2": "CC",
+    "countryName": "Cocos Islands",
+    "top1AsnShare": 1.0,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "CD",
+    "countryName": "Democratic Republic of the Congo",
+    "top1AsnShare": 0.14145383,
+    "top5AsnShare": 0.50294695,
+    "top10AsnShare": 0.66797642
+  },
+  {
+    "iso2": "CF",
+    "countryName": "Central African Republic",
+    "top1AsnShare": 0.36363636,
+    "top5AsnShare": 0.84848485,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "CG",
+    "countryName": "Republic of the Congo",
+    "top1AsnShare": 0.45205479,
+    "top5AsnShare": 0.92979452,
+    "top10AsnShare": 0.9760274
+  },
+  {
+    "iso2": "CH",
+    "countryName": "Switzerland",
+    "top1AsnShare": 0.12791011,
+    "top5AsnShare": 0.49375281,
+    "top10AsnShare": 0.61537079
+  },
+  {
+    "iso2": "CI",
+    "countryName": "Ivory Coast",
+    "top1AsnShare": 0.76782344,
+    "top5AsnShare": 0.98170466,
+    "top10AsnShare": 0.99157834
+  },
+  {
+    "iso2": "CK",
+    "countryName": "Cook Islands",
+    "top1AsnShare": 0.82051282,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "CL",
+    "countryName": "Chile",
+    "top1AsnShare": 0.26399791,
+    "top5AsnShare": 0.62373103,
+    "top10AsnShare": 0.76172161
+  },
+  {
+    "iso2": "CM",
+    "countryName": "Cameroon",
+    "top1AsnShare": 0.4567474,
+    "top5AsnShare": 0.94463668,
+    "top10AsnShare": 0.97923875
+  },
+  {
+    "iso2": "CN",
+    "countryName": "China",
+    "top1AsnShare": 0.33613383,
+    "top5AsnShare": 0.6824686,
+    "top10AsnShare": 0.78317748
+  },
+  {
+    "iso2": "CO",
+    "countryName": "Colombia",
+    "top1AsnShare": 0.2508775,
+    "top5AsnShare": 0.85673802,
+    "top10AsnShare": 0.91414926
+  },
+  {
+    "iso2": "CR",
+    "countryName": "Costa Rica",
+    "top1AsnShare": 0.61909582,
+    "top5AsnShare": 0.85739991,
+    "top10AsnShare": 0.91239316
+  },
+  {
+    "iso2": "CU",
+    "countryName": "Cuba",
+    "top1AsnShare": 0.72655479,
+    "top5AsnShare": 0.9970385,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "CV",
+    "countryName": "Cabo Verde",
+    "top1AsnShare": 0.66945607,
+    "top5AsnShare": 0.93723849,
+    "top10AsnShare": 0.9832636
+  },
+  {
+    "iso2": "CW",
+    "countryName": "Curacao",
+    "top1AsnShare": 0.38495575,
+    "top5AsnShare": 0.89823009,
+    "top10AsnShare": 0.94837758
+  },
+  {
+    "iso2": "CY",
+    "countryName": "Cyprus",
+    "top1AsnShare": 0.48059361,
+    "top5AsnShare": 0.73812785,
+    "top10AsnShare": 0.8326484
+  },
+  {
+    "iso2": "CZ",
+    "countryName": "Czechia",
+    "top1AsnShare": 0.18175443,
+    "top5AsnShare": 0.57788822,
+    "top10AsnShare": 0.67234808
+  },
+  {
+    "iso2": "DE",
+    "countryName": "Germany",
+    "top1AsnShare": 0.25889774,
+    "top5AsnShare": 0.60734708,
+    "top10AsnShare": 0.72920725
+  },
+  {
+    "iso2": "DJ",
+    "countryName": "Djibouti",
+    "top1AsnShare": 0.76595745,
+    "top5AsnShare": 0.96595745,
+    "top10AsnShare": 0.99148936
+  },
+  {
+    "iso2": "DK",
+    "countryName": "Denmark",
+    "top1AsnShare": 0.42309296,
+    "top5AsnShare": 0.71228677,
+    "top10AsnShare": 0.81415523
+  },
+  {
+    "iso2": "DM",
+    "countryName": "Dominica",
+    "top1AsnShare": 0.5,
+    "top5AsnShare": 0.8452381,
+    "top10AsnShare": 0.92857143
+  },
+  {
+    "iso2": "DO",
+    "countryName": "Dominican Republic",
+    "top1AsnShare": 0.41403993,
+    "top5AsnShare": 0.76817782,
+    "top10AsnShare": 0.8416426
+  },
+  {
+    "iso2": "DZ",
+    "countryName": "Algeria",
+    "top1AsnShare": 0.89349716,
+    "top5AsnShare": 0.98218693,
+    "top10AsnShare": 0.99570769
+  },
+  {
+    "iso2": "EC",
+    "countryName": "Ecuador",
+    "top1AsnShare": 0.21591521,
+    "top5AsnShare": 0.599515,
+    "top10AsnShare": 0.78282738
+  },
+  {
+    "iso2": "EE",
+    "countryName": "Estonia",
+    "top1AsnShare": 0.37683706,
+    "top5AsnShare": 0.73658147,
+    "top10AsnShare": 0.8129393
+  },
+  {
+    "iso2": "EG",
+    "countryName": "Egypt",
+    "top1AsnShare": 0.31528388,
+    "top5AsnShare": 0.98397889,
+    "top10AsnShare": 0.99415964
+  },
+  {
+    "iso2": "ER",
+    "countryName": "Eritrea",
+    "top1AsnShare": 0.57142857,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "ES",
+    "countryName": "Spain",
+    "top1AsnShare": 0.30386463,
+    "top5AsnShare": 0.6941002,
+    "top10AsnShare": 0.79290018
+  },
+  {
+    "iso2": "ET",
+    "countryName": "Ethiopia",
+    "top1AsnShare": 0.79234973,
+    "top5AsnShare": 0.9829235,
+    "top10AsnShare": 0.99248634
+  },
+  {
+    "iso2": "FI",
+    "countryName": "Finland",
+    "top1AsnShare": 0.26633632,
+    "top5AsnShare": 0.73299556,
+    "top10AsnShare": 0.78341963
+  },
+  {
+    "iso2": "FJ",
+    "countryName": "Fiji",
+    "top1AsnShare": 0.43986254,
+    "top5AsnShare": 0.91237113,
+    "top10AsnShare": 0.96219931
+  },
+  {
+    "iso2": "FK",
+    "countryName": "Falkland Islands",
+    "top1AsnShare": 0.56,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "FM",
+    "countryName": "Micronesia",
+    "top1AsnShare": 0.26530612,
+    "top5AsnShare": 0.79591837,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "FO",
+    "countryName": "Faroe Islands",
+    "top1AsnShare": 0.68508287,
+    "top5AsnShare": 0.98342541,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "FR",
+    "countryName": "France",
+    "top1AsnShare": 0.26727873,
+    "top5AsnShare": 0.71340524,
+    "top10AsnShare": 0.80515049
+  },
+  {
+    "iso2": "GA",
+    "countryName": "Gabon",
+    "top1AsnShare": 0.74666667,
+    "top5AsnShare": 0.96888889,
+    "top10AsnShare": 0.98518519
+  },
+  {
+    "iso2": "GB",
+    "countryName": "United Kingdom",
+    "top1AsnShare": 0.25936933,
+    "top5AsnShare": 0.59520452,
+    "top10AsnShare": 0.72001983
+  },
+  {
+    "iso2": "GD",
+    "countryName": "Grenada",
+    "top1AsnShare": 0.69230769,
+    "top5AsnShare": 0.86923077,
+    "top10AsnShare": 0.94615385
+  },
+  {
+    "iso2": "GE",
+    "countryName": "Georgia",
+    "top1AsnShare": 0.34675169,
+    "top5AsnShare": 0.80051813,
+    "top10AsnShare": 0.86289358
+  },
+  {
+    "iso2": "GF",
+    "countryName": "French Guiana",
+    "top1AsnShare": 0.60989011,
+    "top5AsnShare": 0.89835165,
+    "top10AsnShare": 0.96978022
+  },
+  {
+    "iso2": "GG",
+    "countryName": "Guernsey",
+    "top1AsnShare": 0.65182186,
+    "top5AsnShare": 0.97165992,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "GH",
+    "countryName": "Ghana",
+    "top1AsnShare": 0.4822505,
+    "top5AsnShare": 0.84159411,
+    "top10AsnShare": 0.89099129
+  },
+  {
+    "iso2": "GI",
+    "countryName": "Gibraltar",
+    "top1AsnShare": 0.35258359,
+    "top5AsnShare": 0.85714286,
+    "top10AsnShare": 0.92097264
+  },
+  {
+    "iso2": "GL",
+    "countryName": "Greenland",
+    "top1AsnShare": 0.93055556,
+    "top5AsnShare": 0.97916667,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "GM",
+    "countryName": "Gambia",
+    "top1AsnShare": 0.8516129,
+    "top5AsnShare": 0.95483871,
+    "top10AsnShare": 0.98709677
+  },
+  {
+    "iso2": "GN",
+    "countryName": "Guinea",
+    "top1AsnShare": 0.33333333,
+    "top5AsnShare": 0.62666667,
+    "top10AsnShare": 0.81333333
+  },
+  {
+    "iso2": "GP",
+    "countryName": "Guadeloupe",
+    "top1AsnShare": 0.53826851,
+    "top5AsnShare": 0.95859473,
+    "top10AsnShare": 0.99372647
+  },
+  {
+    "iso2": "GQ",
+    "countryName": "Equatorial Guinea",
+    "top1AsnShare": 0.27368421,
+    "top5AsnShare": 0.73684211,
+    "top10AsnShare": 0.93684211
+  },
+  {
+    "iso2": "GR",
+    "countryName": "Greece",
+    "top1AsnShare": 0.33423652,
+    "top5AsnShare": 0.73293418,
+    "top10AsnShare": 0.80871427
+  },
+  {
+    "iso2": "GS",
+    "countryName": "South Georgia and the South Sandwich Islands",
+    "top1AsnShare": 1.0,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "GT",
+    "countryName": "Guatemala",
+    "top1AsnShare": 0.4754216,
+    "top5AsnShare": 0.72084679,
+    "top10AsnShare": 0.8320775
+  },
+  {
+    "iso2": "GU",
+    "countryName": "Guam",
+    "top1AsnShare": 0.36940687,
+    "top5AsnShare": 0.92715921,
+    "top10AsnShare": 0.98126951
+  },
+  {
+    "iso2": "GW",
+    "countryName": "Guinea-Bissau",
+    "top1AsnShare": 0.44444444,
+    "top5AsnShare": 0.97222222,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "GY",
+    "countryName": "Guyana",
+    "top1AsnShare": 0.78397213,
+    "top5AsnShare": 0.94773519,
+    "top10AsnShare": 0.9825784
+  },
+  {
+    "iso2": "HK",
+    "countryName": "Hong Kong",
+    "top1AsnShare": 0.07824574,
+    "top5AsnShare": 0.35483223,
+    "top10AsnShare": 0.49295822
+  },
+  {
+    "iso2": "HM",
+    "countryName": "Heard Island and McDonald Islands",
+    "top1AsnShare": 1.0,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "HN",
+    "countryName": "Honduras",
+    "top1AsnShare": 0.16452442,
+    "top5AsnShare": 0.64575835,
+    "top10AsnShare": 0.80411311
+  },
+  {
+    "iso2": "HR",
+    "countryName": "Croatia",
+    "top1AsnShare": 0.45807259,
+    "top5AsnShare": 0.72622028,
+    "top10AsnShare": 0.89163538
+  },
+  {
+    "iso2": "HT",
+    "countryName": "Haiti",
+    "top1AsnShare": 0.62580645,
+    "top5AsnShare": 0.96935484,
+    "top10AsnShare": 0.99193548
+  },
+  {
+    "iso2": "HU",
+    "countryName": "Hungary",
+    "top1AsnShare": 0.27446103,
+    "top5AsnShare": 0.66618661,
+    "top10AsnShare": 0.77310814
+  },
+  {
+    "iso2": "ID",
+    "countryName": "Indonesia",
+    "top1AsnShare": 0.27339146,
+    "top5AsnShare": 0.69571781,
+    "top10AsnShare": 0.74164332
+  },
+  {
+    "iso2": "IE",
+    "countryName": "Ireland",
+    "top1AsnShare": 0.30434173,
+    "top5AsnShare": 0.70564748,
+    "top10AsnShare": 0.84685543
+  },
+  {
+    "iso2": "IL",
+    "countryName": "Israel",
+    "top1AsnShare": 0.231523,
+    "top5AsnShare": 0.7394951,
+    "top10AsnShare": 0.87939434
+  },
+  {
+    "iso2": "IM",
+    "countryName": "Isle of Man",
+    "top1AsnShare": 0.41928251,
+    "top5AsnShare": 0.81838565,
+    "top10AsnShare": 0.89013453
+  },
+  {
+    "iso2": "IN",
+    "countryName": "India",
+    "top1AsnShare": 0.14197468,
+    "top5AsnShare": 0.45768613,
+    "top10AsnShare": 0.63647697
+  },
+  {
+    "iso2": "IO",
+    "countryName": "British Indian Ocean Territory",
+    "top1AsnShare": 0.85714286,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "IQ",
+    "countryName": "Iraq",
+    "top1AsnShare": 0.41202254,
+    "top5AsnShare": 0.68002505,
+    "top10AsnShare": 0.75078272
+  },
+  {
+    "iso2": "IR",
+    "countryName": "Iran",
+    "top1AsnShare": 0.26682566,
+    "top5AsnShare": 0.67395659,
+    "top10AsnShare": 0.77245409
+  },
+  {
+    "iso2": "IS",
+    "countryName": "Iceland",
+    "top1AsnShare": 0.35242548,
+    "top5AsnShare": 0.70981882,
+    "top10AsnShare": 0.81180596
+  },
+  {
+    "iso2": "IT",
+    "countryName": "Italy",
+    "top1AsnShare": 0.36469733,
+    "top5AsnShare": 0.70191482,
+    "top10AsnShare": 0.79045542
+  },
+  {
+    "iso2": "JE",
+    "countryName": "Jersey",
+    "top1AsnShare": 0.55431755,
+    "top5AsnShare": 0.93036212,
+    "top10AsnShare": 0.96100279
+  },
+  {
+    "iso2": "JM",
+    "countryName": "Jamaica",
+    "top1AsnShare": 0.62301216,
+    "top5AsnShare": 0.90926099,
+    "top10AsnShare": 0.96071094
+  },
+  {
+    "iso2": "JO",
+    "countryName": "Jordan",
+    "top1AsnShare": 0.36952231,
+    "top5AsnShare": 0.8381366,
+    "top10AsnShare": 0.91867351
+  },
+  {
+    "iso2": "JP",
+    "countryName": "Japan",
+    "top1AsnShare": 0.24280514,
+    "top5AsnShare": 0.57998264,
+    "top10AsnShare": 0.69662693
+  },
+  {
+    "iso2": "KE",
+    "countryName": "Kenya",
+    "top1AsnShare": 0.54282375,
+    "top5AsnShare": 0.89956068,
+    "top10AsnShare": 0.94969973
+  },
+  {
+    "iso2": "KG",
+    "countryName": "Kyrgyzstan",
+    "top1AsnShare": 0.28149435,
+    "top5AsnShare": 0.67419635,
+    "top10AsnShare": 0.79582971
+  },
+  {
+    "iso2": "KH",
+    "countryName": "Cambodia",
+    "top1AsnShare": 0.17625713,
+    "top5AsnShare": 0.45671332,
+    "top10AsnShare": 0.62623121
+  },
+  {
+    "iso2": "KI",
+    "countryName": "Kiribati",
+    "top1AsnShare": 0.375,
+    "top5AsnShare": 0.78125,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "KM",
+    "countryName": "Comoros",
+    "top1AsnShare": 0.33333333,
+    "top5AsnShare": 0.89583333,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "KN",
+    "countryName": "Saint Kitts and Nevis",
+    "top1AsnShare": 0.4453125,
+    "top5AsnShare": 0.921875,
+    "top10AsnShare": 0.984375
+  },
+  {
+    "iso2": "KP",
+    "countryName": "North Korea",
+    "top1AsnShare": 0.36363636,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "KR",
+    "countryName": "South Korea",
+    "top1AsnShare": 0.41555078,
+    "top5AsnShare": 0.77453596,
+    "top10AsnShare": 0.82095935
+  },
+  {
+    "iso2": "KW",
+    "countryName": "Kuwait",
+    "top1AsnShare": 0.34467848,
+    "top5AsnShare": 0.78978937,
+    "top10AsnShare": 0.94015902
+  },
+  {
+    "iso2": "KY",
+    "countryName": "Cayman Islands",
+    "top1AsnShare": 0.48534202,
+    "top5AsnShare": 0.9218241,
+    "top10AsnShare": 0.97068404
+  },
+  {
+    "iso2": "KZ",
+    "countryName": "Kazakhstan",
+    "top1AsnShare": 0.4509032,
+    "top5AsnShare": 0.75937934,
+    "top10AsnShare": 0.81519222
+  },
+  {
+    "iso2": "LA",
+    "countryName": "Laos",
+    "top1AsnShare": 0.30446194,
+    "top5AsnShare": 0.71391076,
+    "top10AsnShare": 0.80577428
+  },
+  {
+    "iso2": "LB",
+    "countryName": "Lebanon",
+    "top1AsnShare": 0.22202643,
+    "top5AsnShare": 0.64185022,
+    "top10AsnShare": 0.73127753
+  },
+  {
+    "iso2": "LC",
+    "countryName": "Saint Lucia",
+    "top1AsnShare": 0.78616352,
+    "top5AsnShare": 0.94968553,
+    "top10AsnShare": 0.99371069
+  },
+  {
+    "iso2": "LI",
+    "countryName": "Liechtenstein",
+    "top1AsnShare": 0.18973214,
+    "top5AsnShare": 0.46875,
+    "top10AsnShare": 0.66294643
+  },
+  {
+    "iso2": "LK",
+    "countryName": "Sri Lanka",
+    "top1AsnShare": 0.42363878,
+    "top5AsnShare": 0.88667552,
+    "top10AsnShare": 0.94864985
+  },
+  {
+    "iso2": "LR",
+    "countryName": "Liberia",
+    "top1AsnShare": 0.61985472,
+    "top5AsnShare": 0.85472155,
+    "top10AsnShare": 0.93220339
+  },
+  {
+    "iso2": "LS",
+    "countryName": "Lesotho",
+    "top1AsnShare": 0.47151277,
+    "top5AsnShare": 0.94891945,
+    "top10AsnShare": 0.98821218
+  },
+  {
+    "iso2": "LT",
+    "countryName": "Lithuania",
+    "top1AsnShare": 0.29485275,
+    "top5AsnShare": 0.66171459,
+    "top10AsnShare": 0.76264965
+  },
+  {
+    "iso2": "LU",
+    "countryName": "Luxembourg",
+    "top1AsnShare": 0.22250145,
+    "top5AsnShare": 0.55113087,
+    "top10AsnShare": 0.70539339
+  },
+  {
+    "iso2": "LV",
+    "countryName": "Latvia",
+    "top1AsnShare": 0.23312431,
+    "top5AsnShare": 0.64146072,
+    "top10AsnShare": 0.75974425
+  },
+  {
+    "iso2": "LY",
+    "countryName": "Libya",
+    "top1AsnShare": 0.63967391,
+    "top5AsnShare": 0.86684783,
+    "top10AsnShare": 0.9451087
+  },
+  {
+    "iso2": "MA",
+    "countryName": "Morocco",
+    "top1AsnShare": 0.48787645,
+    "top5AsnShare": 0.99388099,
+    "top10AsnShare": 0.99702375
+  },
+  {
+    "iso2": "MC",
+    "countryName": "Monaco",
+    "top1AsnShare": 0.78498294,
+    "top5AsnShare": 0.88054608,
+    "top10AsnShare": 0.93515358
+  },
+  {
+    "iso2": "MD",
+    "countryName": "Moldova",
+    "top1AsnShare": 0.36373014,
+    "top5AsnShare": 0.73777594,
+    "top10AsnShare": 0.85083557
+  },
+  {
+    "iso2": "ME",
+    "countryName": "Montenegro",
+    "top1AsnShare": 0.59062885,
+    "top5AsnShare": 0.83107275,
+    "top10AsnShare": 0.89889026
+  },
+  {
+    "iso2": "MF",
+    "countryName": "Saint Martin",
+    "top1AsnShare": 0.57894737,
+    "top5AsnShare": 0.89473684,
+    "top10AsnShare": 0.98684211
+  },
+  {
+    "iso2": "MG",
+    "countryName": "Madagascar",
+    "top1AsnShare": 0.80480349,
+    "top5AsnShare": 0.97860262,
+    "top10AsnShare": 0.99388646
+  },
+  {
+    "iso2": "MH",
+    "countryName": "Marshall Islands",
+    "top1AsnShare": 0.73387097,
+    "top5AsnShare": 0.94354839,
+    "top10AsnShare": 0.98387097
+  },
+  {
+    "iso2": "MK",
+    "countryName": "North Macedonia",
+    "top1AsnShare": 0.45461227,
+    "top5AsnShare": 0.8000735,
+    "top10AsnShare": 0.86732819
+  },
+  {
+    "iso2": "ML",
+    "countryName": "Mali",
+    "top1AsnShare": 0.63313609,
+    "top5AsnShare": 0.91420118,
+    "top10AsnShare": 0.97928994
+  },
+  {
+    "iso2": "MM",
+    "countryName": "Myanmar",
+    "top1AsnShare": 0.09108341,
+    "top5AsnShare": 0.35378715,
+    "top10AsnShare": 0.48418025
+  },
+  {
+    "iso2": "MN",
+    "countryName": "Mongolia",
+    "top1AsnShare": 0.2244898,
+    "top5AsnShare": 0.56326531,
+    "top10AsnShare": 0.7047619
+  },
+  {
+    "iso2": "MO",
+    "countryName": "Macao",
+    "top1AsnShare": 0.6969086,
+    "top5AsnShare": 0.94623656,
+    "top10AsnShare": 0.97580645
+  },
+  {
+    "iso2": "MP",
+    "countryName": "Northern Mariana Islands",
+    "top1AsnShare": 0.92307692,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "MQ",
+    "countryName": "Martinique",
+    "top1AsnShare": 0.39817352,
+    "top5AsnShare": 0.97716895,
+    "top10AsnShare": 0.99360731
+  },
+  {
+    "iso2": "MR",
+    "countryName": "Mauritania",
+    "top1AsnShare": 0.41558442,
+    "top5AsnShare": 0.84415584,
+    "top10AsnShare": 0.94372294
+  },
+  {
+    "iso2": "MS",
+    "countryName": "Montserrat",
+    "top1AsnShare": 0.35714286,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "MT",
+    "countryName": "Malta",
+    "top1AsnShare": 0.44115355,
+    "top5AsnShare": 0.89282931,
+    "top10AsnShare": 0.93647701
+  },
+  {
+    "iso2": "MU",
+    "countryName": "Mauritius",
+    "top1AsnShare": 0.413766,
+    "top5AsnShare": 0.9276892,
+    "top10AsnShare": 0.95789355
+  },
+  {
+    "iso2": "MV",
+    "countryName": "Maldives",
+    "top1AsnShare": 0.57985258,
+    "top5AsnShare": 0.8968059,
+    "top10AsnShare": 0.93120393
+  },
+  {
+    "iso2": "MW",
+    "countryName": "Malawi",
+    "top1AsnShare": 0.53277836,
+    "top5AsnShare": 0.83558793,
+    "top10AsnShare": 0.93236212
+  },
+  {
+    "iso2": "MX",
+    "countryName": "Mexico",
+    "top1AsnShare": 0.5272164,
+    "top5AsnShare": 0.71332705,
+    "top10AsnShare": 0.77749075
+  },
+  {
+    "iso2": "MY",
+    "countryName": "Malaysia",
+    "top1AsnShare": 0.41081771,
+    "top5AsnShare": 0.67630023,
+    "top10AsnShare": 0.80809101
+  },
+  {
+    "iso2": "MZ",
+    "countryName": "Mozambique",
+    "top1AsnShare": 0.27219564,
+    "top5AsnShare": 0.76289208,
+    "top10AsnShare": 0.90643275
+  },
+  {
+    "iso2": "NA",
+    "countryName": "Namibia",
+    "top1AsnShare": 0.32305104,
+    "top5AsnShare": 0.91306786,
+    "top10AsnShare": 0.97588334
+  },
+  {
+    "iso2": "NC",
+    "countryName": "New Caledonia",
+    "top1AsnShare": 0.32042254,
+    "top5AsnShare": 0.93485915,
+    "top10AsnShare": 0.97711268
+  },
+  {
+    "iso2": "NE",
+    "countryName": "Niger",
+    "top1AsnShare": 0.25396825,
+    "top5AsnShare": 0.73544974,
+    "top10AsnShare": 0.92063492
+  },
+  {
+    "iso2": "NF",
+    "countryName": "Norfolk Island",
+    "top1AsnShare": 1.0,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "NG",
+    "countryName": "Nigeria",
+    "top1AsnShare": 0.23557067,
+    "top5AsnShare": 0.58807642,
+    "top10AsnShare": 0.71151345
+  },
+  {
+    "iso2": "NI",
+    "countryName": "Nicaragua",
+    "top1AsnShare": 0.5411536,
+    "top5AsnShare": 0.77122489,
+    "top10AsnShare": 0.93519119
+  },
+  {
+    "iso2": "NL",
+    "countryName": "The Netherlands",
+    "top1AsnShare": 0.15509853,
+    "top5AsnShare": 0.57486513,
+    "top10AsnShare": 0.67997887
+  },
+  {
+    "iso2": "NO",
+    "countryName": "Norway",
+    "top1AsnShare": 0.27646285,
+    "top5AsnShare": 0.65834402,
+    "top10AsnShare": 0.8062195
+  },
+  {
+    "iso2": "NP",
+    "countryName": "Nepal",
+    "top1AsnShare": 0.33691448,
+    "top5AsnShare": 0.7275462,
+    "top10AsnShare": 0.79802321
+  },
+  {
+    "iso2": "NR",
+    "countryName": "Nauru",
+    "top1AsnShare": 0.57692308,
+    "top5AsnShare": 0.90384615,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "NU",
+    "countryName": "Niue",
+    "top1AsnShare": 0.36363636,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "NZ",
+    "countryName": "New Zealand",
+    "top1AsnShare": 0.15225132,
+    "top5AsnShare": 0.50822554,
+    "top10AsnShare": 0.63753549
+  },
+  {
+    "iso2": "OM",
+    "countryName": "Oman",
+    "top1AsnShare": 0.41725,
+    "top5AsnShare": 0.95025,
+    "top10AsnShare": 0.97975
+  },
+  {
+    "iso2": "PA",
+    "countryName": "Panama",
+    "top1AsnShare": 0.51704791,
+    "top5AsnShare": 0.87944181,
+    "top10AsnShare": 0.91785355
+  },
+  {
+    "iso2": "PE",
+    "countryName": "Peru",
+    "top1AsnShare": 0.4008766,
+    "top5AsnShare": 0.78152394,
+    "top10AsnShare": 0.86695887
+  },
+  {
+    "iso2": "PF",
+    "countryName": "French Polynesia",
+    "top1AsnShare": 0.80456026,
+    "top5AsnShare": 0.9771987,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "PG",
+    "countryName": "Papua New Guinea",
+    "top1AsnShare": 0.14801444,
+    "top5AsnShare": 0.57400722,
+    "top10AsnShare": 0.70397112
+  },
+  {
+    "iso2": "PH",
+    "countryName": "Philippines",
+    "top1AsnShare": 0.45721016,
+    "top5AsnShare": 0.67231791,
+    "top10AsnShare": 0.79578281
+  },
+  {
+    "iso2": "PK",
+    "countryName": "Pakistan",
+    "top1AsnShare": 0.61628849,
+    "top5AsnShare": 0.7628309,
+    "top10AsnShare": 0.81874662
+  },
+  {
+    "iso2": "PL",
+    "countryName": "Poland",
+    "top1AsnShare": 0.26153865,
+    "top5AsnShare": 0.48140349,
+    "top10AsnShare": 0.58638378
+  },
+  {
+    "iso2": "PM",
+    "countryName": "Saint Pierre and Miquelon",
+    "top1AsnShare": 0.69230769,
+    "top5AsnShare": 0.96153846,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "PN",
+    "countryName": "Pitcairn",
+    "top1AsnShare": 1.0,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "PR",
+    "countryName": "Puerto Rico",
+    "top1AsnShare": 0.2856516,
+    "top5AsnShare": 0.71149627,
+    "top10AsnShare": 0.81790259
+  },
+  {
+    "iso2": "PS",
+    "countryName": "Palestinian Territory",
+    "top1AsnShare": 0.3963964,
+    "top5AsnShare": 0.85243865,
+    "top10AsnShare": 0.92513203
+  },
+  {
+    "iso2": "PT",
+    "countryName": "Portugal",
+    "top1AsnShare": 0.27077678,
+    "top5AsnShare": 0.80214182,
+    "top10AsnShare": 0.90908415
+  },
+  {
+    "iso2": "PW",
+    "countryName": "Palau",
+    "top1AsnShare": 0.36363636,
+    "top5AsnShare": 0.81818182,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "PY",
+    "countryName": "Paraguay",
+    "top1AsnShare": 0.64309554,
+    "top5AsnShare": 0.8944514,
+    "top10AsnShare": 0.92282019
+  },
+  {
+    "iso2": "QA",
+    "countryName": "Qatar",
+    "top1AsnShare": 0.27980392,
+    "top5AsnShare": 0.92313725,
+    "top10AsnShare": 0.97235294
+  },
+  {
+    "iso2": "RE",
+    "countryName": "Reunion",
+    "top1AsnShare": 0.2906742,
+    "top5AsnShare": 0.90230117,
+    "top10AsnShare": 0.99636657
+  },
+  {
+    "iso2": "RO",
+    "countryName": "Romania",
+    "top1AsnShare": 0.26325022,
+    "top5AsnShare": 0.6995745,
+    "top10AsnShare": 0.77545536
+  },
+  {
+    "iso2": "RS",
+    "countryName": "Serbia",
+    "top1AsnShare": 0.3647151,
+    "top5AsnShare": 0.69181686,
+    "top10AsnShare": 0.82547856
+  },
+  {
+    "iso2": "RU",
+    "countryName": "Russia",
+    "top1AsnShare": 0.2052102,
+    "top5AsnShare": 0.32510376,
+    "top10AsnShare": 0.37887403
+  },
+  {
+    "iso2": "RW",
+    "countryName": "Rwanda",
+    "top1AsnShare": 0.25702128,
+    "top5AsnShare": 0.83744681,
+    "top10AsnShare": 0.94553191
+  },
+  {
+    "iso2": "SA",
+    "countryName": "Saudi Arabia",
+    "top1AsnShare": 0.37657142,
+    "top5AsnShare": 0.79437679,
+    "top10AsnShare": 0.87809091
+  },
+  {
+    "iso2": "SB",
+    "countryName": "Solomon Islands",
+    "top1AsnShare": 0.49275362,
+    "top5AsnShare": 0.76811594,
+    "top10AsnShare": 0.91304348
+  },
+  {
+    "iso2": "SC",
+    "countryName": "Seychelles",
+    "top1AsnShare": 0.34840265,
+    "top5AsnShare": 0.55455093,
+    "top10AsnShare": 0.70705244
+  },
+  {
+    "iso2": "SD",
+    "countryName": "Sudan",
+    "top1AsnShare": 0.72002531,
+    "top5AsnShare": 0.98196773,
+    "top10AsnShare": 0.9971528
+  },
+  {
+    "iso2": "SE",
+    "countryName": "Sweden",
+    "top1AsnShare": 0.23936476,
+    "top5AsnShare": 0.6020498,
+    "top10AsnShare": 0.72067225
+  },
+  {
+    "iso2": "SG",
+    "countryName": "Singapore",
+    "top1AsnShare": 0.30612101,
+    "top5AsnShare": 0.61754495,
+    "top10AsnShare": 0.71891446
+  },
+  {
+    "iso2": "SH",
+    "countryName": "Saint Helena",
+    "top1AsnShare": 1.0,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "SI",
+    "countryName": "Slovenia",
+    "top1AsnShare": 0.29901048,
+    "top5AsnShare": 0.80248849,
+    "top10AsnShare": 0.88733222
+  },
+  {
+    "iso2": "SJ",
+    "countryName": "Svalbard and Jan Mayen",
+    "top1AsnShare": 1.0,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "SK",
+    "countryName": "Slovakia",
+    "top1AsnShare": 0.23849991,
+    "top5AsnShare": 0.69970442,
+    "top10AsnShare": 0.79050434
+  },
+  {
+    "iso2": "SL",
+    "countryName": "Sierra Leone",
+    "top1AsnShare": 0.3699422,
+    "top5AsnShare": 0.8150289,
+    "top10AsnShare": 0.91040462
+  },
+  {
+    "iso2": "SM",
+    "countryName": "San Marino",
+    "top1AsnShare": 0.46875,
+    "top5AsnShare": 0.825,
+    "top10AsnShare": 0.93125
+  },
+  {
+    "iso2": "SN",
+    "countryName": "Senegal",
+    "top1AsnShare": 0.83502538,
+    "top5AsnShare": 0.9536802,
+    "top10AsnShare": 0.9822335
+  },
+  {
+    "iso2": "SO",
+    "countryName": "Somalia",
+    "top1AsnShare": 0.33009709,
+    "top5AsnShare": 0.64563107,
+    "top10AsnShare": 0.77669903
+  },
+  {
+    "iso2": "SR",
+    "countryName": "Suriname",
+    "top1AsnShare": 0.85549133,
+    "top5AsnShare": 0.94508671,
+    "top10AsnShare": 0.98265896
+  },
+  {
+    "iso2": "SS",
+    "countryName": "South Sudan",
+    "top1AsnShare": 0.14159292,
+    "top5AsnShare": 0.39823009,
+    "top10AsnShare": 0.59292035
+  },
+  {
+    "iso2": "ST",
+    "countryName": "Sao Tome and Principe",
+    "top1AsnShare": 0.54794521,
+    "top5AsnShare": 0.94520548,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "SV",
+    "countryName": "El Salvador",
+    "top1AsnShare": 0.49638095,
+    "top5AsnShare": 0.83809524,
+    "top10AsnShare": 0.91466667
+  },
+  {
+    "iso2": "SX",
+    "countryName": "Sint Maarten",
+    "top1AsnShare": 0.5037037,
+    "top5AsnShare": 0.99259259,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "SY",
+    "countryName": "Syria",
+    "top1AsnShare": 0.7919641,
+    "top5AsnShare": 0.99428921,
+    "top10AsnShare": 0.99938813
+  },
+  {
+    "iso2": "SZ",
+    "countryName": "Eswatini",
+    "top1AsnShare": 0.42241379,
+    "top5AsnShare": 0.81896552,
+    "top10AsnShare": 0.93103448
+  },
+  {
+    "iso2": "TC",
+    "countryName": "Turks and Caicos Islands",
+    "top1AsnShare": 0.63492063,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "TD",
+    "countryName": "Chad",
+    "top1AsnShare": 0.18947368,
+    "top5AsnShare": 0.52631579,
+    "top10AsnShare": 0.81052632
+  },
+  {
+    "iso2": "TG",
+    "countryName": "Togo",
+    "top1AsnShare": 0.81500743,
+    "top5AsnShare": 0.97548291,
+    "top10AsnShare": 0.9910847
+  },
+  {
+    "iso2": "TH",
+    "countryName": "Thailand",
+    "top1AsnShare": 0.18074646,
+    "top5AsnShare": 0.4676177,
+    "top10AsnShare": 0.59098001
+  },
+  {
+    "iso2": "TJ",
+    "countryName": "Tajikistan",
+    "top1AsnShare": 0.20159151,
+    "top5AsnShare": 0.56498674,
+    "top10AsnShare": 0.75596817
+  },
+  {
+    "iso2": "TK",
+    "countryName": "Tokelau",
+    "top1AsnShare": 0.53333333,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "TL",
+    "countryName": "Timor Leste",
+    "top1AsnShare": 0.32075472,
+    "top5AsnShare": 0.77358491,
+    "top10AsnShare": 0.87735849
+  },
+  {
+    "iso2": "TM",
+    "countryName": "Turkmenistan",
+    "top1AsnShare": 0.71296296,
+    "top5AsnShare": 0.87037037,
+    "top10AsnShare": 0.9537037
+  },
+  {
+    "iso2": "TN",
+    "countryName": "Tunisia",
+    "top1AsnShare": 0.31333333,
+    "top5AsnShare": 0.92604575,
+    "top10AsnShare": 0.9904902
+  },
+  {
+    "iso2": "TO",
+    "countryName": "Tonga",
+    "top1AsnShare": 0.39215686,
+    "top5AsnShare": 0.8627451,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "TR",
+    "countryName": "Turkey",
+    "top1AsnShare": 0.41134381,
+    "top5AsnShare": 0.6703364,
+    "top10AsnShare": 0.8137249
+  },
+  {
+    "iso2": "TT",
+    "countryName": "Trinidad and Tobago",
+    "top1AsnShare": 0.52765186,
+    "top5AsnShare": 0.90752493,
+    "top10AsnShare": 0.97234814
+  },
+  {
+    "iso2": "TV",
+    "countryName": "Tuvalu",
+    "top1AsnShare": 0.71111111,
+    "top5AsnShare": 0.97777778,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "TW",
+    "countryName": "Taiwan",
+    "top1AsnShare": 0.32686668,
+    "top5AsnShare": 0.60474814,
+    "top10AsnShare": 0.74631039
+  },
+  {
+    "iso2": "TZ",
+    "countryName": "Tanzania",
+    "top1AsnShare": 0.17999308,
+    "top5AsnShare": 0.52855659,
+    "top10AsnShare": 0.75216338
+  },
+  {
+    "iso2": "UA",
+    "countryName": "Ukraine",
+    "top1AsnShare": 0.10519231,
+    "top5AsnShare": 0.31700891,
+    "top10AsnShare": 0.4176762
+  },
+  {
+    "iso2": "UG",
+    "countryName": "Uganda",
+    "top1AsnShare": 0.72336927,
+    "top5AsnShare": 0.88890919,
+    "top10AsnShare": 0.93458798
+  },
+  {
+    "iso2": "UM",
+    "countryName": "United States Minor Outlying Islands",
+    "top1AsnShare": 1.0,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "US",
+    "countryName": "United States",
+    "top1AsnShare": 0.17533857,
+    "top5AsnShare": 0.3841845,
+    "top10AsnShare": 0.48908727
+  },
+  {
+    "iso2": "UY",
+    "countryName": "Uruguay",
+    "top1AsnShare": 0.84657149,
+    "top5AsnShare": 0.96682083,
+    "top10AsnShare": 0.9857229
+  },
+  {
+    "iso2": "UZ",
+    "countryName": "Uzbekistan",
+    "top1AsnShare": 0.17266187,
+    "top5AsnShare": 0.45519948,
+    "top10AsnShare": 0.59777632
+  },
+  {
+    "iso2": "VA",
+    "countryName": "Vatican",
+    "top1AsnShare": 0.56363636,
+    "top5AsnShare": 0.94545455,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "VC",
+    "countryName": "Saint Vincent and the Grenadines",
+    "top1AsnShare": 0.83168317,
+    "top5AsnShare": 0.96039604,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "VE",
+    "countryName": "Venezuela",
+    "top1AsnShare": 0.38220292,
+    "top5AsnShare": 0.78301627,
+    "top10AsnShare": 0.87961814
+  },
+  {
+    "iso2": "VG",
+    "countryName": "British Virgin Islands",
+    "top1AsnShare": 0.17460317,
+    "top5AsnShare": 0.51587302,
+    "top10AsnShare": 0.73412698
+  },
+  {
+    "iso2": "VI",
+    "countryName": "U.S. Virgin Islands",
+    "top1AsnShare": 0.40062598,
+    "top5AsnShare": 0.9029734,
+    "top10AsnShare": 0.98435055
+  },
+  {
+    "iso2": "VN",
+    "countryName": "Vietnam",
+    "top1AsnShare": 0.46394809,
+    "top5AsnShare": 0.90124338,
+    "top10AsnShare": 0.92243213
+  },
+  {
+    "iso2": "VU",
+    "countryName": "Vanuatu",
+    "top1AsnShare": 0.38235294,
+    "top5AsnShare": 0.75,
+    "top10AsnShare": 0.88235294
+  },
+  {
+    "iso2": "WF",
+    "countryName": "Wallis and Futuna",
+    "top1AsnShare": 0.82352941,
+    "top5AsnShare": 1.0,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "WS",
+    "countryName": "Samoa",
+    "top1AsnShare": 0.40425532,
+    "top5AsnShare": 0.85106383,
+    "top10AsnShare": 0.94680851
+  },
+  {
+    "iso2": "XK",
+    "countryName": "Kosovo",
+    "top1AsnShare": 0.44771723,
+    "top5AsnShare": 0.90132548,
+    "top10AsnShare": 0.97349043
+  },
+  {
+    "iso2": "YE",
+    "countryName": "Yemen",
+    "top1AsnShare": 0.91327064,
+    "top5AsnShare": 0.98537095,
+    "top10AsnShare": 0.9968652
+  },
+  {
+    "iso2": "YT",
+    "countryName": "Mayotte",
+    "top1AsnShare": 0.49689441,
+    "top5AsnShare": 0.97515528,
+    "top10AsnShare": 1.0
+  },
+  {
+    "iso2": "ZA",
+    "countryName": "South Africa",
+    "top1AsnShare": 0.14947547,
+    "top5AsnShare": 0.46646741,
+    "top10AsnShare": 0.64826428
+  },
+  {
+    "iso2": "ZM",
+    "countryName": "Zambia",
+    "top1AsnShare": 0.55356592,
+    "top5AsnShare": 0.96511269,
+    "top10AsnShare": 0.98811362
+  },
+  {
+    "iso2": "ZW",
+    "countryName": "Zimbabwe",
+    "top1AsnShare": 0.42208462,
+    "top5AsnShare": 0.72342621,
+    "top10AsnShare": 0.85552116
+  }
+]

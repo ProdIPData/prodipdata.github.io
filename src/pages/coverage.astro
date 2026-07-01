@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import coverageRaw from '../../coverage.html?raw';
 import {
   numericValue, getItems, formatInteger, formatCompact, formatShare,
-  formatRirName, summarizeByRir, escapeHtml, loadData,
+  formatRirName, summarizeByRir, escapeHtml, loadData, flag,
 } from '../lib/format.js';
 
 const countryProfiles = loadData('country-profiles') || [];
@@ -35,11 +35,11 @@ const metricsHtml = `
 
 const tableHtml = topCoverage.map((item) => {
   const iso = escapeHtml(item.iso2 || '');
-  return `<tr class="coverage-table-row" tabindex="0" role="button" data-coverage-iso="${iso}" aria-label="Focus ${escapeHtml(item.countryName || item.iso2 || 'country')} on the map"><td><strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong><div class="table-subtext">${escapeHtml(item.topAsnName || 'Leading ASN unavailable')}</div></td><td>${escapeHtml(item.iso2 || 'N/A')}</td><td>${escapeHtml(formatRirName(item.rir || 'unknown'))}</td><td>${formatInteger(item.prefixCount)}</td><td>${formatCompact(item.ipv4Count)}</td><td>${formatShare(item.top1AsnShare)}</td></tr>`;
+  return `<tr class="coverage-table-row" tabindex="0" role="button" data-coverage-iso="${iso}" aria-label="Focus ${escapeHtml(item.countryName || item.iso2 || 'country')} on the map"><td>${flag(item.iso2)}<strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong><div class="table-subtext">${escapeHtml(item.topAsnName || 'Leading ASN unavailable')}</div></td><td>${escapeHtml(item.iso2 || 'N/A')}</td><td>${escapeHtml(formatRirName(item.rir || 'unknown'))}</td><td>${formatInteger(item.prefixCount)}</td><td>${formatCompact(item.ipv4Count)}</td><td>${formatShare(item.top1AsnShare)}</td></tr>`;
 }).join('');
 
 const rowList = (rows, fallbackAsn) => rows.map((item) => `
-  <div class="list-row"><div><strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong><small>${escapeHtml(item.iso2 || 'N/A')} · ${escapeHtml(item.topAsnName || fallbackAsn)} · ${formatInteger(item.asnCount)} ASNs</small></div><div class="list-metric"><strong>${formatShare(item.top1AsnShare)}</strong><small>leading ASN share</small></div></div>`).join('');
+  <div class="list-row"><div>${flag(item.iso2)}<strong>${escapeHtml(item.countryName || item.iso2 || 'Unknown')}</strong><small>${escapeHtml(item.iso2 || 'N/A')} · ${escapeHtml(item.topAsnName || fallbackAsn)} · ${formatInteger(item.asnCount)} ASNs</small></div><div class="list-metric"><strong>${formatShare(item.top1AsnShare)}</strong><small>leading ASN share</small></div></div>`).join('');
 
 const leadersHtml = rowList(leaders, 'No dominant ASN');
 const laggardsHtml = rowList(laggards, 'No single dominant ASN');
@@ -59,6 +59,18 @@ mainInner = mainInner
   .replace('data-coverage-laggards-target></div>', `data-coverage-laggards-target>${laggardsHtml}</div>`)
   .replace('data-coverage-rir-target></div>', `data-coverage-rir-target>${rirHtml}</div>`)
   .replace(/<div class="data-note" data-coverage-note-target>[\s\S]*?<\/div>/, `<div class="data-note" data-coverage-note-target>${noteText}</div>`);
+
+// Teaser linking the country-level coverage map to the new admin-1 (region) choropleth.
+mainInner += `
+  <section class="section"><div class="container">
+    <div class="section-card glass" style="display:flex;justify-content:space-between;align-items:center;gap:1.2rem;flex-wrap:wrap">
+      <div>
+        <h2 style="margin:0 0 .35rem">Region-level map (admin-1)</h2>
+        <p class="muted" style="margin:0;max-width:62ch">Go one level deeper than countries: city-precise <code>/24</code> footprint by state &amp; province on an interactive ISO&nbsp;3166-2 choropleth — click any region to zoom into its country.</p>
+      </div>
+      <a class="btn btn-secondary" href="./prefix-region.html">Open the region map &rarr;</a>
+    </div>
+  </div></section>`;
 
 const breadcrumb = {
   '@context': 'https://schema.org',

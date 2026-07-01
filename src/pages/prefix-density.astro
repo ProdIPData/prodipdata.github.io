@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import releases from '../../assets/data/releases.json';
+
+const release = releases.current_release;
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://geoiplocations.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Density map', item: 'https://geoiplocations.com/prefix-density.html' },
+  ],
+};
+---
+<BaseLayout
+  title="IPv4 Density Map — Where IP Space Concentrates | ProdIPData"
+  description="An interactive hex-bin density map of the published IPv4 /24 space for the current GeoIP Locations release — see where address space concentrates worldwide, rendered in your browser."
+  ogTitle="IPv4 Density Map"
+  canonicalPath="/prefix-density.html"
+  page="prefix-density"
+  navPage="prefix-density"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+
+  <main class="container density">
+    <section class="density-hero">
+      <h1>Where IPv4 lives</h1>
+      <p class="density-sub">
+        A hex-bin density view of the published <code>/24</code> space for the <strong>{release}</strong>
+        release — brighter cells hold more address blocks. Aggregated and rendered entirely in your
+        browser; drag the hex size, tilt to 3D, and hover any cell for its count.
+      </p>
+    </section>
+
+    <div class="dmap-wrap">
+      <div id="dmap"></div>
+      <div id="dpanel">
+        <div class="dp-title">Density</div>
+        <div class="dp-meta" id="dmeta">loading…</div>
+        <label>Hex radius: <span id="rOut">70</span> km</label>
+        <input id="r" type="range" min="20" max="240" value="70" step="5" />
+        <label class="dp-check"><input type="checkbox" id="ext" /> 3D extrude</label>
+        <div class="dp-legend-label">sparse &rarr; dense</div>
+        <div class="dp-legend" id="leg"></div>
+      </div>
+      <div id="dtip"></div>
+    </div>
+
+    <p class="density-note muted">
+      One record per geolocated <code>/24</code>, binned into hexagons by deck.gl. Open-source, no map
+      tiles, no tracking. Looking for a specific block? Use <a href={`./prefix-lookup.html`}>Prefix Lookup</a>.
+    </p>
+  </main>
+
+  <div id="dcfg" data-release={release} data-base={import.meta.env.BASE_URL} hidden></div>
+
+  <style is:inline>
+    .density { padding: 2.2rem 0 3.5rem; max-width: 1100px; }
+    .density-hero h1 { margin: 0 0 .4rem; }
+    .density-sub { color: var(--muted); line-height: 1.7; margin: 0 0 1.4rem; max-width: none; }
+    .dmap-wrap { position: relative; width: 100%; height: 600px; border-radius: 18px; overflow: hidden;
+      border: 1px solid var(--line); background: #070d1c; }
+    #dmap { position: absolute; inset: 0; }
+    #dpanel { position: absolute; top: 14px; left: 14px; z-index: 2; width: 210px;
+      background: rgba(11,21,48,.9); border: 1px solid rgba(255,255,255,.12); border-radius: 12px;
+      padding: 13px 15px; color: var(--text); font-size: 13px; backdrop-filter: blur(6px); }
+    #dpanel .dp-title { font-size: 14px; font-weight: 500; }
+    #dpanel .dp-meta { color: var(--muted); font-size: 12px; margin: 1px 0 8px; }
+    #dpanel label { display: block; margin: 9px 0 3px; color: var(--muted); }
+    #dpanel input[type=range] { width: 100%; }
+    .dp-check { display: flex; align-items: center; gap: 7px; margin-top: 8px; color: var(--muted); }
+    .dp-check input { width: auto; }
+    .dp-legend-label { color: var(--muted); font-size: 11px; margin-top: 10px; }
+    .dp-legend { display: flex; height: 10px; border-radius: 5px; overflow: hidden; margin-top: 4px; }
+    .dp-legend i { flex: 1; }
+    #dtip { position: absolute; z-index: 3; pointer-events: none; background: rgba(0,0,0,.82); color: #fff;
+      font-size: 12px; padding: 4px 8px; border-radius: 6px; display: none; }
+    .density-note { margin-top: 1.4rem; font-size: .9rem; }
+  </style>
+
+  <script is:inline src="https://cdn.jsdelivr.net/npm/deck.gl@9/dist.min.js"></script>
+  <script is:inline src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+  <script is:inline>
+    (function () {
+      var cfg = document.getElementById('dcfg').dataset;
+      var base = cfg.base.endsWith('/') ? cfg.base : cfg.base + '/';
+      var release = cfg.release;
+      var RAMP = [[44,123,182],[12,170,190],[60,200,150],[250,204,21],[249,115,22],[225,45,55]];
+      document.getElementById('leg').innerHTML = RAMP.map(function (c) { return '<i style="background:rgb(' + c + ')"></i>'; }).join('');
+      var tip = document.getElementById('dtip');
+      var points = [], world = null;
+
+      // Dominant-country tag for the hover tooltip. Points carry an ISO code at index 3
+      // (from Build-Density-Data.py); tally by /24 weight and resolve to a country name.
+      var REGION = (typeof Intl !== 'undefined' && Intl.DisplayNames) ? new Intl.DisplayNames(['en'], { type: 'region' }) : null;
+      function ccName(cc) { if (!cc) return null; try { return REGION ? (REGION.of(cc) || cc) : cc; } catch (e) { return cc; } }
+      function dominantCountry(pts) {
+        if (!pts || !pts.length) return null;
+        var tally = {}, best = null, bestN = 0;
+        for (var i = 0; i < pts.length; i++) {
+          var d = pts[i].source || pts[i];        // deck.gl may wrap source data as {source,index}
+          if (!d) continue;
+          var cc = d[3]; if (!cc) continue;
+          tally[cc] = (tally[cc] || 0) + (d[2] || 1);
+        }
+        for (var k in tally) { if (tally[k] > bestN) { bestN = tally[k]; best = k; } }
+        return best ? ccName(best) : null;
+      }
+
+      var deckgl = new deck.DeckGL({
+        container: 'dmap',
+        initialViewState: { longitude: 5, latitude: 25, zoom: 1.15, pitch: 0, bearing: 0 },
+        controller: true,
+        parameters: { clearColor: [0.027, 0.05, 0.11, 1] }
+      });
+
+      function build() {
+        var radius = +document.getElementById('r').value * 1000;
+        var extruded = document.getElementById('ext').checked;
+        var layers = [];
+        if (world) layers.push(new deck.GeoJsonLayer({
+          id: 'world', data: world, stroked: true, filled: true, wrapLongitude: true,
+          getFillColor: [20, 35, 64], getLineColor: [255, 255, 255, 30], lineWidthMinPixels: 0.4
+        }));
+        layers.push(new deck.HexagonLayer({
+          id: 'hex', data: points,
+          getPosition: function (d) { return [d[0], d[1]]; },
+          getColorWeight: function (d) { return d[2]; }, getElevationWeight: function (d) { return d[2]; },
+          colorAggregation: 'SUM', elevationAggregation: 'SUM',
+          radius: radius, coverage: 0.92, opacity: 0.85,
+          extruded: extruded, elevationScale: extruded ? 25 : 0,
+          colorScaleType: 'quantile',
+          colorRange: RAMP, pickable: true,
+          updateTriggers: { getColorWeight: radius },
+          onHover: function (info) {
+            if (info.object) {
+              var n = info.object.colorValue != null ? info.object.colorValue : (info.object.elevationValue || 0);
+              tip.style.display = 'block';
+              tip.style.left = (info.x + 12) + 'px';
+              tip.style.top = (info.y + 12) + 'px';
+              var msg = n.toLocaleString() + ' /24s in this hex';
+              var top = dominantCountry(info.object.points);
+              if (top) msg += ' · mostly ' + top;
+              tip.textContent = msg;
+            } else { tip.style.display = 'none'; }
+          }
+        }));
+        deckgl.setProps({ layers: layers });
+      }
+
+      document.getElementById('r').addEventListener('input', function (e) {
+        document.getElementById('rOut').textContent = e.target.value; build();
+      });
+      document.getElementById('ext').addEventListener('change', build);
+
+      fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+        .then(function (r) { return r.json(); })
+        .then(function (w) { world = topojson.feature(w, w.objects.countries); if (points.length) build(); });
+
+      fetch(base + 'assets/data/density-' + release + '.json')
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          points = j.points;
+          document.getElementById('dmeta').textContent = points.length.toLocaleString() + ' points · ' + j.release;
+          build();
+        })
+        .catch(function () { document.getElementById('dmeta').textContent = 'density data not published yet'; });
+    })();
+  </script>
+</BaseLayout>

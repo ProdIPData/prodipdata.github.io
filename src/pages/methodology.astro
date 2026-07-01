@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { currentReleaseMonth } from '../lib/format.js';
 
+const month = currentReleaseMonth;
 const breadcrumb = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -30,7 +32,7 @@ const breadcrumb = {
             Each monthly release is assembled from curated source data, validated against quality controls, packaged into reusable files,
             and published in a consistent format. The objective is to keep country, ASN, registry, and reference datasets clear, traceable, and easy to reuse.
           </p>
-          <p class="page-intro seo-links">After reviewing the workflow, you can inspect the <a href="coverage.html">coverage dashboard</a>, explore the <a href="platform.html">platform overview</a>, open the <a href="releases/2026-04/index.html">current release overview</a>, browse the <a href="releases/index.html">release archive</a>, or open the <a href="downloads.html">monthly GeoIP release indexes</a>.</p>
+          <p class="page-intro seo-links">After reviewing the workflow, you can inspect the <a href="coverage.html">coverage dashboard</a>, explore the <a href="platform.html">platform overview</a>, open the <a href={`releases/${month}/index.html`}>current release overview</a>, browse the <a href="releases/index.html">release archive</a>, or open the <a href="downloads.html">monthly GeoIP release indexes</a>.</p>
         </div>
       </div>
     </section>
@@ -70,7 +72,7 @@ const breadcrumb = {
             Each monthly release is refreshed around a controlled snapshot so users can work from a stable, documented version of the data. The emphasis is on freshness, clarity, and consistency across the published files and pages.
           </p>
           <ul>
-            <li>Release snapshot labels such as 2026-04, 2026-04, and subsequent monthly versions.</li>
+            <li>Release snapshot labels such as {month} and subsequent monthly versions.</li>
             <li>Country, ASN, RIR, and concentration datasets used by the website tables, metrics, maps, and comparison views.</li>
             <li>Download packages, manifests, checksums, and release-linked publication assets for local use.</li>
             <li>Release notes, methodology clarifications, and supporting publication pages when relevant.</li>
@@ -88,7 +90,7 @@ const breadcrumb = {
           </p>
           <ul>
             <li>The <a href="releases/index.html">release archive</a> is the long-term navigation layer.</li>
-            <li>The <a href="releases/2026-04/index.html">current release page</a> is the release-level summary layer.</li>
+            <li>The <a href={`releases/${month}/index.html`}>current release page</a> is the release-level summary layer.</li>
             <li>The format-specific package indexes remain the detailed download surfaces.</li>
           </ul>
         </div>
@@ -99,7 +101,7 @@ const breadcrumb = {
           </p>
           <ul>
             <li><a href="platform.html">Platform overview</a> for the product context.</li>
-            <li><a href="releases/2026-04/index.html">Release 2026-04 overview</a> for the current month.</li>
+            <li><a href={`releases/${month}/index.html`}>Release {month} overview</a> for the current month.</li>
             <li><a href="coverage.html">Coverage</a> and <a href="downloads.html">Downloads</a> and <a href="docs.html">Documentation</a> for deeper exploration.</li>
           </ul>
         </div>

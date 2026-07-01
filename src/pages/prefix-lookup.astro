@@ -1,0 +1,318 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import releases from '../../assets/data/releases.json';
+
+// Current release drives which monthly shard set we read.
+const release = releases.current_release;
+
+// Per-/8 Parquet shards live in a dedicated data repo, served via jsDelivr
+// (CORS + byte caching). One ~50-300 KB file is fetched per lookup.
+const dataBase = 'https://cdn.jsdelivr.net/gh/ProdIPData/prefix-data@main';
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://geoiplocations.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Prefix lookup', item: 'https://geoiplocations.com/prefix-lookup.html' },
+  ],
+};
+---
+<BaseLayout
+  title="IP Prefix Lookup — GeoIP, ASN & Registry Details | ProdIPData"
+  description="Look up any IPv4 address or /24 prefix and see its published GeoIP location, ASN, WHOIS ownership, RIR registry and risk attributes — read straight from the monthly Parquet release in your browser."
+  ogTitle="IP Prefix Lookup"
+  canonicalPath="/prefix-lookup.html"
+  page="prefix-lookup"
+  navPage="prefix-lookup"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+
+  <main class="container lookup">
+    <section class="lookup-hero">
+      <h1>Prefix lookup</h1>
+      <p class="lookup-sub">
+        Enter an IPv4 address or a <code>/24</code> prefix to see its published attributes for the
+        <strong>{release}</strong> release — geolocation, ASN, ownership, registry and risk signals.
+        Everything is read directly from the monthly Parquet data in your browser; nothing is sent to a server.
+      </p>
+
+      <form id="lookupForm" class="lookup-form glass" autocomplete="off">
+        <input
+          id="lookupInput"
+          class="lookup-input"
+          type="text"
+          inputmode="numeric"
+          placeholder="e.g. 8.8.8.8  or  8.8.8.0/24"
+          aria-label="IPv4 address or /24 prefix"
+        />
+        <button class="btn btn-secondary" type="submit">Look up</button>
+      </form>
+      <div id="lookupStatus" class="lookup-status" role="status" aria-live="polite"></div>
+    </section>
+
+    <section id="lookupResult" class="lookup-result" hidden></section>
+
+    <p class="lookup-note muted">
+      Granularity is one record per <code>/24</code> block. A full IP is resolved to its containing
+      <code>/24</code>. Unrouted or unallocated space returns no record. Data source:
+      the current monthly <a href={`./downloads.html`}>release</a>.
+    </p>
+  </main>
+
+  <div id="lookupConfig" data-release={release} data-base={dataBase} hidden></div>
+
+  <style is:inline>
+    .lookup { padding: 2.5rem 0 4rem; max-width: 920px; }
+    .lookup-hero h1 { margin: 0 0 .5rem; }
+    .lookup-sub { color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+    .lookup-form { display: flex; gap: .6rem; padding: .9rem; border-radius: 18px; align-items: center; flex-wrap: wrap; }
+    .lookup-input {
+      flex: 1 1 320px; min-width: 220px; font: inherit; font-size: 1.05rem;
+      padding: .78rem 1rem; border-radius: 12px; border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,.045); color: var(--text);
+    }
+    .lookup-input::placeholder { color: var(--muted); opacity: .7; }
+    .lookup-input:focus { outline: none; border-color: var(--accent-2); box-shadow: 0 0 0 3px rgba(45,212,191,.18); }
+    .lookup-form .btn { font-size: 1.05rem; padding: .78rem 1.4rem; }
+    .lookup-status { margin-top: .8rem; min-height: 1.3rem; font-size: .95rem; color: var(--muted); }
+    .lookup-status.err { color: var(--danger); }
+    .lookup-result { margin-top: 1.8rem; display: grid; gap: 1rem; }
+    .lk-card { border: 1px solid var(--line); border-radius: 18px; padding: 1.1rem 1.3rem; background: var(--panel); box-shadow: var(--shadow); }
+    .lk-card h2 { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-2); margin: 0 0 .85rem; }
+    .lk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem 1.8rem; }
+    @media (max-width: 620px) { .lk-grid { grid-template-columns: 1fr; } }
+    .lk-row { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--line); padding-bottom: .45rem; }
+    .lk-row .k { color: var(--muted); }
+    .lk-row .v { font-weight: 500; text-align: right; word-break: break-word; color: var(--text); }
+    .lk-head { font-size: 1.6rem; font-weight: 600; color: var(--text); }
+    .lk-badge { display: inline-block; font-size: .8rem; font-weight: 600; padding: .15rem .6rem; border-radius: 999px; margin-left: .5rem; vertical-align: middle; }
+    .lk-badge.warn { background: rgba(251,113,133,.16); color: var(--danger); }
+    .lookup-note { margin-top: 2rem; font-size: .9rem; }
+    .lk-spin { display:inline-block; width:14px; height:14px; border:2px solid rgba(79,140,255,.3); border-top-color: var(--accent); border-radius:50%; animation: lkspin .7s linear infinite; vertical-align:-2px; margin-right:.5rem; }
+    @keyframes lkspin { to { transform: rotate(360deg); } }
+    .lkm-wrap { border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#070d1c; min-height:90px; }
+    .lkm-svg { display:block; width:100%; height:auto; }
+    .lkm-ocean { fill:#070d1c; }
+    .lkm-land { fill: rgba(255,255,255,.07); stroke: rgba(255,255,255,.14); stroke-width:.5; }
+    .lkm-cur { fill: rgba(45,212,191,.16); stroke: rgba(45,212,191,.55); stroke-width:.9; }
+    .lkm-acc { fill: rgba(45,212,191,.08); stroke: rgba(45,212,191,.38); stroke-width:1; stroke-dasharray:5 4; }
+    .lkm-dot { fill: var(--accent); }
+    .lkm-ring { fill:none; stroke: var(--accent); stroke-width:1.5; }
+    .lkm-pulse { fill: var(--accent); opacity:.5; transform-box: fill-box; transform-origin:center; animation: lkmpulse 1.8s ease-out infinite; }
+    @keyframes lkmpulse { 0%{ transform:scale(.5); opacity:.55; } 70%{ transform:scale(2.8); opacity:0; } 100%{ opacity:0; } }
+    .lkm-cap { margin-top:.6rem; font-size:.85rem; }
+    .lkm-fail { padding:1rem; }
+  </style>
+
+  <script is:inline type="module">
+    import { parquetReadObjects } from 'https://esm.sh/hyparquet@1';
+    import { compressors } from 'https://esm.sh/hyparquet-compressors@1';
+    import { geoMercator, geoPath, geoContains } from 'https://esm.sh/d3-geo@3';
+    import { feature as topoFeature } from 'https://esm.sh/topojson-client@3';
+
+    const cfg = document.getElementById('lookupConfig').dataset;
+    const RELEASE = cfg.release;
+    const BASE = cfg.base;
+
+    // Natural Earth country outlines (public domain) — for the location pin map. Lazy-loaded once.
+    const WORLD_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
+    let WORLD = null;
+    async function ensureWorld() {
+      if (WORLD) return WORLD;
+      const tj = await fetch(WORLD_URL).then((r) => r.json());
+      WORLD = topoFeature(tj, tj.objects.countries).features;
+      return WORLD;
+    }
+
+    const form = document.getElementById('lookupForm');
+    const input = document.getElementById('lookupInput');
+    const statusEl = document.getElementById('lookupStatus');
+    const resultEl = document.getElementById('lookupResult');
+
+    const shardCache = new Map(); // octet -> Map(prefix -> row)
+
+    function setStatus(msg, isErr) {
+      statusEl.innerHTML = msg;
+      statusEl.classList.toggle('err', !!isErr);
+    }
+
+    // Accept "8.8.8.8", "8.8.8.0/24", "8.8.8" -> { octet, prefix:"8.8.8.0/24" }
+    function toPrefix24(raw) {
+      const s = String(raw || '').trim().split('/')[0].trim();
+      const m = s.match(/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})(?:\.(\d{1,3}))?$/);
+      if (!m) return null;
+      const o = [m[1], m[2], m[3]].map(Number);
+      if (o.some((x) => x < 0 || x > 255)) return null;
+      return { octet: o[0], prefix: `${o[0]}.${o[1]}.${o[2]}.0/24` };
+    }
+
+    function val(v) {
+      if (v instanceof Uint8Array) v = new TextDecoder().decode(v);
+      if (v === null || v === undefined || v === '' || v === '-') return null;
+      return v;
+    }
+
+    async function loadShard(octet) {
+      if (shardCache.has(octet)) return shardCache.get(octet);
+      const url = `${BASE}/${RELEASE}/${octet}.parquet`;
+      const res = await fetch(url);
+      if (res.status === 404 || res.status === 403) { shardCache.set(octet, null); return null; } // octet not present (unrouted); jsDelivr 403s missing files
+      if (!res.ok) throw new Error(`fetch ${res.status}`);
+      const ab = await res.arrayBuffer();
+      const file = { byteLength: ab.byteLength, slice: (a, b) => ab.slice(a, b ?? ab.byteLength) };
+      const rows = await parquetReadObjects({ file, compressors });
+      const map = new Map();
+      for (const r of rows) map.set(val(r.IP24Prefix), r);
+      shardCache.set(octet, map);
+      return map;
+    }
+
+    const FIELDS = [
+      ['Location', [
+        ['CountryCode', 'Country'], ['ContinentCode', 'Continent'], ['IsInEU', 'In EU'],
+        ['RegionName', 'Region'], ['CityName', 'City'],
+        ['Latitude', 'Latitude'], ['Longitude', 'Longitude'], ['AccuracyRadius', 'Accuracy'], ['TimeZone', 'Time zone'],
+      ]],
+      ['Network / ASN', [
+        ['ASNID', 'ASN'], ['ASNName', 'ASN name'], ['ASNOrg', 'ASN org'],
+        ['ASNDomain', 'ASN domain'], ['ASNType', 'ASN type'],
+      ]],
+      ['Ownership (WHOIS)', [
+        ['Company', 'Company'], ['CompanyCountry', 'Company country'],
+        ['WhoisNetName', 'Net name'], ['AbuseContact', 'Abuse contact'],
+      ]],
+      ['Registry', [
+        ['RIR', 'RIR'], ['RIRAllocationDate', 'Allocated'], ['RIRStatus', 'Status'],
+      ]],
+      ['Risk signals', [
+        ['HasC2', 'C2 hosting'], ['C2Malwares', 'C2 malware'],
+        ['IsTor', 'Tor'], ['Anonymization', 'Anonymization'],
+      ]],
+    ];
+
+    const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const flag = (cc) => { const c = String(cc || '').trim().toLowerCase(); return /^[a-z]{2}$/.test(c) ? `<span class="fi fi-${c}" aria-hidden="true"></span> ` : ''; };
+
+    // Interpret the block's AccuracyRadius (km). Drives the map circle + honest labelling:
+    //   <=100 km  city-precise · 100-500 km  approximate · >=500 km  country-level fallback.
+    const accInfo = (row) => {
+      const a = Number(val(row.AccuracyRadius));
+      if (!isFinite(a) || a <= 0) return null;
+      const km = Math.round(a);
+      if (a >= 500) return { km, level: 'country', word: 'country-level' };
+      if (a > 100)  return { km, level: 'region',  word: 'approximate' };
+      return { km, level: 'city', word: 'city-precise' };
+    };
+
+    // IPInfo-style location map: auto-zoom to the block's country (point-in-polygon, no code tables),
+    // pulsing pin at the exact /24 coordinate. No tiles, no API — Natural Earth outline only.
+    async function renderMap(row) {
+      const mount = document.getElementById('lkmMount');
+      const cap = document.getElementById('lkmCap');
+      if (!mount) return;
+      const lat = Number(val(row.Latitude));
+      const lon = Number(val(row.Longitude));
+      if (!isFinite(lat) || !isFinite(lon)) return;
+      let feats;
+      try { feats = await ensureWorld(); }
+      catch { mount.innerHTML = '<div class="lkm-fail muted">Map unavailable right now.</div>'; return; }
+      const W = 860, H = 340, PAD = 18;
+      let country = null;
+      for (const f of feats) { if (geoContains(f, [lon, lat])) { country = f; break; } }
+      const proj = geoMercator();
+      if (country) {
+        proj.fitExtent([[PAD, PAD], [W - PAD, H - PAD]], country);
+        if (proj.scale() > 2400) proj.scale(2400).center([lon, lat]).translate([W / 2, H / 2]);
+      } else {
+        proj.center([lon, lat]).scale(820).translate([W / 2, H / 2]);
+      }
+      proj.clipExtent([[0, 0], [W, H]]); // clip to viewport — keeps off-screen path data tiny
+      const path = geoPath(proj);
+      const land = feats.map((f) => { const d = path(f); return d ? `<path d="${d}" class="lkm-land${f === country ? ' lkm-cur' : ''}"/>` : ''; }).join('');
+      const p = proj([lon, lat]);
+      const px = p ? p[0] : W / 2, py = p ? p[1] : H / 2;
+      // Accuracy circle: convert AccuracyRadius (km) to pixels via the live projection
+      // (~111 km per degree of latitude), clamped so a country-level radius stays drawable.
+      const acc = accInfo(row);
+      let accCircle = '';
+      if (acc) {
+        const p2 = proj([lon, lat + acc.km / 111]);
+        let rpx = p2 ? Math.hypot(p2[0] - px, p2[1] - py) : 0;
+        rpx = Math.max(6, Math.min(rpx, Math.max(W, H)));
+        accCircle = `<circle class="lkm-acc" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${rpx.toFixed(1)}"/>`;
+      }
+      mount.innerHTML =
+        `<svg viewBox="0 0 ${W} ${H}" class="lkm-svg" role="img" aria-label="Approximate location of the block">` +
+        `<rect width="${W}" height="${H}" class="lkm-ocean"/><g>${land}</g>` + accCircle +
+        `<g class="lkm-pin" transform="translate(${px.toFixed(1)},${py.toFixed(1)})">` +
+        `<circle class="lkm-pulse" r="7"/><circle class="lkm-ring" r="7"/><circle class="lkm-dot" r="3.4"/></g></svg>`;
+      const cc = val(row.CountryCode);
+      if (acc && acc.level === 'country') {
+        // Low-confidence block: honestly label the country-centroid fallback, don't assert a city.
+        cap.innerHTML = flag(cc) + esc(`Approximate — country-level${cc ? ` (${cc})` : ''} · ${lat.toFixed(4)}, ${lon.toFixed(4)} · ±${acc.km} km`);
+      } else {
+        const parts = [val(row.CityName), val(row.RegionName), cc].filter(Boolean);
+        const suff = acc ? ` · ±${acc.km} km` : '';
+        cap.innerHTML = flag(cc) + esc((parts.length ? parts.join(', ') + ' · ' : '') + `${lat.toFixed(4)}, ${lon.toFixed(4)}` + suff);
+      }
+    }
+
+    function render(prefix, row) {
+      const _lat = Number(val(row.Latitude)), _lon = Number(val(row.Longitude));
+      const hasCoord = isFinite(_lat) && isFinite(_lon);
+      const acc = accInfo(row);
+      const countryLevel = !!acc && acc.level === 'country';
+      const head = `<div class="lk-card"><div class="lk-head">${esc(prefix)}</div>
+        <div class="muted" style="margin-top:.2rem">Snapshot ${esc(val(row.snapshot_month) || RELEASE)}</div></div>`;
+      const mapCard = hasCoord ? `<div class="lk-card lkm-card"><h2>Approx. location</h2><div id="lkmMount" class="lkm-wrap"></div><div id="lkmCap" class="lkm-cap muted"></div></div>` : '';
+      const cards = FIELDS.map(([title, fields]) => {
+        const rows = fields.map(([key, label]) => {
+          let v = val(row[key]);
+          if (v === null) return '';
+          if (key === 'IsInEU' || key === 'IsTor') v = (String(v) === 'true' || v === true || v === 1) ? 'Yes' : 'No';
+          else if (key === 'RIR') v = String(v).toUpperCase();
+          else if (key === 'RIRAllocationDate' && /^\d{8}$/.test(String(v))) { const s = String(v); v = `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 8)}`; }
+          else if (key === 'ASNID') v = 'AS' + v;
+          else if (key === 'AccuracyRadius') { const km = Math.round(Number(v)); v = `${km} km${acc ? ` · ${acc.word}` : ''}`; }
+          if (key === 'HasC2') {
+            const on = (String(v) === 'true' || v === true || v === 1);
+            return `<div class="lk-row"><span class="k">${label}</span><span class="v">${on ? '<span class="lk-badge warn">Yes</span>' : 'No'}</span></div>`;
+          }
+          // Country-level fallback: don't assert a best-guess city/region — flag it as approximate.
+          if ((key === 'CityName' || key === 'RegionName') && countryLevel) {
+            return `<div class="lk-row"><span class="k">${label}</span><span class="v" style="opacity:.6" title="Low confidence — this block geolocates only to country level">${esc(v)} (approx.)</span></div>`;
+          }
+          return `<div class="lk-row"><span class="k">${label}</span><span class="v">${key === 'CountryCode' ? flag(v) : ''}${esc(v)}</span></div>`;
+        }).join('');
+        return rows ? `<div class="lk-card"><h2>${title}</h2><div class="lk-grid">${rows}</div></div>` : '';
+      }).join('');
+      resultEl.innerHTML = head + mapCard + cards;
+      resultEl.hidden = false;
+      if (hasCoord) renderMap(row);
+    }
+
+    async function doLookup(e) {
+      if (e) e.preventDefault();
+      resultEl.hidden = true;
+      const parsed = toPrefix24(input.value);
+      if (!parsed) { setStatus('Enter a valid IPv4 address or /24 prefix (e.g. 8.8.8.8).', true); return; }
+      setStatus(`<span class="lk-spin"></span>Looking up ${esc(parsed.prefix)} …`);
+      try {
+        const map = await loadShard(parsed.octet);
+        if (!map) { setStatus(`No data for ${esc(parsed.prefix)} — that block is unrouted or unallocated in the ${esc(RELEASE)} release.`); return; }
+        const row = map.get(parsed.prefix);
+        if (!row) { setStatus(`No record for ${esc(parsed.prefix)} — this /24 isn't present in the ${esc(RELEASE)} release (likely unrouted).`); return; }
+        setStatus(`Result for ${esc(parsed.prefix)}`);
+        render(parsed.prefix, row);
+      } catch (err) {
+        setStatus(`Lookup failed: ${esc(err.message || err)}. The data may not be published yet.`, true);
+      }
+    }
+
+    form.addEventListener('submit', doLookup);
+    // Deep link support: /prefix-lookup.html?q=8.8.8.8
+    const q = new URLSearchParams(location.search).get('q');
+    if (q) { input.value = q; doLookup(); }
+  </script>
+</BaseLayout>

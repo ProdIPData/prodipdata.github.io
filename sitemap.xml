@@ -22,10 +22,10 @@
     <loc>https://geoiplocations.com/licensing.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/downloads-csv-2026-04.html</loc>
+    <loc>https://geoiplocations.com/downloads-csv-2026-07.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/downloads-parquet-2026-04.html</loc>
+    <loc>https://geoiplocations.com/downloads-parquet-2026-07.html</loc>
   </url>
   <url>
     <loc>https://geoiplocations.com/reference-bogons.html</loc>
@@ -61,7 +61,7 @@
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/releases/2026-04/</loc>
+    <loc>https://geoiplocations.com/releases/2026-07/</loc>
   </url>
   <url>
     <loc>https://geoiplocations.com/asn/</loc>
@@ -73,7 +73,7 @@
     <loc>https://geoiplocations.com/rir/</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/downloads-mmdb-2026-04.html</loc>
+    <loc>https://geoiplocations.com/downloads-mmdb-2026-07.html</loc>
   </url>
   <url>
     <loc>https://geoiplocations.com/news.html</loc>
@@ -180,21 +180,18 @@
     <lastmod>2026-04-27</lastmod>
   </url>
   <url>
-    <loc>https://geoiplocations.com/releases/2026-03/</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://geoiplocations.com/prefix-lookup.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/downloads-csv-2026-03.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://geoiplocations.com/prefix-density.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/downloads-parquet-2026-03.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://geoiplocations.com/prefix-region.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.70</priority>
   </url>
 </urlset>

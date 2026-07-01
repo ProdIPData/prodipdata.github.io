@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { currentReleaseMonth } from '../lib/format.js';
 
+const month = currentReleaseMonth;
 const breadcrumb = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -30,7 +32,7 @@ const breadcrumb = {
             GeoIP Locations is the public data experience of ProdIPData. It helps teams explore country coverage, ASN structure,
             registry footprint, and downloadable files that can be used in analytics, routing, applications, and operational workflows.
           </p>
-          <p class="page-intro seo-links">Explore the <a href="coverage.html">interactive country coverage map</a>, open the <a href="downloads.html">monthly GeoIP download indexes</a>, browse the <a href="releases/index.html">release archive</a>, open the <a href="releases/2026-04/index.html">current release overview</a>, or review the <a href="methodology.html">ProdIPData methodology</a> to understand how each release is assembled.</p>
+          <p class="page-intro seo-links">Explore the <a href="coverage.html">interactive country coverage map</a>, open the <a href="downloads.html">monthly GeoIP download indexes</a>, browse the <a href="releases/index.html">release archive</a>, open the <a href={`releases/${month}/index.html`}>current release overview</a>, or review the <a href="methodology.html">ProdIPData methodology</a> to understand how each release is assembled.</p>
         </div>
       </div>
     </section>

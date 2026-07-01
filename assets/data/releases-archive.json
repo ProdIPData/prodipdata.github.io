@@ -1,13 +1,46 @@
 {
-  "currentRelease": "2026-06",
-  "generatedOn": "2026-06-11",
+  "currentRelease": "2026-07",
+  "generatedOn": "2026-07-01",
   "storageRepository": "https://github.com/ProdIPData/ProdIP_Files",
   "repositoryBranch": "main",
   "governanceNote": "Monthly release artifacts are stored permanently under ProdIP_Files/Export/release_YYYY-MM/. The website repository is the catalog/navigation layer.",
   "releases": [
     {
-      "releaseMonth": "2026-06",
+      "releaseMonth": "2026-07",
       "status": "current",
+      "releasePage": "/releases/2026-07/index.html",
+      "snapshotMonth": "2026-07",
+      "formats": [
+        {
+          "format": "CSV",
+          "status": "available",
+          "packageRows": 251,
+          "indexPage": "/downloads-csv-2026-07.html",
+          "storagePath": "Export/release_2026-07/CSV/",
+          "passwordLocation": "Request by email: geoiplocations@gmail.com"
+        },
+        {
+          "format": "Parquet",
+          "status": "available",
+          "packageRows": 251,
+          "indexPage": "/downloads-parquet-2026-07.html",
+          "storagePath": "Export/release_2026-07/PARQUET/",
+          "passwordLocation": "Request by email: geoiplocations@gmail.com"
+        },
+        {
+          "format": "MMDB",
+          "status": "available",
+          "packageRows": 1,
+          "indexPage": "/downloads-mmdb-2026-07.html",
+          "storagePath": "GitHub Release prodip-2026-07 (single global asset)",
+          "passwordLocation": "Request by email: geoiplocations@gmail.com"
+        }
+      ],
+      "machineReadableInventory": "/assets/data/release-2026-07-package-inventory.json"
+    },
+    {
+      "releaseMonth": "2026-06",
+      "status": "archived",
       "releasePage": "/releases/2026-06/index.html",
       "snapshotMonth": "2026-06",
       "formats": [
