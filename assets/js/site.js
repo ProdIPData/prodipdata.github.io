@@ -1700,7 +1700,8 @@ async function renderReferencePage(context) {
   const nextNode = document.querySelector('[data-reference-next]');
   const rawLinkNode = document.querySelector('[data-reference-raw-link]');
 
-  const payload = getInlineReferencePayload() || await fetchJson(config.dataPath);
+  // Prefer the fresh monthly JSON; fall back to the baked inline snapshot only if the fetch fails.
+  const payload = await fetchJson(config.dataPath).catch(() => getInlineReferencePayload());
   const items = getItems(payload);
   if (rawLinkNode) {
     rawLinkNode.setAttribute('href', config.dataPath);
