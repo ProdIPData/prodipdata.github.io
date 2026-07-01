@@ -1,5 +1,40 @@
 [
   {
+    "date": "2026-07-01",
+    "category": "Release",
+    "title": "July 2026 release is live",
+    "summary": "The July 2026 monthly GeoIP dataset is published across CSV, Parquet, and MMDB, with per-country packages plus ALL, bogon, government, and education special editions. Note: this month's city-level coordinates draw on the June DB-IP City Lite edition, as DB-IP had not yet released its July file at publication time.",
+    "link": "downloads.html"
+  },
+  {
+    "date": "2026-07-01",
+    "category": "New tool",
+    "title": "Prefix Lookup: resolve any IPv4 block in your browser",
+    "summary": "Look up any IPv4 address or /24 prefix and instantly see its published GeoIP location, ASN, WHOIS ownership, registry status, and risk signals - read directly from the monthly Parquet in your browser, with nothing sent to a server. Low-confidence blocks now show an explicit accuracy radius and an honest country-level label.",
+    "link": "prefix-lookup.html"
+  },
+  {
+    "date": "2026-07-01",
+    "category": "New maps",
+    "title": "Interactive IPv4 Density and Region maps",
+    "summary": "A hex-bin density heatmap showing where IPv4 address space concentrates worldwide, and a state/province (ISO 3166-2) choropleth of city-precise /24 footprint with click-to-zoom - both rendered entirely client-side, no map tiles, no tracking.",
+    "link": "prefix-density.html"
+  },
+  {
+    "date": "2026-07-01",
+    "category": "Data quality",
+    "title": "Spatially-validated coordinates and a live IANA TLD catalog",
+    "summary": "Every published coordinate is validated against public-domain Natural Earth boundaries (about 99.97% country-level match) with standardized ISO 3166-2 region codes, and the TLD reference catalog now refreshes directly from the IANA Root Zone Database each release.",
+    "link": "reference-root-zone.html"
+  },
+  {
+    "date": "2026-07-01",
+    "category": "Open data",
+    "title": "Open Parquet dataset on Hugging Face",
+    "summary": "The full geolocated /24 set is published as an open, no-password Parquet dataset on Hugging Face under CC BY 4.0, refreshed every month alongside the site packages.",
+    "link": "https://huggingface.co/datasets/ProdIPData/geoip-locations"
+  },
+  {
     "date": "2026-04-26",
     "category": "Release",
     "title": "April 2026 release is ready",
@@ -11,14 +46,14 @@
     "category": "Data format",
     "title": "MMDB packages added",
     "summary": "GeoIP Locations now publishes MMDB packages alongside CSV and Parquet for monthly IPv4 geolocation releases.",
-    "link": "downloads-mmdb-2026-04.html"
+    "link": "downloads.html"
   },
   {
     "date": "2026-04-26",
     "category": "Release delivery",
     "title": "Large ALL packages published as release assets",
     "summary": "The ALL scope packages for CSV, Parquet, and MMDB are delivered through GitHub Release assets while country packages remain available through the release folder.",
-    "link": "https://github.com/ProdIPData/ProdIP_Files/releases/tag/prodip-2026-04"
+    "link": "https://github.com/ProdIPData/ProdIP_Files/releases"
   },
   {
     "date": "2026-04-26",
