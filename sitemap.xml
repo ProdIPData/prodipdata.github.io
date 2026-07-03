@@ -1,198 +1,198 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://geoiplocations.com/</loc>
+    <loc>https://prodipdata.com/</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/platform.html</loc>
+    <loc>https://prodipdata.com/platform.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/coverage.html</loc>
+    <loc>https://prodipdata.com/coverage.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/methodology.html</loc>
+    <loc>https://prodipdata.com/methodology.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/downloads.html</loc>
+    <loc>https://prodipdata.com/downloads.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/contact.html</loc>
+    <loc>https://prodipdata.com/contact.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/licensing.html</loc>
+    <loc>https://prodipdata.com/licensing.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/downloads-csv-2026-04.html</loc>
+    <loc>https://prodipdata.com/downloads-csv-2026-04.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/downloads-parquet-2026-04.html</loc>
+    <loc>https://prodipdata.com/downloads-parquet-2026-04.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/reference-bogons.html</loc>
+    <loc>https://prodipdata.com/reference-bogons.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/reference-cidr.html</loc>
+    <loc>https://prodipdata.com/reference-cidr.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/reference-ports.html</loc>
+    <loc>https://prodipdata.com/reference-ports.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/reference-root-zone.html</loc>
+    <loc>https://prodipdata.com/reference-root-zone.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/geoip-database.html</loc>
+    <loc>https://prodipdata.com/ip-geolocation-database.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/ip-geolocation-data.html</loc>
+    <loc>https://prodipdata.com/ip-geolocation-data.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/asn-data-by-country.html</loc>
+    <loc>https://prodipdata.com/asn-data-by-country.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/geoip-csv-download.html</loc>
+    <loc>https://prodipdata.com/ip-geolocation-csv-download.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/geoip-parquet-download.html</loc>
+    <loc>https://prodipdata.com/ip-geolocation-parquet-download.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/releases/</loc>
+    <loc>https://prodipdata.com/releases/</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/releases/2026-04/</loc>
+    <loc>https://prodipdata.com/releases/2026-04/</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/asn/</loc>
+    <loc>https://prodipdata.com/asn/</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/country/</loc>
+    <loc>https://prodipdata.com/country/</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/rir/</loc>
+    <loc>https://prodipdata.com/rir/</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/downloads-mmdb-2026-04.html</loc>
+    <loc>https://prodipdata.com/downloads-mmdb-2026-04.html</loc>
   </url>
   <url>
-    <loc>https://geoiplocations.com/news.html</loc>
+    <loc>https://prodipdata.com/news.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs.html</loc>
+    <loc>https://prodipdata.com/docs.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs/data-types.html</loc>
+    <loc>https://prodipdata.com/docs/data-types.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs/parquet.html</loc>
+    <loc>https://prodipdata.com/docs/parquet.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs/mmdb.html</loc>
+    <loc>https://prodipdata.com/docs/mmdb.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs/schema.html</loc>
+    <loc>https://prodipdata.com/docs/schema.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs/using-csv.html</loc>
+    <loc>https://prodipdata.com/docs/using-csv.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs/using-parquet.html</loc>
+    <loc>https://prodipdata.com/docs/using-parquet.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs/using-mmdb.html</loc>
+    <loc>https://prodipdata.com/docs/using-mmdb.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs/format-comparison.html</loc>
+    <loc>https://prodipdata.com/docs/format-comparison.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs/download-workflow.html</loc>
+    <loc>https://prodipdata.com/docs/download-workflow.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs/data-sources.html</loc>
+    <loc>https://prodipdata.com/docs/data-sources.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs/methodology-deep-dive.html</loc>
+    <loc>https://prodipdata.com/docs/methodology-deep-dive.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs/source-conflict-resolution.html</loc>
+    <loc>https://prodipdata.com/docs/source-conflict-resolution.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs/asn-classification.html</loc>
+    <loc>https://prodipdata.com/docs/asn-classification.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs/geolocation-precision.html</loc>
+    <loc>https://prodipdata.com/docs/geolocation-precision.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs/accuracy-limitations.html</loc>
+    <loc>https://prodipdata.com/docs/accuracy-limitations.html</loc>
     <lastmod>2026-04-27</lastmod>
   </url>
   <url>
-    <loc>https://geoiplocations.com/docs/how-to-use-this-data.html</loc>
+    <loc>https://prodipdata.com/docs/how-to-use-this-data.html</loc>
     <lastmod>2026-04-27</lastmod>
   </url>
   <url>
-    <loc>https://geoiplocations.com/releases/2026-03/</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://geoiplocations.com/downloads-csv-2026-03.html</loc>
+    <loc>https://prodipdata.com/releases/2026-03/</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://geoiplocations.com/downloads-parquet-2026-03.html</loc>
+    <loc>https://prodipdata.com/downloads-csv-2026-03.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://prodipdata.com/downloads-parquet-2026-03.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>

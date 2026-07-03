@@ -1,7 +1,7 @@
 const PRODIP_ANALYTICS_STREAMS = Object.freeze({
-  'qa.geoiplocations.com': 'G-M860EQGN4W',
-  'geoiplocations.com': 'G-1DX52Q08X0',
-  'www.geoiplocations.com': 'G-1DX52Q08X0'
+  'qa.prodipdata.com': 'G-M860EQGN4W',
+  'prodipdata.com': 'G-1DX52Q08X0',
+  'www.prodipdata.com': 'G-1DX52Q08X0'
 });
 
 initializeAnalytics();
@@ -33,9 +33,9 @@ function initializeAnalytics() {
 }
 
 const PRODIP_CLARITY_PROJECTS = Object.freeze({
-  'qa.geoiplocations.com': 'wej20e55tp',
-  'geoiplocations.com': 'weja58sdv1',
-  'www.geoiplocations.com': 'weja58sdv1'
+  'qa.prodipdata.com': 'wej20e55tp',
+  'prodipdata.com': 'weja58sdv1',
+  'www.prodipdata.com': 'weja58sdv1'
 });
 
 initializeClarity();
@@ -64,13 +64,13 @@ function initializeClarity() {
   })(window, document, 'clarity', 'script', projectId);
 }
 
-const PRODIP_PRODUCTION_HOSTS = Object.freeze(['geoiplocations.com', 'www.geoiplocations.com']);
+const PRODIP_PRODUCTION_HOSTS = Object.freeze(['prodipdata.com', 'www.prodipdata.com']);
 
 applyStagingNoindex();
 
 // Keep every non-production host (QA/staging, *.github.io preview URLs, local) out of
 // search engines, so a staging mirror never competes with the live site as duplicate
-// content. Keyed on hostname: on production (geoiplocations.com) this does nothing.
+// content. Keyed on hostname: on production (prodipdata.com) this does nothing.
 function applyStagingNoindex() {
   if (typeof window === 'undefined' || typeof document === 'undefined') {
     return;

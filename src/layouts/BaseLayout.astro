@@ -10,22 +10,21 @@ const {
   navPage = '',             // data-nav-page
   assetRoot = '',           // data-asset-root (legacy site.js fetch root)
   ogTitle,
-  image = 'https://geoiplocations.com/assets/img/prodipdata-logo.png',
+  image = 'https://prodipdata.com/assets/img/prodipdata-logo.png',
 } = Astro.props;
 
 const rawBase = import.meta.env.BASE_URL;              // '/prodipdata.github.io' on QA, '/' on prod
 const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';  // guarantee a trailing slash for clean joins
-const canonical = 'https://geoiplocations.com' + canonicalPath;
-const socialTitle = ogTitle ?? title.replace(/\s*\|\s*(ProdIPData|GeoIP Locations).*$/, '');
+const canonical = 'https://prodipdata.com' + canonicalPath;
+const socialTitle = ogTitle ?? title.replace(/\s*\|\s*ProdIPData.*$/, '');
 
 const org = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  '@id': 'https://geoiplocations.com/#organization',
+  '@id': 'https://prodipdata.com/#organization',
   name: 'ProdIPData',
-  alternateName: 'GeoIP Locations',
-  url: 'https://geoiplocations.com/',
-  logo: 'https://geoiplocations.com/assets/img/prodipdata-mark.png',
+  url: 'https://prodipdata.com/',
+  logo: 'https://prodipdata.com/assets/img/prodipdata-mark.png',
 };
 
 const navItems = [
@@ -51,7 +50,7 @@ const link = (slug) => `${base}${slug}.html`;
     <link rel="canonical" href={canonical} />
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="GeoIP Locations" />
+    <meta property="og:site_name" content="ProdIPData" />
     <meta property="og:title" content={socialTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -74,8 +73,8 @@ const link = (slug) => `${base}${slug}.html`;
           <a class="brand" href={`${base}index.html`}>
             <div class="brand-mark">&#9678;</div>
             <div>
-              GeoIP Locations
-              <small>Powered by ProdIPData</small>
+              ProdIPData
+              <small>Free monthly IP geolocation data</small>
             </div>
           </a>
           <nav class="nav-links" aria-label="Primary navigation">
@@ -96,9 +95,10 @@ const link = (slug) => `${base}${slug}.html`;
 
     <footer class="site-footer">
       <div class="container site-footer-inner">
-        <div>&copy; <span data-current-year></span> GeoIP Locations &middot; ProdIPData</div>
+        <div>&copy; <span data-current-year></span> ProdIPData</div>
         <div><a href={`${base}licensing.html`}>Datasets and metadata: CC BY 4.0</a></div>
         <div>Engineered and published by the ProdIPData team.</div>
+        <div class="muted">MaxMind and GeoIP are registered trademarks of MaxMind, Inc. ProdIPData is not affiliated with or endorsed by MaxMind.</div>
       </div>
     </footer>
 

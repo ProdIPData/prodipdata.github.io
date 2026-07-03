@@ -3,14 +3,14 @@
     "date": "2026-07-01",
     "category": "Release",
     "title": "July 2026 release is live",
-    "summary": "The July 2026 monthly GeoIP dataset is published across CSV, Parquet, and MMDB, with per-country packages plus ALL, bogon, government, and education special editions. Note: this month's city-level coordinates draw on the June DB-IP City Lite edition, as DB-IP had not yet released its July file at publication time.",
+    "summary": "The July 2026 monthly IP geolocation dataset is published across CSV, Parquet, and MMDB, with per-country packages plus ALL, bogon, government, and education special editions. Note: this month's city-level coordinates draw on the June DB-IP City Lite edition, as DB-IP had not yet released its July file at publication time.",
     "link": "downloads.html"
   },
   {
     "date": "2026-07-01",
     "category": "New tool",
     "title": "Prefix Lookup: resolve any IPv4 block in your browser",
-    "summary": "Look up any IPv4 address or /24 prefix and instantly see its published GeoIP location, ASN, WHOIS ownership, registry status, and risk signals - read directly from the monthly Parquet in your browser, with nothing sent to a server. Low-confidence blocks now show an explicit accuracy radius and an honest country-level label.",
+    "summary": "Look up any IPv4 address or /24 prefix and instantly see its published IP geolocation, ASN, WHOIS ownership, registry status, and risk signals - read directly from the monthly Parquet in your browser, with nothing sent to a server. Low-confidence blocks now show an explicit accuracy radius and an honest country-level label.",
     "link": "prefix-lookup.html"
   },
   {
@@ -45,7 +45,7 @@
     "date": "2026-04-26",
     "category": "Data format",
     "title": "MMDB packages added",
-    "summary": "GeoIP Locations now publishes MMDB packages alongside CSV and Parquet for monthly IPv4 geolocation releases.",
+    "summary": "ProdIPData now publishes MMDB packages alongside CSV and Parquet for monthly IPv4 geolocation releases.",
     "link": "downloads.html"
   },
   {

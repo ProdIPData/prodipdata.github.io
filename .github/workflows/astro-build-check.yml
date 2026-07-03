@@ -1,8 +1,8 @@
 name: Build and deploy
 
 # One workflow for both environments, selected by which repo it runs in:
-#   - QA fork (geoiplocations/...)  -> serves under the project sub-path, CNAME qa.geoiplocations.com
-#   - Production (ProdIPData/...)   -> serves at the root domain,         CNAME geoiplocations.com
+#   - QA fork                       -> CNAME qa.prodipdata.com
+#   - Production (ProdIPData/...)   -> serves at the root domain, CNAME prodipdata.com
 # It builds Astro, overlays any not-yet-migrated legacy files, writes the right
 # CNAME, and deploys to that repo's GitHub Pages.
 
@@ -38,10 +38,8 @@ jobs:
       - name: Build Astro site
         run: npm run build
         env:
-          # Both QA (qa.geoiplocations.com) and PROD (geoiplocations.com) now serve at the
+          # Both QA (qa.prodipdata.com) and PROD (prodipdata.com) serve at the
           # ROOT of their own custom domains, so the base path is '/' in both environments.
-          # (The old '/prodipdata.github.io' sub-path was only needed when QA had no custom
-          #  domain and served at geoiplocations.github.io/prodipdata.github.io/.)
           SITE_BASE: '/'
 
       - name: Overlay legacy pages not yet migrated to Astro
@@ -66,9 +64,9 @@ jobs:
       - name: Set custom domain (per environment, never committed)
         run: |
           if [ "${{ github.repository }}" = "ProdIPData/prodipdata.github.io" ]; then
-            echo 'geoiplocations.com' > ./dist/CNAME
+            echo 'prodipdata.com' > ./dist/CNAME
           else
-            echo 'qa.geoiplocations.com' > ./dist/CNAME
+            echo 'qa.prodipdata.com' > ./dist/CNAME
           fi
 
       - name: Configure Pages

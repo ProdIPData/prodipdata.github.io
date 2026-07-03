@@ -6,17 +6,17 @@ const month = currentReleaseMonth;
 const breadcrumb = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
-  '@id': 'https://geoiplocations.com/methodology.html#breadcrumb',
+  '@id': 'https://prodipdata.com/methodology.html#breadcrumb',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://geoiplocations.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Methodology', item: 'https://geoiplocations.com/methodology.html' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://prodipdata.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Methodology', item: 'https://prodipdata.com/methodology.html' },
   ],
 };
 ---
 <BaseLayout
-  title="GeoIP Methodology, Data Sources, Validation and Release Process | ProdIPData"
-  description="Review the ProdIPData GeoIP methodology, source inputs, validation approach, and monthly release process for CSV, Parquet, and MMDB datasets."
-  ogTitle="GeoIP Methodology, Data Sources, Validation and Release Process"
+  title="IP geolocation Methodology, Data Sources, Validation and Release Process | ProdIPData"
+  description="Review the ProdIPData IP geolocation methodology, source inputs, validation approach, and monthly release process for CSV, Parquet, and MMDB datasets."
+  ogTitle="IP geolocation Methodology, Data Sources, Validation and Release Process"
   canonicalPath="/methodology.html"
   page="methodology"
 >
@@ -27,12 +27,12 @@ const breadcrumb = {
       <div class="container">
         <div class="page-panel glass">
           <div class="eyebrow page-kicker">Methodology</div>
-          <h1>How ProdIPData builds each monthly GeoIP release.</h1>
+          <h1>How ProdIPData builds each monthly IP geolocation release.</h1>
           <p class="page-intro">
             Each monthly release is assembled from curated source data, validated against quality controls, packaged into reusable files,
             and published in a consistent format. The objective is to keep country, ASN, registry, and reference datasets clear, traceable, and easy to reuse.
           </p>
-          <p class="page-intro seo-links">After reviewing the workflow, you can inspect the <a href="coverage.html">coverage dashboard</a>, explore the <a href="platform.html">platform overview</a>, open the <a href={`releases/${month}/index.html`}>current release overview</a>, browse the <a href="releases/index.html">release archive</a>, or open the <a href="downloads.html">monthly GeoIP release indexes</a>.</p>
+          <p class="page-intro seo-links">After reviewing the workflow, you can inspect the <a href="coverage.html">coverage dashboard</a>, explore the <a href="platform.html">platform overview</a>, open the <a href={`releases/${month}/index.html`}>current release overview</a>, browse the <a href="releases/index.html">release archive</a>, or open the <a href="downloads.html">monthly IP geolocation release indexes</a>.</p>
         </div>
       </div>
     </section>
@@ -113,10 +113,10 @@ const breadcrumb = {
         <div class="split-panel glass content">
           <h2>Licensing and attribution</h2>
           <p>
-            Unless otherwise stated, the datasets and metadata published through GeoIP Locations are made available under <a href="licensing.html">CC BY 4.0</a>. That means users may copy, share, adapt, and reuse the published material, including for commercial purposes, provided appropriate credit is given to ProdIPData and any material changes are indicated.
+            Unless otherwise stated, the datasets and metadata published through ProdIPData are made available under <a href="licensing.html">CC BY 4.0</a>. That means users may copy, share, adapt, and reuse the published material, including for commercial purposes, provided appropriate credit is given to ProdIPData and any material changes are indicated.
           </p>
           <ul>
-            <li>Preferred attribution: <strong>Source: ProdIPData &mdash; https://geoiplocations.com/ &mdash; CC BY 4.0</strong></li>
+            <li>Preferred attribution: <strong>Source: ProdIPData &mdash; https://prodipdata.com/ &mdash; CC BY 4.0</strong></li>
             <li>The dataset notice applies to published datasets and metadata unless a page or file states otherwise.</li>
             <li>Third-party source rights, trademarks, and website code are not relicensed by this dataset notice unless explicitly stated.</li>
           </ul>
@@ -129,7 +129,7 @@ const breadcrumb = {
         <div class="split-panel glass content">
           <h2>Accuracy and interpretation</h2>
           <p>
-            GeoIP data is most useful when it is interpreted at the right level. Country-level results are generally more reliable than
+            IP geolocation data is most useful when it is interpreted at the right level. Country-level results are generally more reliable than
             attempts to infer exact city placement or precise coordinates, and internet address space can change over time as networks evolve.
           </p>
           <ul>
@@ -158,7 +158,7 @@ const breadcrumb = {
         <div class="split-panel glass content">
           <h2>Explore deeper release and entity pages</h2>
           <p>
-            The monthly release archive connects the current dataset to focused country, registry, and ASN pages. Use the <a href="releases/index.html">monthly release archive</a> for time-based navigation, open <a href="country/index.html">country profiles</a> for country-level footprint context, review <a href="rir/index.html">RIR pages</a> for registry-level coverage, and open <a href="asn/index.html">ASN profiles</a> for visible network entities in the current release. For package access, continue through <a href="downloads.html">GeoIP CSV, Parquet, and MMDB downloads</a>, and for source quality and caveats, review <a href="methodology.html">GeoIP methodology and validation</a>.
+            The monthly release archive connects the current dataset to focused country, registry, and ASN pages. Use the <a href="releases/index.html">monthly release archive</a> for time-based navigation, open <a href="country/index.html">country profiles</a> for country-level footprint context, review <a href="rir/index.html">RIR pages</a> for registry-level coverage, and open <a href="asn/index.html">ASN profiles</a> for visible network entities in the current release. For package access, continue through <a href="downloads.html">IP geolocation CSV, Parquet, and MMDB downloads</a>, and for source quality and caveats, review <a href="methodology.html">IP geolocation methodology and validation</a>.
           </p>
         </div>
       </div>

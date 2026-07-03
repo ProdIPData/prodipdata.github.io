@@ -2,5 +2,5 @@ User-agent: *
 Allow: /
 Disallow: /submit-data-correction.html
 
-Sitemap: https://geoiplocations.com/sitemap.xml
+Sitemap: https://prodipdata.com/sitemap.xml
 
