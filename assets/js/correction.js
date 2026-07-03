@@ -41,10 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const payload = {
-      to: 'geoiplocations@gmail.com',
-      subject: `GeoIP Locations data correction - ${summary}`,
+      to: 'contact@prodipdata.com',
+      subject: `ProdIPData data correction - ${summary}`,
       body: [
-        'GeoIP Locations data correction request',
+        'ProdIPData data correction request',
         '',
         `Affected page or dataset: ${(sourceInput?.value || '').trim() || 'Not specified'}`,
         `Correction category: ${(categoryInput?.value || '').trim() || 'Not specified'}`,

@@ -17,7 +17,7 @@
           "packageRows": 251,
           "indexPage": "/downloads-csv-2026-07.html",
           "storagePath": "Export/release_2026-07/CSV/",
-          "passwordLocation": "Request by email: geoiplocations@gmail.com"
+          "passwordLocation": "Request by email: contact@prodipdata.com"
         },
         {
           "format": "Parquet",
@@ -25,7 +25,7 @@
           "packageRows": 251,
           "indexPage": "/downloads-parquet-2026-07.html",
           "storagePath": "Export/release_2026-07/PARQUET/",
-          "passwordLocation": "Request by email: geoiplocations@gmail.com"
+          "passwordLocation": "Request by email: contact@prodipdata.com"
         },
         {
           "format": "MMDB",
@@ -33,7 +33,7 @@
           "packageRows": 1,
           "indexPage": "/downloads-mmdb-2026-07.html",
           "storagePath": "GitHub Release prodip-2026-07 (single global asset)",
-          "passwordLocation": "Request by email: geoiplocations@gmail.com"
+          "passwordLocation": "Request by email: contact@prodipdata.com"
         }
       ],
       "machineReadableInventory": "/assets/data/release-2026-07-package-inventory.json"
@@ -50,7 +50,7 @@
           "packageRows": 247,
           "indexPage": "/downloads-csv-2026-06.html",
           "storagePath": "Export/release_2026-06/CSV/",
-          "passwordLocation": "Request by email: geoiplocations@gmail.com"
+          "passwordLocation": "Request by email: contact@prodipdata.com"
         },
         {
           "format": "Parquet",
@@ -58,7 +58,7 @@
           "packageRows": 247,
           "indexPage": "/downloads-parquet-2026-06.html",
           "storagePath": "Export/release_2026-06/PARQUET/",
-          "passwordLocation": "Request by email: geoiplocations@gmail.com"
+          "passwordLocation": "Request by email: contact@prodipdata.com"
         },
         {
           "format": "MMDB",
@@ -66,7 +66,7 @@
           "packageRows": 1,
           "indexPage": "/downloads-mmdb-2026-06.html",
           "storagePath": "GitHub Release prodip-2026-06 (single global asset)",
-          "passwordLocation": "Request by email: geoiplocations@gmail.com"
+          "passwordLocation": "Request by email: contact@prodipdata.com"
         }
       ],
       "machineReadableInventory": "/assets/data/release-2026-06-package-inventory.json"

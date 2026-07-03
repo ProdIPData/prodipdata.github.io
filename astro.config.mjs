@@ -5,7 +5,7 @@ import { defineConfig } from 'astro/config';
 //         GitHub project sub-path, so the QA workflow sets SITE_BASE=/prodipdata.github.io.
 // format='file' keeps existing ".html" URLs (e.g. /platform.html) so links don't break.
 export default defineConfig({
-  site: 'https://geoiplocations.com',
+  site: 'https://prodipdata.com',
   base: process.env.SITE_BASE || '/',
   trailingSlash: 'ignore',
   build: {
