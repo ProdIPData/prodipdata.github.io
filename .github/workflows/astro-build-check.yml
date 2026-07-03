@@ -61,6 +61,17 @@ jobs:
             --exclude '_seo_wave1_backup_20260416_135936' \
             ./ ./dist/
 
+      - name: Cosmetic fixes for legacy pages (header tagline, footer disclaimer, title case)
+        # Applied to built output only. Becomes a no-op as legacy pages migrate to Astro.
+        run: |
+          grep -rl 'Powered by ProdIPData' ./dist --include='*.html' | while read -r f; do
+            sed -i 's|<small>Powered by ProdIPData</small>|<small>Free monthly IP geolocation data</small>|g' "$f"
+            sed -i 's|<div>Engineered and published by the ProdIPData team.</div>|<div>Engineered and published by the ProdIPData team.</div><div class="muted">MaxMind and GeoIP are registered trademarks of MaxMind, Inc. ProdIPData is not affiliated with or endorsed by MaxMind.</div>|g' "$f"
+          done
+          grep -rl 'IP geolocation' ./dist --include='*.html' | while read -r f; do
+            sed -i 's|<title>IP geolocation |<title>IP Geolocation |g; s|content="IP geolocation |content="IP Geolocation |g' "$f"
+          done
+
       - name: Set custom domain (per environment, never committed)
         run: |
           if [ "${{ github.repository }}" = "ProdIPData/prodipdata.github.io" ]; then
