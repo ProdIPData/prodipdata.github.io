@@ -5,10 +5,17 @@ name: Build and deploy
 #   - Production (ProdIPData/...)   -> serves at the root domain, CNAME prodipdata.com
 # It builds Astro, overlays any not-yet-migrated legacy files, writes the right
 # CNAME, and deploys to that repo's GitHub Pages.
+#
+# DEPLOY BRANCH = Redesign ONLY.
+#   `main` holds the PRE-REBRAND site and is kept purely as a rollback snapshot
+#   (see rebrand-runbook-2026-07-03.md section 4). It must NEVER deploy: doing so
+#   republishes the old "GeoIP Locations" branding and rewrites CNAME to the old
+#   domain. `main` was in this trigger list until 2026-08-05, when a release push
+#   to it briefly overwrote production. Do not add it back.
 
 on:
   push:
-    branches: [Redesign, main]
+    branches: [Redesign]
   workflow_dispatch: {}
 
 permissions:
