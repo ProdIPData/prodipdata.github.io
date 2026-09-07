@@ -1,6 +1,6 @@
 {
   "snapshotMonth": "2026-09",
-  "generatedUtc": "2026-09-02T08:59:41Z",
+  "generatedUtc": "2026-09-02T08:05:01Z",
   "source": "ProdIP Parquet pipeline (GOLD + ASN dimension)",
   "items": [
     {
@@ -1844,16 +1844,6 @@
       "prefixesPerMillionPeople": 298.2526
     },
     {
-      "iso2": "MR",
-      "countryName": "Mauritania",
-      "rir": "afrinic",
-      "prefixCount": 224,
-      "ipv4Count": 57344,
-      "asnCount": 7,
-      "population": 4403319,
-      "prefixesPerMillionPeople": 50.8707
-    },
-    {
       "iso2": "SO",
       "countryName": "Somalia",
       "rir": "afrinic",
@@ -1862,6 +1852,16 @@
       "asnCount": 20,
       "population": 15008154,
       "prefixesPerMillionPeople": 14.9252
+    },
+    {
+      "iso2": "MR",
+      "countryName": "Mauritania",
+      "rir": "afrinic",
+      "prefixCount": 224,
+      "ipv4Count": 57344,
+      "asnCount": 7,
+      "population": 4403319,
+      "prefixesPerMillionPeople": 50.8707
     },
     {
       "iso2": "NE",
@@ -2324,6 +2324,16 @@
       "prefixesPerMillionPeople": 10231.9236
     },
     {
+      "iso2": "MS",
+      "countryName": "Montserrat",
+      "rir": "arin",
+      "prefixCount": 14,
+      "ipv4Count": 3584,
+      "asnCount": 1,
+      "population": 9341,
+      "prefixesPerMillionPeople": 1498.7689
+    },
+    {
       "iso2": "IO",
       "countryName": "British Indian Ocean Territory",
       "rir": "apnic",
@@ -2334,14 +2344,14 @@
       "prefixesPerMillionPeople": 3500.0
     },
     {
-      "iso2": "MS",
-      "countryName": "Montserrat",
-      "rir": "arin",
-      "prefixCount": 14,
-      "ipv4Count": 3584,
+      "iso2": "KP",
+      "countryName": "North Korea",
+      "rir": "afrinic",
+      "prefixCount": 12,
+      "ipv4Count": 3072,
       "asnCount": 1,
-      "population": 9341,
-      "prefixesPerMillionPeople": 1498.7689
+      "population": 25549819,
+      "prefixesPerMillionPeople": 0.4697
     },
     {
       "iso2": "NU",
@@ -2362,16 +2372,6 @@
       "asnCount": 2,
       "population": 8450,
       "prefixesPerMillionPeople": 1420.1183
-    },
-    {
-      "iso2": "KP",
-      "countryName": "North Korea",
-      "rir": "afrinic",
-      "prefixCount": 12,
-      "ipv4Count": 3072,
-      "asnCount": 1,
-      "population": 25549819,
-      "prefixesPerMillionPeople": 0.4697
     },
     {
       "iso2": "AQ",
@@ -2404,14 +2404,14 @@
       "prefixesPerMillionPeople": 402.1448
     },
     {
-      "iso2": "SJ",
-      "countryName": "Svalbard and Jan Mayen",
-      "rir": "ripe",
+      "iso2": "PN",
+      "countryName": "Pitcairn",
+      "rir": "apnic",
       "prefixCount": 2,
       "ipv4Count": 512,
       "asnCount": 0,
-      "population": 2550,
-      "prefixesPerMillionPeople": 784.3137
+      "population": 46,
+      "prefixesPerMillionPeople": 43478.2609
     },
     {
       "iso2": "GS",
@@ -2434,14 +2434,14 @@
       "prefixesPerMillionPeople": null
     },
     {
-      "iso2": "PN",
-      "countryName": "Pitcairn",
-      "rir": "apnic",
+      "iso2": "SJ",
+      "countryName": "Svalbard and Jan Mayen",
+      "rir": "ripe",
       "prefixCount": 2,
       "ipv4Count": 512,
       "asnCount": 0,
-      "population": 46,
-      "prefixesPerMillionPeople": 43478.2609
+      "population": 2550,
+      "prefixesPerMillionPeople": 784.3137
     },
     {
       "iso2": "UM",
@@ -2454,14 +2454,14 @@
       "prefixesPerMillionPeople": null
     },
     {
-      "iso2": "CC",
-      "countryName": "Cocos Islands",
-      "rir": "arin",
+      "iso2": "BV",
+      "countryName": "Bouvet Island",
+      "rir": "ripe",
       "prefixCount": 1,
       "ipv4Count": 256,
       "asnCount": 0,
-      "population": 628,
-      "prefixesPerMillionPeople": 1592.3567
+      "population": 0,
+      "prefixesPerMillionPeople": null
     },
     {
       "iso2": "CX",
@@ -2474,14 +2474,14 @@
       "prefixesPerMillionPeople": 666.6667
     },
     {
-      "iso2": "BV",
-      "countryName": "Bouvet Island",
-      "rir": "ripe",
+      "iso2": "CC",
+      "countryName": "Cocos Islands",
+      "rir": "arin",
       "prefixCount": 1,
       "ipv4Count": 256,
       "asnCount": 0,
-      "population": 0,
-      "prefixesPerMillionPeople": null
+      "population": 628,
+      "prefixesPerMillionPeople": 1592.3567
     }
   ]
 }

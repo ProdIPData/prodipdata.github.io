@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>How to use GeoIP data with SQL and DuckDB | GeoIP Locations</title>
-  <meta name="description" content="Practical SQL Server and DuckDB examples for loading, querying, joining, and aggregating ProdIPData GeoIP CSV and Parquet release files.">
+  <title>How to use IP geolocation data with SQL and DuckDB | ProdIPData</title>
+  <meta name="description" content="Practical SQL Server and DuckDB examples for loading, querying, joining, and aggregating ProdIPData IP geolocation CSV and Parquet release files.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="https://geoiplocations.com/docs/how-to-use-this-data.html">
+  <link rel="canonical" href="https://prodipdata.com/docs/how-to-use-this-data.html">
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="GeoIP Locations" />
-  <meta property="og:title" content="How to use GeoIP data with SQL and DuckDB" />
-  <meta property="og:description" content="Practical SQL Server and DuckDB examples for loading, querying, joining, and aggregating ProdIPData GeoIP CSV and Parquet release files." />
-  <meta property="og:url" content="https://geoiplocations.com/docs/how-to-use-this-data.html" />
-  <meta property="og:image" content="https://geoiplocations.com/assets/img/prodipdata-logo.png" />
+  <meta property="og:site_name" content="ProdIPData" />
+  <meta property="og:title" content="How to use IP geolocation data with SQL and DuckDB" />
+  <meta property="og:description" content="Practical SQL Server and DuckDB examples for loading, querying, joining, and aggregating ProdIPData IP geolocation CSV and Parquet release files." />
+  <meta property="og:url" content="https://prodipdata.com/docs/how-to-use-this-data.html" />
+  <meta property="og:image" content="https://prodipdata.com/assets/img/prodipdata-logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="How to use GeoIP data with SQL and DuckDB" />
-  <meta name="twitter:description" content="Practical SQL Server and DuckDB examples for loading, querying, joining, and aggregating ProdIPData GeoIP CSV and Parquet release files." />
-  <meta name="twitter:image" content="https://geoiplocations.com/assets/img/prodipdata-logo.png" />
+  <meta name="twitter:title" content="How to use IP geolocation data with SQL and DuckDB" />
+  <meta name="twitter:description" content="Practical SQL Server and DuckDB examples for loading, querying, joining, and aggregating ProdIPData IP geolocation CSV and Parquet release files." />
+  <meta name="twitter:image" content="https://prodipdata.com/assets/img/prodipdata-logo.png" />
   <link rel="stylesheet" href="../assets/css/styles.css">
   <script type="application/ld+json">
   {
@@ -23,19 +23,19 @@
     "@graph": [
       {
         "@type": "TechArticle",
-        "headline": "How to use GeoIP data with SQL and DuckDB",
-        "description": "Implementation examples for SQL Server and DuckDB workflows using ProdIPData GeoIP monthly release files.",
+        "headline": "How to use IP geolocation data with SQL and DuckDB",
+        "description": "Implementation examples for SQL Server and DuckDB workflows using ProdIPData IP geolocation monthly release files.",
         "author": {
           "@type": "Organization",
           "name": "ProdIPData",
-          "url": "https://geoiplocations.com/"
+          "url": "https://prodipdata.com/"
         },
         "publisher": {
           "@type": "Organization",
           "name": "ProdIPData",
-          "url": "https://geoiplocations.com/"
+          "url": "https://prodipdata.com/"
         },
-        "mainEntityOfPage": "https://geoiplocations.com/docs/how-to-use-this-data.html",
+        "mainEntityOfPage": "https://prodipdata.com/docs/how-to-use-this-data.html",
         "dateModified": "2026-04-27",
         "proficiencyLevel": "Beginner to intermediate"
       },
@@ -46,13 +46,13 @@
             "@type": "ListItem",
             "position": 1,
             "name": "Documentation",
-            "item": "https://geoiplocations.com/docs.html"
+            "item": "https://prodipdata.com/docs.html"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "How to use this data",
-            "item": "https://geoiplocations.com/docs/how-to-use-this-data.html"
+            "item": "https://prodipdata.com/docs/how-to-use-this-data.html"
           }
         ]
       }
@@ -67,7 +67,7 @@
       <a class="brand" href="../index.html">
         <div class="brand-mark">&#9678;</div>
         <div>
-          GeoIP Locations
+          ProdIPData
           <small>Powered by ProdIPData</small>
         </div>
       </a>
@@ -103,7 +103,7 @@
         <div class="eyebrow page-kicker">Documentation</div>
         <h1>How to use this data</h1>
         <p class="page-intro">
-          Use ProdIPData releases as local, versioned GeoIP intelligence. The core workflow is straightforward: choose a release month, load CSV or Parquet files, preserve the snapshot month, and query by numeric IPv4 prefix.
+          Use ProdIPData releases as local, versioned IP geolocation intelligence. The core workflow is straightforward: choose a release month, load CSV or Parquet files, preserve the snapshot month, and query by numeric IPv4 prefix.
         </p>
         <div class="data-note">
           These examples assume the public release layout with monthly folders, ISO-scoped packages, and a numeric <code>prefix</code> column representing the first IPv4 address in a /24 block.
@@ -407,7 +407,7 @@ WHERE g.snapshot_month = '2026-03';</code></pre>
 
 <footer class="site-footer">
   <div class="container site-footer-inner">
-    <div>&copy; <span data-current-year></span> GeoIP Locations &middot; ProdIPData</div>
+    <div>&copy; <span data-current-year></span> ProdIPData</div>
     <div><a href="../licensing.html">Datasets and metadata: CC BY 4.0</a></div>
     <div>Engineered and published by the ProdIPData team.</div>
   </div>

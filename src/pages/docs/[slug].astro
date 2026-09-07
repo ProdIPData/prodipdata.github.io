@@ -23,9 +23,9 @@ const pick = (re, fallback = '') => {
   return m ? m[1].trim() : fallback;
 };
 
-const title = pick(/<title>([\s\S]*?)<\/title>/i, 'Documentation | GeoIP Locations');
+const title = pick(/<title>([\s\S]*?)<\/title>/i, 'Documentation | ProdIPData');
 const description = pick(/name=["']description["']\s+content=["']([\s\S]*?)["']/i);
-const ogTitle = title.replace(/\s*\|\s*(GeoIP Locations|ProdIPData).*$/i, '');
+const ogTitle = title.replace(/\s*\|\s*(ProdIPData|ProdIPData).*$/i, '');
 const mainInner = pick(/<main[^>]*>([\s\S]*?)<\/main>/i);
 ---
 <BaseLayout

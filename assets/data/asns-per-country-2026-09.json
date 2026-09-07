@@ -1,6 +1,6 @@
 {
   "snapshotMonth": "2026-09",
-  "generatedUtc": "2026-09-02T08:59:41Z",
+  "generatedUtc": "2026-09-02T08:05:01Z",
   "source": "ProdIP Parquet pipeline (GOLD + ASN dimension)",
   "items": [
     {
@@ -250,15 +250,15 @@
       "asnCount": 309
     },
     {
-      "iso2": "MY",
-      "countryName": "Malaysia",
-      "rir": "apnic",
-      "asnCount": 291
-    },
-    {
       "iso2": "FI",
       "countryName": "Finland",
       "rir": "ripe",
+      "asnCount": 291
+    },
+    {
+      "iso2": "MY",
+      "countryName": "Malaysia",
+      "rir": "apnic",
       "asnCount": 291
     },
     {
@@ -340,15 +340,15 @@
       "asnCount": 194
     },
     {
-      "iso2": "SK",
-      "countryName": "Slovakia",
-      "rir": "ripe",
-      "asnCount": 192
-    },
-    {
       "iso2": "DO",
       "countryName": "Dominican Republic",
       "rir": "lacnic",
+      "asnCount": 192
+    },
+    {
+      "iso2": "SK",
+      "countryName": "Slovakia",
+      "rir": "ripe",
       "asnCount": 192
     },
     {
@@ -418,15 +418,15 @@
       "asnCount": 144
     },
     {
-      "iso2": "MM",
-      "countryName": "Myanmar",
-      "rir": "apnic",
-      "asnCount": 134
-    },
-    {
       "iso2": "MD",
       "countryName": "Moldova",
       "rir": "ripe",
+      "asnCount": 134
+    },
+    {
+      "iso2": "MM",
+      "countryName": "Myanmar",
+      "rir": "apnic",
       "asnCount": 134
     },
     {
@@ -472,15 +472,15 @@
       "asnCount": 105
     },
     {
-      "iso2": "PR",
-      "countryName": "Puerto Rico",
-      "rir": "arin",
-      "asnCount": 103
-    },
-    {
       "iso2": "LU",
       "countryName": "Luxembourg",
       "rir": "ripe",
+      "asnCount": 103
+    },
+    {
+      "iso2": "PR",
+      "countryName": "Puerto Rico",
+      "rir": "arin",
       "asnCount": 103
     },
     {
@@ -502,15 +502,15 @@
       "asnCount": 96
     },
     {
-      "iso2": "GH",
-      "countryName": "Ghana",
-      "rir": "afrinic",
-      "asnCount": 94
-    },
-    {
       "iso2": "PY",
       "countryName": "Paraguay",
       "rir": "lacnic",
+      "asnCount": 94
+    },
+    {
+      "iso2": "GH",
+      "countryName": "Ghana",
+      "rir": "afrinic",
       "asnCount": 94
     },
     {
@@ -562,15 +562,15 @@
       "asnCount": 64
     },
     {
-      "iso2": "GT",
-      "countryName": "Guatemala",
-      "rir": "lacnic",
-      "asnCount": 63
-    },
-    {
       "iso2": "KG",
       "countryName": "Kyrgyzstan",
       "rir": "ripe",
+      "asnCount": 63
+    },
+    {
+      "iso2": "GT",
+      "countryName": "Guatemala",
+      "rir": "lacnic",
       "asnCount": 63
     },
     {
@@ -610,14 +610,14 @@
       "asnCount": 53
     },
     {
-      "iso2": "JO",
-      "countryName": "Jordan",
+      "iso2": "BA",
+      "countryName": "Bosnia and Herzegovina",
       "rir": "ripe",
       "asnCount": 46
     },
     {
-      "iso2": "BA",
-      "countryName": "Bosnia and Herzegovina",
+      "iso2": "JO",
+      "countryName": "Jordan",
       "rir": "ripe",
       "asnCount": 46
     },
@@ -694,14 +694,14 @@
       "asnCount": 29
     },
     {
-      "iso2": "LA",
-      "countryName": "Laos",
+      "iso2": "BT",
+      "countryName": "Bhutan",
       "rir": "apnic",
       "asnCount": 28
     },
     {
-      "iso2": "BT",
-      "countryName": "Bhutan",
+      "iso2": "LA",
+      "countryName": "Laos",
       "rir": "apnic",
       "asnCount": 28
     },
@@ -724,14 +724,14 @@
       "asnCount": 26
     },
     {
-      "iso2": "LY",
-      "countryName": "Libya",
+      "iso2": "TN",
+      "countryName": "Tunisia",
       "rir": "afrinic",
       "asnCount": 25
     },
     {
-      "iso2": "TN",
-      "countryName": "Tunisia",
+      "iso2": "LY",
+      "countryName": "Libya",
       "rir": "afrinic",
       "asnCount": 25
     },
@@ -754,22 +754,16 @@
       "asnCount": 23
     },
     {
-      "iso2": "CM",
-      "countryName": "Cameroon",
-      "rir": "afrinic",
-      "asnCount": 21
-    },
-    {
       "iso2": "BZ",
       "countryName": "Belize",
       "rir": "lacnic",
       "asnCount": 21
     },
     {
-      "iso2": "CW",
-      "countryName": "Curacao",
-      "rir": "lacnic",
-      "asnCount": 20
+      "iso2": "CM",
+      "countryName": "Cameroon",
+      "rir": "afrinic",
+      "asnCount": 21
     },
     {
       "iso2": "ME",
@@ -781,6 +775,12 @@
       "iso2": "IM",
       "countryName": "Isle of Man",
       "rir": "ripe",
+      "asnCount": 20
+    },
+    {
+      "iso2": "CW",
+      "countryName": "Curacao",
+      "rir": "lacnic",
       "asnCount": 20
     },
     {
@@ -796,12 +796,6 @@
       "asnCount": 19
     },
     {
-      "iso2": "CI",
-      "countryName": "Ivory Coast",
-      "rir": "afrinic",
-      "asnCount": 18
-    },
-    {
       "iso2": "GI",
       "countryName": "Gibraltar",
       "rir": "ripe",
@@ -810,6 +804,12 @@
     {
       "iso2": "SS",
       "countryName": "South Sudan",
+      "rir": "afrinic",
+      "asnCount": 18
+    },
+    {
+      "iso2": "CI",
+      "countryName": "Ivory Coast",
       "rir": "afrinic",
       "asnCount": 18
     },
@@ -826,28 +826,16 @@
       "asnCount": 16
     },
     {
-      "iso2": "OM",
-      "countryName": "Oman",
-      "rir": "ripe",
-      "asnCount": 16
-    },
-    {
       "iso2": "BJ",
       "countryName": "Benin",
       "rir": "afrinic",
       "asnCount": 16
     },
     {
-      "iso2": "LR",
-      "countryName": "Liberia",
-      "rir": "afrinic",
-      "asnCount": 15
-    },
-    {
-      "iso2": "MV",
-      "countryName": "Maldives",
-      "rir": "apnic",
-      "asnCount": 15
+      "iso2": "OM",
+      "countryName": "Oman",
+      "rir": "ripe",
+      "asnCount": 16
     },
     {
       "iso2": "NA",
@@ -862,6 +850,18 @@
       "asnCount": 15
     },
     {
+      "iso2": "MV",
+      "countryName": "Maldives",
+      "rir": "apnic",
+      "asnCount": 15
+    },
+    {
+      "iso2": "LR",
+      "countryName": "Liberia",
+      "rir": "afrinic",
+      "asnCount": 15
+    },
+    {
       "iso2": "TT",
       "countryName": "Trinidad and Tobago",
       "rir": "lacnic",
@@ -870,12 +870,6 @@
     {
       "iso2": "SN",
       "countryName": "Senegal",
-      "rir": "afrinic",
-      "asnCount": 14
-    },
-    {
-      "iso2": "GN",
-      "countryName": "Guinea",
       "rir": "afrinic",
       "asnCount": 14
     },
@@ -892,6 +886,12 @@
       "asnCount": 14
     },
     {
+      "iso2": "GN",
+      "countryName": "Guinea",
+      "rir": "afrinic",
+      "asnCount": 14
+    },
+    {
       "iso2": "NC",
       "countryName": "New Caledonia",
       "rir": "apnic",
@@ -904,9 +904,9 @@
       "asnCount": 13
     },
     {
-      "iso2": "MO",
-      "countryName": "Macao",
-      "rir": "apnic",
+      "iso2": "KY",
+      "countryName": "Cayman Islands",
+      "rir": "arin",
       "asnCount": 11
     },
     {
@@ -916,14 +916,8 @@
       "asnCount": 11
     },
     {
-      "iso2": "KY",
-      "countryName": "Cayman Islands",
-      "rir": "arin",
-      "asnCount": 11
-    },
-    {
-      "iso2": "DZ",
-      "countryName": "Algeria",
+      "iso2": "TD",
+      "countryName": "Chad",
       "rir": "afrinic",
       "asnCount": 11
     },
@@ -934,10 +928,34 @@
       "asnCount": 11
     },
     {
-      "iso2": "TD",
-      "countryName": "Chad",
+      "iso2": "DZ",
+      "countryName": "Algeria",
       "rir": "afrinic",
       "asnCount": 11
+    },
+    {
+      "iso2": "MO",
+      "countryName": "Macao",
+      "rir": "apnic",
+      "asnCount": 11
+    },
+    {
+      "iso2": "JM",
+      "countryName": "Jamaica",
+      "rir": "arin",
+      "asnCount": 10
+    },
+    {
+      "iso2": "CG",
+      "countryName": "Republic of the Congo",
+      "rir": "afrinic",
+      "asnCount": 10
+    },
+    {
+      "iso2": "SZ",
+      "countryName": "Eswatini",
+      "rir": "afrinic",
+      "asnCount": 10
     },
     {
       "iso2": "SM",
@@ -952,51 +970,9 @@
       "asnCount": 10
     },
     {
-      "iso2": "SZ",
-      "countryName": "Eswatini",
-      "rir": "afrinic",
-      "asnCount": 10
-    },
-    {
-      "iso2": "CG",
-      "countryName": "Republic of the Congo",
-      "rir": "afrinic",
-      "asnCount": 10
-    },
-    {
-      "iso2": "JM",
-      "countryName": "Jamaica",
-      "rir": "arin",
-      "asnCount": 10
-    },
-    {
-      "iso2": "GA",
-      "countryName": "Gabon",
-      "rir": "afrinic",
-      "asnCount": 9
-    },
-    {
-      "iso2": "GD",
-      "countryName": "Grenada",
-      "rir": "arin",
-      "asnCount": 9
-    },
-    {
       "iso2": "GM",
       "countryName": "Gambia",
       "rir": "afrinic",
-      "asnCount": 9
-    },
-    {
-      "iso2": "JE",
-      "countryName": "Jersey",
-      "rir": "ripe",
-      "asnCount": 9
-    },
-    {
-      "iso2": "SY",
-      "countryName": "Syria",
-      "rir": "ripe",
       "asnCount": 9
     },
     {
@@ -1006,21 +982,45 @@
       "asnCount": 9
     },
     {
+      "iso2": "SY",
+      "countryName": "Syria",
+      "rir": "ripe",
+      "asnCount": 9
+    },
+    {
+      "iso2": "GD",
+      "countryName": "Grenada",
+      "rir": "arin",
+      "asnCount": 9
+    },
+    {
+      "iso2": "JE",
+      "countryName": "Jersey",
+      "rir": "ripe",
+      "asnCount": 9
+    },
+    {
       "iso2": "BS",
       "countryName": "Bahamas",
       "rir": "arin",
       "asnCount": 9
     },
     {
-      "iso2": "KN",
-      "countryName": "Saint Kitts and Nevis",
-      "rir": "arin",
-      "asnCount": 8
+      "iso2": "GA",
+      "countryName": "Gabon",
+      "rir": "afrinic",
+      "asnCount": 9
     },
     {
       "iso2": "HT",
       "countryName": "Haiti",
       "rir": "lacnic",
+      "asnCount": 8
+    },
+    {
+      "iso2": "KN",
+      "countryName": "Saint Kitts and Nevis",
+      "rir": "arin",
       "asnCount": 8
     },
     {
@@ -1042,50 +1042,14 @@
       "asnCount": 7
     },
     {
-      "iso2": "ET",
-      "countryName": "Ethiopia",
-      "rir": "afrinic",
-      "asnCount": 7
-    },
-    {
       "iso2": "GQ",
       "countryName": "Equatorial Guinea",
       "rir": "afrinic",
       "asnCount": 7
     },
     {
-      "iso2": "TM",
-      "countryName": "Turkmenistan",
-      "rir": "ripe",
-      "asnCount": 7
-    },
-    {
-      "iso2": "MQ",
-      "countryName": "Martinique",
-      "rir": "ripe",
-      "asnCount": 7
-    },
-    {
-      "iso2": "MG",
-      "countryName": "Madagascar",
-      "rir": "afrinic",
-      "asnCount": 7
-    },
-    {
-      "iso2": "BB",
-      "countryName": "Barbados",
-      "rir": "arin",
-      "asnCount": 7
-    },
-    {
-      "iso2": "VI",
-      "countryName": "U.S. Virgin Islands",
-      "rir": "arin",
-      "asnCount": 7
-    },
-    {
-      "iso2": "LS",
-      "countryName": "Lesotho",
+      "iso2": "ET",
+      "countryName": "Ethiopia",
       "rir": "afrinic",
       "asnCount": 7
     },
@@ -1096,15 +1060,15 @@
       "asnCount": 7
     },
     {
-      "iso2": "NE",
-      "countryName": "Niger",
-      "rir": "afrinic",
+      "iso2": "BB",
+      "countryName": "Barbados",
+      "rir": "arin",
       "asnCount": 7
     },
     {
-      "iso2": "GG",
-      "countryName": "Guernsey",
-      "rir": "ripe",
+      "iso2": "MG",
+      "countryName": "Madagascar",
+      "rir": "afrinic",
       "asnCount": 7
     },
     {
@@ -1120,9 +1084,45 @@
       "asnCount": 7
     },
     {
-      "iso2": "ML",
-      "countryName": "Mali",
+      "iso2": "GG",
+      "countryName": "Guernsey",
+      "rir": "ripe",
+      "asnCount": 7
+    },
+    {
+      "iso2": "LS",
+      "countryName": "Lesotho",
       "rir": "afrinic",
+      "asnCount": 7
+    },
+    {
+      "iso2": "TM",
+      "countryName": "Turkmenistan",
+      "rir": "ripe",
+      "asnCount": 7
+    },
+    {
+      "iso2": "NE",
+      "countryName": "Niger",
+      "rir": "afrinic",
+      "asnCount": 7
+    },
+    {
+      "iso2": "MQ",
+      "countryName": "Martinique",
+      "rir": "ripe",
+      "asnCount": 7
+    },
+    {
+      "iso2": "VI",
+      "countryName": "U.S. Virgin Islands",
+      "rir": "arin",
+      "asnCount": 7
+    },
+    {
+      "iso2": "LC",
+      "countryName": "Saint Lucia",
+      "rir": "arin",
       "asnCount": 6
     },
     {
@@ -1132,22 +1132,16 @@
       "asnCount": 6
     },
     {
+      "iso2": "ML",
+      "countryName": "Mali",
+      "rir": "afrinic",
+      "asnCount": 6
+    },
+    {
       "iso2": "GU",
       "countryName": "Guam",
       "rir": "apnic",
       "asnCount": 6
-    },
-    {
-      "iso2": "LC",
-      "countryName": "Saint Lucia",
-      "rir": "arin",
-      "asnCount": 6
-    },
-    {
-      "iso2": "PF",
-      "countryName": "French Polynesia",
-      "rir": "apnic",
-      "asnCount": 5
     },
     {
       "iso2": "GY",
@@ -1156,15 +1150,9 @@
       "asnCount": 5
     },
     {
-      "iso2": "FM",
-      "countryName": "Micronesia",
+      "iso2": "PF",
+      "countryName": "French Polynesia",
       "rir": "apnic",
-      "asnCount": 5
-    },
-    {
-      "iso2": "MF",
-      "countryName": "Saint Martin",
-      "rir": "arin",
       "asnCount": 5
     },
     {
@@ -1174,27 +1162,21 @@
       "asnCount": 5
     },
     {
-      "iso2": "MC",
-      "countryName": "Monaco",
-      "rir": "ripe",
-      "asnCount": 4
+      "iso2": "MF",
+      "countryName": "Saint Martin",
+      "rir": "arin",
+      "asnCount": 5
+    },
+    {
+      "iso2": "FM",
+      "countryName": "Micronesia",
+      "rir": "apnic",
+      "asnCount": 5
     },
     {
       "iso2": "SR",
       "countryName": "Suriname",
       "rir": "lacnic",
-      "asnCount": 4
-    },
-    {
-      "iso2": "TO",
-      "countryName": "Tonga",
-      "rir": "apnic",
-      "asnCount": 4
-    },
-    {
-      "iso2": "DM",
-      "countryName": "Dominica",
-      "rir": "arin",
       "asnCount": 4
     },
     {
@@ -1204,15 +1186,9 @@
       "asnCount": 4
     },
     {
-      "iso2": "NR",
-      "countryName": "Nauru",
-      "rir": "apnic",
-      "asnCount": 4
-    },
-    {
-      "iso2": "VA",
-      "countryName": "Vatican",
-      "rir": "ripe",
+      "iso2": "DM",
+      "countryName": "Dominica",
+      "rir": "arin",
       "asnCount": 4
     },
     {
@@ -1228,8 +1204,26 @@
       "asnCount": 4
     },
     {
+      "iso2": "VA",
+      "countryName": "Vatican",
+      "rir": "ripe",
+      "asnCount": 4
+    },
+    {
       "iso2": "KM",
       "countryName": "Comoros",
+      "rir": "afrinic",
+      "asnCount": 4
+    },
+    {
+      "iso2": "TO",
+      "countryName": "Tonga",
+      "rir": "apnic",
+      "asnCount": 4
+    },
+    {
+      "iso2": "RE",
+      "countryName": "Reunion",
       "rir": "afrinic",
       "asnCount": 4
     },
@@ -1240,33 +1234,21 @@
       "asnCount": 4
     },
     {
-      "iso2": "RE",
-      "countryName": "Reunion",
-      "rir": "afrinic",
+      "iso2": "NR",
+      "countryName": "Nauru",
+      "rir": "apnic",
       "asnCount": 4
     },
     {
-      "iso2": "CU",
-      "countryName": "Cuba",
-      "rir": "lacnic",
-      "asnCount": 3
-    },
-    {
-      "iso2": "YE",
-      "countryName": "Yemen",
+      "iso2": "MC",
+      "countryName": "Monaco",
       "rir": "ripe",
-      "asnCount": 3
+      "asnCount": 4
     },
     {
-      "iso2": "AD",
-      "countryName": "Andorra",
+      "iso2": "TK",
+      "countryName": "Tokelau",
       "rir": "ripe",
-      "asnCount": 3
-    },
-    {
-      "iso2": "PW",
-      "countryName": "Palau",
-      "rir": "apnic",
       "asnCount": 3
     },
     {
@@ -1276,14 +1258,14 @@
       "asnCount": 3
     },
     {
-      "iso2": "TK",
-      "countryName": "Tokelau",
+      "iso2": "AD",
+      "countryName": "Andorra",
       "rir": "ripe",
       "asnCount": 3
     },
     {
-      "iso2": "GF",
-      "countryName": "French Guiana",
+      "iso2": "SX",
+      "countryName": "Sint Maarten",
       "rir": "lacnic",
       "asnCount": 3
     },
@@ -1294,9 +1276,21 @@
       "asnCount": 3
     },
     {
-      "iso2": "SX",
-      "countryName": "Sint Maarten",
+      "iso2": "CU",
+      "countryName": "Cuba",
       "rir": "lacnic",
+      "asnCount": 3
+    },
+    {
+      "iso2": "GF",
+      "countryName": "French Guiana",
+      "rir": "lacnic",
+      "asnCount": 3
+    },
+    {
+      "iso2": "YE",
+      "countryName": "Yemen",
+      "rir": "ripe",
       "asnCount": 3
     },
     {
@@ -1312,45 +1306,15 @@
       "asnCount": 3
     },
     {
-      "iso2": "ST",
-      "countryName": "Sao Tome and Principe",
-      "rir": "afrinic",
-      "asnCount": 2
-    },
-    {
-      "iso2": "FK",
-      "countryName": "Falkland Islands",
-      "rir": "ripe",
-      "asnCount": 2
-    },
-    {
-      "iso2": "BL",
-      "countryName": "Saint Barthelemy",
-      "rir": "arin",
-      "asnCount": 2
+      "iso2": "PW",
+      "countryName": "Palau",
+      "rir": "apnic",
+      "asnCount": 3
     },
     {
       "iso2": "CK",
       "countryName": "Cook Islands",
       "rir": "apnic",
-      "asnCount": 2
-    },
-    {
-      "iso2": "GW",
-      "countryName": "Guinea-Bissau",
-      "rir": "afrinic",
-      "asnCount": 2
-    },
-    {
-      "iso2": "AS",
-      "countryName": "American Samoa",
-      "rir": "apnic",
-      "asnCount": 2
-    },
-    {
-      "iso2": "TC",
-      "countryName": "Turks and Caicos Islands",
-      "rir": "arin",
       "asnCount": 2
     },
     {
@@ -1360,21 +1324,51 @@
       "asnCount": 2
     },
     {
-      "iso2": "IO",
-      "countryName": "British Indian Ocean Territory",
-      "rir": "apnic",
-      "asnCount": 1
-    },
-    {
-      "iso2": "PM",
-      "countryName": "Saint Pierre and Miquelon",
-      "rir": "arin",
-      "asnCount": 1
-    },
-    {
-      "iso2": "ER",
-      "countryName": "Eritrea",
+      "iso2": "ST",
+      "countryName": "Sao Tome and Principe",
       "rir": "afrinic",
+      "asnCount": 2
+    },
+    {
+      "iso2": "TC",
+      "countryName": "Turks and Caicos Islands",
+      "rir": "arin",
+      "asnCount": 2
+    },
+    {
+      "iso2": "GW",
+      "countryName": "Guinea-Bissau",
+      "rir": "afrinic",
+      "asnCount": 2
+    },
+    {
+      "iso2": "BL",
+      "countryName": "Saint Barthelemy",
+      "rir": "arin",
+      "asnCount": 2
+    },
+    {
+      "iso2": "FK",
+      "countryName": "Falkland Islands",
+      "rir": "ripe",
+      "asnCount": 2
+    },
+    {
+      "iso2": "AS",
+      "countryName": "American Samoa",
+      "rir": "apnic",
+      "asnCount": 2
+    },
+    {
+      "iso2": "AX",
+      "countryName": "Aland Islands",
+      "rir": "ripe",
+      "asnCount": 1
+    },
+    {
+      "iso2": "MP",
+      "countryName": "Northern Mariana Islands",
+      "rir": "apnic",
       "asnCount": 1
     },
     {
@@ -1384,26 +1378,14 @@
       "asnCount": 1
     },
     {
-      "iso2": "GL",
-      "countryName": "Greenland",
-      "rir": "ripe",
-      "asnCount": 1
-    },
-    {
-      "iso2": "NF",
-      "countryName": "Norfolk Island",
-      "rir": "apnic",
-      "asnCount": 1
-    },
-    {
-      "iso2": "YT",
-      "countryName": "Mayotte",
-      "rir": "afrinic",
-      "asnCount": 1
-    },
-    {
       "iso2": "MS",
       "countryName": "Montserrat",
+      "rir": "arin",
+      "asnCount": 1
+    },
+    {
+      "iso2": "AQ",
+      "countryName": "Antarctica",
       "rir": "arin",
       "asnCount": 1
     },
@@ -1414,21 +1396,33 @@
       "asnCount": 1
     },
     {
+      "iso2": "NU",
+      "countryName": "Niue",
+      "rir": "apnic",
+      "asnCount": 1
+    },
+    {
       "iso2": "WF",
       "countryName": "Wallis and Futuna",
       "rir": "apnic",
       "asnCount": 1
     },
     {
-      "iso2": "MP",
-      "countryName": "Northern Mariana Islands",
-      "rir": "apnic",
+      "iso2": "PM",
+      "countryName": "Saint Pierre and Miquelon",
+      "rir": "arin",
       "asnCount": 1
     },
     {
-      "iso2": "AQ",
-      "countryName": "Antarctica",
-      "rir": "arin",
+      "iso2": "YT",
+      "countryName": "Mayotte",
+      "rir": "afrinic",
+      "asnCount": 1
+    },
+    {
+      "iso2": "GL",
+      "countryName": "Greenland",
+      "rir": "ripe",
       "asnCount": 1
     },
     {
@@ -1438,15 +1432,21 @@
       "asnCount": 1
     },
     {
-      "iso2": "NU",
-      "countryName": "Niue",
+      "iso2": "IO",
+      "countryName": "British Indian Ocean Territory",
       "rir": "apnic",
       "asnCount": 1
     },
     {
-      "iso2": "AX",
-      "countryName": "Aland Islands",
-      "rir": "ripe",
+      "iso2": "NF",
+      "countryName": "Norfolk Island",
+      "rir": "apnic",
+      "asnCount": 1
+    },
+    {
+      "iso2": "ER",
+      "countryName": "Eritrea",
+      "rir": "afrinic",
       "asnCount": 1
     }
   ]

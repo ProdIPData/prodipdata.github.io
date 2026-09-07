@@ -1,6 +1,6 @@
 {
   "snapshotMonth": "2026-08",
-  "generatedUtc": "2026-08-05T14:31:30Z",
+  "generatedUtc": "2026-08-05T08:32:27Z",
   "source": "ProdIP Parquet pipeline (GOLD + ASN dimension)",
   "biggestASNs": [
     {

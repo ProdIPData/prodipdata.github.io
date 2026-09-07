@@ -1,9 +1,9 @@
 {
-  "name": "geoiplocations-site",
+  "name": "prodipdata-site",
   "private": true,
   "type": "module",
   "version": "0.0.1",
-  "description": "GeoIP Locations / ProdIPData static site (Astro migration).",
+  "description": "ProdIPData static site (Astro migration).",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

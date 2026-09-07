@@ -1,6 +1,6 @@
 {
   "snapshotMonth": "2026-06",
-  "generatedUtc": "2026-06-11T06:03:22Z",
+  "generatedUtc": "2026-06-10T19:03:15Z",
   "source": "ProdIP Parquet pipeline (GOLD + ASN dimension)",
   "items": [
     {
@@ -664,22 +664,22 @@
       "total": 147
     },
     {
-      "iso2": "AE",
-      "countryName": "United Arab Emirates",
-      "business": 112,
-      "education": 1,
-      "hosting": 18,
-      "isp": 16,
-      "government": 0,
-      "total": 147
-    },
-    {
       "iso2": "GE",
       "countryName": "Georgia",
       "business": 115,
       "education": 1,
       "hosting": 7,
       "isp": 24,
+      "government": 0,
+      "total": 147
+    },
+    {
+      "iso2": "AE",
+      "countryName": "United Arab Emirates",
+      "business": 112,
+      "education": 1,
+      "hosting": 18,
+      "isp": 16,
       "government": 0,
       "total": 147
     },
@@ -974,16 +974,6 @@
       "total": 62
     },
     {
-      "iso2": "BO",
-      "countryName": "Bolivia",
-      "business": 36,
-      "education": 0,
-      "hosting": 2,
-      "isp": 13,
-      "government": 3,
-      "total": 54
-    },
-    {
       "iso2": "UG",
       "countryName": "Uganda",
       "business": 35,
@@ -991,6 +981,16 @@
       "hosting": 1,
       "isp": 16,
       "government": 0,
+      "total": 54
+    },
+    {
+      "iso2": "BO",
+      "countryName": "Bolivia",
+      "business": 36,
+      "education": 0,
+      "hosting": 2,
+      "isp": 13,
+      "government": 3,
       "total": 54
     },
     {
@@ -1144,21 +1144,21 @@
       "total": 29
     },
     {
-      "iso2": "LA",
-      "countryName": "Laos",
-      "business": 20,
-      "education": 0,
-      "hosting": 0,
-      "isp": 8,
-      "government": 0,
-      "total": 28
-    },
-    {
       "iso2": "MZ",
       "countryName": "Mozambique",
       "business": 15,
       "education": 2,
       "hosting": 3,
+      "isp": 8,
+      "government": 0,
+      "total": 28
+    },
+    {
+      "iso2": "LA",
+      "countryName": "Laos",
+      "business": 20,
+      "education": 0,
+      "hosting": 0,
       "isp": 8,
       "government": 0,
       "total": 28
@@ -1194,16 +1194,6 @@
       "total": 26
     },
     {
-      "iso2": "TN",
-      "countryName": "Tunisia",
-      "business": 15,
-      "education": 0,
-      "hosting": 2,
-      "isp": 8,
-      "government": 0,
-      "total": 25
-    },
-    {
       "iso2": "LK",
       "countryName": "Sri Lanka",
       "business": 15,
@@ -1214,14 +1204,14 @@
       "total": 25
     },
     {
-      "iso2": "LI",
-      "countryName": "Liechtenstein",
-      "business": 14,
+      "iso2": "TN",
+      "countryName": "Tunisia",
+      "business": 15,
       "education": 0,
       "hosting": 2,
       "isp": 8,
       "government": 0,
-      "total": 24
+      "total": 25
     },
     {
       "iso2": "NI",
@@ -1229,6 +1219,16 @@
       "business": 16,
       "education": 0,
       "hosting": 0,
+      "isp": 8,
+      "government": 0,
+      "total": 24
+    },
+    {
+      "iso2": "LI",
+      "countryName": "Liechtenstein",
+      "business": 14,
+      "education": 0,
+      "hosting": 2,
       "isp": 8,
       "government": 0,
       "total": 24
@@ -1254,22 +1254,22 @@
       "total": 22
     },
     {
-      "iso2": "ME",
-      "countryName": "Montenegro",
-      "business": 16,
-      "education": 1,
-      "hosting": 0,
-      "isp": 4,
-      "government": 0,
-      "total": 21
-    },
-    {
       "iso2": "BZ",
       "countryName": "Belize",
       "business": 12,
       "education": 0,
       "hosting": 1,
       "isp": 8,
+      "government": 0,
+      "total": 21
+    },
+    {
+      "iso2": "ME",
+      "countryName": "Montenegro",
+      "business": 16,
+      "education": 1,
+      "hosting": 0,
+      "isp": 4,
       "government": 0,
       "total": 21
     },
@@ -1314,16 +1314,6 @@
       "total": 19
     },
     {
-      "iso2": "GI",
-      "countryName": "Gibraltar",
-      "business": 15,
-      "education": 0,
-      "hosting": 1,
-      "isp": 3,
-      "government": 0,
-      "total": 19
-    },
-    {
       "iso2": "SS",
       "countryName": "South Sudan",
       "business": 12,
@@ -1344,14 +1334,14 @@
       "total": 19
     },
     {
-      "iso2": "BH",
-      "countryName": "Bahrain",
-      "business": 9,
+      "iso2": "GI",
+      "countryName": "Gibraltar",
+      "business": 15,
       "education": 0,
       "hosting": 1,
-      "isp": 7,
+      "isp": 3,
       "government": 0,
-      "total": 17
+      "total": 19
     },
     {
       "iso2": "CI",
@@ -1359,6 +1349,16 @@
       "business": 10,
       "education": 0,
       "hosting": 0,
+      "isp": 7,
+      "government": 0,
+      "total": 17
+    },
+    {
+      "iso2": "BH",
+      "countryName": "Bahrain",
+      "business": 9,
+      "education": 0,
+      "hosting": 1,
       "isp": 7,
       "government": 0,
       "total": 17
@@ -1382,6 +1382,26 @@
       "isp": 7,
       "government": 0,
       "total": 16
+    },
+    {
+      "iso2": "FJ",
+      "countryName": "Fiji",
+      "business": 9,
+      "education": 0,
+      "hosting": 0,
+      "isp": 5,
+      "government": 1,
+      "total": 15
+    },
+    {
+      "iso2": "SL",
+      "countryName": "Sierra Leone",
+      "business": 11,
+      "education": 1,
+      "hosting": 0,
+      "isp": 3,
+      "government": 0,
+      "total": 15
     },
     {
       "iso2": "LR",
@@ -1414,16 +1434,6 @@
       "total": 15
     },
     {
-      "iso2": "SL",
-      "countryName": "Sierra Leone",
-      "business": 11,
-      "education": 1,
-      "hosting": 0,
-      "isp": 3,
-      "government": 0,
-      "total": 15
-    },
-    {
       "iso2": "GN",
       "countryName": "Guinea",
       "business": 8,
@@ -1432,26 +1442,6 @@
       "isp": 7,
       "government": 0,
       "total": 15
-    },
-    {
-      "iso2": "FJ",
-      "countryName": "Fiji",
-      "business": 9,
-      "education": 0,
-      "hosting": 0,
-      "isp": 5,
-      "government": 1,
-      "total": 15
-    },
-    {
-      "iso2": "BM",
-      "countryName": "Bermuda",
-      "business": 11,
-      "education": 0,
-      "hosting": 0,
-      "isp": 3,
-      "government": 0,
-      "total": 14
     },
     {
       "iso2": "OM",
@@ -1464,6 +1454,26 @@
       "total": 14
     },
     {
+      "iso2": "BM",
+      "countryName": "Bermuda",
+      "business": 11,
+      "education": 0,
+      "hosting": 0,
+      "isp": 3,
+      "government": 0,
+      "total": 14
+    },
+    {
+      "iso2": "SN",
+      "countryName": "Senegal",
+      "business": 7,
+      "education": 2,
+      "hosting": 0,
+      "isp": 4,
+      "government": 0,
+      "total": 13
+    },
+    {
       "iso2": "QA",
       "countryName": "Qatar",
       "business": 6,
@@ -1474,12 +1484,12 @@
       "total": 13
     },
     {
-      "iso2": "SN",
-      "countryName": "Senegal",
-      "business": 7,
-      "education": 2,
+      "iso2": "DZ",
+      "countryName": "Algeria",
+      "business": 8,
+      "education": 0,
       "hosting": 0,
-      "isp": 4,
+      "isp": 5,
       "government": 0,
       "total": 13
     },
@@ -1504,14 +1514,14 @@
       "total": 13
     },
     {
-      "iso2": "DZ",
-      "countryName": "Algeria",
-      "business": 8,
+      "iso2": "VU",
+      "countryName": "Vanuatu",
+      "business": 7,
       "education": 0,
-      "hosting": 0,
-      "isp": 5,
+      "hosting": 1,
+      "isp": 3,
       "government": 0,
-      "total": 13
+      "total": 11
     },
     {
       "iso2": "SZ",
@@ -1534,8 +1544,28 @@
       "total": 11
     },
     {
+      "iso2": "AG",
+      "countryName": "Antigua and Barbuda",
+      "business": 5,
+      "education": 0,
+      "hosting": 0,
+      "isp": 6,
+      "government": 0,
+      "total": 11
+    },
+    {
       "iso2": "TD",
       "countryName": "Chad",
+      "business": 7,
+      "education": 0,
+      "hosting": 0,
+      "isp": 4,
+      "government": 0,
+      "total": 11
+    },
+    {
+      "iso2": "KY",
+      "countryName": "Cayman Islands",
       "business": 7,
       "education": 0,
       "hosting": 0,
@@ -1554,42 +1584,12 @@
       "total": 11
     },
     {
-      "iso2": "KY",
-      "countryName": "Cayman Islands",
-      "business": 7,
-      "education": 0,
-      "hosting": 0,
-      "isp": 4,
-      "government": 0,
-      "total": 11
-    },
-    {
-      "iso2": "AG",
-      "countryName": "Antigua and Barbuda",
-      "business": 5,
+      "iso2": "GM",
+      "countryName": "Gambia",
+      "business": 4,
       "education": 0,
       "hosting": 0,
       "isp": 6,
-      "government": 0,
-      "total": 11
-    },
-    {
-      "iso2": "VU",
-      "countryName": "Vanuatu",
-      "business": 7,
-      "education": 0,
-      "hosting": 1,
-      "isp": 3,
-      "government": 0,
-      "total": 11
-    },
-    {
-      "iso2": "BS",
-      "countryName": "Bahamas",
-      "business": 7,
-      "education": 0,
-      "hosting": 1,
-      "isp": 2,
       "government": 0,
       "total": 10
     },
@@ -1614,24 +1614,14 @@
       "total": 10
     },
     {
-      "iso2": "GM",
-      "countryName": "Gambia",
-      "business": 4,
+      "iso2": "BS",
+      "countryName": "Bahamas",
+      "business": 7,
       "education": 0,
-      "hosting": 0,
-      "isp": 6,
+      "hosting": 1,
+      "isp": 2,
       "government": 0,
       "total": 10
-    },
-    {
-      "iso2": "SD",
-      "countryName": "Sudan",
-      "business": 5,
-      "education": 0,
-      "hosting": 0,
-      "isp": 4,
-      "government": 0,
-      "total": 9
     },
     {
       "iso2": "GD",
@@ -1644,22 +1634,32 @@
       "total": 9
     },
     {
-      "iso2": "GA",
-      "countryName": "Gabon",
-      "business": 6,
-      "education": 0,
-      "hosting": 0,
-      "isp": 3,
-      "government": 0,
-      "total": 9
-    },
-    {
       "iso2": "MH",
       "countryName": "Marshall Islands",
       "business": 7,
       "education": 0,
       "hosting": 0,
       "isp": 2,
+      "government": 0,
+      "total": 9
+    },
+    {
+      "iso2": "SD",
+      "countryName": "Sudan",
+      "business": 5,
+      "education": 0,
+      "hosting": 0,
+      "isp": 4,
+      "government": 0,
+      "total": 9
+    },
+    {
+      "iso2": "GA",
+      "countryName": "Gabon",
+      "business": 6,
+      "education": 0,
+      "hosting": 0,
+      "isp": 3,
       "government": 0,
       "total": 9
     },
@@ -1684,12 +1684,12 @@
       "total": 8
     },
     {
-      "iso2": "MG",
-      "countryName": "Madagascar",
-      "business": 4,
+      "iso2": "JE",
+      "countryName": "Jersey",
+      "business": 6,
       "education": 0,
       "hosting": 0,
-      "isp": 4,
+      "isp": 2,
       "government": 0,
       "total": 8
     },
@@ -1704,12 +1704,12 @@
       "total": 8
     },
     {
-      "iso2": "JE",
-      "countryName": "Jersey",
-      "business": 6,
+      "iso2": "MG",
+      "countryName": "Madagascar",
+      "business": 4,
       "education": 0,
       "hosting": 0,
-      "isp": 2,
+      "isp": 4,
       "government": 0,
       "total": 8
     },
@@ -1724,32 +1724,22 @@
       "total": 8
     },
     {
-      "iso2": "BB",
-      "countryName": "Barbados",
-      "business": 5,
-      "education": 0,
-      "hosting": 0,
-      "isp": 2,
-      "government": 0,
-      "total": 7
-    },
-    {
-      "iso2": "WS",
-      "countryName": "Samoa",
-      "business": 7,
-      "education": 0,
-      "hosting": 0,
-      "isp": 0,
-      "government": 0,
-      "total": 7
-    },
-    {
       "iso2": "NE",
       "countryName": "Niger",
       "business": 3,
       "education": 0,
       "hosting": 0,
       "isp": 4,
+      "government": 0,
+      "total": 7
+    },
+    {
+      "iso2": "MR",
+      "countryName": "Mauritania",
+      "business": 4,
+      "education": 0,
+      "hosting": 0,
+      "isp": 3,
       "government": 0,
       "total": 7
     },
@@ -1764,10 +1754,20 @@
       "total": 7
     },
     {
-      "iso2": "MR",
-      "countryName": "Mauritania",
-      "business": 4,
+      "iso2": "TM",
+      "countryName": "Turkmenistan",
+      "business": 5,
       "education": 0,
+      "hosting": 0,
+      "isp": 2,
+      "government": 0,
+      "total": 7
+    },
+    {
+      "iso2": "BI",
+      "countryName": "Burundi",
+      "business": 3,
+      "education": 1,
       "hosting": 0,
       "isp": 3,
       "government": 0,
@@ -1784,12 +1784,12 @@
       "total": 7
     },
     {
-      "iso2": "TM",
-      "countryName": "Turkmenistan",
-      "business": 5,
+      "iso2": "WS",
+      "countryName": "Samoa",
+      "business": 7,
       "education": 0,
       "hosting": 0,
-      "isp": 2,
+      "isp": 0,
       "government": 0,
       "total": 7
     },
@@ -1804,14 +1804,44 @@
       "total": 7
     },
     {
-      "iso2": "BI",
-      "countryName": "Burundi",
-      "business": 3,
-      "education": 1,
+      "iso2": "BB",
+      "countryName": "Barbados",
+      "business": 5,
+      "education": 0,
       "hosting": 0,
-      "isp": 3,
+      "isp": 2,
       "government": 0,
       "total": 7
+    },
+    {
+      "iso2": "GG",
+      "countryName": "Guernsey",
+      "business": 6,
+      "education": 0,
+      "hosting": 0,
+      "isp": 0,
+      "government": 0,
+      "total": 6
+    },
+    {
+      "iso2": "ET",
+      "countryName": "Ethiopia",
+      "business": 4,
+      "education": 0,
+      "hosting": 0,
+      "isp": 2,
+      "government": 0,
+      "total": 6
+    },
+    {
+      "iso2": "BN",
+      "countryName": "Brunei",
+      "business": 2,
+      "education": 0,
+      "hosting": 0,
+      "isp": 4,
+      "government": 0,
+      "total": 6
     },
     {
       "iso2": "LC",
@@ -1834,22 +1864,12 @@
       "total": 6
     },
     {
-      "iso2": "GU",
-      "countryName": "Guam",
-      "business": 3,
-      "education": 1,
-      "hosting": 0,
-      "isp": 2,
-      "government": 0,
-      "total": 6
-    },
-    {
-      "iso2": "BN",
-      "countryName": "Brunei",
-      "business": 2,
+      "iso2": "VI",
+      "countryName": "U.S. Virgin Islands",
+      "business": 4,
       "education": 0,
       "hosting": 0,
-      "isp": 4,
+      "isp": 2,
       "government": 0,
       "total": 6
     },
@@ -1864,58 +1884,18 @@
       "total": 6
     },
     {
-      "iso2": "ET",
-      "countryName": "Ethiopia",
-      "business": 4,
-      "education": 0,
-      "hosting": 0,
-      "isp": 2,
-      "government": 0,
-      "total": 6
-    },
-    {
-      "iso2": "GG",
-      "countryName": "Guernsey",
-      "business": 6,
-      "education": 0,
-      "hosting": 0,
-      "isp": 0,
-      "government": 0,
-      "total": 6
-    },
-    {
-      "iso2": "VI",
-      "countryName": "U.S. Virgin Islands",
-      "business": 4,
-      "education": 0,
-      "hosting": 0,
-      "isp": 2,
-      "government": 0,
-      "total": 6
-    },
-    {
-      "iso2": "MF",
-      "countryName": "Saint Martin",
+      "iso2": "GU",
+      "countryName": "Guam",
       "business": 3,
-      "education": 0,
+      "education": 1,
       "hosting": 0,
       "isp": 2,
       "government": 0,
-      "total": 5
+      "total": 6
     },
     {
       "iso2": "ML",
       "countryName": "Mali",
-      "business": 1,
-      "education": 0,
-      "hosting": 0,
-      "isp": 4,
-      "government": 0,
-      "total": 5
-    },
-    {
-      "iso2": "FM",
-      "countryName": "Micronesia",
       "business": 1,
       "education": 0,
       "hosting": 0,
@@ -1944,6 +1924,46 @@
       "total": 5
     },
     {
+      "iso2": "MF",
+      "countryName": "Saint Martin",
+      "business": 3,
+      "education": 0,
+      "hosting": 0,
+      "isp": 2,
+      "government": 0,
+      "total": 5
+    },
+    {
+      "iso2": "FM",
+      "countryName": "Micronesia",
+      "business": 1,
+      "education": 0,
+      "hosting": 0,
+      "isp": 4,
+      "government": 0,
+      "total": 5
+    },
+    {
+      "iso2": "NR",
+      "countryName": "Nauru",
+      "business": 4,
+      "education": 0,
+      "hosting": 0,
+      "isp": 0,
+      "government": 0,
+      "total": 4
+    },
+    {
+      "iso2": "CF",
+      "countryName": "Central African Republic",
+      "business": 4,
+      "education": 0,
+      "hosting": 0,
+      "isp": 0,
+      "government": 0,
+      "total": 4
+    },
+    {
       "iso2": "FO",
       "countryName": "Faroe Islands",
       "business": 1,
@@ -1960,66 +1980,6 @@
       "education": 0,
       "hosting": 0,
       "isp": 1,
-      "government": 0,
-      "total": 4
-    },
-    {
-      "iso2": "AI",
-      "countryName": "Anguilla",
-      "business": 0,
-      "education": 0,
-      "hosting": 2,
-      "isp": 2,
-      "government": 0,
-      "total": 4
-    },
-    {
-      "iso2": "RE",
-      "countryName": "Reunion",
-      "business": 1,
-      "education": 0,
-      "hosting": 0,
-      "isp": 3,
-      "government": 0,
-      "total": 4
-    },
-    {
-      "iso2": "NR",
-      "countryName": "Nauru",
-      "business": 4,
-      "education": 0,
-      "hosting": 0,
-      "isp": 0,
-      "government": 0,
-      "total": 4
-    },
-    {
-      "iso2": "SR",
-      "countryName": "Suriname",
-      "business": 1,
-      "education": 0,
-      "hosting": 0,
-      "isp": 3,
-      "government": 0,
-      "total": 4
-    },
-    {
-      "iso2": "PW",
-      "countryName": "Palau",
-      "business": 3,
-      "education": 0,
-      "hosting": 0,
-      "isp": 1,
-      "government": 0,
-      "total": 4
-    },
-    {
-      "iso2": "PF",
-      "countryName": "French Polynesia",
-      "business": 2,
-      "education": 0,
-      "hosting": 0,
-      "isp": 2,
       "government": 0,
       "total": 4
     },
@@ -2044,28 +2004,58 @@
       "total": 4
     },
     {
-      "iso2": "CF",
-      "countryName": "Central African Republic",
-      "business": 4,
-      "education": 0,
-      "hosting": 0,
-      "isp": 0,
-      "government": 0,
-      "total": 4
-    },
-    {
-      "iso2": "CU",
-      "countryName": "Cuba",
-      "business": 1,
+      "iso2": "PF",
+      "countryName": "French Polynesia",
+      "business": 2,
       "education": 0,
       "hosting": 0,
       "isp": 2,
       "government": 0,
-      "total": 3
+      "total": 4
     },
     {
-      "iso2": "VA",
-      "countryName": "Vatican",
+      "iso2": "SR",
+      "countryName": "Suriname",
+      "business": 1,
+      "education": 0,
+      "hosting": 0,
+      "isp": 3,
+      "government": 0,
+      "total": 4
+    },
+    {
+      "iso2": "PW",
+      "countryName": "Palau",
+      "business": 3,
+      "education": 0,
+      "hosting": 0,
+      "isp": 1,
+      "government": 0,
+      "total": 4
+    },
+    {
+      "iso2": "RE",
+      "countryName": "Reunion",
+      "business": 1,
+      "education": 0,
+      "hosting": 0,
+      "isp": 3,
+      "government": 0,
+      "total": 4
+    },
+    {
+      "iso2": "AI",
+      "countryName": "Anguilla",
+      "business": 0,
+      "education": 0,
+      "hosting": 2,
+      "isp": 2,
+      "government": 0,
+      "total": 4
+    },
+    {
+      "iso2": "KI",
+      "countryName": "Kiribati",
       "business": 3,
       "education": 0,
       "hosting": 0,
@@ -2074,8 +2064,18 @@
       "total": 3
     },
     {
-      "iso2": "GP",
-      "countryName": "Guadeloupe",
+      "iso2": "DJ",
+      "countryName": "Djibouti",
+      "business": 2,
+      "education": 0,
+      "hosting": 0,
+      "isp": 1,
+      "government": 0,
+      "total": 3
+    },
+    {
+      "iso2": "CU",
+      "countryName": "Cuba",
       "business": 1,
       "education": 0,
       "hosting": 0,
@@ -2094,18 +2094,8 @@
       "total": 3
     },
     {
-      "iso2": "YE",
-      "countryName": "Yemen",
-      "business": 2,
-      "education": 0,
-      "hosting": 0,
-      "isp": 1,
-      "government": 0,
-      "total": 3
-    },
-    {
-      "iso2": "KI",
-      "countryName": "Kiribati",
+      "iso2": "VA",
+      "countryName": "Vatican",
       "business": 3,
       "education": 0,
       "hosting": 0,
@@ -2114,12 +2104,42 @@
       "total": 3
     },
     {
-      "iso2": "SX",
-      "countryName": "Sint Maarten",
-      "business": 0,
+      "iso2": "AW",
+      "countryName": "Aruba",
+      "business": 1,
       "education": 0,
       "hosting": 0,
-      "isp": 3,
+      "isp": 2,
+      "government": 0,
+      "total": 3
+    },
+    {
+      "iso2": "TK",
+      "countryName": "Tokelau",
+      "business": 2,
+      "education": 0,
+      "hosting": 0,
+      "isp": 1,
+      "government": 0,
+      "total": 3
+    },
+    {
+      "iso2": "GF",
+      "countryName": "French Guiana",
+      "business": 1,
+      "education": 0,
+      "hosting": 0,
+      "isp": 2,
+      "government": 0,
+      "total": 3
+    },
+    {
+      "iso2": "GP",
+      "countryName": "Guadeloupe",
+      "business": 1,
+      "education": 0,
+      "hosting": 0,
+      "isp": 2,
       "government": 0,
       "total": 3
     },
@@ -2144,18 +2164,8 @@
       "total": 3
     },
     {
-      "iso2": "AW",
-      "countryName": "Aruba",
-      "business": 1,
-      "education": 0,
-      "hosting": 0,
-      "isp": 2,
-      "government": 0,
-      "total": 3
-    },
-    {
-      "iso2": "DJ",
-      "countryName": "Djibouti",
+      "iso2": "YE",
+      "countryName": "Yemen",
       "business": 2,
       "education": 0,
       "hosting": 0,
@@ -2164,28 +2174,48 @@
       "total": 3
     },
     {
-      "iso2": "GF",
-      "countryName": "French Guiana",
-      "business": 1,
+      "iso2": "SX",
+      "countryName": "Sint Maarten",
+      "business": 0,
       "education": 0,
       "hosting": 0,
-      "isp": 2,
+      "isp": 3,
       "government": 0,
       "total": 3
     },
     {
-      "iso2": "TK",
-      "countryName": "Tokelau",
-      "business": 2,
+      "iso2": "CK",
+      "countryName": "Cook Islands",
+      "business": 1,
       "education": 0,
       "hosting": 0,
       "isp": 1,
       "government": 0,
-      "total": 3
+      "total": 2
+    },
+    {
+      "iso2": "GW",
+      "countryName": "Guinea-Bissau",
+      "business": 0,
+      "education": 0,
+      "hosting": 0,
+      "isp": 2,
+      "government": 0,
+      "total": 2
     },
     {
       "iso2": "AS",
       "countryName": "American Samoa",
+      "business": 2,
+      "education": 0,
+      "hosting": 0,
+      "isp": 0,
+      "government": 0,
+      "total": 2
+    },
+    {
+      "iso2": "FK",
+      "countryName": "Falkland Islands",
       "business": 2,
       "education": 0,
       "hosting": 0,
@@ -2234,34 +2264,34 @@
       "total": 2
     },
     {
-      "iso2": "GW",
-      "countryName": "Guinea-Bissau",
+      "iso2": "AQ",
+      "countryName": "Antarctica",
       "business": 0,
-      "education": 0,
-      "hosting": 0,
-      "isp": 2,
-      "government": 0,
-      "total": 2
-    },
-    {
-      "iso2": "FK",
-      "countryName": "Falkland Islands",
-      "business": 2,
-      "education": 0,
-      "hosting": 0,
-      "isp": 0,
-      "government": 0,
-      "total": 2
-    },
-    {
-      "iso2": "CK",
-      "countryName": "Cook Islands",
-      "business": 1,
       "education": 0,
       "hosting": 0,
       "isp": 1,
       "government": 0,
-      "total": 2
+      "total": 1
+    },
+    {
+      "iso2": "GS",
+      "countryName": "South Georgia and the South Sandwich Islands",
+      "business": 0,
+      "education": 0,
+      "hosting": 0,
+      "isp": 1,
+      "government": 0,
+      "total": 1
+    },
+    {
+      "iso2": "NU",
+      "countryName": "Niue",
+      "business": 1,
+      "education": 0,
+      "hosting": 0,
+      "isp": 0,
+      "government": 0,
+      "total": 1
     },
     {
       "iso2": "ER",
@@ -2294,8 +2324,18 @@
       "total": 1
     },
     {
-      "iso2": "AQ",
-      "countryName": "Antarctica",
+      "iso2": "YT",
+      "countryName": "Mayotte",
+      "business": 1,
+      "education": 0,
+      "hosting": 0,
+      "isp": 0,
+      "government": 0,
+      "total": 1
+    },
+    {
+      "iso2": "MP",
+      "countryName": "Northern Mariana Islands",
       "business": 0,
       "education": 0,
       "hosting": 0,
@@ -2310,76 +2350,6 @@
       "education": 0,
       "hosting": 0,
       "isp": 0,
-      "government": 0,
-      "total": 1
-    },
-    {
-      "iso2": "AX",
-      "countryName": "Aland Islands",
-      "business": 0,
-      "education": 0,
-      "hosting": 1,
-      "isp": 0,
-      "government": 0,
-      "total": 1
-    },
-    {
-      "iso2": "NU",
-      "countryName": "Niue",
-      "business": 1,
-      "education": 0,
-      "hosting": 0,
-      "isp": 0,
-      "government": 0,
-      "total": 1
-    },
-    {
-      "iso2": "GS",
-      "countryName": "South Georgia and the South Sandwich Islands",
-      "business": 0,
-      "education": 0,
-      "hosting": 0,
-      "isp": 1,
-      "government": 0,
-      "total": 1
-    },
-    {
-      "iso2": "WF",
-      "countryName": "Wallis and Futuna",
-      "business": 1,
-      "education": 0,
-      "hosting": 0,
-      "isp": 0,
-      "government": 0,
-      "total": 1
-    },
-    {
-      "iso2": "IO",
-      "countryName": "British Indian Ocean Territory",
-      "business": 0,
-      "education": 0,
-      "hosting": 0,
-      "isp": 1,
-      "government": 0,
-      "total": 1
-    },
-    {
-      "iso2": "KP",
-      "countryName": "North Korea",
-      "business": 0,
-      "education": 0,
-      "hosting": 0,
-      "isp": 1,
-      "government": 0,
-      "total": 1
-    },
-    {
-      "iso2": "MP",
-      "countryName": "Northern Mariana Islands",
-      "business": 0,
-      "education": 0,
-      "hosting": 0,
-      "isp": 1,
       "government": 0,
       "total": 1
     },
@@ -2404,11 +2374,41 @@
       "total": 1
     },
     {
-      "iso2": "YT",
-      "countryName": "Mayotte",
+      "iso2": "KP",
+      "countryName": "North Korea",
+      "business": 0,
+      "education": 0,
+      "hosting": 0,
+      "isp": 1,
+      "government": 0,
+      "total": 1
+    },
+    {
+      "iso2": "IO",
+      "countryName": "British Indian Ocean Territory",
+      "business": 0,
+      "education": 0,
+      "hosting": 0,
+      "isp": 1,
+      "government": 0,
+      "total": 1
+    },
+    {
+      "iso2": "WF",
+      "countryName": "Wallis and Futuna",
       "business": 1,
       "education": 0,
       "hosting": 0,
+      "isp": 0,
+      "government": 0,
+      "total": 1
+    },
+    {
+      "iso2": "AX",
+      "countryName": "Aland Islands",
+      "business": 0,
+      "education": 0,
+      "hosting": 1,
       "isp": 0,
       "government": 0,
       "total": 1

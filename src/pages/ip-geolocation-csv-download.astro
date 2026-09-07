@@ -6,22 +6,22 @@ const month = currentReleaseMonth;
 const dataset = {
   '@context': 'https://schema.org',
   '@type': 'Dataset',
-  '@id': 'https://geoiplocations.com/geoip-csv-download.html#dataset',
-  name: 'ProdIPData GeoIP CSV Downloads',
-  description: 'Landing page for ProdIPData GeoIP CSV downloads and monthly release package access.',
-  url: 'https://geoiplocations.com/geoip-csv-download.html',
+  '@id': 'https://prodipdata.com/ip-geolocation-csv-download.html#dataset',
+  name: 'ProdIPData IP geolocation CSV Downloads',
+  description: 'Landing page for ProdIPData IP geolocation CSV downloads and monthly release package access.',
+  url: 'https://prodipdata.com/ip-geolocation-csv-download.html',
   isAccessibleForFree: true,
   license: 'https://creativecommons.org/licenses/by/4.0/',
-  creator: { '@type': 'Organization', name: 'ProdIPData', url: 'https://geoiplocations.com/' },
-  publisher: { '@type': 'Organization', name: 'ProdIPData', url: 'https://geoiplocations.com/' },
-  keywords: ['GeoIP', 'CSV', 'download', 'ProdIPData', 'monthly release', 'IPv4', 'ASN'],
+  creator: { '@type': 'Organization', name: 'ProdIPData', url: 'https://prodipdata.com/' },
+  publisher: { '@type': 'Organization', name: 'ProdIPData', url: 'https://prodipdata.com/' },
+  keywords: ['IP geolocation', 'CSV', 'download', 'ProdIPData', 'monthly release', 'IPv4', 'ASN'],
 };
 ---
 <BaseLayout
-  title="Free GeoIP CSV Downloads by Monthly Release | ProdIPData"
-  description="Download ProdIPData GeoIP CSV files by monthly release with release indexes, SQL-friendly ingestion, and browser-based package access."
-  ogTitle="Free GeoIP CSV Downloads by Monthly Release"
-  canonicalPath="/geoip-csv-download.html"
+  title="Free IP Geolocation CSV Downloads by Monthly Release | ProdIPData"
+  description="Download ProdIPData IP geolocation CSV files by monthly release with release indexes, SQL-friendly ingestion, and browser-based package access."
+  ogTitle="Free IP Geolocation CSV Downloads by Monthly Release"
+  canonicalPath="/ip-geolocation-csv-download.html"
   page="guide"
   navPage="downloads"
 >
@@ -31,10 +31,10 @@ const dataset = {
     <section class="page-hero">
       <div class="container">
         <div class="page-panel glass">
-          <div class="eyebrow page-kicker">GeoIP CSV downloads</div>
-          <h1>GeoIP CSV downloads for simple ingestion and monthly release work.</h1>
-          <p class="page-intro">CSV is the most straightforward path when GeoIP data needs to be opened quickly, loaded into SQL-oriented workflows, or shared across teams that prefer familiar file handling. ProdIPData publishes release-based CSV package indexes so each topic can be reviewed and downloaded directly from the browser.</p>
-          <p class="page-intro seo-links">Open the <a href={`downloads-csv-${month}.html`}>current CSV release index</a>, compare it with the <a href="geoip-parquet-download.html">Parquet guide</a>, or return to the <a href="downloads.html">downloads hub</a> for the broader release view.</p>
+          <div class="eyebrow page-kicker">IP geolocation CSV downloads</div>
+          <h1>IP geolocation CSV downloads for simple ingestion and monthly release work.</h1>
+          <p class="page-intro">CSV is the most straightforward path when IP geolocation data needs to be opened quickly, loaded into SQL-oriented workflows, or shared across teams that prefer familiar file handling. ProdIPData publishes release-based CSV package indexes so each topic can be reviewed and downloaded directly from the browser.</p>
+          <p class="page-intro seo-links">Open the <a href={`downloads-csv-${month}.html`}>current CSV release index</a>, compare it with the <a href="ip-geolocation-parquet-download.html">Parquet guide</a>, or return to the <a href="downloads.html">downloads hub</a> for the broader release view.</p>
         </div>
       </div>
     </section>
@@ -71,7 +71,7 @@ const dataset = {
           <ul>
             <li>Open the <a href={`downloads-csv-${month}.html`}>current CSV release index</a> to browse published topics and package links.</li>
             <li>Use the <a href="coverage.html">coverage page</a> to review countries before downloading country files.</li>
-            <li>Move to <a href="geoip-parquet-download.html">Parquet downloads</a> if the workflow is more analytical or batch-oriented.</li>
+            <li>Move to <a href="ip-geolocation-parquet-download.html">Parquet downloads</a> if the workflow is more analytical or batch-oriented.</li>
           </ul>
           <div class="actions">
             <a class="btn btn-primary" href={`downloads-csv-${month}.html`}>Open CSV index</a>
@@ -83,7 +83,7 @@ const dataset = {
 
     <section class="section">
       <div class="container grid-3">
-        <article class="section-card glass"><h3><a href="geoip-database.html">GeoIP database overview</a></h3><p class="card-text">See where CSV fits inside the broader ProdIPData data product.</p></article>
+        <article class="section-card glass"><h3><a href="ip-geolocation-database.html">IP geolocation database overview</a></h3><p class="card-text">See where CSV fits inside the broader ProdIPData data product.</p></article>
         <article class="section-card glass"><h3><a href="asn-data-by-country.html">ASN data by country</a></h3><p class="card-text">Start from country and network structure if that is the analytical question behind the download.</p></article>
         <article class="section-card glass"><h3><a href="methodology.html">Release methodology</a></h3><p class="card-text">Understand the monthly publication model that sits behind the CSV package index.</p></article>
       </div>

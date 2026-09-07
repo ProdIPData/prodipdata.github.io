@@ -10,7 +10,7 @@ export function wrapLegacy(raw) {
 
   const title = pick(/<title>([\s\S]*?)<\/title>/i);
   const description = pick(/name=["']description["']\s+content=["']([\s\S]*?)["']/i);
-  const ogTitle = title.replace(/\s*\|\s*(GeoIP Locations|ProdIPData).*$/i, '');
+  const ogTitle = title.replace(/\s*\|\s*(ProdIPData|ProdIPData).*$/i, '');
 
   // JSON-LD schemas from the head (everything before <body>).
   const headPart = raw.split(/<body/i)[0] || '';

@@ -1541,8 +1541,8 @@
     "inactiveAsnCount": 0,
     "prefixCount": 653,
     "ipv4Count": 167168,
-    "topAsnId": 3215,
-    "topAsnName": "AS3215",
+    "topAsnId": 21351,
+    "topAsnName": "CANALPLUSTELECOM",
     "topAsnType": "isp",
     "topAsnPrefixCount": 305,
     "topAsnIpv4Count": 78080
@@ -2819,8 +2819,8 @@
     "inactiveAsnCount": 0,
     "prefixCount": 11,
     "ipv4Count": 2816,
-    "topAsnId": 10025,
-    "topAsnName": "IUSN-AS-AP",
+    "topAsnId": 55885,
+    "topAsnName": "ISP-NU",
     "topAsnType": "business",
     "topAsnPrefixCount": 4,
     "topAsnIpv4Count": 1024
@@ -3269,8 +3269,8 @@
     "inactiveAsnCount": 0,
     "prefixCount": 13,
     "ipv4Count": 3328,
-    "topAsnId": 399642,
-    "topAsnName": "IDNCOM",
+    "topAsnId": 30077,
+    "topAsnName": "GLABTECH",
     "topAsnType": "business",
     "topAsnPrefixCount": 2,
     "topAsnIpv4Count": 512

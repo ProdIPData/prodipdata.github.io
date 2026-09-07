@@ -1,6 +1,6 @@
 {
   "snapshotMonth": "2026-07",
-  "generatedUtc": "2026-07-01T14:44:26Z",
+  "generatedUtc": "2026-07-01T07:43:44Z",
   "source": "ProdIP Parquet pipeline (GOLD + ASN dimension)",
   "items": [
     {
@@ -1104,16 +1104,6 @@
       "prefixesPerMillionPeople": 106.7374
     },
     {
-      "iso2": "MG",
-      "countryName": "Madagascar",
-      "rir": "afrinic",
-      "prefixCount": 2308,
-      "ipv4Count": 590848,
-      "asnCount": 8,
-      "population": 26262368,
-      "prefixesPerMillionPeople": 87.8824
-    },
-    {
       "iso2": "AM",
       "countryName": "Armenia",
       "rir": "ripe",
@@ -1122,6 +1112,16 @@
       "asnCount": 130,
       "population": 3090500,
       "prefixesPerMillionPeople": 746.8047
+    },
+    {
+      "iso2": "MG",
+      "countryName": "Madagascar",
+      "rir": "afrinic",
+      "prefixCount": 2308,
+      "ipv4Count": 590848,
+      "asnCount": 8,
+      "population": 26262368,
+      "prefixesPerMillionPeople": 87.8824
     },
     {
       "iso2": "KH",
@@ -1504,16 +1504,6 @@
       "prefixesPerMillionPeople": 7003.4797
     },
     {
-      "iso2": "BJ",
-      "countryName": "Benin",
-      "rir": "afrinic",
-      "prefixCount": 627,
-      "ipv4Count": 160512,
-      "asnCount": 16,
-      "population": 11485048,
-      "prefixesPerMillionPeople": 54.5927
-    },
-    {
       "iso2": "HT",
       "countryName": "Haiti",
       "rir": "lacnic",
@@ -1522,6 +1512,16 @@
       "asnCount": 7,
       "population": 11123176,
       "prefixesPerMillionPeople": 56.3688
+    },
+    {
+      "iso2": "BJ",
+      "countryName": "Benin",
+      "rir": "afrinic",
+      "prefixCount": 627,
+      "ipv4Count": 160512,
+      "asnCount": 16,
+      "population": 11485048,
+      "prefixesPerMillionPeople": 54.5927
     },
     {
       "iso2": "CG",
@@ -1804,16 +1804,6 @@
       "prefixesPerMillionPeople": 4016.68
     },
     {
-      "iso2": "MR",
-      "countryName": "Mauritania",
-      "rir": "afrinic",
-      "prefixCount": 242,
-      "ipv4Count": 61952,
-      "asnCount": 7,
-      "population": 4403319,
-      "prefixesPerMillionPeople": 54.9585
-    },
-    {
       "iso2": "CV",
       "countryName": "Cabo Verde",
       "rir": "afrinic",
@@ -1822,6 +1812,16 @@
       "asnCount": 7,
       "population": 543767,
       "prefixesPerMillionPeople": 445.0436
+    },
+    {
+      "iso2": "MR",
+      "countryName": "Mauritania",
+      "rir": "afrinic",
+      "prefixCount": 242,
+      "ipv4Count": 61952,
+      "asnCount": 7,
+      "population": 4403319,
+      "prefixesPerMillionPeople": 54.9585
     },
     {
       "iso2": "SZ",
@@ -1904,16 +1904,6 @@
       "prefixesPerMillionPeople": 929.1381
     },
     {
-      "iso2": "SM",
-      "countryName": "San Marino",
-      "rir": "ripe",
-      "prefixCount": 163,
-      "ipv4Count": 41728,
-      "asnCount": 10,
-      "population": 33785,
-      "prefixesPerMillionPeople": 4824.6263
-    },
-    {
       "iso2": "BI",
       "countryName": "Burundi",
       "rir": "afrinic",
@@ -1922,6 +1912,16 @@
       "asnCount": 7,
       "population": 11175378,
       "prefixesPerMillionPeople": 14.5856
+    },
+    {
+      "iso2": "SM",
+      "countryName": "San Marino",
+      "rir": "ripe",
+      "prefixCount": 163,
+      "ipv4Count": 41728,
+      "asnCount": 10,
+      "population": 33785,
+      "prefixesPerMillionPeople": 4824.6263
     },
     {
       "iso2": "YT",
@@ -2034,16 +2034,6 @@
       "prefixesPerMillionPeople": 18.8005
     },
     {
-      "iso2": "BQ",
-      "countryName": "Bonaire, Saint Eustatius and Saba ",
-      "rir": "lacnic",
-      "prefixCount": 105,
-      "ipv4Count": 26880,
-      "asnCount": 5,
-      "population": 18012,
-      "prefixesPerMillionPeople": 5829.447
-    },
-    {
       "iso2": "VC",
       "countryName": "Saint Vincent and the Grenadines",
       "rir": "arin",
@@ -2052,6 +2042,16 @@
       "asnCount": 3,
       "population": 110211,
       "prefixesPerMillionPeople": 952.718
+    },
+    {
+      "iso2": "BQ",
+      "countryName": "Bonaire, Saint Eustatius and Saba ",
+      "rir": "lacnic",
+      "prefixCount": 105,
+      "ipv4Count": 26880,
+      "asnCount": 5,
+      "population": 18012,
+      "prefixesPerMillionPeople": 5829.447
     },
     {
       "iso2": "WS",
@@ -2244,16 +2244,6 @@
       "prefixesPerMillionPeople": 1916.9628
     },
     {
-      "iso2": "CF",
-      "countryName": "Central African Republic",
-      "rir": "afrinic",
-      "prefixCount": 37,
-      "ipv4Count": 9472,
-      "asnCount": 4,
-      "population": 4666377,
-      "prefixesPerMillionPeople": 7.9291
-    },
-    {
       "iso2": "GW",
       "countryName": "Guinea-Bissau",
       "rir": "afrinic",
@@ -2262,6 +2252,16 @@
       "asnCount": 2,
       "population": 1874309,
       "prefixesPerMillionPeople": 19.7406
+    },
+    {
+      "iso2": "CF",
+      "countryName": "Central African Republic",
+      "rir": "afrinic",
+      "prefixCount": 37,
+      "ipv4Count": 9472,
+      "asnCount": 4,
+      "population": 4666377,
+      "prefixesPerMillionPeople": 7.9291
     },
     {
       "iso2": "KI",
@@ -2284,16 +2284,6 @@
       "prefixesPerMillionPeople": 4.5094
     },
     {
-      "iso2": "FK",
-      "countryName": "Falkland Islands",
-      "rir": "ripe",
-      "prefixCount": 26,
-      "ipv4Count": 6656,
-      "asnCount": 2,
-      "population": 2638,
-      "prefixesPerMillionPeople": 9855.9515
-    },
-    {
       "iso2": "PM",
       "countryName": "Saint Pierre and Miquelon",
       "rir": "arin",
@@ -2302,6 +2292,16 @@
       "asnCount": 1,
       "population": 7012,
       "prefixesPerMillionPeople": 3707.9293
+    },
+    {
+      "iso2": "FK",
+      "countryName": "Falkland Islands",
+      "rir": "ripe",
+      "prefixCount": 26,
+      "ipv4Count": 6656,
+      "asnCount": 2,
+      "population": 2638,
+      "prefixesPerMillionPeople": 9855.9515
     },
     {
       "iso2": "WF",
@@ -2404,14 +2404,14 @@
       "prefixesPerMillionPeople": 1641.1379
     },
     {
-      "iso2": "SJ",
-      "countryName": "Svalbard and Jan Mayen",
-      "rir": "ripe",
+      "iso2": "UM",
+      "countryName": "United States Minor Outlying Islands",
+      "rir": "arin",
       "prefixCount": 2,
       "ipv4Count": 512,
       "asnCount": 0,
-      "population": 2550,
-      "prefixesPerMillionPeople": 784.3137
+      "population": 0,
+      "prefixesPerMillionPeople": null
     },
     {
       "iso2": "GS",
@@ -2424,14 +2424,14 @@
       "prefixesPerMillionPeople": 66666.6667
     },
     {
-      "iso2": "SH",
-      "countryName": "Saint Helena",
-      "rir": "arin",
+      "iso2": "SJ",
+      "countryName": "Svalbard and Jan Mayen",
+      "rir": "ripe",
       "prefixCount": 2,
       "ipv4Count": 512,
       "asnCount": 0,
-      "population": 7460,
-      "prefixesPerMillionPeople": 268.0965
+      "population": 2550,
+      "prefixesPerMillionPeople": 784.3137
     },
     {
       "iso2": "HM",
@@ -2444,24 +2444,14 @@
       "prefixesPerMillionPeople": null
     },
     {
-      "iso2": "UM",
-      "countryName": "United States Minor Outlying Islands",
+      "iso2": "SH",
+      "countryName": "Saint Helena",
       "rir": "arin",
       "prefixCount": 2,
       "ipv4Count": 512,
       "asnCount": 0,
-      "population": 0,
-      "prefixesPerMillionPeople": null
-    },
-    {
-      "iso2": "BV",
-      "countryName": "Bouvet Island",
-      "rir": "ripe",
-      "prefixCount": 1,
-      "ipv4Count": 256,
-      "asnCount": 0,
-      "population": 0,
-      "prefixesPerMillionPeople": null
+      "population": 7460,
+      "prefixesPerMillionPeople": 268.0965
     },
     {
       "iso2": "CC",
@@ -2472,6 +2462,16 @@
       "asnCount": 0,
       "population": 628,
       "prefixesPerMillionPeople": 1592.3567
+    },
+    {
+      "iso2": "BV",
+      "countryName": "Bouvet Island",
+      "rir": "ripe",
+      "prefixCount": 1,
+      "ipv4Count": 256,
+      "asnCount": 0,
+      "population": 0,
+      "prefixesPerMillionPeople": null
     }
   ]
 }

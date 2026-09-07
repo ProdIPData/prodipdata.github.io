@@ -6,17 +6,17 @@ const month = currentReleaseMonth;
 const breadcrumb = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
-  '@id': 'https://geoiplocations.com/platform.html#breadcrumb',
+  '@id': 'https://prodipdata.com/platform.html#breadcrumb',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://geoiplocations.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Platform', item: 'https://geoiplocations.com/platform.html' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://prodipdata.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Platform', item: 'https://prodipdata.com/platform.html' },
   ],
 };
 ---
 <BaseLayout
-  title="GeoIP Platform Overview, Coverage, ASN and Registry Intelligence | ProdIPData"
-  description="Explore the ProdIPData platform for GeoIP coverage, ASN intelligence, registry context, and monthly publication workflows."
-  ogTitle="GeoIP Platform Overview, Coverage, ASN and Registry Intelligence"
+  title="IP geolocation Platform Overview, Coverage, ASN and Registry Intelligence | ProdIPData"
+  description="Explore the ProdIPData platform for IP geolocation coverage, ASN intelligence, registry context, and monthly publication workflows."
+  ogTitle="IP geolocation Platform Overview, Coverage, ASN and Registry Intelligence"
   canonicalPath="/platform.html"
   page="platform"
 >
@@ -27,12 +27,12 @@ const breadcrumb = {
       <div class="container">
         <div class="page-panel glass">
           <div class="eyebrow page-kicker">Platform</div>
-          <h1>GeoIP data built for practical use.</h1>
+          <h1>IP geolocation data built for practical use.</h1>
           <p class="page-intro">
-            GeoIP Locations is the public data experience of ProdIPData. It helps teams explore country coverage, ASN structure,
+            ProdIPData is the public data experience of ProdIPData. It helps teams explore country coverage, ASN structure,
             registry footprint, and downloadable files that can be used in analytics, routing, applications, and operational workflows.
           </p>
-          <p class="page-intro seo-links">Explore the <a href="coverage.html">interactive country coverage map</a>, open the <a href="downloads.html">monthly GeoIP download indexes</a>, browse the <a href="releases/index.html">release archive</a>, open the <a href={`releases/${month}/index.html`}>current release overview</a>, or review the <a href="methodology.html">ProdIPData methodology</a> to understand how each release is assembled.</p>
+          <p class="page-intro seo-links">Explore the <a href="coverage.html">interactive country coverage map</a>, open the <a href="downloads.html">monthly IP geolocation download indexes</a>, browse the <a href="releases/index.html">release archive</a>, open the <a href={`releases/${month}/index.html`}>current release overview</a>, or review the <a href="methodology.html">ProdIPData methodology</a> to understand how each release is assembled.</p>
         </div>
       </div>
     </section>
@@ -40,7 +40,7 @@ const breadcrumb = {
     <section class="section">
       <div class="container grid-3">
         <article class="section-card glass">
-          <h3>Downloadable GeoIP data</h3>
+          <h3>Downloadable IP geolocation data</h3>
           <p class="card-text">Country profiles, ASN views, registry summaries, and downloadable file catalogs are published in formats that fit local analysis, reporting, and system integration.</p>
         </article>
         <article class="section-card glass">
@@ -59,16 +59,16 @@ const breadcrumb = {
         <div class="section-head">
           <div><h2>Find the right starting point</h2></div>
           <p>
-            These guide pages target the most common discovery intents for a GeoIP data website and connect directly to the live ProdIPData surfaces.
+            These guide pages target the most common discovery intents for a IP geolocation data website and connect directly to the live ProdIPData surfaces.
           </p>
         </div>
         <div class="download-grid">
-          <article class="section-card glass"><h3><a href="geoip-database.html">GeoIP database downloads</a></h3><p class="card-text">Product-oriented overview of downloadable GeoIP files, local hosting, and monthly releases.</p></article>
-          <article class="section-card glass"><h3><a href="ip-geolocation-data.html">IP geolocation data</a></h3><p class="card-text">Plain-language guide to what GeoIP data represents and how to interpret it responsibly.</p></article>
+          <article class="section-card glass"><h3><a href="ip-geolocation-database.html">IP geolocation database downloads</a></h3><p class="card-text">Product-oriented overview of downloadable IP geolocation files, local hosting, and monthly releases.</p></article>
+          <article class="section-card glass"><h3><a href="ip-geolocation-data.html">IP geolocation data</a></h3><p class="card-text">Plain-language guide to what IP geolocation data represents and how to interpret it responsibly.</p></article>
           <article class="section-card glass"><h3><a href="asn-data-by-country.html">ASN data by country</a></h3><p class="card-text">Country-level operator structure, concentration, and lead-network context.</p></article>
-          <article class="section-card glass"><h3><a href="geoip-csv-download.html">GeoIP CSV downloads</a></h3><p class="card-text">CSV-first guide for SQL, spreadsheets, and operational workflows.</p></article>
-          <article class="section-card glass"><h3><a href="geoip-parquet-download.html">GeoIP Parquet downloads</a></h3><p class="card-text">Parquet-first guide for analytics and larger-scale processing paths.</p></article>
-          <article class="section-card glass"><h3><a href="releases/index.html">GeoIP monthly release archive</a></h3><p class="card-text">Release-centric entry point for month-by-month navigation, current release context, and package-level paths.</p></article>
+          <article class="section-card glass"><h3><a href="ip-geolocation-csv-download.html">IP geolocation CSV downloads</a></h3><p class="card-text">CSV-first guide for SQL, spreadsheets, and operational workflows.</p></article>
+          <article class="section-card glass"><h3><a href="ip-geolocation-parquet-download.html">IP geolocation Parquet downloads</a></h3><p class="card-text">Parquet-first guide for analytics and larger-scale processing paths.</p></article>
+          <article class="section-card glass"><h3><a href="releases/index.html">IP geolocation monthly release archive</a></h3><p class="card-text">Release-centric entry point for month-by-month navigation, current release context, and package-level paths.</p></article>
         </div>
       </div>
     </section>
@@ -91,7 +91,7 @@ const breadcrumb = {
         <div class="split-panel glass content">
           <h2>ProdIPData files</h2>
           <p>
-            ProdIPData files are designed for teams that want to download GeoIP data, host it locally, and integrate it into their own
+            ProdIPData files are designed for teams that want to download IP geolocation data, host it locally, and integrate it into their own
             reporting, applications, or operational workflows. Monthly CSV, Parquet, and MMDB packages make it easier to move from website
             exploration to direct internal use.
           </p>
@@ -104,7 +104,7 @@ const breadcrumb = {
         <div class="split-panel glass content">
           <h2>Beyond geolocation</h2>
           <p>
-            GeoIP is not only about approximate location. ProdIPData extends the picture with ASN, registry, and market-structure views
+            IP geolocation is not only about approximate location. ProdIPData extends the picture with ASN, registry, and market-structure views
             so users can understand who operates the visible footprint, how concentrated a country may be, and how coverage is distributed.
           </p>
           <ul>
@@ -121,7 +121,7 @@ const breadcrumb = {
         <div class="split-panel glass content">
           <h2>Explore deeper release and entity pages</h2>
           <p>
-            The monthly release archive connects the current dataset to focused country, registry, and ASN pages. Use the <a href="releases/index.html">monthly release archive</a> for time-based navigation, open <a href="country/index.html">country profiles</a> for country-level footprint context, review <a href="rir/index.html">RIR pages</a> for registry-level coverage, and open <a href="asn/index.html">ASN profiles</a> for visible network entities in the current release. For package access, continue through <a href="downloads.html">GeoIP CSV, Parquet, and MMDB downloads</a>, and for source quality and caveats, review <a href="methodology.html">GeoIP methodology and validation</a>.
+            The monthly release archive connects the current dataset to focused country, registry, and ASN pages. Use the <a href="releases/index.html">monthly release archive</a> for time-based navigation, open <a href="country/index.html">country profiles</a> for country-level footprint context, review <a href="rir/index.html">RIR pages</a> for registry-level coverage, and open <a href="asn/index.html">ASN profiles</a> for visible network entities in the current release. For package access, continue through <a href="downloads.html">IP geolocation CSV, Parquet, and MMDB downloads</a>, and for source quality and caveats, review <a href="methodology.html">IP geolocation methodology and validation</a>.
           </p>
         </div>
       </div>

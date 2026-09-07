@@ -1,6 +1,6 @@
 {
   "snapshotMonth": "2026-08",
-  "generatedUtc": "2026-08-05T14:31:30Z",
+  "generatedUtc": "2026-08-05T08:32:27Z",
   "source": "ProdIP Parquet pipeline (GOLD + ASN dimension)",
   "items": [
     {
@@ -2204,16 +2204,6 @@
       "prefixesPerMillionPeople": 426.1364
     },
     {
-      "iso2": "TV",
-      "countryName": "Tuvalu",
-      "rir": "apnic",
-      "prefixCount": 46,
-      "ipv4Count": 11776,
-      "asnCount": 1,
-      "population": 11508,
-      "prefixesPerMillionPeople": 3997.2193
-    },
-    {
       "iso2": "AI",
       "countryName": "Anguilla",
       "rir": "arin",
@@ -2222,6 +2212,16 @@
       "asnCount": 4,
       "population": 13254,
       "prefixesPerMillionPeople": 3470.6504
+    },
+    {
+      "iso2": "TV",
+      "countryName": "Tuvalu",
+      "rir": "apnic",
+      "prefixCount": 46,
+      "ipv4Count": 11776,
+      "asnCount": 1,
+      "population": 11508,
+      "prefixesPerMillionPeople": 3997.2193
     },
     {
       "iso2": "MP",
@@ -2284,16 +2284,6 @@
       "prefixesPerMillionPeople": 4.6704
     },
     {
-      "iso2": "PM",
-      "countryName": "Saint Pierre and Miquelon",
-      "rir": "arin",
-      "prefixCount": 26,
-      "ipv4Count": 6656,
-      "asnCount": 1,
-      "population": 7012,
-      "prefixesPerMillionPeople": 3707.9293
-    },
-    {
       "iso2": "FK",
       "countryName": "Falkland Islands",
       "rir": "ripe",
@@ -2302,6 +2292,16 @@
       "asnCount": 2,
       "population": 2638,
       "prefixesPerMillionPeople": 9855.9515
+    },
+    {
+      "iso2": "PM",
+      "countryName": "Saint Pierre and Miquelon",
+      "rir": "arin",
+      "prefixCount": 26,
+      "ipv4Count": 6656,
+      "asnCount": 1,
+      "population": 7012,
+      "prefixesPerMillionPeople": 3707.9293
     },
     {
       "iso2": "WF",
@@ -2404,6 +2404,16 @@
       "prefixesPerMillionPeople": 1641.1379
     },
     {
+      "iso2": "GS",
+      "countryName": "South Georgia and the South Sandwich Islands",
+      "rir": "arin",
+      "prefixCount": 2,
+      "ipv4Count": 512,
+      "asnCount": 1,
+      "population": 30,
+      "prefixesPerMillionPeople": 66666.6667
+    },
+    {
       "iso2": "HM",
       "countryName": "Heard Island and McDonald Islands",
       "rir": "arin",
@@ -2424,14 +2434,14 @@
       "prefixesPerMillionPeople": null
     },
     {
-      "iso2": "GS",
-      "countryName": "South Georgia and the South Sandwich Islands",
-      "rir": "arin",
+      "iso2": "SJ",
+      "countryName": "Svalbard and Jan Mayen",
+      "rir": "ripe",
       "prefixCount": 2,
       "ipv4Count": 512,
-      "asnCount": 1,
-      "population": 30,
-      "prefixesPerMillionPeople": 66666.6667
+      "asnCount": 0,
+      "population": 2550,
+      "prefixesPerMillionPeople": 784.3137
     },
     {
       "iso2": "PN",
@@ -2444,14 +2454,14 @@
       "prefixesPerMillionPeople": 43478.2609
     },
     {
-      "iso2": "SJ",
-      "countryName": "Svalbard and Jan Mayen",
+      "iso2": "BV",
+      "countryName": "Bouvet Island",
       "rir": "ripe",
-      "prefixCount": 2,
-      "ipv4Count": 512,
+      "prefixCount": 1,
+      "ipv4Count": 256,
       "asnCount": 0,
-      "population": 2550,
-      "prefixesPerMillionPeople": 784.3137
+      "population": 0,
+      "prefixesPerMillionPeople": null
     },
     {
       "iso2": "CC",
@@ -2462,16 +2472,6 @@
       "asnCount": 0,
       "population": 628,
       "prefixesPerMillionPeople": 1592.3567
-    },
-    {
-      "iso2": "BV",
-      "countryName": "Bouvet Island",
-      "rir": "ripe",
-      "prefixCount": 1,
-      "ipv4Count": 256,
-      "asnCount": 0,
-      "population": 0,
-      "prefixesPerMillionPeople": null
     }
   ]
 }

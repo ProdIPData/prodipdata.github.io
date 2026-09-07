@@ -7,13 +7,13 @@ const breadcrumb = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://geoiplocations.com/' },
-    { '@type': 'ListItem', position: 2, name: 'ASN Data by Country', item: 'https://geoiplocations.com/asn-data-by-country.html' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://prodipdata.com/' },
+    { '@type': 'ListItem', position: 2, name: 'ASN Data by Country', item: 'https://prodipdata.com/asn-data-by-country.html' },
   ],
 };
 ---
 <BaseLayout
-  title="ASN Data by Country | GeoIP Locations"
+  title="ASN Data by Country | ProdIPData"
   description="Compare ASN data by country with ProdIPData coverage views, country concentration, lead ASN share, and downloadable monthly files."
   ogTitle="ASN Data by Country"
   canonicalPath="/asn-data-by-country.html"
@@ -29,7 +29,7 @@ const breadcrumb = {
           <div class="eyebrow page-kicker">ASN data by country</div>
           <h1>ASN data by country for footprint, ownership, and concentration analysis.</h1>
           <p class="page-intro">Country-level ASN analysis helps teams move beyond simple location labels. ProdIPData highlights how many ASNs appear in each country, which network leads the visible footprint, and how concentrated or diversified the published structure may be.</p>
-          <p class="page-intro seo-links">Use the <a href="coverage.html">coverage page</a> for the interactive map, the <a href="downloads.html">downloads hub</a> for release files, or the <a href="geoip-database.html">GeoIP database overview</a> for a higher-level product view.</p>
+          <p class="page-intro seo-links">Use the <a href="coverage.html">coverage page</a> for the interactive map, the <a href="downloads.html">downloads hub</a> for release files, or the <a href="ip-geolocation-database.html">IP geolocation database overview</a> for a higher-level product view.</p>
         </div>
       </div>
     </section>
@@ -80,8 +80,8 @@ const breadcrumb = {
 
     <section class="section">
       <div class="container grid-3">
-        <article class="section-card glass"><h3><a href="geoip-csv-download.html">Country files in CSV</a></h3><p class="card-text">Choose CSV when country exports need to fit spreadsheets, SQL scripts, or simple operational ingestion.</p></article>
-        <article class="section-card glass"><h3><a href="geoip-parquet-download.html">Country files in Parquet</a></h3><p class="card-text">Choose Parquet when country files will be analyzed in batch pipelines or data-processing frameworks.</p></article>
+        <article class="section-card glass"><h3><a href="ip-geolocation-csv-download.html">Country files in CSV</a></h3><p class="card-text">Choose CSV when country exports need to fit spreadsheets, SQL scripts, or simple operational ingestion.</p></article>
+        <article class="section-card glass"><h3><a href="ip-geolocation-parquet-download.html">Country files in Parquet</a></h3><p class="card-text">Choose Parquet when country files will be analyzed in batch pipelines or data-processing frameworks.</p></article>
         <article class="section-card glass"><h3><a href="methodology.html">Monthly methodology</a></h3><p class="card-text">Understand how the country views and release snapshots are assembled before you operationalize them.</p></article>
       </div>
     </section>
