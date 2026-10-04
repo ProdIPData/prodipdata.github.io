@@ -1,0 +1,207 @@
+[
+  {
+    "rir": "arin",
+    "website": "https://www.arin.net/",
+    "whoisServer": "whois.arin.net",
+    "countryCount": 233,
+    "asnCount": 24106,
+    "prefixCount": 6443527,
+    "ipv4Count": 1649542912,
+    "typeMix": [
+      {
+        "asnType": "isp",
+        "asnCount": 3353,
+        "prefixCount": 2953729,
+        "ipv4Count": 756154624
+      },
+      {
+        "asnType": "business",
+        "asnCount": 19287,
+        "prefixCount": 1757487,
+        "ipv4Count": 449916672
+      },
+      {
+        "asnType": "hosting",
+        "asnCount": 972,
+        "prefixCount": 648340,
+        "ipv4Count": 165975040
+      },
+      {
+        "asnType": "education",
+        "asnCount": 443,
+        "prefixCount": 165265,
+        "ipv4Count": 42307840
+      },
+      {
+        "asnType": "government",
+        "asnCount": 51,
+        "prefixCount": 14725,
+        "ipv4Count": 3769600
+      }
+    ]
+  },
+  {
+    "rir": "apnic",
+    "website": "https://www.apnic.net/",
+    "whoisServer": "whois.apnic.net",
+    "countryCount": 143,
+    "asnCount": 16853,
+    "prefixCount": 3486915,
+    "ipv4Count": 892650240,
+    "typeMix": [
+      {
+        "asnType": "isp",
+        "asnCount": 4486,
+        "prefixCount": 2484399,
+        "ipv4Count": 636006144
+      },
+      {
+        "asnType": "business",
+        "asnCount": 11501,
+        "prefixCount": 312424,
+        "ipv4Count": 79980544
+      },
+      {
+        "asnType": "hosting",
+        "asnCount": 633,
+        "prefixCount": 183367,
+        "ipv4Count": 46941952
+      },
+      {
+        "asnType": "education",
+        "asnCount": 186,
+        "prefixCount": 133632,
+        "ipv4Count": 34209792
+      },
+      {
+        "asnType": "government",
+        "asnCount": 47,
+        "prefixCount": 611,
+        "ipv4Count": 156416
+      }
+    ]
+  },
+  {
+    "rir": "ripe",
+    "website": "https://www.ripe.net/",
+    "whoisServer": "whois.ripe.net",
+    "countryCount": 233,
+    "asnCount": 32139,
+    "prefixCount": 3346745,
+    "ipv4Count": 856766720,
+    "typeMix": [
+      {
+        "asnType": "isp",
+        "asnCount": 6880,
+        "prefixCount": 2122583,
+        "ipv4Count": 543381248
+      },
+      {
+        "asnType": "business",
+        "asnCount": 22999,
+        "prefixCount": 378514,
+        "ipv4Count": 96899584
+      },
+      {
+        "asnType": "hosting",
+        "asnCount": 1894,
+        "prefixCount": 329481,
+        "ipv4Count": 84347136
+      },
+      {
+        "asnType": "education",
+        "asnCount": 320,
+        "prefixCount": 185202,
+        "ipv4Count": 47411712
+      },
+      {
+        "asnType": "government",
+        "asnCount": 46,
+        "prefixCount": 2075,
+        "ipv4Count": 531200
+      }
+    ]
+  },
+  {
+    "rir": "lacnic",
+    "website": "https://www.lacnic.net/",
+    "whoisServer": "whois.lacnic.net",
+    "countryCount": 71,
+    "asnCount": 10975,
+    "prefixCount": 711124,
+    "ipv4Count": 182047744,
+    "typeMix": [
+      {
+        "asnType": "isp",
+        "asnCount": 4796,
+        "prefixCount": 579075,
+        "ipv4Count": 148243200
+      },
+      {
+        "asnType": "business",
+        "asnCount": 5896,
+        "prefixCount": 82316,
+        "ipv4Count": 21072896
+      },
+      {
+        "asnType": "education",
+        "asnCount": 76,
+        "prefixCount": 11104,
+        "ipv4Count": 2842624
+      },
+      {
+        "asnType": "hosting",
+        "asnCount": 167,
+        "prefixCount": 9658,
+        "ipv4Count": 2472448
+      },
+      {
+        "asnType": "government",
+        "asnCount": 40,
+        "prefixCount": 1705,
+        "ipv4Count": 436480
+      }
+    ]
+  },
+  {
+    "rir": "afrinic",
+    "website": "https://afrinic.net/",
+    "whoisServer": "whois.afrinic.net",
+    "countryCount": 201,
+    "asnCount": 2780,
+    "prefixCount": 473634,
+    "ipv4Count": 121250304,
+    "typeMix": [
+      {
+        "asnType": "isp",
+        "asnCount": 973,
+        "prefixCount": 351069,
+        "ipv4Count": 89873664
+      },
+      {
+        "asnType": "business",
+        "asnCount": 1649,
+        "prefixCount": 60218,
+        "ipv4Count": 15415808
+      },
+      {
+        "asnType": "education",
+        "asnCount": 25,
+        "prefixCount": 6546,
+        "ipv4Count": 1675776
+      },
+      {
+        "asnType": "hosting",
+        "asnCount": 129,
+        "prefixCount": 4963,
+        "ipv4Count": 1270528
+      },
+      {
+        "asnType": "government",
+        "asnCount": 4,
+        "prefixCount": 39,
+        "ipv4Count": 9984
+      }
+    ]
+  }
+]
