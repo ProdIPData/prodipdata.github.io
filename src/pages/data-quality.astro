@@ -45,6 +45,7 @@ const rirRows = rirs.map((r) => `
     <td>${pct(r.countryLevelPct)}</td>
     <td>${pct(r.disagreePct)}</td>
     <td>${formatInteger(r.operatorFeed)}</td>
+    <td>${pct(r.abuseContactPct)}</td>
   </tr>`).join('');
 
 const countryRows = countries.map((c) => `
@@ -55,6 +56,7 @@ const countryRows = countries.map((c) => `
     <td>${pct(c.regionalPct)}</td>
     <td>${pct(c.countryLevelPct)}</td>
     <td>${pct(c.disagreePct)}</td>
+    <td>${pct(c.abuseContactPct)}</td>
   </tr>`).join('');
 
 const notes = ((q && q.notes) || []).map((n) => `<li>${escapeHtml(n)}</li>`).join('');
@@ -124,11 +126,11 @@ const breadcrumb = {
             <div class="table-wrap glass dq-wrap">
               <div class="coverage-table-head">
                 <h3>By regional registry</h3>
-                <p class="card-text">Shares of each registry's /24s with a country.</p>
+                <p class="card-text">Shares of each registry's /24s with a country. Abuse contact = a WHOIS abuse e-mail is published for the /24 ({pct(t.abuseContactPct)} overall); it comes from bulk WHOIS, so ARIN and LACNIC space has almost none in the data.</p>
               </div>
               <div class="dq-scroll">
                 <table>
-                  <thead><tr><th>RIR</th><th>/24 with a country</th><th>City-precise</th><th>Regional</th><th>Country level</th><th>Sources disagree</th><th>Operator geofeed /24</th></tr></thead>
+                  <thead><tr><th>RIR</th><th>/24 with a country</th><th>City-precise</th><th>Regional</th><th>Country level</th><th>Sources disagree</th><th>Operator geofeed /24</th><th>Abuse contact</th></tr></thead>
                   <tbody set:html={rirRows}></tbody>
                 </table>
               </div>
@@ -145,7 +147,7 @@ const breadcrumb = {
               </div>
               <div class="dq-scroll">
                 <table>
-                  <thead><tr><th>Country</th><th>/24</th><th>City-precise</th><th>Regional</th><th>Country level</th><th>Sources disagree</th></tr></thead>
+                  <thead><tr><th>Country</th><th>/24</th><th>City-precise</th><th>Regional</th><th>Country level</th><th>Sources disagree</th><th>Abuse contact</th></tr></thead>
                   <tbody set:html={countryRows}></tbody>
                 </table>
               </div>
@@ -169,7 +171,7 @@ const breadcrumb = {
 
   <style is:inline>
     .dq-scroll { overflow-x: auto; }
-    .dq-wrap table { min-width: 680px; }
+    .dq-wrap table { min-width: 760px; }
     .dq-bars .kpi-row { grid-template-columns: 110px 1fr 56px; }
   </style>
 </BaseLayout>

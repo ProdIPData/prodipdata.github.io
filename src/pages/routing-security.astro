@@ -66,6 +66,30 @@ const countryRows = countries.slice(0, 40).map((c) => `
 const notes = ((rs && rs.notes) || []).map((n) => `<li>${escapeHtml(n)}</li>`).join('');
 const dataFile = `assets/data/routing-security-${month}.json`;
 
+// Routing hygiene (routing-hygiene-<month>.json): announced space that should not be, and
+// multi-origin /24s. Counts by registry and country only - no network is named.
+const hy = loadData('routing-hygiene');
+const ht = (hy && hy.totals) || {};
+const hyMetrics = hy ? `
+  <div class="metric-card glass"><div class="muted">Announced DROP-listed /24s</div><div class="metric-value">${formatInteger(ht.dropAnnounced)}</div><div class="card-text">of the ${formatInteger(ht.dropPrefixes)} /24s on Spamhaus DROP still have an origin AS.</div></div>
+  <div class="metric-card glass"><div class="muted">Announced unallocated /24s</div><div class="metric-value">${formatInteger(ht.reserveAnnounced)}</div><div class="card-text">of the ${formatInteger(ht.reservePrefixes)} /24s no registry has handed out are announced in BGP.</div></div>
+  <div class="metric-card glass"><div class="muted">Origin ASes involved</div><div class="metric-value">${formatInteger(ht.originAsns)}</div><div class="card-text">distinct ASes announce those DROP-listed or unallocated /24s.</div></div>
+  <div class="metric-card glass"><div class="muted">Multi-origin /24s</div><div class="metric-value">${formatInteger(ht.multiOrigin)}</div><div class="card-text">${pct(ht.multiOriginPct)} of routed /24s are announced by more than one AS.</div></div>` : '';
+const hyRirRows = ((hy && hy.rirs) || []).map((r) => `
+  <tr>
+    <td><strong>${escapeHtml(rirLabel(r.rir))}</strong></td>
+    <td>${formatInteger(r.dropAnnounced)}</td>
+    <td>${formatInteger(r.reserveAnnounced)} <span class="table-subtext">of ${formatInteger(r.reservePrefixes)}</span></td>
+    <td>${formatInteger(r.multiOrigin)} <span class="table-subtext">${pct(r.multiOriginPct)}</span></td>
+  </tr>`).join('');
+const hyCountryRows = ((hy && hy.countries) || []).slice(0, 20).map((c) => `
+  <tr>
+    <td>${flag(c.iso2)}<strong>${escapeHtml(countryName(c.iso2))}</strong></td>
+    <td>${formatInteger(c.dropAnnounced)}</td>
+    <td>${formatInteger(c.multiOrigin)} <span class="table-subtext">${pct(c.multiOriginPct)}</span></td>
+  </tr>`).join('');
+const hyNotes = ((hy && hy.notes) || []).map((n) => `<li>${escapeHtml(n)}</li>`).join('');
+
 const breadcrumb = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -157,6 +181,50 @@ const breadcrumb = {
             </div>
           </div>
         </section>
+
+        {hy && (
+          <>
+            <section class="section" id="routing-hygiene">
+              <div class="container">
+                <div class="split-panel glass content">
+                  <h2>Routing hygiene: space announced that should not be</h2>
+                  <p>Beyond RPKI, some announcements stand out on their own: blocks on Spamhaus's "Don't Route Or Peer" list, space no registry has handed out yet, and /24s announced by several networks at once. Counts only; no network is named here.</p>
+                </div>
+                <div class="metric-grid rs-hy-metrics" set:html={hyMetrics}></div>
+              </div>
+            </section>
+            <section class="section">
+              <div class="container grid-2">
+                <div class="table-wrap glass">
+                  <div class="coverage-table-head"><h3>By regional registry</h3><p class="card-text">Unallocated /24s have no country, so they appear here only.</p></div>
+                  <div class="rs-scroll">
+                    <table>
+                      <thead><tr><th>RIR</th><th>Announced DROP /24</th><th>Announced unallocated /24</th><th>Multi-origin /24</th></tr></thead>
+                      <tbody set:html={hyRirRows}></tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="table-wrap glass">
+                  <div class="coverage-table-head"><h3>By country</h3><p class="card-text">The 20 countries with the most announced DROP-listed or multi-origin /24s.</p></div>
+                  <div class="rs-scroll">
+                    <table>
+                      <thead><tr><th>Country</th><th>Announced DROP /24</th><th>Multi-origin /24</th></tr></thead>
+                      <tbody set:html={hyCountryRows}></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="section">
+              <div class="container">
+                <div class="split-panel glass content">
+                  <h3>About routing hygiene</h3>
+                  <ul set:html={hyNotes}></ul>
+                </div>
+              </div>
+            </section>
+          </>
+        )}
       </>
     ) : (
       <section class="section">
@@ -170,6 +238,8 @@ const breadcrumb = {
   <style is:inline>
     .rs-scroll { overflow-x: auto; }
     .rs-wrap table { min-width: 640px; }
+    .rs-hy-metrics { margin-top: 16px; }
+    .rs-scroll .table-subtext { display: inline; margin-left: 4px; }
     .rs-cell { display: grid; grid-template-columns: minmax(60px, 120px) auto; gap: 10px; align-items: center; }
   </style>
 </BaseLayout>

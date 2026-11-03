@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { numericValue, formatInteger, formatCompact, escapeHtml, loadData, flag, currentReleaseMonth } from '../lib/format.js';
+
+// Education and government networks for the current release, built at deploy time from
+// edu-gov-<month>.json (WEBSITE/Build-Analytics-Data.py).
+const month = currentReleaseMonth;
+const eg = loadData('edu-gov');
+const t = (eg && eg.totals) || {};
+const countries = ((eg && eg.countries) || []).slice(0, 30);
+const eduTop = ((eg && eg.eduAsnsTop) || []).slice(0, 10);
+
+let countryName = (iso) => iso || 'Unknown';
+try {
+  const dn = new Intl.DisplayNames(['en'], { type: 'region' });
+  countryName = (iso) => (iso ? dn.of(String(iso).toUpperCase()) || iso : 'Unknown');
+} catch (e) { /* keep the ISO code */ }
+const pct = (v) => `${numericValue(v).toFixed(1)}%`;
+const share = (n) => pct(numericValue(t.routed) ? 100 * numericValue(n) / numericValue(t.routed) : 0);
+
+const metricsHtml = eg ? `
+  <div class="metric-card glass"><div class="muted">Education /24s</div><div class="metric-value">${formatCompact(t.eduPrefixes)}</div><div class="card-text">${share(t.eduPrefixes)} of routed /24s, announced by universities and research networks.</div></div>
+  <div class="metric-card glass"><div class="muted">Education networks</div><div class="metric-value">${formatInteger(t.eduAsns)}</div><div class="card-text">distinct education ASNs.</div></div>
+  <div class="metric-card glass"><div class="muted">Government /24s</div><div class="metric-value">${formatInteger(t.govPrefixes)}</div><div class="card-text">${share(t.govPrefixes)} of routed /24s; many public bodies use commercial providers instead.</div></div>
+  <div class="metric-card glass"><div class="muted">Government networks</div><div class="metric-value">${formatInteger(t.govAsns)}</div><div class="card-text">distinct government ASNs (indicative, see the notes).</div></div>` : '';
+
+const countryRows = countries.map((c) => `
+  <tr>
+    <td>${flag(c.iso2)}<strong>${escapeHtml(countryName(c.iso2))}</strong></td>
+    <td>${formatInteger(c.edu)} <span class="table-subtext">${pct(c.eduPct)}</span></td>
+    <td>${formatInteger(c.eduAsns)}</td>
+    <td>${formatInteger(c.gov)} <span class="table-subtext">${pct(c.govPct)}</span></td>
+    <td>${formatInteger(c.govAsns)}</td>
+  </tr>`).join('');
+
+const eduList = eduTop.map((r) => `
+  <div class="list-row">
+    <div><strong>${escapeHtml(r.name || `AS${r.asn}`)}</strong><small>${flag(r.iso2)}AS${escapeHtml(r.asn)} · ${escapeHtml(countryName(r.iso2))}</small></div>
+    <div class="list-metric"><strong>${formatInteger(r.prefixes)}</strong><small>/24</small></div>
+  </div>`).join('');
+
+const notes = ((eg && eg.notes) || []).map((n) => `<li>${escapeHtml(n)}</li>`).join('');
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://prodipdata.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Coverage', item: 'https://prodipdata.com/coverage.html' },
+    { '@type': 'ListItem', position: 3, name: 'Education and government networks', item: 'https://prodipdata.com/education-government.html' },
+  ],
+};
+---
+<BaseLayout
+  title="Education and Government IPv4 Networks by Country | ProdIPData"
+  description="How much routed IPv4 space universities, research networks and government bodies announce, by country, for the current ProdIPData monthly release, with the EDU and GOV packages."
+  ogTitle="Education and Government IPv4 Networks by Country"
+  canonicalPath="/education-government.html"
+  page="education-government"
+  navPage="coverage"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-panel glass">
+          <div class="eyebrow page-kicker">Education and government</div>
+          <h1>Education and government networks, release {month}.</h1>
+          <p class="page-intro">
+            Universities, national research networks and government bodies run their own networks in many countries. This
+            page counts the routed /24s they announce, by country. The same selection is published as two packages, EDU and
+            GOV, in every monthly release (see the <a href={`downloads-csv-${month}.html`}>CSV downloads</a>).
+          </p>
+          <p class="page-intro seo-links">See also the <a href="coverage.html">country coverage map</a>, <a href="cloud-footprint.html">cloud footprint</a> and <a href="address-space.html">address space</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    {eg ? (
+      <>
+        <section class="section">
+          <div class="container">
+            <div class="metric-grid" set:html={metricsHtml}></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container grid-2">
+            <div class="table-wrap glass">
+              <div class="coverage-table-head"><h3>By country</h3><p class="card-text">The 30 countries with the most education or government /24s; shares are of the country's routed /24s. The <a href={`assets/data/edu-gov-${month}.json`}>full JSON file</a> lists every country.</p></div>
+              <div class="eg-scroll">
+                <table>
+                  <thead><tr><th>Country</th><th>Education /24</th><th>Edu ASNs</th><th>Government /24</th><th>Gov ASNs</th></tr></thead>
+                  <tbody set:html={countryRows}></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="split-panel glass">
+              <h3>Largest education networks</h3>
+              <p class="card-text">By routed /24s. Country = where most of the network's /24s geolocate.</p>
+              <div class="download-list" set:html={eduList}></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="split-panel glass content">
+              <h2>How to read these figures</h2>
+              <ul set:html={notes}></ul>
+            </div>
+          </div>
+        </section>
+      </>
+    ) : (
+      <section class="section"><div class="container"><div class="data-note">Education and government figures are not published for release {month}.</div></div></section>
+    )}
+  </main>
+
+  <style is:inline>
+    .eg-scroll { overflow-x: auto; }
+    .eg-scroll table { min-width: 560px; }
+    .eg-scroll .table-subtext { display: inline; margin-left: 4px; }
+  </style>
+</BaseLayout>
