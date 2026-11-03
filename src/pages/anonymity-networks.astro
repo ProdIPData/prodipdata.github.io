@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { numericValue, formatInteger, escapeHtml, loadData, flag, currentReleaseMonth } from '../lib/format.js';
+
+// Tor exits and VPN networks for the current release, built at deploy time from
+// anonymity-<month>.json (WEBSITE/Build-Analytics-Data.py).
+const month = currentReleaseMonth;
+const an = loadData('anonymity');
+const t = (an && an.totals) || {};
+const countries = ((an && an.countries) || []).slice(0, 30);
+const torAsns = ((an && an.torAsns) || []).slice(0, 10);
+const vpnAsns = ((an && an.vpnAsns) || []).slice(0, 10);
+
+let countryName = (iso) => iso || 'Unknown';
+try {
+  const dn = new Intl.DisplayNames(['en'], { type: 'region' });
+  countryName = (iso) => (iso ? dn.of(String(iso).toUpperCase()) || iso : 'Unknown');
+} catch (e) { /* keep the ISO code */ }
+
+const metricsHtml = an ? `
+  <div class="metric-card glass"><div class="muted">/24s with a Tor exit</div><div class="metric-value">${formatInteger(t.torPrefixes)}</div><div class="card-text">/24s holding at least one Tor exit relay in release ${escapeHtml(month)}.</div></div>
+  <div class="metric-card glass"><div class="muted">Tor exit relays</div><div class="metric-value">${formatInteger(t.torExits)}</div><div class="card-text">Exit relays counted inside those /24s; a few hosting networks run many each.</div></div>
+  <div class="metric-card glass"><div class="muted">VPN /24s</div><div class="metric-value">${formatInteger(t.vpnPrefixes)}</div><div class="card-text">/24s inside published commercial VPN network ranges.</div></div>
+  <div class="metric-card glass"><div class="muted">Countries</div><div class="metric-value">${formatInteger((an.countries || []).length)}</div><div class="card-text">Countries with at least one Tor-exit or VPN /24.</div></div>` : '';
+
+const countryRows = countries.map((c) => `
+  <tr>
+    <td>${flag(c.iso2)}<strong>${escapeHtml(countryName(c.iso2))}</strong></td>
+    <td>${formatInteger(c.vpn)}</td>
+    <td>${numericValue(c.vpnPer10k).toFixed(1)}</td>
+    <td>${formatInteger(c.tor)}</td>
+    <td>${formatInteger(c.torExits)}</td>
+  </tr>`).join('');
+
+const asnList = (rows, metric, unit) => rows.map((r) => `
+  <div class="list-row">
+    <div><strong>${escapeHtml(r.name || `AS${r.asn}`)}</strong><small>AS${escapeHtml(r.asn)} · ${formatInteger(r.prefixes)} /24</small></div>
+    <div class="list-metric"><strong>${formatInteger(r[metric])}</strong><small>${unit}</small></div>
+  </div>`).join('');
+
+const notes = ((an && an.notes) || []).map((n) => `<li>${escapeHtml(n)}</li>`).join('');
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://prodipdata.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Coverage', item: 'https://prodipdata.com/coverage.html' },
+    { '@type': 'ListItem', position: 3, name: 'Tor and VPN networks', item: 'https://prodipdata.com/anonymity-networks.html' },
+  ],
+};
+---
+<BaseLayout
+  title="Tor Exits and VPN Networks by Country | ProdIPData"
+  description="Where Tor exit relays and commercial VPN networks sit in IPv4: /24 counts by country and by network for the current ProdIPData monthly release."
+  ogTitle="Tor Exits and VPN Networks by Country"
+  canonicalPath="/anonymity-networks.html"
+  page="anonymity-networks"
+  navPage="coverage"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-panel glass">
+          <div class="eyebrow page-kicker">Tor and VPN networks</div>
+          <h1>Where Tor exits and VPN networks sit, release {month}.</h1>
+          <p class="page-intro">
+            Tor exit relays and commercial VPN services are where anonymised traffic re-enters the open Internet. This page
+            counts the /24s that hold them, by country and by network. It covers Tor and VPN only: ordinary hosting space is
+            left out, although the packages' broader <code>Anonymization</code> flag includes it. The per-/24 detail is in
+            every CSV and Parquet package (<code>IsTor</code>, <code>IsVPN</code>, <code>AnonymizerCategories</code>).
+          </p>
+          <p class="page-intro seo-links">See also the <a href="coverage.html">country coverage map</a>, <a href="cloud-footprint.html">cloud footprint</a> and <a href="routing-security.html">routing security</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    {an ? (
+      <>
+        <section class="section">
+          <div class="container">
+            <div class="metric-grid" set:html={metricsHtml}></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="table-wrap glass an-wrap">
+              <div class="coverage-table-head">
+                <h3>By country</h3>
+                <p class="card-text">The 30 countries with the most Tor-exit or VPN /24s. "Per 10,000" puts VPN /24s against all /24s geolocated to the country, so large and small countries compare. The <a href={`assets/data/anonymity-${month}.json`}>full JSON file</a> lists every country.</p>
+              </div>
+              <div class="an-scroll">
+                <table>
+                  <thead><tr><th>Country</th><th>VPN /24</th><th>VPN per 10,000 /24</th><th>Tor-exit /24</th><th>Tor exit relays</th></tr></thead>
+                  <tbody set:html={countryRows}></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container grid-2">
+            <div class="split-panel glass">
+              <h3>Networks hosting the most Tor exits</h3>
+              <div class="download-list" set:html={asnList(torAsns, 'exits', 'exit relays')}></div>
+            </div>
+            <div class="split-panel glass">
+              <h3>Networks with the most VPN /24s</h3>
+              <div class="download-list" set:html={asnList(vpnAsns, 'prefixes', 'VPN /24')}></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="split-panel glass content">
+              <h2>How to read these figures</h2>
+              <ul set:html={notes}></ul>
+            </div>
+          </div>
+        </section>
+      </>
+    ) : (
+      <section class="section"><div class="container"><div class="data-note">Tor and VPN figures are not published for release {month}.</div></div></section>
+    )}
+  </main>
+
+  <style is:inline>
+    .an-scroll { overflow-x: auto; }
+    .an-wrap table { min-width: 560px; }
+  </style>
+</BaseLayout>
