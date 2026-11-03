@@ -1426,7 +1426,7 @@ function renderCountryTrend(history, profile) {
       </div>`;
   }).reverse();
   return rows.join('') + `
-    <div class="list-row"><div><small>Excludes the RIR/IANA unallocated reserve in every month, so the latest figure can differ slightly from the release total above. Origin ASNs = the ASNs announcing this country's /24s.</small></div></div>`;
+    <div class="list-row"><div><small>Every month excludes the RIR/IANA unallocated reserve (/24s with no holder), as the country totals above do. Origin ASNs = the ASNs announcing this country's /24s.</small></div></div>`;
 }
 
 
