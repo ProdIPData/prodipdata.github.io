@@ -1,10 +1,9 @@
 {
   "snapshotMonth": "2026-11",
-  "generatedUtc": "2026-11-03T07:32:52Z",
-  "source": "ProdIP Parquet pipeline (GOLD + ASN dimension)",
-  "carriedForwardFrom": "2026-10",
-  "carriedForwardReason": "only matched 0 of 1436 delegated TLDs in the IANA db index - the page markup has probably changed; fix row_re",
-  "stale": true,
+  "generatedUtc": "2026-11-03T08:28:19Z",
+  "source": "IANA Root Zone Database (iana.org/domains/root/db) + tlds-alpha-by-domain.txt, fetched live",
+  "ianaVersion": "2026110300",
+  "count": 1436,
   "items": [
     {
       "domain": ".aaa",
@@ -134,9 +133,9 @@
     },
     {
       "domain": ".aero",
-      "type": "sponsored",
+      "type": "generic",
       "manager": "Societe Internationale de Telecommunications Aeronautique (SITA INC USA)",
-      "abbreviation": "sTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".aetna",
@@ -410,9 +409,9 @@
     },
     {
       "domain": ".arpa",
-      "type": "infrastructure",
+      "type": "special-use",
       "manager": "Internet Architecture Board (IAB)",
-      "abbreviation": "iTLD"
+      "abbreviation": "special"
     },
     {
       "domain": ".art",
@@ -440,9 +439,9 @@
     },
     {
       "domain": ".asia",
-      "type": "sponsored",
+      "type": "generic",
       "manager": "DotAsia Organisation Ltd.",
-      "abbreviation": "sTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".associates",
@@ -812,9 +811,9 @@
     },
     {
       "domain": ".biz",
-      "type": "generic-restricted",
+      "type": "generic",
       "manager": "Registry Services, LLC",
-      "abbreviation": "grTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".bj",
@@ -1238,9 +1237,9 @@
     },
     {
       "domain": ".cat",
-      "type": "sponsored",
+      "type": "generic",
       "manager": "Fundacio puntCAT",
-      "abbreviation": "sTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".catering",
@@ -1551,7 +1550,7 @@
     {
       "domain": ".cologne",
       "type": "generic",
-      "manager": "dotKoeln GmbH",
+      "manager": "domainworx Service & Management GmbH",
       "abbreviation": "gTLD"
     },
     {
@@ -1640,9 +1639,9 @@
     },
     {
       "domain": ".coop",
-      "type": "sponsored",
+      "type": "generic",
       "manager": "DotCooperation LLC",
-      "abbreviation": "sTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".corsica",
@@ -2138,9 +2137,9 @@
     },
     {
       "domain": ".edu",
-      "type": "sponsored",
+      "type": "generic",
       "manager": "EDUCAUSE",
-      "abbreviation": "sTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".education",
@@ -2481,7 +2480,7 @@
     {
       "domain": ".fj",
       "type": "country-code",
-      "manager": "The University of the South Pacific\nIT Services",
+      "manager": "The University of the South Pacific IT Services",
       "abbreviation": "ccTLD"
     },
     {
@@ -2960,9 +2959,9 @@
     },
     {
       "domain": ".gov",
-      "type": "sponsored",
+      "type": "generic",
       "manager": "Cybersecurity and Infrastructure Security Agency",
-      "abbreviation": "sTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".gp",
@@ -3142,12 +3141,6 @@
       "domain": ".help",
       "type": "generic",
       "manager": "Innovation Service Ltd",
-      "abbreviation": "gTLD"
-    },
-    {
-      "domain": ".helsinki",
-      "type": "generic",
-      "manager": "City of Helsinki",
       "abbreviation": "gTLD"
     },
     {
@@ -3506,9 +3499,9 @@
     },
     {
       "domain": ".int",
-      "type": "sponsored",
+      "type": "generic",
       "manager": "Internet Assigned Numbers Authority",
-      "abbreviation": "sTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".international",
@@ -3680,9 +3673,9 @@
     },
     {
       "domain": ".jobs",
-      "type": "sponsored",
+      "type": "generic",
       "manager": "Employ Media LLC",
-      "abbreviation": "sTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".joburg",
@@ -3831,7 +3824,7 @@
     {
       "domain": ".koeln",
       "type": "generic",
-      "manager": "dotKoeln GmbH",
+      "manager": "domainworx Service & Management GmbH",
       "abbreviation": "gTLD"
     },
     {
@@ -4137,7 +4130,7 @@
     {
       "domain": ".lk",
       "type": "country-code",
-      "manager": "Council for Information Technology\nLK Domain Registrar",
+      "manager": "Council for Information Technology LK Domain Registrar",
       "abbreviation": "ccTLD"
     },
     {
@@ -4490,9 +4483,9 @@
     },
     {
       "domain": ".mil",
-      "type": "sponsored",
+      "type": "generic",
       "manager": "DoD Network Information Center",
-      "abbreviation": "sTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".mini",
@@ -4718,9 +4711,9 @@
     },
     {
       "domain": ".museum",
-      "type": "sponsored",
+      "type": "generic",
       "manager": "Museum Domain Management Association",
-      "abbreviation": "sTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".music",
@@ -4743,7 +4736,7 @@
     {
       "domain": ".mx",
       "type": "country-code",
-      "manager": "NIC-Mexico\nITESM - Campus Monterrey",
+      "manager": "NIC-Mexico ITESM - Campus Monterrey",
       "abbreviation": "ccTLD"
     },
     {
@@ -4778,9 +4771,9 @@
     },
     {
       "domain": ".name",
-      "type": "generic-restricted",
+      "type": "generic",
       "manager": "VeriSign Information Services, Inc.",
-      "abbreviation": "grTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".navy",
@@ -5462,9 +5455,9 @@
     },
     {
       "domain": ".post",
-      "type": "sponsored",
+      "type": "generic",
       "manager": "Universal Postal Union",
-      "abbreviation": "sTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".pr",
@@ -5492,9 +5485,9 @@
     },
     {
       "domain": ".pro",
-      "type": "generic-restricted",
+      "type": "generic",
       "manager": "Identity Digital Limited",
-      "abbreviation": "grTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".prod",
@@ -5877,7 +5870,7 @@
     {
       "domain": ".rw",
       "type": "country-code",
-      "manager": "Rwanda Internet Community and Technology  Alliance (RICTA) Ltd",
+      "manager": "Rwanda Internet Community and Technology Alliance (RICTA) Ltd",
       "abbreviation": "ccTLD"
     },
     {
@@ -6633,7 +6626,7 @@
     {
       "domain": ".sz",
       "type": "country-code",
-      "manager": "University of Swaziland\nDepartment of Computer Science",
+      "manager": "University of Swaziland Department of Computer Science",
       "abbreviation": "ccTLD"
     },
     {
@@ -6740,9 +6733,9 @@
     },
     {
       "domain": ".tel",
-      "type": "sponsored",
+      "type": "generic",
       "manager": "Telnames Ltd.",
-      "abbreviation": "sTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".temasek",
@@ -6986,9 +6979,9 @@
     },
     {
       "domain": ".travel",
-      "type": "sponsored",
+      "type": "generic",
       "manager": "Dog Beach, LLC",
-      "abbreviation": "sTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".travelers",
@@ -7053,7 +7046,7 @@
     {
       "domain": ".tvs",
       "type": "generic",
-      "manager": "T V SUNDRAM IYENGAR  & SONS PRIVATE LIMITED",
+      "manager": "T V SUNDRAM IYENGAR & SONS PRIVATE LIMITED",
       "abbreviation": "gTLD"
     },
     {
@@ -7598,9 +7591,9 @@
     },
     {
       "domain": ".xxx",
-      "type": "sponsored",
+      "type": "generic",
       "manager": "ICM Registry LLC",
-      "abbreviation": "sTLD"
+      "abbreviation": "gTLD"
     },
     {
       "domain": ".xyz",
@@ -8529,7 +8522,7 @@
     {
       "domain": ".网站",
       "type": "generic",
-      "manager": "Global Website TLD Asia Limited",
+      "manager": "Jolly Host, LLC",
       "abbreviation": "gTLD"
     },
     {

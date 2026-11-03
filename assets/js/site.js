@@ -1953,7 +1953,7 @@ function getReferenceConfig(page, releaseMonth) {
       notes: [
         { title: 'What this catalog is for', text: 'A browsable reference of every current top-level domain — its category and the organisation that runs it.' },
         { title: 'Source', text: 'Sourced directly from the IANA Root Zone Database and refreshed each release, so it mirrors the live root zone with no historical or retired entries.' },
-        { title: 'How to read the rows', text: 'Each row shows the domain, its top-level category (generic, country-code, sponsored, infrastructure) and its delegated manager.' }
+        { title: 'How to read the rows', text: 'Each row shows the domain, its category as IANA classifies it (generic, country-code or special-use) and its delegated manager.' }
       ],
       metricCards: function (items, payload, release) {
         const genericCount = items.filter(item => String(item.type || '').toLowerCase() === 'generic').length;
