@@ -1,0 +1,47 @@
+[
+  {
+    "rir": "afrinic",
+    "asnId": 36992,
+    "asnName": "ETISALAT-MISR",
+    "countryIso": "EG",
+    "asnType": "isp",
+    "prefixCount": 25225,
+    "ipv4Count": 6457600
+  },
+  {
+    "rir": "apnic",
+    "asnId": 4134,
+    "asnName": "CHINANET-BACKBONE",
+    "countryIso": "CN",
+    "asnType": "isp",
+    "prefixCount": 379354,
+    "ipv4Count": 97114624
+  },
+  {
+    "rir": "arin",
+    "asnId": 749,
+    "asnName": "DNIC-AS-00749",
+    "countryIso": "US",
+    "asnType": "isp",
+    "prefixCount": 868562,
+    "ipv4Count": 222351872
+  },
+  {
+    "rir": "lacnic",
+    "asnId": 8151,
+    "asnName": "Uninet S.A. de C.V.",
+    "countryIso": "MX",
+    "asnType": "isp",
+    "prefixCount": 64598,
+    "ipv4Count": 16537088
+  },
+  {
+    "rir": "ripe",
+    "asnId": 3320,
+    "asnName": "DTAG",
+    "countryIso": "DE",
+    "asnType": "isp",
+    "prefixCount": 135384,
+    "ipv4Count": 34658304
+  }
+]
