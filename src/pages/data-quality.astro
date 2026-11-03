@@ -25,7 +25,7 @@ const metricsHtml = q ? `
   <div class="metric-card glass"><div class="muted">City-precise</div><div class="metric-value">${pct(t.cityPrecisePct)}</div><div class="card-text">${formatInteger(t.cityPrecise)} /24s with an accuracy radius of 100 km or less.</div></div>
   <div class="metric-card glass"><div class="muted">Regional</div><div class="metric-value">${pct(t.regionalPct)}</div><div class="card-text">${formatInteger(t.regional)} /24s placed within 101-500 km: a region, not a city.</div></div>
   <div class="metric-card glass"><div class="muted">Country level</div><div class="metric-value">${pct(t.countryLevelPct)}</div><div class="card-text">${formatInteger(t.countryLevel)} /24s where only the country is known (radius over 500 km).</div></div>
-  <div class="metric-card glass"><div class="muted">Sources disagree</div><div class="metric-value">${pct(t.disagreePct)}</div><div class="card-text">${formatInteger(t.disagree)} /24s where the geolocation databases named different countries.</div></div>` : '';
+  <div class="metric-card glass"><div class="muted">Sources disagree</div><div class="metric-value">${pct(t.disagreePct)}</div><div class="card-text">${formatInteger(t.disagree)} /24s where the four source databases (MaxMind GeoLite2, IPinfo Lite, DB-IP Lite, IPLocate) named different countries.</div></div>` : '';
 
 const bucketHtml = buckets.map((b) => `
   <div class="kpi-row"><span>${escapeHtml(b.label)}</span><div class="kpi-bar"><span style="width:${(100 * numericValue(b.pct) / maxBucket).toFixed(1)}%"></span></div><strong>${pct(b.pct)}</strong></div>`).join('');

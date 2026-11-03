@@ -1638,6 +1638,12 @@ td strong { font-size: 15px; }
   margin-bottom: 8px;
 }
 
+/* Inside a rounded table panel (overflow hidden) the heading needs its own padding,
+   or its first letter is clipped by the corner. 18px = the table cells' side padding. */
+.table-wrap > .coverage-table-head {
+  padding: 22px 18px 0;
+}
+
 .coverage-table-row {
   cursor: pointer;
   transition: background-color .18s ease, box-shadow .18s ease;
