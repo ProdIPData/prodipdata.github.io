@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { numericValue, formatInteger, formatCompact, formatRirName, escapeHtml, loadData, flag, currentReleaseMonth } from '../lib/format.js';
+
+// WHOIS registrant country vs geolocated country for the current release, built at deploy
+// time from registered-<month>.json (WEBSITE/Build-Analytics-Data.py). Country pairs only.
+const month = currentReleaseMonth;
+const rv = loadData('registered');
+const t = (rv && rv.totals) || {};
+const rirs = (rv && rv.rirs) || [];
+const pairs = ((rv && rv.pairs) || []).slice(0, 25);
+const countries = ((rv && rv.countries) || []).slice(0, 30);
+
+let countryName = (iso) => iso || 'Unknown';
+try {
+  const dn = new Intl.DisplayNames(['en'], { type: 'region' });
+  countryName = (iso) => (iso ? dn.of(String(iso).toUpperCase()) || iso : 'Unknown');
+} catch (e) { /* keep the ISO code */ }
+const pct = (v) => `${numericValue(v).toFixed(1)}%`;
+const rirLabel = (r) => formatRirName(r === 'ripencc' ? 'ripe' : r);
+const place = (iso) => `${flag(iso)}${escapeHtml(countryName(iso))}`;
+
+const metricsHtml = rv ? `
+  <div class="metric-card glass"><div class="muted">/24s with a registrant country</div><div class="metric-value">${pct(t.withHolderPct)}</div><div class="card-text">${formatInteger(t.withHolder)} of the ${formatCompact(t.prefixes)} /24s with a country, almost all in RIPE NCC, APNIC and AFRINIC space.</div></div>
+  <div class="metric-card glass"><div class="muted">Same country</div><div class="metric-value">${formatCompact(t.same)}</div><div class="card-text">/24s geolocated to the country they are registered in.</div></div>
+  <div class="metric-card glass"><div class="muted">Different country</div><div class="metric-value">${pct(t.differentPct)}</div><div class="card-text">${formatInteger(t.different)} /24s geolocated outside the registrant's country.</div></div>
+  <div class="metric-card glass"><div class="muted">Registered to "EU"</div><div class="metric-value">${formatInteger(t.eu)}</div><div class="card-text">/24s whose WHOIS names the EU rather than a country; counted apart.</div></div>` : '';
+
+const rirRows = rirs.map((r) => {
+  const thin = numericValue(r.withHolderPct) < 5;
+  return `
+  <tr>
+    <td><strong>${escapeHtml(rirLabel(r.rir))}</strong></td>
+    <td>${formatInteger(r.prefixes)}</td>
+    <td>${pct(r.withHolderPct)}</td>
+    <td>${thin ? '<span class="muted">no bulk WHOIS</span>' : pct(r.differentPct)}</td>
+  </tr>`;
+}).join('');
+
+const pairRows = pairs.map((p) => `
+  <tr>
+    <td>${place(p.registered)}</td>
+    <td>${place(p.geolocated)}</td>
+    <td>${formatInteger(p.n)}</td>
+  </tr>`).join('');
+
+const countryRows = countries.map((c) => `
+  <tr>
+    <td>${place(c.iso2)}</td>
+    <td>${formatInteger(c.registeredHere)}</td>
+    <td>${formatInteger(c.usedElsewhere)} <span class="table-subtext">${pct(c.usedElsewherePct)}</span></td>
+    <td>${formatInteger(c.usedHereKnown)}</td>
+    <td>${formatInteger(c.registeredElsewhere)} <span class="table-subtext">${pct(c.registeredElsewherePct)}</span></td>
+  </tr>`).join('');
+
+const notes = ((rv && rv.notes) || []).map((n) => `<li>${escapeHtml(n)}</li>`).join('');
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://prodipdata.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Coverage', item: 'https://prodipdata.com/coverage.html' },
+    { '@type': 'ListItem', position: 3, name: 'Registered vs used', item: 'https://prodipdata.com/registered-vs-used.html' },
+  ],
+};
+---
+<BaseLayout
+  title="Where IPv4 Space Is Registered vs Where It Is Used | ProdIPData"
+  description="IPv4 /24s whose WHOIS registrant country differs from where they geolocate: country-to-country pairs and per-country figures for RIPE NCC, APNIC and AFRINIC space, current ProdIPData release."
+  ogTitle="Where IPv4 Space Is Registered vs Where It Is Used"
+  canonicalPath="/registered-vs-used.html"
+  page="registered-vs-used"
+  navPage="coverage"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-panel glass">
+          <div class="eyebrow page-kicker">Registered vs used</div>
+          <h1>Where address space is registered, and where it is used, release {month}.</h1>
+          <p class="page-intro">
+            A block's WHOIS record names the country of its registrant; geolocation says where the block is actually
+            used. Most of the time the two agree. This page shows where they do not, as country pairs. A different country
+            is usually ordinary: multinationals, cloud and CDN operators and networks registered at a head office all use
+            space far from where it is registered. The per-/24 registrant country is in every CSV and Parquet package
+            (<code>CompanyCountry</code>).
+          </p>
+          <p class="page-intro seo-links">See also <a href="data-quality.html">data quality</a>, the <a href="cloud-footprint.html">cloud footprint</a> and the <a href="coverage.html">country coverage map</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    {rv ? (
+      <>
+        <section class="section">
+          <div class="container">
+            <div class="metric-grid" set:html={metricsHtml}></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container grid-2">
+            <div class="table-wrap glass">
+              <div class="coverage-table-head">
+                <h3>By regional registry</h3>
+                <p class="card-text">ARIN and LACNIC publish no bulk WHOIS, so their space has almost no registrant country.</p>
+              </div>
+              <div class="rv-scroll">
+                <table>
+                  <thead><tr><th>RIR</th><th>/24</th><th>With registrant country</th><th>Different country</th></tr></thead>
+                  <tbody set:html={rirRows}></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="table-wrap glass">
+              <div class="coverage-table-head">
+                <h3>Largest country pairs</h3>
+                <p class="card-text">/24s registered in one country and geolocated to another.</p>
+              </div>
+              <div class="rv-scroll">
+                <table>
+                  <thead><tr><th>Registered in</th><th>Geolocated to</th><th>/24</th></tr></thead>
+                  <tbody set:html={pairRows}></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="table-wrap glass rv-wrap">
+              <div class="coverage-table-head">
+                <h3>By country</h3>
+                <p class="card-text">Both directions, for the 30 countries with the most mismatches: space registered here but geolocated elsewhere, and space geolocated here but registered elsewhere (only /24s with a registrant country count). The <a href={`assets/data/registered-${month}.json`}>full JSON file</a> lists every country with at least {formatInteger(rv.minCountryPrefixes)} such /24s.</p>
+              </div>
+              <div class="rv-scroll">
+                <table>
+                  <thead><tr><th>Country</th><th>Registered here</th><th>…geolocated elsewhere</th><th>Geolocated here</th><th>…registered elsewhere</th></tr></thead>
+                  <tbody set:html={countryRows}></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="split-panel glass content">
+              <h2>How to read these figures</h2>
+              <ul set:html={notes}></ul>
+            </div>
+          </div>
+        </section>
+      </>
+    ) : (
+      <section class="section"><div class="container"><div class="data-note">Registered-vs-used figures are not published for release {month}.</div></div></section>
+    )}
+  </main>
+
+  <style is:inline>
+    .rv-scroll { overflow-x: auto; }
+    .rv-wrap table { min-width: 640px; }
+    .rv-scroll .table-subtext { display: inline; margin-left: 4px; }
+  </style>
+</BaseLayout>
