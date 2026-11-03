@@ -130,7 +130,12 @@ const breadcrumb = {
     const statusEl = document.getElementById('lookupStatus');
     const resultEl = document.getElementById('lookupResult');
 
-    const shardCache = new Map(); // octet -> Map(prefix -> row)
+    const shardCache = new Map(); // "month/octet" -> Map(prefix -> row)
+    // The previous monthly release, for the "since last month" card. Its shards stay in prefix-data.
+    const PREV = (() => {
+      const y = Number(RELEASE.slice(0, 4)), m = Number(RELEASE.slice(5, 7));
+      return m === 1 ? `${y - 1}-12` : `${y}-${String(m - 1).padStart(2, '0')}`;
+    })();
 
     function setStatus(msg, isErr) {
       statusEl.innerHTML = msg;
@@ -153,19 +158,70 @@ const breadcrumb = {
       return v;
     }
 
-    async function loadShard(octet) {
-      if (shardCache.has(octet)) return shardCache.get(octet);
-      const url = `${BASE}/${RELEASE}/${octet}.parquet`;
+    async function loadShard(octet, month = RELEASE) {
+      const key = `${month}/${octet}`;
+      if (shardCache.has(key)) return shardCache.get(key);
+      const url = `${BASE}/${month}/${octet}.parquet`;
       const res = await fetch(url);
-      if (res.status === 404 || res.status === 403) { shardCache.set(octet, null); return null; } // octet not present (unrouted); jsDelivr 403s missing files
+      if (res.status === 404 || res.status === 403) { shardCache.set(key, null); return null; } // octet not present (unrouted); jsDelivr 403s missing files
       if (!res.ok) throw new Error(`fetch ${res.status}`);
       const ab = await res.arrayBuffer();
       const file = { byteLength: ab.byteLength, slice: (a, b) => ab.slice(a, b ?? ab.byteLength) };
       const rows = await parquetReadObjects({ file, compressors });
       const map = new Map();
       for (const r of rows) map.set(val(r.IP24Prefix), r);
-      shardCache.set(octet, map);
+      shardCache.set(key, map);
       return map;
+    }
+
+    // "Since last month": compare the block with the previous release's record.
+    const HIST_FIELDS = [
+      ['CountryCode', 'Country'], ['RegionName', 'Region'], ['CityName', 'City'], ['AccuracyRadius', 'Accuracy'],
+      ['ASNID', 'ASN'], ['ASNName', 'ASN name'], ['Company', 'Company'], ['RIRStatus', 'Registry status'],
+      ['IsTor', 'Tor'], ['IsVPN', 'VPN'], ['HasC2', 'C2 hosting'],
+    ];
+    function histVal(key, v) {
+      v = val(v);
+      if (v === null) return null;
+      if (key === 'ASNID') return 'AS' + v;
+      if (key === 'AccuracyRadius') return `${Math.round(Number(v))} km`;
+      if (key === 'IsTor' || key === 'IsVPN' || key === 'HasC2') return (String(v) === 'true' || v === true || v === 1 || v === 'Y') ? 'Yes' : 'No';
+      return String(v);
+    }
+    async function renderHistory(prefix, octet, row) {
+      const el = document.getElementById('lkHist');
+      if (!el) return;
+      const body = el.querySelector('.lk-hist-body');
+      let prevRow = null;
+      try {
+        const map = await loadShard(octet, PREV);
+        prevRow = map ? map.get(prefix) || null : null;
+      } catch (err) {
+        body.innerHTML = `<span class="muted">The ${esc(PREV)} release could not be read right now.</span>`;
+        return;
+      }
+      if (!prevRow) {
+        body.innerHTML = `<span class="muted">This /24 was not in the ${esc(PREV)} release: it is new in ${esc(RELEASE)}.</span>`;
+        return;
+      }
+      const diffs = HIST_FIELDS.map(([key, label]) => {
+        const a = histVal(key, prevRow[key]), b = histVal(key, row[key]);
+        return a === b ? '' : `<div class="lk-row"><span class="k">${label}</span><span class="v">${esc(a ?? '—')} → ${key === 'CountryCode' ? flag(b) : ''}${esc(b ?? '—')}</span></div>`;
+      }).join('');
+      body.innerHTML = diffs
+        ? `<div class="lk-grid">${diffs}</div>`
+        : `<span class="muted">No change since ${esc(PREV)} in location, network, ownership or risk signals.</span>`;
+    }
+
+    // A /24 missing now but present last month was withdrawn or lost its record.
+    async function previousNote(prefix, octet) {
+      try {
+        const map = await loadShard(octet, PREV);
+        const r = map ? map.get(prefix) : null;
+        if (!r) return '';
+        const parts = [histVal('CountryCode', r.CountryCode), histVal('ASNID', r.ASNID), histVal('ASNName', r.ASNName)].filter(Boolean);
+        return ` It was in the ${esc(PREV)} release${parts.length ? ` (${esc(parts.join(' · '))})` : ''}.`;
+      } catch (err) { return ''; }
     }
 
     const FIELDS = [
@@ -266,6 +322,7 @@ const breadcrumb = {
       const countryLevel = !!acc && acc.level === 'country';
       const head = `<div class="lk-card"><div class="lk-head">${esc(prefix)}</div>
         <div class="muted" style="margin-top:.2rem">Snapshot ${esc(val(row.snapshot_month) || RELEASE)}</div></div>`;
+      const histCard = `<div class="lk-card" id="lkHist"><h2>Since ${esc(PREV)}</h2><div class="lk-hist-body"><span class="lk-spin"></span><span class="muted">Comparing with the ${esc(PREV)} release …</span></div></div>`;
       const mapCard = hasCoord ? `<div class="lk-card lkm-card"><h2>Approx. location</h2><div id="lkmMount" class="lkm-wrap"></div><div id="lkmCap" class="lkm-cap muted"></div></div>` : '';
       const cards = FIELDS.map(([title, fields]) => {
         const rows = fields.map(([key, label]) => {
@@ -288,7 +345,7 @@ const breadcrumb = {
         }).join('');
         return rows ? `<div class="lk-card"><h2>${title}</h2><div class="lk-grid">${rows}</div></div>` : '';
       }).join('');
-      resultEl.innerHTML = head + mapCard + cards;
+      resultEl.innerHTML = head + histCard + mapCard + cards;
       resultEl.hidden = false;
       if (hasCoord) renderMap(row);
     }
@@ -301,11 +358,12 @@ const breadcrumb = {
       setStatus(`<span class="lk-spin"></span>Looking up ${esc(parsed.prefix)} …`);
       try {
         const map = await loadShard(parsed.octet);
-        if (!map) { setStatus(`No data for ${esc(parsed.prefix)} — that block is unrouted or unallocated in the ${esc(RELEASE)} release.`); return; }
+        if (!map) { setStatus(`No data for ${esc(parsed.prefix)} — that block is unrouted or unallocated in the ${esc(RELEASE)} release.${await previousNote(parsed.prefix, parsed.octet)}`); return; }
         const row = map.get(parsed.prefix);
-        if (!row) { setStatus(`No record for ${esc(parsed.prefix)} — this /24 isn't present in the ${esc(RELEASE)} release (likely unrouted).`); return; }
+        if (!row) { setStatus(`No record for ${esc(parsed.prefix)} — this /24 isn't present in the ${esc(RELEASE)} release (likely unrouted).${await previousNote(parsed.prefix, parsed.octet)}`); return; }
         setStatus(`Result for ${esc(parsed.prefix)}`);
         render(parsed.prefix, row);
+        renderHistory(parsed.prefix, parsed.octet, row);
       } catch (err) {
         setStatus(`Lookup failed: ${esc(err.message || err)}. The data may not be published yet.`, true);
       }
