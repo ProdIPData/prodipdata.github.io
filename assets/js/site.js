@@ -1393,6 +1393,7 @@ function renderReleaseChanges(changes) {
       </div>`).join('')}</div>` : ''}
     ${gainers.length ? `<h3 class="panel-subtitle">Largest net gains</h3><div class="download-list">${gainers.map(countryRow).join('')}</div>` : ''}
     ${losers.length ? `<h3 class="panel-subtitle">Largest net losses</h3><div class="download-list">${losers.map(countryRow).join('')}</div>` : ''}
+    ${changes.package ? `<p>Every changed /24 is listed in <a href="${escapeHtml(changes.package.releaseUrl)}">${escapeHtml(changes.package.file)}</a>, attached to the ${escapeHtml(changes.package.releaseTag)} release. Like the other packages it is password-protected; request the password by email at <a href="mailto:contact@prodipdata.com">contact@prodipdata.com</a>.</p>` : ''}
     <div class="data-note">${getItems(changes.notes).map(n => escapeHtml(n)).join(' ')}</div>`;
 }
 
