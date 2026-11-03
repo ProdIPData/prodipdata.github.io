@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  numericValue, formatInteger, formatCompact, formatRirName, escapeHtml, loadData, flag,
+  currentReleaseMonth,
+} from '../lib/format.js';
+
+// Route-origin validation (RPKI / ROV) for the current release, built at deploy time from
+// routing-security-<month>.json and history-<month>.json (WEBSITE/Build-Analytics-Data.py).
+const month = currentReleaseMonth;
+const rs = loadData('routing-security');
+const history = loadData('history');
+const totals = (rs && rs.totals) || {};
+const rirs = ((rs && rs.rirs) || []).slice().sort((a, b) => numericValue(b.routed) - numericValue(a.routed));
+const countries = ((rs && rs.countries) || []).slice().sort((a, b) => numericValue(b.routed) - numericValue(a.routed));
+const minRouted = numericValue(rs && rs.minCountryRouted) || 256;
+const rirTrend = (history && history.rirRpki) || {};
+const globalTrend = (history && history.global) || [];
+
+const pct = (v) => `${numericValue(v).toFixed(1)}%`;
+const rirLabel = (r) => formatRirName(r === 'ripencc' ? 'ripe' : r);
+let countryName = (iso) => iso;
+try {
+  const dn = new Intl.DisplayNames(['en'], { type: 'region' });
+  countryName = (iso) => dn.of(String(iso || '').toUpperCase()) || iso;
+} catch (e) { /* keep the ISO code */ }
+
+const trendText = (series) => {
+  if (!Array.isArray(series) || series.length < 2) return '';
+  const first = series[0], last = series[series.length - 1];
+  const d = numericValue(last[1]) - numericValue(first[1]);
+  return `${d >= 0 ? '+' : '−'}${Math.abs(d).toFixed(1)} pt since ${first[0]}`;
+};
+const bar = (v) => `<div class="kpi-bar" aria-hidden="true"><span style="width:${Math.max(0, Math.min(100, numericValue(v))).toFixed(1)}%"></span></div>`;
+
+const firstGlobal = globalTrend[0];
+const globalDelta = firstGlobal && globalTrend.length > 1
+  ? numericValue(totals.rpkiPct) - numericValue(firstGlobal.rpkiPct) : null;
+
+const metricsHtml = rs ? `
+  <div class="metric-card glass"><div class="muted">Routed /24 prefixes</div><div class="metric-value">${formatCompact(totals.routed)}</div><div class="card-text">${formatInteger(totals.routed)} /24s with an origin ASN in release ${escapeHtml(month)}.</div></div>
+  <div class="metric-card glass"><div class="muted">Covered by a ROA</div><div class="metric-value">${pct(totals.rpkiPct)}</div><div class="card-text">${formatInteger(totals.rpkiProtected)} routed /24s are covered by at least one RPKI ROA${globalDelta === null ? '' : ` (${globalDelta >= 0 ? '+' : '−'}${Math.abs(globalDelta).toFixed(1)} pt since ${escapeHtml(firstGlobal.month)})`}.</div></div>
+  <div class="metric-card glass"><div class="muted">ROV Invalid (origin)</div><div class="metric-value">${pct(totals.invalidOriginPct)}</div><div class="card-text">${formatInteger(totals.invalidOrigin)} /24s announced by an AS that no covering ROA authorises, plus ${formatInteger(totals.invalidLength)} invalid on prefix length.</div></div>
+  <div class="metric-card glass"><div class="muted">ROV NotFound</div><div class="metric-value">${pct(totals.notFoundPct)}</div><div class="card-text">${formatInteger(totals.notFound)} routed /24s with no covering ROA, so validation cannot judge them.</div></div>` : '';
+
+const rirRows = rirs.map((r) => `
+  <tr>
+    <td><strong>${escapeHtml(rirLabel(r.rir))}</strong></td>
+    <td>${formatInteger(r.routed)}</td>
+    <td><div class="rs-cell">${bar(r.rpkiPct)}<strong>${pct(r.rpkiPct)}</strong></div><div class="table-subtext">${escapeHtml(trendText(rirTrend[r.rir]))}</div></td>
+    <td>${pct(r.validPct)}</td>
+    <td>${pct(r.invalidOriginPct)}</td>
+    <td>${pct(r.notFoundPct)}</td>
+  </tr>`).join('');
+
+const countryRows = countries.slice(0, 40).map((c) => `
+  <tr>
+    <td>${flag(c.iso2)}<strong>${escapeHtml(countryName(c.iso2))}</strong></td>
+    <td>${formatInteger(c.routed)}</td>
+    <td><div class="rs-cell">${bar(c.rpkiPct)}<strong>${pct(c.rpkiPct)}</strong></div></td>
+    <td>${pct(c.validPct)}</td>
+    <td>${pct(c.invalidOriginPct)}</td>
+    <td>${pct(c.notFoundPct)}</td>
+  </tr>`).join('');
+
+const notes = ((rs && rs.notes) || []).map((n) => `<li>${escapeHtml(n)}</li>`).join('');
+const dataFile = `assets/data/routing-security-${month}.json`;
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://prodipdata.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Coverage', item: 'https://prodipdata.com/coverage.html' },
+    { '@type': 'ListItem', position: 3, name: 'Routing security', item: 'https://prodipdata.com/routing-security.html' },
+  ],
+};
+---
+<BaseLayout
+  title="IPv4 Routing Security: RPKI and ROV by RIR and Country | ProdIPData"
+  description="How much routed IPv4 /24 space is covered by RPKI ROAs, and how it validates (Valid, Invalid, NotFound), by regional registry and by country, for the current ProdIPData monthly release."
+  ogTitle="IPv4 Routing Security: RPKI and ROV by RIR and Country"
+  canonicalPath="/routing-security.html"
+  page="routing-security"
+  navPage="coverage"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-panel glass">
+          <div class="eyebrow page-kicker">Routing security</div>
+          <h1>RPKI coverage and route-origin validation for release {month}.</h1>
+          <p class="page-intro">
+            For every routed IPv4 /24 in the release, ProdIPData records whether an RPKI Route Origin Authorisation (ROA)
+            covers it and how its announced origin validates against those ROAs. This page sums that up by regional
+            registry and by country. The per-/24 detail is in every CSV and Parquet package, in the
+            <code>RouteOriginValidation</code> and <code>RpkiAuthorizedASNs</code> columns.
+          </p>
+          <p class="page-intro seo-links">See also the <a href="coverage.html">country coverage map</a>, the <a href={`releases/${month}/index.html`}>release {month} overview</a> and the <a href="methodology.html">methodology</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    {rs ? (
+      <>
+        <section class="section">
+          <div class="container">
+            <div class="metric-grid" set:html={metricsHtml}></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="table-wrap glass rs-wrap">
+              <div class="coverage-table-head">
+                <h3>By regional registry</h3>
+                <p class="card-text">Shares of each registry's routed /24s. The trend line compares ROA coverage with the first monthly snapshot in the history.</p>
+              </div>
+              <div class="rs-scroll">
+                <table>
+                  <thead><tr><th>RIR</th><th>Routed /24</th><th>Covered by a ROA</th><th>Valid</th><th>Invalid (origin)</th><th>NotFound</th></tr></thead>
+                  <tbody set:html={rirRows}></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="table-wrap glass rs-wrap">
+              <div class="coverage-table-head">
+                <h3>Largest countries by routed /24s</h3>
+                <p class="card-text">The 40 countries with the most routed /24s. {formatInteger(countries.length)} countries with at least {formatInteger(minRouted)} routed /24s are in the <a href={dataFile}>full JSON file</a>.</p>
+              </div>
+              <div class="rs-scroll">
+                <table>
+                  <thead><tr><th>Country</th><th>Routed /24</th><th>Covered by a ROA</th><th>Valid</th><th>Invalid (origin)</th><th>NotFound</th></tr></thead>
+                  <tbody set:html={countryRows}></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="split-panel glass content">
+              <h2>How to read these figures</h2>
+              <ul set:html={notes}></ul>
+              <p>
+                Valid, Invalid and NotFound are shares of routed /24s; the remainder had no validation state in the release
+                (<code>Unknown</code>). An Invalid state is a signal to look closer, not evidence of an attack.
+              </p>
+            </div>
+          </div>
+        </section>
+      </>
+    ) : (
+      <section class="section">
+        <div class="container">
+          <div class="data-note">Routing-security figures are not published for release {month}.</div>
+        </div>
+      </section>
+    )}
+  </main>
+
+  <style is:inline>
+    .rs-scroll { overflow-x: auto; }
+    .rs-wrap table { min-width: 640px; }
+    .rs-cell { display: grid; grid-template-columns: minmax(60px, 120px) auto; gap: 10px; align-items: center; }
+  </style>
+</BaseLayout>

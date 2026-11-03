@@ -409,6 +409,21 @@ async function renderCoveragePage(context) {
     worldCountryMap
   });
 
+  // Month-over-month trend for the selected country (history-<month>.json from
+  // Build-Analytics-Data.py). No file -> the card says so; the rest of the page is unaffected.
+  const trendNode = document.querySelector('[data-country-map-country-trend]');
+  if (trendNode && mapController && typeof mapController.onSelectionChange === 'function') {
+    let history = null;
+    try {
+      history = await fetchJson(assetPath(`assets/data/history-${context.releaseMonth}.json`));
+    } catch (err) {
+      history = null;
+    }
+    mapController.onSelectionChange(profile => {
+      trendNode.innerHTML = renderCountryTrend(history, profile);
+    });
+  }
+
   if (coverageNode) {
     const topCoverage = activeCountries
       .slice()
@@ -1322,6 +1337,96 @@ async function renderReleaseDetailPage(context) {
   setReleaseDetailStat('asns', formatInteger(overview.totalAsns));
   setReleaseDetailStat('prefixes', formatInteger(overview.totalPrefixes));
   setReleaseDetailStat('ipv4', formatInteger(overview.totalIpv4));
+
+  // "What changed this month" (Build-Analytics-Data.py). A month without the file
+  // keeps the page's fallback sentence.
+  const changesNode = document.querySelector('[data-release-changes-target]');
+  if (changesNode) {
+    try {
+      const changes = await fetchJson(assetPath(`assets/data/changes-${context.releaseMonth}.json`));
+      changesNode.innerHTML = renderReleaseChanges(changes);
+    } catch (err) {
+      // keep the fallback text
+    }
+  }
+}
+
+function countryLabel(iso2) {
+  const code = String(iso2 || '').toUpperCase();
+  try {
+    const names = new Intl.DisplayNames(['en'], { type: 'region' });
+    return names.of(code) || code;
+  } catch (err) {
+    return code;
+  }
+}
+
+function formatSigned(value) {
+  const n = numericValue(value);
+  return `${n > 0 ? '+' : n < 0 ? '−' : '±'}${formatInteger(Math.abs(n))}`;
+}
+
+function renderReleaseChanges(changes) {
+  const t = (changes && changes.totals) || {};
+  const prev = escapeHtml(changes.previousMonth || 'the prior release');
+  const routedDelta = numericValue(t.routed) - numericValue(t.routedPrev);
+  const flows = getItems(changes.flows).slice(0, 5);
+  const gainers = getItems(changes.countryGainers).slice(0, 5);
+  const losers = getItems(changes.countryLosers).slice(0, 5);
+  const countryRow = item => `
+    <div class="list-row">
+      <div>${flag(item.iso2)}<strong>${escapeHtml(countryLabel(item.iso2))}</strong><small>${formatInteger(item.prev)} → ${formatInteger(item.now)} /24</small></div>
+      <div class="list-metric"><strong>${formatSigned(item.delta)}</strong><small>/24</small></div>
+    </div>`;
+  return `
+    <h3 class="panel-subtitle">What changed since ${prev}</h3>
+    <ul>
+      <li><strong>${formatInteger(t.countryMoved)}</strong> /24s are now geolocated to a different country (${formatInteger(t.gainedCountry)} gained a country, ${formatInteger(t.lostCountry)} lost one).</li>
+      <li><strong>${formatInteger(t.asnChanged)}</strong> routed /24s changed origin ASN.</li>
+      <li><strong>${formatInteger(t.newlyRouted)}</strong> /24s were newly routed and <strong>${formatInteger(t.withdrawn)}</strong> were withdrawn: ${formatInteger(t.routed)} routed in total (${formatSigned(routedDelta)}).</li>
+    </ul>
+    ${flows.length ? `<h3 class="panel-subtitle">Largest country-to-country moves</h3>
+    <div class="download-list">${flows.map(f => `
+      <div class="list-row">
+        <div><strong>${flag(f.from)}${escapeHtml(countryLabel(f.from))} → ${flag(f.to)}${escapeHtml(countryLabel(f.to))}</strong></div>
+        <div class="list-metric"><strong>${formatInteger(f.n)}</strong><small>/24</small></div>
+      </div>`).join('')}</div>` : ''}
+    ${gainers.length ? `<h3 class="panel-subtitle">Largest net gains</h3><div class="download-list">${gainers.map(countryRow).join('')}</div>` : ''}
+    ${losers.length ? `<h3 class="panel-subtitle">Largest net losses</h3><div class="download-list">${losers.map(countryRow).join('')}</div>` : ''}
+    <div class="data-note">${getItems(changes.notes).map(n => escapeHtml(n)).join(' ')}</div>`;
+}
+
+function renderCountryTrend(history, profile) {
+  const iso = String((profile || {}).iso2 || '').toUpperCase();
+  const empty = text => `<div class="list-row"><div><strong>Trend unavailable</strong><small>${escapeHtml(text)}</small></div></div>`;
+  if (!history || !history.countries) {
+    return empty('Monthly history is not published for this release.');
+  }
+  if (!iso) {
+    return empty('Select a country on the map.');
+  }
+  const series = Array.isArray(history.countries[iso]) ? history.countries[iso] : [];
+  if (!series.length) {
+    return empty('No monthly history for this country.');
+  }
+  // rows are [month, prefixes, routed, asns]; newest first, each with its change versus the month before
+  const rows = series.map((row, i) => {
+    const before = i > 0 ? series[i - 1] : null;
+    const delta = before ? numericValue(row[1]) - numericValue(before[1]) : null;
+    return `
+      <div class="list-row">
+        <div>
+          <strong>${escapeHtml(row[0])}</strong>
+          <small>${formatInteger(row[2])} routed /24 · ${formatInteger(row[3])} origin ASNs</small>
+        </div>
+        <div class="list-metric">
+          <strong>${formatInteger(row[1])}</strong>
+          <small>${delta === null ? '/24 published' : `${formatSigned(delta)} /24 vs ${escapeHtml(before[0])}`}</small>
+        </div>
+      </div>`;
+  }).reverse();
+  return rows.join('') + `
+    <div class="list-row"><div><small>Every month excludes the RIR/IANA unallocated reserve (/24s with no holder), as the country totals above do. Origin ASNs = the ASNs announcing this country's /24s.</small></div></div>`;
 }
 
 
