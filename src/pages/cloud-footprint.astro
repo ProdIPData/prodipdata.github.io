@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { numericValue, formatInteger, formatCompact, escapeHtml, loadData, flag, currentReleaseMonth } from '../lib/format.js';
+
+// Cloud-provider IPv4 footprint for the current release, built at deploy time from
+// cloud-<month>.json (WEBSITE/Build-Analytics-Data.py).
+const month = currentReleaseMonth;
+const cl = loadData('cloud');
+const providers = (cl && cl.providers) || [];
+const countries = ((cl && cl.countries) || []).slice(0, 30);
+const total = numericValue(cl && cl.totalPrefixes);
+const labels = { AWS: 'Amazon Web Services', Azure: 'Microsoft Azure', GCP: 'Google Cloud', OCI: 'Oracle Cloud' };
+
+let countryName = (iso) => iso || 'Unknown';
+try {
+  const dn = new Intl.DisplayNames(['en'], { type: 'region' });
+  countryName = (iso) => (iso ? dn.of(String(iso).toUpperCase()) || iso : 'Unknown');
+} catch (e) { /* keep the ISO code */ }
+const pct = (v) => `${numericValue(v).toFixed(1)}%`;
+
+const metricsHtml = providers.map((p) => `
+  <div class="metric-card glass"><div class="muted">${escapeHtml(labels[p.provider] || p.provider)}</div><div class="metric-value">${formatCompact(p.prefixes)}</div><div class="card-text">${formatInteger(p.prefixes)} /24s (${pct(total ? 100 * p.prefixes / total : 0)} of the cloud total), geolocated to ${formatInteger(p.countries)} countries, in ${formatInteger(p.regions)} provider regions.</div></div>`).join('');
+
+const countryRows = countries.map((c) => `
+  <tr>
+    <td>${flag(c.iso2)}<strong>${escapeHtml(countryName(c.iso2))}</strong></td>
+    <td>${formatInteger(c.n)}</td>
+    <td>${formatInteger(c.aws)}</td>
+    <td>${formatInteger(c.azure)}</td>
+    <td>${formatInteger(c.gcp)}</td>
+    <td>${formatInteger(c.oci)}</td>
+    <td>${pct(c.sharePct)}</td>
+  </tr>`).join('');
+
+const regionCards = providers.map((p) => `
+  <div class="split-panel glass">
+    <h3>${escapeHtml(labels[p.provider] || p.provider)}: largest regions</h3>
+    <div class="download-list">${(p.topRegions || []).slice(0, 10).map((r) => `
+      <div class="list-row">
+        <div><strong><code>${escapeHtml(r.region)}</code></strong><small>${r.iso2 ? `${flag(r.iso2)}mostly ${escapeHtml(countryName(r.iso2))}` : 'no country'}</small></div>
+        <div class="list-metric"><strong>${formatInteger(r.n)}</strong><small>/24</small></div>
+      </div>`).join('')}</div>
+  </div>`).join('');
+
+const notes = ((cl && cl.notes) || []).map((n) => `<li>${escapeHtml(n)}</li>`).join('');
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://prodipdata.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Coverage', item: 'https://prodipdata.com/coverage.html' },
+    { '@type': 'ListItem', position: 3, name: 'Cloud footprint', item: 'https://prodipdata.com/cloud-footprint.html' },
+  ],
+};
+---
+<BaseLayout
+  title="Cloud Provider IPv4 Footprint by Country and Region | ProdIPData"
+  description="How many IPv4 /24s AWS, Microsoft Azure, Google Cloud and Oracle Cloud publish, where they geolocate and which provider regions hold them, for the current ProdIPData monthly release."
+  ogTitle="Cloud Provider IPv4 Footprint by Country and Region"
+  canonicalPath="/cloud-footprint.html"
+  page="cloud-footprint"
+  navPage="coverage"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-panel glass">
+          <div class="eyebrow page-kicker">Cloud footprint</div>
+          <h1>Where the big four clouds sit in IPv4, release {month}.</h1>
+          <p class="page-intro">
+            AWS, Microsoft Azure, Google Cloud and Oracle Cloud each publish the IP ranges they operate. ProdIPData maps
+            those ranges onto every /24 and shows here how much space each provider holds, which countries it geolocates
+            to and which provider regions are the largest. In release {month}: <strong>{formatInteger(total)}</strong> /24s.
+            The per-/24 detail is in every CSV and Parquet package (<code>CloudProvider</code>, <code>CloudRegions</code>,
+            <code>CloudServices</code>).
+          </p>
+          <p class="page-intro seo-links">See also the <a href="coverage.html">country coverage map</a>, <a href="routing-security.html">routing security</a> and <a href="anonymity-networks.html">Tor and VPN networks</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    {cl ? (
+      <>
+        <section class="section">
+          <div class="container">
+            <div class="metric-grid" set:html={metricsHtml}></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="table-wrap glass cf-wrap">
+              <div class="coverage-table-head">
+                <h3>Countries with the most cloud /24s</h3>
+                <p class="card-text">The 30 largest. Share = cloud /24s as a part of all /24s geolocated to the country. The <a href={`assets/data/cloud-${month}.json`}>full JSON file</a> lists every country.</p>
+              </div>
+              <div class="cf-scroll">
+                <table>
+                  <thead><tr><th>Country</th><th>Cloud /24</th><th>AWS</th><th>Azure</th><th>Google</th><th>Oracle</th><th>Share</th></tr></thead>
+                  <tbody set:html={countryRows}></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container grid-2" set:html={regionCards}></div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="split-panel glass content">
+              <h2>How to read these figures</h2>
+              <ul set:html={notes}></ul>
+            </div>
+          </div>
+        </section>
+      </>
+    ) : (
+      <section class="section"><div class="container"><div class="data-note">Cloud figures are not published for release {month}.</div></div></section>
+    )}
+  </main>
+
+  <style is:inline>
+    .cf-scroll { overflow-x: auto; }
+    .cf-wrap table { min-width: 640px; }
+  </style>
+</BaseLayout>

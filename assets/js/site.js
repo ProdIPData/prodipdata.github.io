@@ -1417,7 +1417,7 @@ function renderCountryTrend(history, profile) {
       <div class="list-row">
         <div>
           <strong>${escapeHtml(row[0])}</strong>
-          <small>${formatInteger(row[2])} routed /24 · ${formatInteger(row[3])} origin ASNs</small>
+          <small>${formatInteger(row[2])} routed /24 · ${formatInteger(row[3])} origin ASNs${row[4] == null ? '' : ` · lead ASN ${formatShare(row[4])}`}</small>
         </div>
         <div class="list-metric">
           <strong>${formatInteger(row[1])}</strong>
@@ -1426,7 +1426,7 @@ function renderCountryTrend(history, profile) {
       </div>`;
   }).reverse();
   return rows.join('') + `
-    <div class="list-row"><div><small>Every month excludes the RIR/IANA unallocated reserve (/24s with no holder), as the country totals above do. Origin ASNs = the ASNs announcing this country's /24s.</small></div></div>`;
+    <div class="list-row"><div><small>Every month excludes the RIR/IANA unallocated reserve (/24s with no holder), as the country totals above do. Origin ASNs = the ASNs announcing this country's /24s. Lead ASN = the largest one's share of the routed /24s.</small></div></div>`;
 }
 
 
