@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { numericValue, formatInteger, formatCompact, formatRirName, escapeHtml, loadData, flag, currentReleaseMonth } from '../lib/format.js';
+
+// Unrouted space and allocation age for the current release, built at deploy time from
+// address-space-<month>.json (WEBSITE/Build-Analytics-Data.py).
+const month = currentReleaseMonth;
+const as = loadData('address-space');
+const t = (as && as.totals) || {};
+const decades = (as && as.decades) || ['1980', '1990', '2000', '2010', '2020'];
+const rirs = (as && as.rirs) || [];
+const countries = ((as && as.countries) || []).slice(0, 40);
+
+let countryName = (iso) => iso || 'Unknown';
+try {
+  const dn = new Intl.DisplayNames(['en'], { type: 'region' });
+  countryName = (iso) => (iso ? dn.of(String(iso).toUpperCase()) || iso : 'Unknown');
+} catch (e) { /* keep the ISO code */ }
+const pct = (v) => `${numericValue(v).toFixed(1)}%`;
+const rirLabel = (r) => formatRirName(r === 'ripencc' ? 'ripe' : r);
+const decLabel = (d) => (d === '1980' ? 'before 1990' : `${d}s`);
+const decPct = (row, d) => (numericValue(row.prefixes) ? (100 * numericValue((row.decades || {})[d]) / numericValue(row.prefixes)) : 0);
+
+const metricsHtml = as ? `
+  <div class="metric-card glass"><div class="muted">Unrouted /24s</div><div class="metric-value">${formatCompact(t.unrouted)}</div><div class="card-text">${pct(t.unroutedPct)} of the /24s with a country have no origin AS in this release.</div></div>
+  <div class="metric-card glass"><div class="muted">Allocated before 2000</div><div class="metric-value">${pct(t.pre2000Pct)}</div><div class="card-text">of the /24s with a country sit in allocations made before 2000.</div></div>
+  <div class="metric-card glass"><div class="muted">Median allocation year</div><div class="metric-value">${escapeHtml(t.medianYear)}</div><div class="card-text">Half of the space was allocated in or before this year.</div></div>
+  <div class="metric-card glass"><div class="muted">Allocated since 2020</div><div class="metric-value">${pct(decPct(t, '2020'))}</div><div class="card-text">${formatInteger((t.decades || {})['2020'])} /24s: IPv4 is almost fully handed out.</div></div>` : '';
+
+const decadeBars = decades.map((d) => `
+  <div class="kpi-row"><span>${escapeHtml(decLabel(d))}</span><div class="kpi-bar"><span style="width:${decPct(t, d).toFixed(1)}%"></span></div><strong>${pct(decPct(t, d))}</strong></div>`).join('');
+
+const rirRows = rirs.map((r) => `
+  <tr>
+    <td><strong>${escapeHtml(rirLabel(r.rir))}</strong></td>
+    <td>${formatInteger(r.prefixes)}</td>
+    <td>${formatInteger(r.unrouted)} <span class="table-subtext">${pct(r.unroutedPct)}</span></td>
+    ${decades.map((d) => `<td>${pct(decPct(r, d))}</td>`).join('')}
+    <td>${escapeHtml(r.medianYear)}</td>
+  </tr>`).join('');
+
+const countryRows = countries.map((c) => `
+  <tr>
+    <td>${flag(c.iso2)}<strong>${escapeHtml(countryName(c.iso2))}</strong></td>
+    <td>${formatInteger(c.prefixes)}</td>
+    <td>${formatInteger(c.unrouted)} <span class="table-subtext">${pct(c.unroutedPct)}</span></td>
+    <td>${pct(c.pre2000Pct)}</td>
+    <td>${escapeHtml(c.medianYear)}</td>
+  </tr>`).join('');
+
+// Data-driven sentence, so it stays true when the numbers move.
+const oldest = rirs.slice().sort((a, b) => numericValue(a.medianYear) - numericValue(b.medianYear))[0];
+const youngest = rirs.slice().sort((a, b) => numericValue(b.medianYear) - numericValue(a.medianYear))[0];
+const mostUnrouted = rirs.slice().sort((a, b) => numericValue(b.unroutedPct) - numericValue(a.unroutedPct))[0];
+const readingText = oldest && youngest && mostUnrouted
+  ? `${rirLabel(oldest.rir)} space is the oldest (median allocation year ${oldest.medianYear}) and ${rirLabel(youngest.rir)} space the youngest (${youngest.medianYear}). ${rirLabel(mostUnrouted.rir)} has the largest unrouted share, ${pct(mostUnrouted.unroutedPct)}. Unrouted does not mean unused: networks keep internal or reserved space off the public routing table.`
+  : '';
+const notes = ((as && as.notes) || []).map((n) => `<li>${escapeHtml(n)}</li>`).join('');
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://prodipdata.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Coverage', item: 'https://prodipdata.com/coverage.html' },
+    { '@type': 'ListItem', position: 3, name: 'Address space', item: 'https://prodipdata.com/address-space.html' },
+  ],
+};
+---
+<BaseLayout
+  title="IPv4 Address Space: Unrouted Space and Allocation Age by Country | ProdIPData"
+  description="How much geolocated IPv4 space is not routed, and when it was allocated, by regional registry and country, for the current ProdIPData monthly release."
+  ogTitle="IPv4 Address Space: Unrouted Space and Allocation Age"
+  canonicalPath="/address-space.html"
+  page="address-space"
+  navPage="coverage"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-panel glass">
+          <div class="eyebrow page-kicker">Address space</div>
+          <h1>Unrouted space and allocation age, release {month}.</h1>
+          <p class="page-intro">
+            A /24 can have a country without being announced on the Internet, and IPv4 was handed out over four decades.
+            This page shows both for the {formatCompact(t.prefixes)} /24s with a country: how much is not routed, and when the
+            registries allocated it. It explains why "has a country" and "routed" are different numbers elsewhere on the site.
+            The packages carry the allocation date per /24 (<code>RIRAllocationDate</code>).
+          </p>
+          <p class="page-intro seo-links">See also <a href="routing-security.html">routing security</a>, <a href="data-quality.html">data quality</a> and the <a href="coverage.html">country coverage map</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    {as ? (
+      <>
+        <section class="section">
+          <div class="container">
+            <div class="metric-grid" set:html={metricsHtml}></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container grid-2">
+            <div class="split-panel glass">
+              <h3>When the space was allocated</h3>
+              <p class="card-text">Share of the /24s with a country, by the decade of their RIR allocation.</p>
+              <div class="kpi-bar-stack" set:html={decadeBars}></div>
+            </div>
+            <div class="split-panel glass content">
+              <h3>Reading the two measures together</h3>
+              <p class="card-text">{readingText}</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="table-wrap glass as-wrap">
+              <div class="coverage-table-head"><h3>By regional registry</h3><p class="card-text">Unrouted /24s and the share allocated in each decade.</p></div>
+              <div class="as-scroll">
+                <table>
+                  <thead><tr><th>RIR</th><th>/24</th><th>Unrouted</th>{decades.map((d) => <th>{decLabel(d)}</th>)}<th>Median year</th></tr></thead>
+                  <tbody set:html={rirRows}></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="table-wrap glass as-wrap">
+              <div class="coverage-table-head"><h3>Largest countries</h3><p class="card-text">The 40 countries with the most /24s. The <a href={`assets/data/address-space-${month}.json`}>full JSON file</a> covers every country with at least {formatInteger(as.minCountryPrefixes)} /24s and has the decade split per country.</p></div>
+              <div class="as-scroll">
+                <table>
+                  <thead><tr><th>Country</th><th>/24</th><th>Unrouted</th><th>Allocated before 2000</th><th>Median year</th></tr></thead>
+                  <tbody set:html={countryRows}></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="split-panel glass content">
+              <h2>How to read these figures</h2>
+              <ul set:html={notes}></ul>
+            </div>
+          </div>
+        </section>
+      </>
+    ) : (
+      <section class="section"><div class="container"><div class="data-note">Address-space figures are not published for release {month}.</div></div></section>
+    )}
+  </main>
+
+  <style is:inline>
+    .as-scroll { overflow-x: auto; }
+    .as-wrap table { min-width: 720px; }
+    .as-scroll .table-subtext { display: inline; margin-left: 4px; }
+  </style>
+</BaseLayout>
