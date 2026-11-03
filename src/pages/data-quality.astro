@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { numericValue, formatInteger, formatCompact, formatRirName, escapeHtml, loadData, flag, currentReleaseMonth } from '../lib/format.js';
+
+// Geolocation precision and source agreement for the current release, built at deploy time
+// from quality-<month>.json (WEBSITE/Build-Analytics-Data.py).
+const month = currentReleaseMonth;
+const q = loadData('quality');
+const t = (q && q.totals) || {};
+const buckets = ((q && q.radiusBuckets) || []).filter((b) => numericValue(b.n) > 0);
+const rirs = (q && q.rirs) || [];
+const countries = ((q && q.countries) || []).slice(0, 40);
+const trend = (q && q.trend) || [];
+
+let countryName = (iso) => iso || 'Unknown';
+try {
+  const dn = new Intl.DisplayNames(['en'], { type: 'region' });
+  countryName = (iso) => (iso ? dn.of(String(iso).toUpperCase()) || iso : 'Unknown');
+} catch (e) { /* keep the ISO code */ }
+const pct = (v) => `${numericValue(v).toFixed(1)}%`;
+const rirLabel = (r) => formatRirName(r === 'ripencc' ? 'ripe' : r);
+const maxBucket = Math.max(1, ...buckets.map((b) => numericValue(b.pct)));
+
+const metricsHtml = q ? `
+  <div class="metric-card glass"><div class="muted">City-precise</div><div class="metric-value">${pct(t.cityPrecisePct)}</div><div class="card-text">${formatInteger(t.cityPrecise)} /24s with an accuracy radius of 100 km or less.</div></div>
+  <div class="metric-card glass"><div class="muted">Regional</div><div class="metric-value">${pct(t.regionalPct)}</div><div class="card-text">${formatInteger(t.regional)} /24s placed within 101-500 km: a region, not a city.</div></div>
+  <div class="metric-card glass"><div class="muted">Country level</div><div class="metric-value">${pct(t.countryLevelPct)}</div><div class="card-text">${formatInteger(t.countryLevel)} /24s where only the country is known (radius over 500 km).</div></div>
+  <div class="metric-card glass"><div class="muted">Sources disagree</div><div class="metric-value">${pct(t.disagreePct)}</div><div class="card-text">${formatInteger(t.disagree)} /24s where the geolocation databases named different countries.</div></div>` : '';
+
+const bucketHtml = buckets.map((b) => `
+  <div class="kpi-row"><span>${escapeHtml(b.label)}</span><div class="kpi-bar"><span style="width:${(100 * numericValue(b.pct) / maxBucket).toFixed(1)}%"></span></div><strong>${pct(b.pct)}</strong></div>`).join('');
+
+const trendHtml = trend.slice().reverse().map((r) => `
+  <div class="list-row">
+    <div><strong>${escapeHtml(r.month)}</strong><small>sources disagree on ${pct(r.disagreePct)} · ${formatInteger(r.operatorFeed)} /24s from operator geofeeds</small></div>
+    <div class="list-metric"><strong>${pct(r.cityPrecisePct)}</strong><small>city-precise</small></div>
+  </div>`).join('');
+
+const rirRows = rirs.map((r) => `
+  <tr>
+    <td><strong>${escapeHtml(rirLabel(r.rir))}</strong></td>
+    <td>${formatInteger(r.prefixes)}</td>
+    <td>${pct(r.cityPrecisePct)}</td>
+    <td>${pct(r.regionalPct)}</td>
+    <td>${pct(r.countryLevelPct)}</td>
+    <td>${pct(r.disagreePct)}</td>
+    <td>${formatInteger(r.operatorFeed)}</td>
+  </tr>`).join('');
+
+const countryRows = countries.map((c) => `
+  <tr>
+    <td>${flag(c.iso2)}<strong>${escapeHtml(countryName(c.iso2))}</strong></td>
+    <td>${formatInteger(c.prefixes)}</td>
+    <td>${pct(c.cityPrecisePct)}</td>
+    <td>${pct(c.regionalPct)}</td>
+    <td>${pct(c.countryLevelPct)}</td>
+    <td>${pct(c.disagreePct)}</td>
+  </tr>`).join('');
+
+const notes = ((q && q.notes) || []).map((n) => `<li>${escapeHtml(n)}</li>`).join('');
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://prodipdata.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Coverage', item: 'https://prodipdata.com/coverage.html' },
+    { '@type': 'ListItem', position: 3, name: 'Data quality', item: 'https://prodipdata.com/data-quality.html' },
+  ],
+};
+---
+<BaseLayout
+  title="IP Geolocation Data Quality: Precision and Source Agreement | ProdIPData"
+  description="How precise ProdIPData's IPv4 geolocation is: city, regional and country-level shares, accuracy radius, where the source databases disagree, by registry and country, month by month."
+  ogTitle="IP Geolocation Data Quality: Precision and Source Agreement"
+  canonicalPath="/data-quality.html"
+  page="data-quality"
+  navPage="coverage"
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumb)} />
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-panel glass">
+          <div class="eyebrow page-kicker">Data quality</div>
+          <h1>How precise is the geolocation in release {month}?</h1>
+          <p class="page-intro">
+            Every geolocation dataset is a mix of precise and coarse answers; few say how much of each. This page does,
+            for the {formatCompact(t.prefixes)} /24s that have a country in release {month}. Use the
+            <code>AccuracyRadius</code> column in the packages to keep only the precision your use needs: for example,
+            city-level analytics should drop rows over 100 km.
+          </p>
+          <p class="page-intro seo-links">See also the <a href="methodology.html">methodology</a>, <a href="registered-vs-used.html">registered vs used</a> and the <a href="coverage.html">country coverage map</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    {q ? (
+      <>
+        <section class="section">
+          <div class="container">
+            <div class="metric-grid" set:html={metricsHtml}></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container grid-2">
+            <div class="split-panel glass">
+              <h3>Accuracy radius</h3>
+              <p class="card-text">Share of the /24s with a country, by published accuracy radius.</p>
+              <div class="kpi-bar-stack dq-bars" set:html={bucketHtml}></div>
+            </div>
+            <div class="split-panel glass">
+              <h3>Month by month</h3>
+              <p class="card-text">City-precise share, source disagreement and operator geofeeds in each monthly release.</p>
+              <div class="download-list" set:html={trendHtml}></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="table-wrap glass dq-wrap">
+              <div class="coverage-table-head">
+                <h3>By regional registry</h3>
+                <p class="card-text">Shares of each registry's /24s with a country.</p>
+              </div>
+              <div class="dq-scroll">
+                <table>
+                  <thead><tr><th>RIR</th><th>/24 with a country</th><th>City-precise</th><th>Regional</th><th>Country level</th><th>Sources disagree</th><th>Operator geofeed /24</th></tr></thead>
+                  <tbody set:html={rirRows}></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="table-wrap glass dq-wrap">
+              <div class="coverage-table-head">
+                <h3>Largest countries</h3>
+                <p class="card-text">The 40 countries with the most /24s. The <a href={`assets/data/quality-${month}.json`}>full JSON file</a> covers every country with at least {formatInteger(q.minCountryPrefixes)} /24s.</p>
+              </div>
+              <div class="dq-scroll">
+                <table>
+                  <thead><tr><th>Country</th><th>/24</th><th>City-precise</th><th>Regional</th><th>Country level</th><th>Sources disagree</th></tr></thead>
+                  <tbody set:html={countryRows}></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="split-panel glass content">
+              <h2>How to read these figures</h2>
+              <ul set:html={notes}></ul>
+            </div>
+          </div>
+        </section>
+      </>
+    ) : (
+      <section class="section"><div class="container"><div class="data-note">Data-quality figures are not published for release {month}.</div></div></section>
+    )}
+  </main>
+
+  <style is:inline>
+    .dq-scroll { overflow-x: auto; }
+    .dq-wrap table { min-width: 680px; }
+    .dq-bars .kpi-row { grid-template-columns: 110px 1fr 56px; }
+  </style>
+</BaseLayout>
