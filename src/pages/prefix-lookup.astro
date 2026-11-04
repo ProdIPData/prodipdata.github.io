@@ -338,6 +338,10 @@ const breadcrumb = {
             const on = (String(v) === 'true' || v === true || v === 1);
             return `<div class="lk-row"><span class="k">${label}</span><span class="v">${on ? '<span class="lk-badge warn">Yes</span>' : 'No'}</span></div>`;
           }
+          if (key === 'ASNID') {   // two-way link with the ASN lookup page
+            const n = String(v).replace(/^AS/, '');
+            return `<div class="lk-row"><span class="k">${label}</span><span class="v"><a href="asn-lookup.html?asn=${encodeURIComponent(n)}" title="Open ${esc(v)} in ASN lookup">${esc(v)}</a></span></div>`;
+          }
           // Country-level fallback: don't assert a best-guess city/region — flag it as approximate.
           if ((key === 'CityName' || key === 'RegionName') && countryLevel) {
             return `<div class="lk-row"><span class="k">${label}</span><span class="v" style="opacity:.6" title="Low confidence — this block geolocates only to country level">${esc(v)} (approx.)</span></div>`;
