@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-11-04",
+    "category": "Open data",
+    "title": "Hugging Face dataset: free access on request",
+    "summary": "The Hugging Face copy of the dataset is now gated: log in to Hugging Face, fill in a short form (organisation, country, intended use) and request access. Requests are reviewed by hand, usually within 2 working days. The data stays free under CC BY 4.0.",
+    "link": "https://huggingface.co/datasets/ProdIPData/ip-locations"
+  },
+  {
     "date": "2026-09-02",
     "category": "Release",
     "title": "September 2026 release is live",
@@ -52,7 +59,7 @@
     "date": "2026-07-01",
     "category": "Open data",
     "title": "Open Parquet dataset on Hugging Face",
-    "summary": "The full geolocated /24 set is published as an open, no-password Parquet dataset on Hugging Face under CC BY 4.0, refreshed every month alongside the site packages.",
+    "summary": "The full geolocated /24 set is published as a Parquet dataset on Hugging Face under CC BY 4.0, refreshed every month alongside the site packages. Since 4 November 2026 access is free on request (Hugging Face account, short form, reviewed by hand).",
     "link": "https://huggingface.co/datasets/ProdIPData/ip-locations"
   },
   {

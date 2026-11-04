@@ -5,7 +5,7 @@
 🌐 **Website:** https://prodipdata.com  
 📦 **Downloads:** https://prodipdata.com/downloads.html  
 🔎 **Prefix Lookup:** https://prodipdata.com/prefix-lookup.html  
-🤗 **Open dataset (Parquet):** https://huggingface.co/datasets/ProdIPData/geoip-locations
+🤗 **Open dataset (Parquet):** https://huggingface.co/datasets/ProdIPData/ip-locations
 
 This repository hosts the public **ProdIPData** website (GitHub Pages). It is the home of a free, monthly **IP geolocation** dataset covering the routed IPv4 address space at **`/24`** granularity.
 
