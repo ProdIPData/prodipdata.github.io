@@ -10,11 +10,11 @@ const breadcrumb = {
   ],
 };
 
-const effective = '10 September 2026';
+const effective = '4 November 2026';
 ---
 <BaseLayout
   title="Privacy | ProdIPData"
-  description="What ProdIPData collects, what it does not, and who else sees a request. No cookies, no accounts, no tracking scripts."
+  description="What ProdIPData collects, what it does not, and who else sees a request. No cookies, no tracking scripts; the two dataset downloads each ask for one thing."
   ogTitle="ProdIPData Privacy"
   canonicalPath="/privacy.html"
   page="privacy"
@@ -27,7 +27,7 @@ const effective = '10 September 2026';
         <div class="page-panel glass">
           <div class="eyebrow page-kicker">Privacy</div>
           <h1>This site sets no cookies and asks you for nothing.</h1>
-          <p class="page-intro">ProdIPData is a set of static files. There are no accounts, no sign-in, no forms that submit anything to us, and no tracking scripts. You can read every page and download every dataset without telling us who you are. This notice sets out the little that does happen, and who else is involved when you load a page.</p>
+          <p class="page-intro">ProdIPData is a set of static files. There are no accounts, no sign-in, no forms that submit anything to us, and no tracking scripts. You can read every page and use the Prefix Lookup without telling us who you are. The full dataset downloads each ask for one thing: an email for the package password, or an access request on Hugging Face. This notice sets out the little that does happen, and who else is involved when you load a page.</p>
           <p class="page-intro seo-links">See also the <a href="licensing.html">dataset licence</a>, the <a href="methodology.html">publication methodology</a>, or <a href="contact.html">how to reach us</a>.</p>
         </div>
       </div>
@@ -41,7 +41,7 @@ const effective = '10 September 2026';
         </article>
         <article class="section-card glass">
           <h3>No accounts</h3>
-          <p class="card-text">Nothing on this site requires registration. Dataset packages are password-protected, and the password is sent by email on request — that request is the only thing we ever ask you for.</p>
+          <p class="card-text">Nothing on this site requires registration. Dataset packages are password-protected, and the password is sent by email on request. The Hugging Face copy of the dataset is free too, but you request access there first (see below).</p>
         </article>
         <article class="section-card glass">
           <h3>No advertising</h3>
@@ -77,15 +77,15 @@ const effective = '10 September 2026';
             <li><strong>GitHub Pages</strong> serves the site. Like any web server it receives your IP address and request details.</li>
             <li><strong>Cloudflare</strong> provides DNS, the analytics beacon, and the email forwarding described above.</li>
             <li><strong>jsDelivr</strong> serves the Prefix Lookup data shards, so opening that page fetches files from their CDN.</li>
-            <li><strong>Hugging Face</strong> and <strong>GitHub Releases</strong> host the downloadable datasets. Following a download link takes you to them.</li>
+            <li><strong>Hugging Face</strong> and <strong>GitHub Releases</strong> host the downloadable datasets. Following a download link takes you to them. The Hugging Face dataset is gated: to download it you request access there, and Hugging Face then shares your Hugging Face username, your email address and your answers in the request form (organisation, country, intended use) with us.</li>
           </ul>
-          <p>We receive nothing from any of them beyond the aggregate counts described above.</p>
+          <p>Apart from those Hugging Face access requests, we receive nothing from any of them beyond the aggregate counts described above. We use an access request only to review it and, if needed, to contact you about the dataset; it is not added to any mailing list, sold or shared.</p>
         </div>
         <div class="split-panel glass content">
           <h2>Your choices</h2>
-          <p>Because we hold nothing tied to you, there is usually nothing for us to look up, correct or erase. The exception is email you have sent us.</p>
+          <p>Because we hold nothing tied to you, there is usually nothing for us to look up, correct or erase. The exceptions are email you have sent us and a Hugging Face access request you have made.</p>
           <ul>
-            <li>Ask what we hold from your correspondence, and we will tell you.</li>
+            <li>Ask what we hold from your correspondence or your access request, and we will tell you.</li>
             <li>Ask us to delete it, and we will delete it.</li>
             <li>Ask how a dataset figure was derived — the <a href="methodology.html">methodology</a> is public, and we will answer specifics.</li>
           </ul>
