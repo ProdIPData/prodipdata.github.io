@@ -10,7 +10,7 @@ const breadcrumb = {
   ],
 };
 
-const effective = '4 November 2026';
+const effective = '5 November 2026';
 ---
 <BaseLayout
   title="Privacy | ProdIPData"
@@ -76,7 +76,8 @@ const effective = '4 November 2026';
           <ul>
             <li><strong>GitHub Pages</strong> serves the site. Like any web server it receives your IP address and request details.</li>
             <li><strong>Cloudflare</strong> provides DNS, the analytics beacon, and the email forwarding described above.</li>
-            <li><strong>jsDelivr</strong> serves the Prefix Lookup data shards, so opening that page fetches files from their CDN.</li>
+            <li><strong>The lookup site</strong>, <a href="https://lookup.prodipdata.com/">lookup.prodipdata.com</a>, runs on Cloudflare. When you look up an address or a network there, the address or AS number you enter is sent to it so it can answer with that one record. We do not log what you look up; Cloudflare, like any web host, receives your IP address and request details.</li>
+            <li><strong>jsDelivr</strong> serves the code libraries and world outlines of the density and region maps, so opening those pages fetches files from their CDN.</li>
             <li><strong>Hugging Face</strong> and <strong>GitHub Releases</strong> host the downloadable datasets. Following a download link takes you to them. The Hugging Face dataset is gated: to download it you request access there, and Hugging Face then shares your Hugging Face username, your email address and your answers in the request form (organisation, country, intended use) with us.</li>
           </ul>
           <p>Apart from those Hugging Face access requests, we receive nothing from any of them beyond the aggregate counts described above. We use an access request only to review it and, if needed, to contact you about the dataset; it is not added to any mailing list, sold or shared.</p>
