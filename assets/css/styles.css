@@ -576,6 +576,8 @@ td strong { font-size: 15px; }
   gap: 18px;
   flex-wrap: wrap;
 }
+/* The trademark note wraps onto its own line: give it the full width, centered (2026-11-05). */
+.site-footer-inner > .muted:last-child { flex-basis: 100%; text-align: center; }
 
 @media (max-width: 1100px) {
   .hero-grid, .metric-grid, .timeline { grid-template-columns: 1fr; }
