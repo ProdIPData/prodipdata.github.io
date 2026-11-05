@@ -30,7 +30,7 @@ const org = {
 const navItems = [
   ['platform', 'Platform'],
   ['coverage', 'Coverage'],
-  ['prefix-lookup', 'Prefix Lookup'],
+  ['prefix-lookup', 'Lookup \u2197', 'https://lookup.prodipdata.com/'],   // the lookup site (2026-11-05)
   ['prefix-density', 'Density'],
   ['methodology', 'Methodology'],
   ['downloads', 'Downloads'],
@@ -38,7 +38,7 @@ const navItems = [
   ['news', 'News'],
   ['contact', 'Contact'],
 ];
-const link = (slug) => `${base}${slug}.html`;
+const link = (slug, href) => href || `${base}${slug}.html`;
 ---
 <!doctype html>
 <html lang="en">
@@ -78,7 +78,7 @@ const link = (slug) => `${base}${slug}.html`;
             </div>
           </a>
           <nav class="nav-links" aria-label="Primary navigation">
-            {navItems.map(([slug, label]) => <a href={link(slug)} data-nav={slug}>{label}</a>)}
+            {navItems.map(([slug, label, href]) => <a href={link(slug, href)} data-nav={slug} title={href ? 'IP and ASN lookup on lookup.prodipdata.com' : undefined}>{label}</a>)}
           </nav>
           <div class="header-cta">
             <a class="btn btn-secondary" href={`${base}downloads.html`}>Monthly Release</a>
@@ -86,7 +86,7 @@ const link = (slug) => `${base}${slug}.html`;
           <button class="menu-button" type="button" data-menu-toggle aria-expanded="false" aria-label="Open menu">Menu</button>
         </div>
         <nav class="mobile-nav glass" data-mobile-nav>
-          {navItems.map(([slug, label]) => <a href={link(slug)} data-nav={slug}>{label}</a>)}
+          {navItems.map(([slug, label, href]) => <a href={link(slug, href)} data-nav={slug} title={href ? 'IP and ASN lookup on lookup.prodipdata.com' : undefined}>{label}</a>)}
         </nav>
       </div>
     </header>
